@@ -44,7 +44,7 @@
                       <TextField fx:id="username" prefHeight="34.0" prefWidth="282.0" promptText="Username" styleClass="SignIpInput" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="384.0">
                <children>
                       <PasswordField fx:id="password" prefHeight="34.0" prefWidth="282.0" promptText="Password" styleClass="SignIpInput" />
                </children>
