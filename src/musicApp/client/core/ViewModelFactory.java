@@ -1,6 +1,7 @@
 package musicApp.client.core;
 
 import musicApp.client.views.chat.ChatViewModel;
+import musicApp.client.views.followList.FollowListViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
@@ -16,6 +17,7 @@ public class ViewModelFactory {
     private LoginMainViewModel loginMainViewModel;
     private MusicPlayerViewModel musicPlayerViewModel;
     private ProfileViewModel profileViewModel;
+    private FollowListViewModel followListViewModel;
 
 
     public ViewModelFactory(ModelFactory modelFactory) {
@@ -58,4 +60,12 @@ public class ViewModelFactory {
             profileViewModel = new ProfileViewModel(modelFactory.getMainModel());
         return profileViewModel;
     }
-}
+
+    public FollowListViewModel getFollowListViewModel()
+    {
+      if ( followListViewModel == null)
+        followListViewModel = new FollowListViewModel(modelFactory.getMainModel());
+      return followListViewModel;
+    }
+    }
+

@@ -1,8 +1,6 @@
 package musicApp.client.model;
 
-/**
- * Created by Mahmoud Hamwi on 02-Feb-21.
- */
+
 public class Song {
     private String cover;
     private String name;

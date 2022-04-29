@@ -19,7 +19,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openProfile();
+        openLogin();
     }
 
     public void openChat() {
@@ -109,6 +109,20 @@ public class ViewHandler {
     }
 
 
+    public void openFollowList(){
+        try {
+            Parent root = loadFXML("../views/followList/FollowList.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("FollowList");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     private Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
@@ -117,5 +131,6 @@ public class ViewHandler {
         ctrl.init(this, vmf);
         return root;
     }
+
 }
 
