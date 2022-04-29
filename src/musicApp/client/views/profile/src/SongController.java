@@ -1,4 +1,4 @@
-package sample;
+package musicApp.client.views.profile.src;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import musicApp.client.core.ViewController;
+import musicApp.client.core.ViewHandler;
+import musicApp.client.core.ViewModelFactory;
 import musicApp.client.model.Song;
 
 import java.io.IOException;
@@ -13,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class Controller implements Initializable, ViewController {
 
     @FXML
     private HBox recentlyPlayedContainer;
@@ -35,8 +38,8 @@ public class Controller implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("song.fxml"));
 
                 VBox vBox = fxmlLoader.load();
-                sample.SongController songController = fxmlLoader.getController();
-                songController.setData(song);
+//                SongController songController = fxmlLoader.getController();
+//                songController.setData(song);
 
                 recentlyPlayedContainer.getChildren().add(vBox);
             }
@@ -46,8 +49,8 @@ public class Controller implements Initializable {
                 fxmlLoader.setLocation(getClass().getResource("song.fxml"));
 
                 VBox vBox = fxmlLoader.load();
-                sample.SongController songController = fxmlLoader.getController();
-                songController.setData(song);
+//                SongController songController = fxmlLoader.getController();
+//                songController.setData(song);
 
                 favoriteContainer.getChildren().add(vBox);
             }
@@ -162,5 +165,10 @@ public class Controller implements Initializable {
         ls.add(song);
 
         return ls;
+    }
+
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
+
     }
 }
