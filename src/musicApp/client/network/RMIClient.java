@@ -8,6 +8,7 @@ import musicApp.client.network.login.RMILoginClient;
 import musicApp.client.network.musicplayer.MusicPlayerClient;
 import musicApp.client.network.musicplayer.RMIMusicPlayerClient;
 import musicApp.client.network.profile.ProfileClient;
+import musicApp.client.network.profile.RMIProfileClient;
 import musicApp.client.network.register.RMISignUpClient;
 import musicApp.client.network.register.SignUpClient;
 import musicApp.shared.LogEntry;
@@ -42,6 +43,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.loginClient = new RMILoginClient();
         this.musicPlayerClient = new RMIMusicPlayerClient();
         this.signUpClient = new RMISignUpClient();
+        this.profileClient = new RMIProfileClient();
     }
 
     @Override
