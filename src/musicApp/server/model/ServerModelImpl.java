@@ -8,6 +8,8 @@ import musicApp.server.model.login.ServerModelLogin;
 import musicApp.server.model.login.ServerModelLoginImpl;
 import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.musicplayer.ServerModelMusicImpl;
+import musicApp.server.model.profile.ServerModelProfile;
+import musicApp.server.model.profile.ServerModelProfileImpl;
 import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.register.ServerModelSignUpImpl;
 import musicApp.shared.LogEntry;
@@ -22,10 +24,12 @@ import java.util.List;
 public class ServerModelImpl implements ServerModel
 {
 
+  private final ServerModelProfile modelProfile;
   private ServerModelChat modelChat;
   private ServerModelLogin modelLogin;
   private ServerModelMusic modelMusic;
   private ServerModelSignUp modelSignUp;
+
 
   private PropertyChangeSupport support;
 
@@ -35,7 +39,7 @@ public class ServerModelImpl implements ServerModel
     this.modelLogin = new ServerModelLoginImpl();
     this.modelMusic = new ServerModelMusicImpl();
     this.modelSignUp = new ServerModelSignUpImpl();
-
+    this.modelProfile = new ServerModelProfileImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -58,4 +62,7 @@ public class ServerModelImpl implements ServerModel
     return modelSignUp;
   }
 
+  public ServerModelProfile getModelProfile() {
+    return modelProfile;
+  }
 }

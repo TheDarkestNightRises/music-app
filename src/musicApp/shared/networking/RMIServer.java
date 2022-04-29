@@ -23,4 +23,6 @@ public interface RMIServer extends Remote {
     MusicPlayerServer getMusicPlayerServer() throws RemoteException;
 
     SignUpServer getSignUpServer() throws RemoteException;
+
+    ProfileServer getProfileServer() throws RemoteException;
 }

@@ -19,7 +19,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openSignUp();
+        openProfile();
     }
 
     public void openChat() {
@@ -86,6 +86,20 @@ public class ViewHandler {
             Scene signUp = new Scene(root);
             stage.setTitle("Music Player");
             stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void openProfile(){
+        try {
+            Parent root = loadFXML("../views/profile/ProfileView.fxml");
+            Scene profile = new Scene(root);
+            stage.setTitle("Profile");
+            stage.setScene(profile);
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();

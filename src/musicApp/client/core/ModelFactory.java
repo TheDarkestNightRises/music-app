@@ -8,6 +8,8 @@ import musicApp.client.model.login.LogInManager;
 import musicApp.client.model.login.LoginManagerImplementation;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.music.MusicManagerImplementation;
+import musicApp.client.model.profile.ProfileManager;
+import musicApp.client.model.profile.ProfileManagerImplementation;
 import musicApp.client.model.register.SignUpManager;
 import musicApp.client.model.register.SignUpManagerImplementation;
 
@@ -15,9 +17,12 @@ public class ModelFactory {
     private ChatManager chatManager;
     private LogInManager logInManager;
     private SignUpManager signUpManager;
+    private MusicManager musicManager;
+    private ProfileManager profileManager;
+
     private ClientFactory clientFactory;
     private MainModel mainModel;
-    private MusicManager musicManager;
+
 
     public ModelFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
@@ -25,7 +30,7 @@ public class ModelFactory {
 
     public MainModel getMainModel() {
         if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(),signUpManager());
+            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager());
         }
         return mainModel;
     }
@@ -48,9 +53,15 @@ public class ModelFactory {
         return musicManager;
     }
 
-    public SignUpManager signUpManager() {
+    public SignUpManager getSignUpManager() {
         if(signUpManager == null)
             signUpManager = new SignUpManagerImplementation(clientFactory.getClient());
         return signUpManager;
+    }
+
+    public ProfileManager getProfileManager() {
+        if(profileManager == null)
+            profileManager = new ProfileManagerImplementation(clientFactory.getClient());
+        return profileManager;
     }
 }

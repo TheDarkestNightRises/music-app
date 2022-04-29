@@ -11,10 +11,15 @@ import musicApp.util.Subject;
 
 import java.util.List;
 
-public interface ServerModel  {
+public interface ServerModel {
     //-----------MainServerModel----------
-    public ServerModelChat getModelChat();
-    public ServerModelLogin getModelLogin();
-    public ServerModelMusic getModelMusic();
-    public ServerModelSignUp getModelSignUp();
+    ServerModelChat getModelChat();
+
+    ServerModelLogin getModelLogin();
+
+    ServerModelMusic getModelMusic();
+
+    ServerModelSignUp getModelSignUp();
+
+
 }

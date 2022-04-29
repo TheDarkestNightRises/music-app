@@ -4,6 +4,7 @@ import musicApp.client.views.chat.ChatViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
+import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.signup.SignUpViewModel;
 
 
@@ -14,6 +15,7 @@ public class ViewModelFactory {
     private SignUpViewModel signUpViewModel;
     private LoginMainViewModel loginMainViewModel;
     private MusicPlayerViewModel musicPlayerViewModel;
+    private ProfileViewModel profileViewModel;
 
 
     public ViewModelFactory(ModelFactory modelFactory) {
@@ -49,5 +51,11 @@ public class ViewModelFactory {
         if (musicPlayerViewModel == null)
             musicPlayerViewModel = new MusicPlayerViewModel(modelFactory.getMainModel());
         return musicPlayerViewModel;
+    }
+
+    public ProfileViewModel getProfileViewModel() {
+        if ( profileViewModel == null)
+            profileViewModel = new ProfileViewModel(modelFactory.getMainModel());
+        return profileViewModel;
     }
 }
