@@ -28,9 +28,9 @@
    -fx-text-fill: white;
 }
 
-/*.bodybg {
+.bodybg {
 -fx-background-image: url("wp4438964-neon-retro-girl-wallpapers.png");
-}*/
+}
 
 @font-face {
     font-family: 'BebasNeue-Regular';

@@ -13,7 +13,6 @@ public class LogViewController implements ViewController
 {
 
   @FXML private TableView<LogEntry> tableview;
-  @FXML public TableColumn<String, LogEntry> IP;
   @FXML public TableColumn<String, LogEntry> date;
   @FXML public TableColumn<String, LogEntry> time;
   @FXML public TableColumn<String, LogEntry> text;
@@ -33,7 +32,6 @@ public class LogViewController implements ViewController
     logViewModel.loadLogs();
     tableview.setItems(logViewModel.getLogs());
     text.setCellValueFactory(new PropertyValueFactory<>("text"));
-    IP.setCellValueFactory(new PropertyValueFactory<>("ip"));
     date.setCellValueFactory(new PropertyValueFactory<>("date"));
     time.setCellValueFactory(new PropertyValueFactory<>("time"));
   }

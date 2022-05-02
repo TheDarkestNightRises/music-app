@@ -15,11 +15,6 @@ public class LoginMainController implements ViewController
   public TextField username;
   @FXML
   public PasswordField password;
-  @FXML
-  public Button signIn;
-  @FXML
-  public Button signUp;
-  @FXML
   public Label errorLabel;
   private ViewHandler viewHandler;
   private LoginMainViewModel viewModel;

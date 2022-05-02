@@ -17,18 +17,21 @@ import java.beans.PropertyChangeEvent;
 
 
 public class MusicPlayerController implements ViewController {
+
+    private Media media;
+    private MediaPlayer mediaPlayer;
+
     @FXML
-    public Slider sliderTime;
+    private Slider sliderTime;
     @FXML
     private Slider volumeSlider;
     @FXML
-    public Label songLabel;
+    private Label songLabel;
 
     private ViewHandler viewHandler;
     private MusicPlayerViewModel musicPlayerViewModel;
 
-    private Media media;
-    private MediaPlayer mediaPlayer;
+
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {

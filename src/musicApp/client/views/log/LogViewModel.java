@@ -17,7 +17,6 @@ public class LogViewModel
 
   private ObservableList<LogEntry> logItems;
   private MainModel mainModel;
-  private StringProperty IP;
   private StringProperty date;
   private StringProperty time;
   private StringProperty text;
@@ -28,7 +27,6 @@ public class LogViewModel
     this.logItems = new SimpleListProperty<>(FXCollections.observableArrayList());
     this.mainModel = mainModel;
     mainModel.getChatManager().addListener("NewLogEntry", this::onNewLogEntry);
-    this.IP = new SimpleStringProperty("");
     this.date = new SimpleStringProperty("");
     this.time = new SimpleStringProperty("");
     this.text = new SimpleStringProperty("");

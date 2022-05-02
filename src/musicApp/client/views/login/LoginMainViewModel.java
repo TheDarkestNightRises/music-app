@@ -11,7 +11,7 @@ public class LoginMainViewModel {
     private MainModel model;
     private StringProperty username;
     private StringProperty password;
-    private final StringProperty error;
+    private StringProperty error;
 
     public LoginMainViewModel(MainModel model) {
         this.model = model;
