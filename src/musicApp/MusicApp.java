@@ -3,6 +3,7 @@ package musicApp;
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Platform;
 import javafx.application.Preloader;
+import javafx.concurrent.Task;
 import musicApp.client.core.ClientFactory;
 import musicApp.client.core.ModelFactory;
 import musicApp.client.core.ViewHandler;
@@ -12,19 +13,20 @@ import javafx.stage.Stage;
 
 public class MusicApp extends Application {
     private ModelFactory modelFactory;
+    private ViewHandler vh;
 
     @Override
     public void start(Stage stage) throws Exception {
-        ClientFactory clientFactory = new ClientFactory();
-        this.modelFactory = new ModelFactory(clientFactory);
-        ViewModelFactory vmf = new ViewModelFactory(modelFactory);
-        ViewHandler vh = new ViewHandler(vmf);
         vh.start();
     }
 
     @Override
     public void init() throws Exception {
         //Heavy calculation connecting to database whatever.
+        ClientFactory clientFactory = new ClientFactory();
+        this.modelFactory = new ModelFactory(clientFactory);
+        ViewModelFactory vmf = new ViewModelFactory(modelFactory);
+        this.vh = new ViewHandler(vmf);
         double limit = 500000;
         for (int i = 0; i < 500000; i++) {
             double progress = (100 * i) / limit;

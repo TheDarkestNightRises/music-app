@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MyPreloader extends Preloader {
     private Stage preloaderStage;
@@ -24,6 +25,7 @@ public class MyPreloader extends Preloader {
     public void start(Stage stage) throws Exception {
         this.preloaderStage = stage;
         preloaderStage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
         stage.setTitle("lol");
     }
