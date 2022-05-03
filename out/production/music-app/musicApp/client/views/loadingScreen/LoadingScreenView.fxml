@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="434.0" styleClass="bodybg" stylesheets="@loadingScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.loadingScreen.LoadingScreenViewController">
    <children>
-      <Text fx:id="progress" fill="WHITE" layoutX="253.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading">
+      <Text fx:id="progress" fill="WHITE" layoutX="217.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading">
          <font>
             <Font name="Leelawadee" size="23.0" />
          </font>
