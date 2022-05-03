@@ -27,8 +27,8 @@ public class MusicApp extends Application {
         this.modelFactory = new ModelFactory(clientFactory);
         ViewModelFactory vmf = new ViewModelFactory(modelFactory);
         this.vh = new ViewHandler(vmf);
-        double limit = 500000;
-        for (int i = 0; i < 500000; i++) {
+        double limit = 10000;
+        for (int i = 0; i < limit; i++) {
             double progress = (100 * i) / limit;
             LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
         }

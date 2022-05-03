@@ -44,7 +44,7 @@ public class MyPreloader extends Preloader {
         switch (type){
             case BEFORE_START -> {
                 System.out.println("BEFORE_START");
-                preloaderStage.hide();
+                preloaderStage.close();
                 break;
             }
         }
