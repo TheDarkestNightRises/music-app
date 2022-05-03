@@ -4,13 +4,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.loadingScreen.LoadingScreenViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="434.0" styleClass="bodybg" stylesheets="@loadingScreen.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.loadingScreen.LoadingScreenViewController">
    <children>
-      <Text layoutX="178.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOADING..." wrappingWidth="263.056640625">
+      <Text fx:id="progress" fill="WHITE" layoutX="253.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading">
          <font>
-            <Font name="Arial Rounded MT Bold" size="42.0" />
+            <Font name="Leelawadee" size="23.0" />
          </font>
       </Text>
-      <Text fx:id="progress" layoutX="408.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
    </children>
 </AnchorPane>
