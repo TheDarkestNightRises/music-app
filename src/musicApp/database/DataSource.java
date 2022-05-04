@@ -148,8 +148,7 @@ public class DataSource  {
         }
     }
 
-    public List<Artist> queryArtists(int sortOrder) {
-
+    public List<Artist> queryArtists(int sortOrder) { //DEPRECATED
         StringBuilder sb = new StringBuilder("SELECT * FROM ");
         sb.append(TABLE_ARTISTS);
         if (sortOrder != ORDER_BY_NONE) {
@@ -251,7 +250,7 @@ public class DataSource  {
     }
 
 
-    private int insertArtist(String name) throws SQLException {
+    private int insertArtist(String name) throws SQLException { //buenes
         queryArtist.setString(1, name);
         ResultSet results = queryArtist.executeQuery();
         if (results.next()) {

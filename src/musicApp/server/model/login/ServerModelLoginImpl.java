@@ -1,15 +1,11 @@
 package musicApp.server.model.login;
 
-import musicApp.client.model.User;
-import musicApp.shared.LogEntry;
+import musicApp.database.Users.User;
 
-import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ServerModelLoginImpl implements ServerModelLogin{
 

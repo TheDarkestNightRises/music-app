@@ -1,11 +1,7 @@
 package musicApp.server.model.register;
 
-import musicApp.client.model.User;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

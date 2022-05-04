@@ -1,9 +1,7 @@
 package musicApp.server.model;
 
-import musicApp.client.model.User;
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.chat.ServerModelChatImpl;
-import musicApp.server.model.chat.log.DefaultLog;
 import musicApp.server.model.login.ServerModelLogin;
 import musicApp.server.model.login.ServerModelLoginImpl;
 import musicApp.server.model.musicplayer.ServerModelMusic;
@@ -12,14 +10,8 @@ import musicApp.server.model.profile.ServerModelProfile;
 import musicApp.server.model.profile.ServerModelProfileImpl;
 import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.register.ServerModelSignUpImpl;
-import musicApp.shared.LogEntry;
-import musicApp.shared.Message;
 
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ServerModelImpl implements ServerModel
 {

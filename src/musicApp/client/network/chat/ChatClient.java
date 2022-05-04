@@ -1,6 +1,5 @@
 package musicApp.client.network.chat;
 
-import musicApp.client.model.User;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 import musicApp.shared.networking.RMIServer;

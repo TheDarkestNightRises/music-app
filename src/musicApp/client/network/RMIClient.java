@@ -1,6 +1,5 @@
 package musicApp.client.network;
 
-import musicApp.client.model.User;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
 import musicApp.client.network.login.LoginClient;
@@ -18,14 +17,11 @@ import musicApp.shared.networking.RMIServer;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.io.File;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RMIClient implements Client, ClientCallBack {
     private PropertyChangeSupport support;

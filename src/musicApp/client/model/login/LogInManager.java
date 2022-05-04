@@ -1,6 +1,6 @@
 package musicApp.client.model.login;
 
-import musicApp.client.model.User;
+import musicApp.database.Users.User;
 import musicApp.util.Subject;
 
 public interface LogInManager extends Subject {

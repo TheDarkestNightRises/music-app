@@ -1,11 +1,9 @@
 package musicApp.client.model.chat;
 
-import musicApp.client.model.User;
+import musicApp.database.Users.User;
 import musicApp.shared.LogEntry;
 import musicApp.util.Subject;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ChatManager extends Subject {

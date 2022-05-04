@@ -1,10 +1,8 @@
 package musicApp.client.model.register;
 
-import musicApp.client.model.User;
 import musicApp.client.network.Client;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class SignUpManagerImplementation implements SignUpManager
