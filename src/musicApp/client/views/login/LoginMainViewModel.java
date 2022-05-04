@@ -5,6 +5,8 @@ import musicApp.database.Users.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+import javax.swing.*;
+
 public class LoginMainViewModel {
 
     private MainModel model;
@@ -23,11 +25,9 @@ public class LoginMainViewModel {
         if (password.get().equals("") && username.get().equals("")) {
             error.set("No data inserted");
             return false; }
-
         if (username.get().equals("")) {
             error.set("Username should not be null!");
             return false; }
-
         if (password.get().equals("")) {
             error.set("Password should not be null!");
             return false; }
@@ -37,6 +37,7 @@ public class LoginMainViewModel {
             return false;
           }
         return model.getLogInManager().signIn(username.get(), password.get());
+
     }
 
     private boolean accountDoesNotExist()
@@ -54,7 +55,7 @@ public class LoginMainViewModel {
     }
 
     public void setUser() {
-        model.getLogInManager().setUser(new User(username.get(), password.get(),""));
+        model.getLogInManager().setUser(new User(username.get(), password.get(),"","","",""));
     }
 
     public void bindError(StringProperty property) {

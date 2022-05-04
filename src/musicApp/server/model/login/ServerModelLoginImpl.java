@@ -1,9 +1,12 @@
 package musicApp.server.model.login;
 
 import musicApp.database.Users.User;
+import musicApp.database.Users.UsersDAO;
+import musicApp.database.Users.UsersDAOImpl;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,19 +14,26 @@ public class ServerModelLoginImpl implements ServerModelLogin{
 
     private List<User> userList;
     private PropertyChangeSupport support;
+    private UsersDAO d;
 
     public ServerModelLoginImpl() {
         this.userList = new ArrayList<>();
         this.support = new PropertyChangeSupport(this);
-    }
 
+    }
 
     @Override public void addUser(User user)
     {
-        int oldValue = userList.size();
-        userList.add(user);
-        System.out.println(userList);
-        support.firePropertyChange("OnNewUserEntry",oldValue,userList.size());
+        try
+        {
+            UsersDAO d = new UsersDAOImpl();
+            d.createUser(user.getUsername(),user.getPassword(),user.getEmail());
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     @Override public boolean usernameExists(String username)
@@ -43,19 +53,33 @@ public class ServerModelLoginImpl implements ServerModelLogin{
 
     @Override public boolean isSignedIn(User user)
     {
-        System.out.println(user);
-        boolean result = false;
-        for (User currentUser : userList)
+//        for (User currentUser : userList)
+//        {
+//            if (currentUser.equalsIgnoreEmail(user) && !currentUser.isLoggedIn())
+//            {
+//                result = true;
+//                currentUser.setLoggedIn(true);
+//                break;
+//            }
+//        }
+        if(user.isLoggedIn())
+            return false;
+        try
         {
-            if (currentUser.equalsIgnoreEmail(user) && !currentUser.isLoggedIn())
-            {
-                result = true;
-                currentUser.setLoggedIn(true);
-                break;
-            }
+            d = new UsersDAOImpl();
+            return d.accountExists(user.getUsername(),user.getPassword());
         }
-        System.out.println(result);
-        return result;
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            user.setLoggedIn(true);
+            userList.add(user);
+        }
+        return false;
+
     }
 
 
@@ -73,16 +97,17 @@ public class ServerModelLoginImpl implements ServerModelLogin{
 
     @Override public boolean accountDoesNotExist(User user)
     {
-        boolean result = true;
-        for (User currentUser : userList)
+        try
         {
-            if (currentUser.equalsIgnoreEmail(user))
-            {
-                result = false;
-                break;
-            }
+            d = new UsersDAOImpl();
+            if(!d.accountExists(user.getUsername(), user.getPassword()))
+            return true;
         }
-        return result;
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override

@@ -1,9 +1,6 @@
 package musicApp.database.Users;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UsersDAOImpl implements UsersDAO
 {
@@ -12,7 +9,7 @@ public class UsersDAOImpl implements UsersDAO
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
 
-  private UsersDAOImpl() throws SQLException
+  public UsersDAOImpl() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
@@ -35,26 +32,50 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO User_(username, password_, email, nickname, profile_picture_path, description) "
            + "VALUES (?, ?, ?, ?, ?, ?);");
-      statement.setString(1, username);
+      statement.setString(1,username);
       statement.setString(2,password);
       statement.setString(3,email);
-      statement.setString(4,email);
-      statement.setString(5,email);
-      statement.setString(6,email);
-      statement1.executeUpdate();
+      statement.setString(4,"");
+      statement.setString(5,"");
+      statement.setString(6,"");
+      statement0.executeUpdate();
       statement.executeUpdate();
-      return new User(username,password,email);
+      return new User(username,password,email,"","","");
     } catch (SQLException e) {
       e.printStackTrace();
     }
     return null;
   }
 
-
+  @Override public boolean accountExists(String username, String password)
+      throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement(
+          "SET SCHEMA 'music_app'");
+      statement0.executeUpdate();
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM User_ WHERE username = ? AND password_ = ?");
+      statement.setString(1, username);
+      statement.setString(2, password);
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next())
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
   }
+
+}
+
 
 
 

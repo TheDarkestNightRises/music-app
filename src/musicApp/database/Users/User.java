@@ -9,13 +9,19 @@ public class User implements Serializable
   private String username;
   private String password;
   private String email;
+  private String description;
+  private String profile_picture;
+  private String nickname;
   private boolean isLoggedIn;
 
-  public User(String username, String password, String email)
+  public User(String username, String password, String email, String nickname, String profile_picture, String description)
   {
     this.username = username;
     this.password = password;
     this.email = email;
+    this.nickname = nickname;
+    this.profile_picture=profile_picture;
+    this.description=description;
   }
 
 
@@ -34,6 +40,50 @@ public class User implements Serializable
     return email;
   }
 
+  public String getDescription()
+  {
+    return description;
+  }
+
+  public String getNickname()
+  {
+    return nickname;
+  }
+
+  public String getProfile_picture()
+  {
+    return profile_picture;
+  }
+
+  public void setUsername(String username)
+  {
+    this.username = username;
+  }
+
+  public void setEmail(String email)
+  {
+    this.email = email;
+  }
+
+  public void setDescription(String description)
+  {
+    this.description = description;
+  }
+
+  public void setNickname(String nickname)
+  {
+    this.nickname = nickname;
+  }
+
+  public void setPassword(String password)
+  {
+    this.password = password;
+  }
+
+  public void setProfile_picture(String profile_picture)
+  {
+    this.profile_picture = profile_picture;
+  }
 
   @Override public int hashCode()
   {
