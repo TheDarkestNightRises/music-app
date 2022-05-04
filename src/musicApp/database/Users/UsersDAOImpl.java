@@ -9,7 +9,6 @@ public class UsersDAOImpl implements UsersDAO
 {
   private static UsersDAOImpl instance;
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-//  public static String URL = "";
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
 
@@ -33,18 +32,25 @@ public class UsersDAOImpl implements UsersDAO
   }
 
   public User createUser(String username, String password, String email)
-      throws SQLException
   {
     try (Connection connection = getConnection())
     {
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO User(username, password_, email, nickname, profile_picture_path, description) "
+      PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO User_(username, password_, email, nickname, profile_picture_path, description) "
            + "VALUES (?, ?, ?, ?, ?, ?);");
       statement.setString(1, username);
       statement.setString(2,password);
       statement.setString(3,email);
+      statement.setString(4,email);
+      statement.setString(5,email);
+      statement.setString(6,email);
+      statement1.executeUpdate();
       statement.executeUpdate();
       return new User(username,password,email);
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
+    return null;
   }
 
 
