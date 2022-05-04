@@ -8,10 +8,10 @@ import java.sql.SQLException;
 public class UsersDAOImpl implements UsersDAO
 {
   private static UsersDAOImpl instance;
-//  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/music-app";
-  public static String URL = "";
+  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+//  public static String URL = "";
   public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-\n";
+  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
 
   private UsersDAOImpl() throws SQLException
   {
