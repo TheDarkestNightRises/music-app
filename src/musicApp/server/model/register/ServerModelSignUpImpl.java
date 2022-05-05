@@ -67,7 +67,6 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     {
       try
       {
-        UsersDAO d = new UsersDAOImpl();
         d.createUser(user.getUsername(),user.getPassword(),user.getEmail());
       }
       catch (SQLException e)

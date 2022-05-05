@@ -23,19 +23,19 @@ public class ServerModelLoginImpl implements ServerModelLogin{
 
     @Override public boolean SignIn(User user)
     {
-//        for (User currentUser : userList)
-//        {
-//            if (currentUser.equalsIgnoreEmail(user) && !currentUser.isLoggedIn())
-//            {
-//                result = true;
-//                currentUser.setLoggedIn(true);
-//                break;
-//            }
-//        }
         try
         {
-            d = new UsersDAOImpl();
-            return d.accountExists(user.getUsername(),user.getPassword());
+            for (User currentUser : userList)
+                 if(currentUser.isLoggedIn() && currentUser.getUsername().equals(user.getUsername()))
+                      return false;
+            if(d.accountExists(user.getUsername(),user.getPassword()))
+            {
+                user.setLoggedIn(true);
+                System.out.println(user);
+                userList.add(user);
+                System.out.println(userList);
+            return true;
+        }
         }
         catch (SQLException e)
         {
