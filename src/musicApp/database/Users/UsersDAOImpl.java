@@ -74,6 +74,28 @@ public class UsersDAOImpl implements UsersDAO
     }
   }
 
+  @Override public boolean usernameExists(String username) throws SQLException
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement(
+          "SET SCHEMA 'music_app'");
+      statement0.executeUpdate();
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM User_ WHERE username = ? ");
+      statement.setString(1, username);
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next())
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+    }
+  }
+
 }
 
 

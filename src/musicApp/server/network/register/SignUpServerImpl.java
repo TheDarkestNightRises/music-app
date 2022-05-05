@@ -19,12 +19,12 @@ public class SignUpServerImpl implements SignUpServer
 
   @Override
   public void addUser(User user) {
-    serverModel.getModelLogin().addUser(user);
+    serverModel.getModelSignUp().addUser(user);
   }
 
   @Override
   public boolean usernameExists(String username) {
-    return serverModel.getModelLogin().usernameExists(username);
+    return serverModel.getModelSignUp().usernameExists(username);
   }
 
 

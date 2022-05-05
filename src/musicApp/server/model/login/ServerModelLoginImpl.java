@@ -19,39 +19,9 @@ public class ServerModelLoginImpl implements ServerModelLogin{
     public ServerModelLoginImpl() {
         this.userList = new ArrayList<>();
         this.support = new PropertyChangeSupport(this);
-
     }
 
-    @Override public void addUser(User user)
-    {
-        try
-        {
-            UsersDAO d = new UsersDAOImpl();
-            d.createUser(user.getUsername(),user.getPassword(),user.getEmail());
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Override public boolean usernameExists(String username)
-    {
-        boolean result = false;
-        for(User currentUser : userList)
-        {
-            if (currentUser.getUsername().equals(username))
-            {
-                result = true;
-                break;
-            }
-        }
-        return  result;
-    }
-
-
-    @Override public boolean isSignedIn(User user)
+    @Override public boolean SignIn(User user)
     {
 //        for (User currentUser : userList)
 //        {
@@ -62,8 +32,6 @@ public class ServerModelLoginImpl implements ServerModelLogin{
 //                break;
 //            }
 //        }
-        if(user.isLoggedIn())
-            return false;
         try
         {
             d = new UsersDAOImpl();
@@ -73,13 +41,7 @@ public class ServerModelLoginImpl implements ServerModelLogin{
         {
             e.printStackTrace();
         }
-        finally
-        {
-            user.setLoggedIn(true);
-            userList.add(user);
-        }
         return false;
-
     }
 
 

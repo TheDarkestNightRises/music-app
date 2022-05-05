@@ -1,13 +1,20 @@
 package musicApp.server.model.register;
 
+import musicApp.database.Users.User;
+import musicApp.database.Users.UsersDAO;
+import musicApp.database.Users.UsersDAOImpl;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ServerModelSignUpImpl implements ServerModelSignUp
 {
   private PropertyChangeSupport support;
+  private UsersDAO d;
+
 
   public ServerModelSignUpImpl() {
     this.support = new PropertyChangeSupport(this);
@@ -40,6 +47,35 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
       return false;
     return true;
   }
+
+  @Override public boolean usernameExists(String username)
+  {
+    try
+    {
+      d = new UsersDAOImpl();
+      return d.usernameExists(username);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+
+    @Override public void addUser(User user)
+    {
+      try
+      {
+        UsersDAO d = new UsersDAOImpl();
+        d.createUser(user.getUsername(),user.getPassword(),user.getEmail());
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+    }
+
 
   @Override
   public void addListener(String eventName, PropertyChangeListener listener) {
