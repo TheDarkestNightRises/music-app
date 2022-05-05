@@ -156,4 +156,9 @@ public class SignUpViewModel
   {
     email.bindBidirectional(property);
   }
+
+  public boolean canCreateUser()
+  {
+    return createUser();
+  }
 }
