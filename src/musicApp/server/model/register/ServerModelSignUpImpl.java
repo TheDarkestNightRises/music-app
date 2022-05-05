@@ -15,8 +15,8 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
   private PropertyChangeSupport support;
   private UsersDAO d;
 
-
-  public ServerModelSignUpImpl() {
+  public ServerModelSignUpImpl()
+  {
     this.support = new PropertyChangeSupport(this);
   }
 
@@ -43,7 +43,7 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
         + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(email);
-    if(matcher.matches())
+    if (matcher.matches())
       return false;
     return true;
   }
@@ -62,27 +62,27 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return false;
   }
 
-
-    @Override public void addUser(User user)
+  @Override public void addUser(User user)
+  {
+    try
     {
-      try
-      {
-        d.createUser(user.getUsername(),user.getPassword(),user.getEmail());
-      }
-      catch (SQLException e)
-      {
-        e.printStackTrace();
-      }
+      d.createUser(user.getUsername(), user.getPassword(), user.getEmail());
     }
-
-
-  @Override
-  public void addListener(String eventName, PropertyChangeListener listener) {
-    support.addPropertyChangeListener(eventName,listener);
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 
-  @Override
-  public void removeListener(String eventName, PropertyChangeListener listener) {
-    support.removePropertyChangeListener(eventName,listener);
+  @Override public void addListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.removePropertyChangeListener(eventName, listener);
   }
 }

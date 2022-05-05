@@ -36,7 +36,14 @@ public class LoginMainViewModel {
             error.set("The password is wrong");
             return false;
           }
-        return model.getLogInManager().signIn(username.get(), password.get());
+        if(model.getLogInManager().signIn(username.get(), password.get()))
+            return true;
+              else
+        {
+            error.set("Account already logged in");
+            return false;
+        }
+
 
     }
 

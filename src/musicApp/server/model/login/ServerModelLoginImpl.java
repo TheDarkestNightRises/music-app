@@ -10,75 +10,81 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerModelLoginImpl implements ServerModelLogin{
+public class ServerModelLoginImpl implements ServerModelLogin
+{
 
-    private List<User> userList;
-    private PropertyChangeSupport support;
-    private UsersDAO d;
+  private List<User> userList;
+  private PropertyChangeSupport support;
+  private UsersDAO d;
 
-    public ServerModelLoginImpl() {
-        this.userList = new ArrayList<>();
-        this.support = new PropertyChangeSupport(this);
-    }
+  public ServerModelLoginImpl()
+  {
+    this.userList = new ArrayList<>();
+    this.support = new PropertyChangeSupport(this);
+  }
 
-    @Override public boolean SignIn(User user)
+  @Override public boolean SignIn(User user)
+  {
+    try
     {
-        try
-        {
-            for (User currentUser : userList)
-                 if(currentUser.isLoggedIn() && currentUser.getUsername().equals(user.getUsername()))
-                      return false;
-            if(d.accountExists(user.getUsername(),user.getPassword()))
-            {
-                user.setLoggedIn(true);
-                System.out.println(user);
-                userList.add(user);
-                System.out.println(userList);
-            return true;
-        }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
+      for (User currentUser : userList)
+        if (currentUser.isLoggedIn() && currentUser.getUsername()
+            .equals(user.getUsername()))
+          return false;
+      if (d.accountExists(user.getUsername(), user.getPassword()))
+      {
+        user.setLoggedIn(true);
+        System.out.println(user);
+        userList.add(user);
+        System.out.println(userList);
+        return true;
+      }
     }
-
-
-    @Override
-    public void disconnect(User user) {
-        for (User currentUser : userList) {
-            if (currentUser.equals(user)) currentUser.setLoggedIn(false);
-        }
-    }
-
-    @Override public int getNumberOfUsers()
+    catch (SQLException e)
     {
-        return userList.size();
+      e.printStackTrace();
     }
+    return false;
+  }
 
-    @Override public boolean accountDoesNotExist(User user)
+  @Override public void disconnect(User user)
+  {
+    for (User currentUser : userList)
     {
-        try
-        {
-            d = new UsersDAOImpl();
-            if(!d.accountExists(user.getUsername(), user.getPassword()))
-            return true;
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
+      if (currentUser.getUsername().equals(user.getUsername()))
+        currentUser.setLoggedIn(false);
     }
+  }
 
-    @Override
-    public void addListener(String eventName, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(eventName,listener);
-    }
+  @Override public int getNumberOfUsers()
+  {
+    return userList.size();
+  }
 
-    @Override
-    public void removeListener(String eventName, PropertyChangeListener listener) {
-        support.removePropertyChangeListener(eventName,listener);
+  @Override public boolean accountDoesNotExist(User user)
+  {
+    try
+    {
+      d = new UsersDAOImpl();
+      if (!d.accountExists(user.getUsername(), user.getPassword()))
+        return true;
     }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  @Override public void addListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.removePropertyChangeListener(eventName, listener);
+  }
 }
