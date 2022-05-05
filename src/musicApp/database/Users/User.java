@@ -14,6 +14,11 @@ public class User implements Serializable
   private String nickname;
   private boolean isLoggedIn;
 
+  public User(String username, String password) {
+    this.username = username;
+    this.password = password;
+  }
+
   public User(String username, String password, String email, String nickname, String profile_picture, String description)
   {
     this.username = username;

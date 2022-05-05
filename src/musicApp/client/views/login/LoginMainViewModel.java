@@ -43,8 +43,6 @@ public class LoginMainViewModel {
             error.set("Account already logged in");
             return false;
         }
-
-
     }
 
     private boolean accountDoesNotExist()
@@ -62,8 +60,9 @@ public class LoginMainViewModel {
     }
 
     public void setUser() {
-        model.getLogInManager().setUser(new User(username.get(), password.get(),"","","",""));
-    }
+        model.getLogInManager().setUser(new User(username.get(), password.get()));
+    }//go to database and take user by its username
+    //TODO: username,nickname,profile_picture,description
 
     public void bindError(StringProperty property) {
         error.bindBidirectional(property);
