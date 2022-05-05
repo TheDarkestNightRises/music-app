@@ -1,11 +1,9 @@
 package musicApp.client.views.login;
 
 import musicApp.client.model.MainModel;
-import musicApp.database.Users.User;
+import musicApp.database.users.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
-import javax.swing.*;
 
 public class LoginMainViewModel {
 

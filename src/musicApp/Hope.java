@@ -1,6 +1,6 @@
 package musicApp;
 
-import musicApp.database.Users.UsersDAOImpl;
+import musicApp.database.users.UsersDAOImpl;
 
 import java.sql.SQLException;
 

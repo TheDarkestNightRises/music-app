@@ -1,6 +1,6 @@
 package musicApp.server.model.login;
 
-import musicApp.database.Users.User;
+import musicApp.database.users.User;
 import musicApp.util.Subject;
 
 public interface ServerModelLogin extends Subject {

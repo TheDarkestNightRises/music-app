@@ -1,6 +1,6 @@
 package musicApp.client.model.chat;
 
-import musicApp.database.Users.User;
+import musicApp.database.users.User;
 import musicApp.shared.LogEntry;
 import musicApp.util.Subject;
 

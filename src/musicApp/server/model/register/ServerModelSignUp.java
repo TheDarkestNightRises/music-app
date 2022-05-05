@@ -1,6 +1,6 @@
 package musicApp.server.model.register;
 
-import musicApp.database.Users.User;
+import musicApp.database.users.User;
 import musicApp.util.Subject;
 
 public interface ServerModelSignUp extends Subject

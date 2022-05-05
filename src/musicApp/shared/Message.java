@@ -1,6 +1,6 @@
 package musicApp.shared;
 
-import musicApp.database.Users.User;
+import musicApp.database.users.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;

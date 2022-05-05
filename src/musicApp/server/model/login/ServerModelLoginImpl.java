@@ -1,8 +1,8 @@
 package musicApp.server.model.login;
 
-import musicApp.database.Users.User;
-import musicApp.database.Users.UsersDAO;
-import musicApp.database.Users.UsersDAOImpl;
+import musicApp.database.users.User;
+import musicApp.database.users.UsersDAO;
+import musicApp.database.users.UsersDAOImpl;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
