@@ -1,15 +1,17 @@
-package musicApp.database;
+package musicApp.database.album;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Artist {
+public class Album {
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
+    private SimpleIntegerProperty artistId;
 
-    public Artist() {
+    public Album() {
         this.id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty();
+        this.artistId = new SimpleIntegerProperty();
     }
 
     public int getId() {
@@ -28,11 +30,11 @@ public class Artist {
         this.name.set(name);
     }
 
-    @Override
-    public String toString() {
-        return "Artist{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public int getArtistId() {
+        return artistId.get();
+    }
+
+    public void setArtistId(int artistId) {
+        this.artistId.set(artistId);
     }
 }

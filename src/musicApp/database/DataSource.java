@@ -1,6 +1,8 @@
 package musicApp.database;
 
-import javax.xml.crypto.Data;
+import musicApp.database.album.Album;
+import musicApp.database.artist.Artist;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -174,7 +176,7 @@ public class DataSource  {
                     e.printStackTrace();
                 }
                 Artist artist = new Artist();
-                artist.setId(results.getInt(INDEX_ARTIST_ID));
+
                 artist.setName(results.getString(INDEX_ARTIST_NAME));
                 artists.add(artist);
             }

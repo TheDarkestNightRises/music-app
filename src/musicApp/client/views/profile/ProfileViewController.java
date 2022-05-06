@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.model.Song;
+import musicApp.database.song.Song;
 
 import java.io.IOException;
 import java.util.ArrayList;
