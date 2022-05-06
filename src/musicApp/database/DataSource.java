@@ -338,7 +338,7 @@ public class DataSource  {
             while (results.next()) {
                 Album album = new Album();
                 album.setId(results.getInt(1));
-                album.setName(results.getString(2));
+                album.setTitle(results.getString(2));
                 album.setArtistId(id);
                 albums.add(album);
             }
