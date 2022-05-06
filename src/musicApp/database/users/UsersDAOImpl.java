@@ -1,5 +1,7 @@
 package musicApp.database.users;
 
+import musicApp.database.artist.Artist;
+
 import java.sql.*;
 
 public class UsersDAOImpl implements UsersDAO
@@ -94,6 +96,33 @@ public class UsersDAOImpl implements UsersDAO
         return false;
       }
     }
+  }
+
+  @Override public User getUserByName(String username)
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ?");
+      statement.setString(1, username);
+      statement0.execute();
+      statement.execute();
+      ResultSet resultSet = statement.executeQuery();
+      if(resultSet.next())
+      {
+        String name = resultSet.getString("username");
+        String password = resultSet.getString("password_");
+        String email = resultSet.getString("email");
+        String nick = resultSet.getString("nickname");
+        String picture = resultSet.getString("profile_picture_path");
+        String description = resultSet.getString("description");
+        User user = new User(name,password,email,nick,picture,description);
+        return user;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
 }

@@ -69,51 +69,51 @@ public class ProfileViewController implements ViewController {
         List<Song> ls = new ArrayList<>();
 
         Song song = new Song();
-        song.setName("In The Name Of Love");
-        song.setArtist("Martin Garrix, Bebe Rexha");
-        song.setCover("../img/In_the_Name_of_Love.jpeg");
+        song.setTitle("In The Name Of Love");
+
+        song.setPicture_path("../img/In_the_Name_of_Love.jpeg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Emri Olur");
-        song.setArtist("Mustafa Ceceli");
-        song.setCover("../img/emri_olur.jpg");
+        song.setTitle("Emri Olur");
+
+        song.setPicture_path("../img/emri_olur.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("You are my sunshine");
-        song.setArtist("Jasmin Thompson");
-        song.setCover("../img/jasmin_thompson.jpg");
+        song.setTitle("You are my sunshine");
+
+        song.setPicture_path("../img/jasmin_thompson.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("On My Way");
-        song.setArtist("Alan Walker");
-        song.setCover("../img/on_my_way.jpg");
+        song.setTitle("On My Way");
+
+        song.setPicture_path("../img/on_my_way.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Let Me Love You");
-        song.setArtist("Justin Biber");
-        song.setCover("../img/let_me_love_you.jpg");
+        song.setTitle("Let Me Love You");
+
+        song.setPicture_path("../img/let_me_love_you.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("It Ain't Me");
-        song.setArtist("Selena Gomez, Kygo");
-        song.setCover("../img/It-Ain-t-Me.jpg");
+        song.setTitle("It Ain't Me");
+
+        song.setPicture_path("../img/It-Ain-t-Me.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("One Dance");
-        song.setArtist("Drake, WizKid, Kyla");
-        song.setCover("../img/one_dance.jpg");
+        song.setTitle("One Dance");
+
+        song.setPicture_path("../img/one_dance.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Faded");
-        song.setArtist("Alan Walker");
-        song.setCover("../img/faded.jpg");
+        song.setTitle("Faded");
+
+        song.setPicture_path("../img/faded.jpg");
         ls.add(song);
 
         return ls;
@@ -123,51 +123,51 @@ public class ProfileViewController implements ViewController {
         List<Song> ls = new ArrayList<>();
 
         Song song = new Song();
-        song.setName("Mühür");
-        song.setArtist("Mustafa Ceceli, Irmak");
-        song.setCover("../img/mühür.jpg");
+        song.setTitle("Mühür");
+
+        song.setPicture_path("../img/mühür.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Faded");
-        song.setArtist("Allan Walker");
-        song.setCover("../img/faded.jpg");
+        song.setTitle("Faded");
+
+        song.setPicture_path("../img/faded.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Señorita");
-        song.setArtist("Camila Cabello, Shawn Mendes");
-        song.setCover("../img/seniorita.jpg");
+        song.setTitle("Señorita");
+
+        song.setPicture_path("../img/seniorita.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Can't Help Falling in love");
-        song.setArtist("Alvis Presley");
-        song.setCover("../img/cant_help_falling_in_love.jpg");
+        song.setTitle("Can't Help Falling in love");
+
+        song.setPicture_path("../img/cant_help_falling_in_love.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Friend");
-        song.setArtist("Justin Biber");
-        song.setCover("../img/friendjpg.jpg");
+        song.setTitle("Friend");
+
+        song.setPicture_path("../img/friendjpg.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("No Time To Die");
-        song.setArtist("Billie Eilish");
-        song.setCover("../img/no_time_to_die.jpg");
+        song.setTitle("No Time To Die");
+
+        song.setPicture_path("../img/no_time_to_die.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Emri Olur");
-        song.setArtist("Mustafa Ceceli");
-        song.setCover("../img/emri_olur.jpg");
+        song.setTitle("Emri Olur");
+
+        song.setPicture_path("../img/emri_olur.jpg");
         ls.add(song);
 
         song = new Song();
-        song.setName("Wolves");
-        song.setArtist("Selena Gomez, Marshmello");
-        song.setCover("../img/wolves.jpg");
+        song.setTitle("Wolves");
+
+        song.setPicture_path("../img/wolves.jpg");
         ls.add(song);
 
         return ls;

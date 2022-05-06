@@ -2,35 +2,38 @@ package musicApp.database.song;
 
 public class Song
 {
-  private String cover;
-  private String name;
-  private String artist;
+  private String song_id;
+  private String title;
+  private String file_path;
   private int length;
   private String picture_path;
 
 
   public Song(){}
 
-  public Song(String cover, String name, String artist, int length,
+  public Song(String song_id, String title, String file_path, int length,
       String picture_path)
   {
-    this.cover = cover;
-    this.name = name;
-    this.artist = artist;
+    this.song_id = song_id;
+    this.title = title;
+    this.file_path = file_path;
     this.length = length;
     this.picture_path = picture_path;
   }
 
-
-
-  public void setLength(int length)
+  public String getSong_id()
   {
-    this.length = length;
+    return song_id;
   }
 
-  public void setPicture_path(String picture_path)
+  public String getTitle()
   {
-    this.picture_path = picture_path;
+    return title;
+  }
+
+  public String getFile_path()
+  {
+    return file_path;
   }
 
   public int getLength()
@@ -43,33 +46,28 @@ public class Song
     return picture_path;
   }
 
-  public String getCover()
+  public void setSong_id(String song_id)
   {
-    return cover;
+    this.song_id = song_id;
   }
 
-  public void setCover(String cover)
+  public void setTitle(String title)
   {
-    this.cover = cover;
+    this.title = title;
   }
 
-  public String getName()
+  public void setFile_path(String file_path)
   {
-    return name;
+    this.file_path = file_path;
   }
 
-  public void setName(String name)
+  public void setLength(int length)
   {
-    this.name = name;
+    this.length = length;
   }
 
-  public String getArtist()
+  public void setPicture_path(String picture_path)
   {
-    return artist;
-  }
-
-  public void setArtist(String artist)
-  {
-    this.artist = artist;
+    this.picture_path = picture_path;
   }
 }

@@ -23,10 +23,10 @@ public class SongController implements ViewController {
     private Label artist;
 
     public void setData(Song song){
-        Image image = new Image(getClass().getResourceAsStream(song.getCover()));
+        Image image = new Image(getClass().getResourceAsStream(song.getFile_path()));
         img.setImage(image);
-        songName.setText(song.getName());
-        artist.setText(song.getArtist());
+        songName.setText(song.getTitle());
+        artist.setText(song.getTitle());
     }
 
     @Override
