@@ -1,12 +1,11 @@
 package musicApp.database.follow;
 
 import musicApp.database.album.AlbumDAOImpl;
+import musicApp.database.artist.Artist;
 import musicApp.database.users.User;
+import musicApp.database.users.UsersDAOImpl;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class FollowDAOImpl implements FollowDAO
@@ -39,6 +38,31 @@ public class FollowDAOImpl implements FollowDAO
 
   @Override public ArrayList<User> getFollowList(User user)
   {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM followers JOIN user_ ON followed = username WHERE followed = ?" );
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      statement.setString(1,user.getUsername());
+      ArrayList<User> list = new ArrayList<>();
+      while(resultSet.next())
+      {
+        String name = resultSet.getString("follower");
+        User user1 = UsersDAOImpl.getInstance().getUserByName(name);
+//        String username = resultSet.getString(user1.getUsername());
+//        String password = resultSet.getString(user1.getPassword());
+//        String email = resultSet.getString(user1.getEmail());
+//        String nick = resultSet.getString(user1.getNickname());
+//        String picture = resultSet.getString(user1.getProfile_picture());
+//        String description = resultSet.getString(user1.getDescription());
+//        User user2 = new User(username,password,email,nick,picture,description);
+        list.add(user1);
+      }
+      return list;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
     return null;
   }
 

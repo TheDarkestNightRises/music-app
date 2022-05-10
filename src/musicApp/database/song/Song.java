@@ -1,24 +1,23 @@
 package musicApp.database.song;
 
+import musicApp.database.album.Album;
+
 public class Song
 {
   private String song_id;
   private String title;
   private String file_path;
   private int length;
-  private String picture_path;
-
 
   public Song(){}
 
-  public Song(String song_id, String title, String file_path, int length,
-      String picture_path)
+  public Song(String song_id, String title, String file_path, int length)
+
   {
     this.song_id = song_id;
     this.title = title;
     this.file_path = file_path;
     this.length = length;
-    this.picture_path = picture_path;
   }
 
   public String getSong_id()
@@ -41,11 +40,6 @@ public class Song
     return length;
   }
 
-  public String getPicture_path()
-  {
-    return picture_path;
-  }
-
   public void setSong_id(String song_id)
   {
     this.song_id = song_id;
@@ -66,8 +60,5 @@ public class Song
     this.length = length;
   }
 
-  public void setPicture_path(String picture_path)
-  {
-    this.picture_path = picture_path;
-  }
+
 }
