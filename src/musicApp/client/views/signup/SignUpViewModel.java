@@ -26,66 +26,7 @@ public class SignUpViewModel
 
   }
 
-  public void createUser()
-  {
-
-  }
-
-  private boolean emailNotValid()
-  {
-    return mainModel.getSignUpManager().emailNotValid(email.get());
-  }
-
-  public boolean UsernameExists()
-  {
-    return mainModel.getSignUpManager().usernameExists(username.get());
-  }
-
-  public boolean noDigits()
-  {
-    return mainModel.getSignUpManager().noDigits(password.get());
-  }
-
-  public boolean noUpper()
-  {
-    return mainModel.getSignUpManager().noUpper(password.get());
-  }
-
-  public void bindUsername(StringProperty property)
-  {
-    username.bindBidirectional(property);
-  }
-
-  public void bindPassword(StringProperty property)
-  {
-    password.bindBidirectional(property);
-  }
-
-  public void bindError(StringProperty property)
-  {
-    error.bindBidirectional(property);
-  }
-
-  public void reset()
-  {
-    username.set("");
-    password.set("");
-    error.set("");
-    repeatPassword.set("");
-    email.set("");
-  }
-
-  public void bindRepeatPassword(StringProperty property)
-  {
-    repeatPassword.bindBidirectional(property);
-  }
-
-  public void bindEmail(StringProperty property)
-  {
-    email.bindBidirectional(property);
-  }
-
-  public boolean canCreateUser()
+  public boolean createUser()
   {
     try
     {
@@ -160,6 +101,64 @@ public class SignUpViewModel
     {
       return false;
     }
+  }
+
+  private boolean emailNotValid()
+  {
+    return mainModel.getSignUpManager().emailNotValid(email.get());
+  }
+
+  public boolean UsernameExists()
+  {
+    return mainModel.getSignUpManager().usernameExists(username.get());
+  }
+
+  public boolean noDigits()
+  {
+    return mainModel.getSignUpManager().noDigits(password.get());
+  }
+
+  public boolean noUpper()
+  {
+    return mainModel.getSignUpManager().noUpper(password.get());
+  }
+
+  public void bindUsername(StringProperty property)
+  {
+    username.bindBidirectional(property);
+  }
+
+  public void bindPassword(StringProperty property)
+  {
+    password.bindBidirectional(property);
+  }
+
+  public void bindError(StringProperty property)
+  {
+    error.bindBidirectional(property);
+  }
+
+  public void reset()
+  {
+    username.set("");
+    password.set("");
+    error.set("");
+    repeatPassword.set("");
+    email.set("");
+  }
+
+  public void bindRepeatPassword(StringProperty property)
+  {
+    repeatPassword.bindBidirectional(property);
+  }
+
+  public void bindEmail(StringProperty property)
+  {
+    email.bindBidirectional(property);
+  }
+
+  public boolean canCreateUser()
+  {
     return createUser();
   }
 }
