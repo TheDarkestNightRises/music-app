@@ -3,20 +3,27 @@ package musicApp.client.model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.ArrayList;
+
 public class Artist {
 
-    private SimpleStringProperty name;
+    private String name;
+    private ArrayList<Album> albums;
 
-    public Artist() {
+    public Artist(){};
 
-        this.name = new SimpleStringProperty();
+
+    public Artist(String name) {
+
+        this.name = name;
+        this.albums = new ArrayList<>();
     }
     public String getName() {
-        return name.get();
+        return name;
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
     @Override
