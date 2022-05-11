@@ -13,9 +13,8 @@ public class Hope
   public static void main(String[] args) throws SQLException
   {
 //    Album album = AlbumDAOImpl.getInstance().getAlbumById(1);
-//    Artist artist = ArtistDAOImpl.getInstance().getArtistByName("lnprk");
     Artist artist = ArtistDAOImpl.getInstance().getArtistByName("lnprk");
-    System.out.println(artist);
+    AlbumDAOImpl.getInstance().deleteAlbumById(5);
 //    System.out.println(album);
 //    AlbumDAOImpl.getInstance().deleteAlbum(album);
 //  Artist artist = ArtistDAOImpl.getInstance().getArtistByName("3daysgrace");
