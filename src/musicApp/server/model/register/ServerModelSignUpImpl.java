@@ -1,6 +1,6 @@
 package musicApp.server.model.register;
 
-import musicApp.client.model.User;
+import musicApp.server.model.User;
 import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
 

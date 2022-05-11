@@ -1,11 +1,11 @@
 package musicApp.database.song;
 
-import musicApp.client.model.Song;
-import musicApp.client.model.Album;
+import musicApp.server.model.Song;
+import musicApp.server.model.Album;
 
 import java.util.ArrayList;
 
-public class MusicDAOImpl implements MusicDAO
+public class SongDAOImpl implements SongDAO
 {
 
   @Override public ArrayList<Song> getAllSongs()
@@ -33,14 +33,13 @@ public class MusicDAOImpl implements MusicDAO
 
   }
 
-  @Override public ArrayList<Song> getSongsFromAlbum()
+  @Override public ArrayList<Song> getSongsFromAlbum(Album album)
   {
     return null;
   }
 
-  @Override public ArrayList<Song> getSongsFromArtists()
-  {
-    return null;
-  }
+
+
+
 
 }

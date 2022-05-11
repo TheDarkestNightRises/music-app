@@ -1,6 +1,6 @@
 package musicApp.shared;
 
-import musicApp.client.model.User;
+import musicApp.server.model.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;

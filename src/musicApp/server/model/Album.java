@@ -1,7 +1,4 @@
-package musicApp.client.model;
-
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+package musicApp.server.model;
 
 import java.util.ArrayList;
 
@@ -10,34 +7,30 @@ public class Album {
     private String title;
     private int publicationYear;
     private String picturePath;
-    private String username;
     private ArrayList<Song> songs;
     private Artist artist;
 
     public Album(){};
 
     public Album(int id, String title, int publicationYear,
-        String picturePath, String username,
+        String picturePath,
         Artist artist)
     {
         this.id = id;
         this.title = title;
         this.publicationYear = publicationYear;
         this.picturePath = picturePath;
-        this.username = username;
         this.songs = new ArrayList<>();
         this.artist = artist;
     }
 
     public Album(int id, String title, int publicationYear,
-        String picturePath, String username,
-        Artist artist, ArrayList<Song> songs)
+        String picturePath, Artist artist, ArrayList<Song> songs)
     {
         this.id = id;
         this.title = title;
         this.publicationYear = publicationYear;
         this.picturePath = picturePath;
-        this.username = username;
         this.artist = artist;
         this.songs = songs;
     }
@@ -63,11 +56,6 @@ public class Album {
     public String getPicturePath()
     {
         return picturePath;
-    }
-
-    public String getUsername()
-    {
-        return username;
     }
 
     public ArrayList<Song> getSongs()
@@ -100,11 +88,6 @@ public class Album {
         this.picturePath = picturePath;
     }
 
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
-
     public void setSongs(ArrayList<Song> songs)
     {
         this.songs = songs;
@@ -117,6 +100,14 @@ public class Album {
 
     public Album copy()
     {
-           return new Album(id,title,publicationYear,picturePath,username,artist,songs);
+           return new Album(id,title,publicationYear,picturePath,artist,songs);
+    }
+
+    @Override public String toString()
+    {
+        return "Album{" + "id=" + id + ", title='" + title + '\''
+            + ", publicationYear=" + publicationYear + ", picturePath='"
+            + picturePath + '\'' + ", songs=" + songs + ", artist=" + artist.getName()
+            + '}';
     }
 }

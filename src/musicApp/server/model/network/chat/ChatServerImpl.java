@@ -1,4 +1,4 @@
-package musicApp.server.network.chat;
+package musicApp.server.model.network.chat;
 
 import musicApp.server.model.ServerModel;
 import musicApp.shared.LogEntry;

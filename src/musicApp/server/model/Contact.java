@@ -1,4 +1,4 @@
-package musicApp.client.model;
+package musicApp.server.model;
 
 public class Contact
 {

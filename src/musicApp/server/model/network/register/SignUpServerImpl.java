@@ -1,6 +1,6 @@
-package musicApp.server.network.register;
+package musicApp.server.model.network.register;
 
-import musicApp.client.model.User;
+import musicApp.server.model.User;
 import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.SignUpServer;
 

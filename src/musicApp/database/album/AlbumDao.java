@@ -1,7 +1,7 @@
 package musicApp.database.album;
 
-import musicApp.client.model.Album;
-import musicApp.client.model.Artist;
+import musicApp.server.model.Album;
+import musicApp.server.model.Artist;
 
 import java.util.ArrayList;
 

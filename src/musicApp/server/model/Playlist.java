@@ -1,4 +1,4 @@
-package musicApp.client.model;
+package musicApp.server.model;
 
 import java.util.ArrayList;
 

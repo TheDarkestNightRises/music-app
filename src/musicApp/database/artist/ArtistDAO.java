@@ -1,6 +1,7 @@
 package musicApp.database.artist;
 
-import musicApp.client.model.Artist;
+import musicApp.server.model.Album;
+import musicApp.server.model.Artist;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -11,5 +12,6 @@ public interface ArtistDAO
   void insertArtist(String username) throws SQLException;
   void deleteArtist(Artist artist) throws SQLException;
   Artist getArtistByName(String username) throws SQLException;
-  void updateArtist(Artist artist) throws SQLException;
+  void updateArtistName(Artist artist) throws SQLException;
+  ArrayList<Album> getArtistAlbums(Artist artist) throws SQLException;
 }

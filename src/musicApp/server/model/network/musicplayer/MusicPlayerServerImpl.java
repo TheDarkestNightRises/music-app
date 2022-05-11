@@ -1,7 +1,6 @@
-package musicApp.server.network.musicplayer;
+package musicApp.server.model.network.musicplayer;
 
 import musicApp.server.model.ServerModel;
-import musicApp.server.model.musicplayer.filemanager.FileManager;
 import musicApp.shared.networking.MusicPlayerServer;
 
 import java.io.File;

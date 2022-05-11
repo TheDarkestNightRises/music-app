@@ -5,7 +5,7 @@ import javafx.scene.layout.HBox;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.model.Song;
+import musicApp.server.model.Song;
 
 import java.util.List;
 

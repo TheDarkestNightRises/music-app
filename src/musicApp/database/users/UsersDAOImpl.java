@@ -1,6 +1,6 @@
 package musicApp.database.users;
 
-import musicApp.client.model.User;
+import musicApp.server.model.User;
 
 import java.sql.*;
 
