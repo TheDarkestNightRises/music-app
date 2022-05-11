@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.database.song.Song;
+import musicApp.client.model.Song;
 
 /**
  * Created by Alfacoaie on 02-Feb-21.

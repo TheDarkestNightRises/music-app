@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.ContactItemController">
+<HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="322.0" styleClass="item" stylesheets="@contact_item.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.ContactItemController">
    <children>
       <Label fx:id="nickname" text="Nickname">
          <font>

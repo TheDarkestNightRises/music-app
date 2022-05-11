@@ -1,7 +1,7 @@
 package musicApp.client.views.login;
 
 import musicApp.client.model.MainModel;
-import musicApp.database.users.User;
+import musicApp.client.model.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

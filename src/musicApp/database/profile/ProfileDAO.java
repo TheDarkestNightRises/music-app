@@ -1,10 +1,8 @@
 package musicApp.database.profile;
 
-import musicApp.database.users.User;
+import musicApp.client.model.Playlist;
+import musicApp.client.model.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface ProfileDAO

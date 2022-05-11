@@ -1,4 +1,4 @@
-package musicApp.database.users;
+package musicApp.client.model;
 
 import java.io.Serializable;
 import java.util.Objects;

@@ -1,16 +1,12 @@
 package musicApp.client.views.profile;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.database.song.Song;
+import musicApp.client.model.Song;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileViewController implements ViewController {

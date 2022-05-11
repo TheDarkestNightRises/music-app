@@ -1,6 +1,4 @@
-package musicApp.database.song;
-
-import musicApp.database.album.Album;
+package musicApp.client.model;
 
 public class Song
 {

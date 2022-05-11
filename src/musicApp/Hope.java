@@ -1,13 +1,5 @@
 package musicApp;
 
-import musicApp.database.album.Album;
-import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.artist.Artist;
-import musicApp.database.artist.ArtistDAOImpl;
-import musicApp.database.follow.FollowDAOImpl;
-import musicApp.database.users.User;
-import musicApp.database.users.UsersDAOImpl;
-
 import java.sql.SQLException;
 
 public class Hope

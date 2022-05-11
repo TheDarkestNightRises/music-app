@@ -1,8 +1,6 @@
 package musicApp.database.artist;
 
-import musicApp.database.song.Song;
-import musicApp.database.users.User;
-import musicApp.database.users.UsersDAOImpl;
+import musicApp.client.model.Artist;
 
 import java.sql.*;
 import java.util.ArrayList;

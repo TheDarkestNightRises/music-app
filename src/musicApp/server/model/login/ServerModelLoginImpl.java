@@ -1,6 +1,6 @@
 package musicApp.server.model.login;
 
-import musicApp.database.users.User;
+import musicApp.client.model.User;
 import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
 
@@ -15,7 +15,7 @@ public class ServerModelLoginImpl implements ServerModelLogin
 
   private List<User> userList;
   private PropertyChangeSupport support;
-  private UsersDAO d;
+  private UsersDAO user;
 
   public ServerModelLoginImpl()
   {
@@ -31,7 +31,7 @@ public class ServerModelLoginImpl implements ServerModelLogin
         if (currentUser.isLoggedIn() && currentUser.getUsername()
             .equals(user.getUsername()))
           return false;
-      if (d.accountExists(user.getUsername(), user.getPassword()))
+      if (this.user.accountExists(user.getUsername(), user.getPassword()))
       {
         user.setLoggedIn(true);
         System.out.println(user);
@@ -65,8 +65,8 @@ public class ServerModelLoginImpl implements ServerModelLogin
   {
     try
     {
-      d = new UsersDAOImpl();
-      if (!d.accountExists(user.getUsername(), user.getPassword()))
+      this.user = new UsersDAOImpl();
+      if (!this.user.accountExists(user.getUsername(), user.getPassword()))
         return true;
     }
     catch (SQLException e)

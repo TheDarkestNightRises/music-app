@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@FollowList.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.FollowListController">
    <children>
       <Button layoutX="851.0" layoutY="524.0" mnemonicParsing="false" onAction="#openChat" text="chat" />
-      <VBox layoutX="360.0" layoutY="90.0" prefHeight="560.0" prefWidth="330.0">
+      <VBox layoutX="360.0" layoutY="90.0" prefHeight="503.0" prefWidth="330.0">
          <children>
             <ScrollPane prefHeight="560.0" prefWidth="350.0">
                <content>

@@ -1,6 +1,6 @@
 package musicApp.shared.networking;
 
-import musicApp.database.users.User;
+import musicApp.client.model.User;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -1,6 +1,6 @@
 package musicApp.database.artist;
 
-import musicApp.database.song.Song;
+import musicApp.client.model.Artist;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

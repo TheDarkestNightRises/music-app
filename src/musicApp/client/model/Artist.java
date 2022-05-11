@@ -1,4 +1,4 @@
-package musicApp.database.artist;
+package musicApp.client.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

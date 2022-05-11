@@ -1,8 +1,6 @@
 package musicApp.database.follow;
 
-import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.artist.Artist;
-import musicApp.database.users.User;
+import musicApp.client.model.User;
 import musicApp.database.users.UsersDAOImpl;
 
 import java.sql.*;

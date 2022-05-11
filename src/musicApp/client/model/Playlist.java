@@ -1,4 +1,4 @@
-package musicApp.database.profile;
+package musicApp.client.model;
 
 public class Playlist
 {

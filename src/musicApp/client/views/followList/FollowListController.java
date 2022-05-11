@@ -71,6 +71,62 @@ public class FollowListController implements ViewController, Initializable
     Contact contact3 = new Contact();
     contact3.setUsername("Dan sezutu'");
     list.add(contact3);
+
+    Contact contact4 = new Contact();
+    contact4.setUsername("Dan sezutus'");
+    list.add(contact4);
+
+    Contact contact5 = new Contact();
+    contact5.setUsername("Dan sezutu'");
+    list.add(contact5);
+
+    Contact contact6 = new Contact();
+    contact6.setUsername("Dan sezutu'");
+    list.add(contact6);
+
+    Contact contact7 = new Contact();
+    contact7.setUsername("Dan sezutu'");
+    list.add(contact7);
+
+    Contact contact8 = new Contact();
+    contact8.setUsername("Dan sezutu'");
+    list.add(contact8);
+
+    Contact contact9 = new Contact();
+    contact9.setUsername("Dan sezutu'");
+    list.add(contact9);
+
+    Contact contact10 = new Contact();
+    contact10.setUsername("Dan sezutu'");
+    list.add(contact10);
+
+    Contact contact11= new Contact();
+    contact11.setUsername("Dan sezutu'");
+    list.add(contact11);
+
+    Contact contact12= new Contact();
+    contact12.setUsername("Dan sezutu'");
+    list.add(contact12);
+
+    Contact contact13= new Contact();
+    contact13.setUsername("Dan sezutu'");
+    list.add(contact13);
+
+    Contact contact14= new Contact();
+    contact14.setUsername("Dan sezutu'");
+    list.add(contact14);
+
+    Contact contact15= new Contact();
+    contact15.setUsername("Dan sezutu'");
+    list.add(contact15);
+
+    Contact contact16= new Contact();
+    contact16.setUsername("Dan sezutu'");
+    list.add(contact16);
+
+    Contact contact17= new Contact();
+    contact17.setUsername("Dan sezutu'");
+    list.add(contact17);
     return  list;
   }
 }

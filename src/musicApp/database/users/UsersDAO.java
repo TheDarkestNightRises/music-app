@@ -1,6 +1,6 @@
 package musicApp.database.users;
 
-import musicApp.database.song.Song;
+import musicApp.client.model.User;
 
 import java.sql.SQLException;
 

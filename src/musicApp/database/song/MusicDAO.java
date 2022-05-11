@@ -1,7 +1,7 @@
 package musicApp.database.song;
 
-import musicApp.database.album.Album;
-import musicApp.database.artist.Artist;
+import musicApp.client.model.Song;
+import musicApp.client.model.Album;
 
 import java.util.ArrayList;
 
