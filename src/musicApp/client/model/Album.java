@@ -3,86 +3,120 @@ package musicApp.client.model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.util.ArrayList;
+
 public class Album {
-    private SimpleIntegerProperty id;
-    private SimpleStringProperty title;
-    private SimpleIntegerProperty publicationYear;
-    private SimpleStringProperty picturePath;
-    private SimpleStringProperty username;
+    private int id;
+    private String title;
+    private int publicationYear;
+    private String picturePath;
+    private String username;
+    private ArrayList<Song> songs;
+    private Artist artist;
 
-    public Album() {
-        this.id = new SimpleIntegerProperty();
-        this.title = new SimpleStringProperty();
-        this.publicationYear = new SimpleIntegerProperty();
-        this.picturePath = new SimpleStringProperty();
-        this. username = new SimpleStringProperty();
-    }
+    public Album(){};
 
-    public int getId() {
-        return id.get();
-    }
-
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public String getTitle() {
-        return title.get();
-    }
-
-    public void setTitle(String title) {
-        this.title.set(title);
-    }
-
-    public int getArtistId() {
-        return publicationYear.get();
-    }
-
-
-    public String getPicturePath()
+    public Album(int id, String title, int publicationYear,
+        String picturePath, String username,
+        Artist artist)
     {
-        return picturePath.get();
+        this.id = id;
+        this.title = title;
+        this.publicationYear = publicationYear;
+        this.picturePath = picturePath;
+        this.username = username;
+        this.songs = new ArrayList<>();
+        this.artist = artist;
     }
 
-    public void setPublicationYear(int publicationYear)
+    public Album(int id, String title, int publicationYear,
+        String picturePath, String username,
+        Artist artist, ArrayList<Song> songs)
     {
-        this.publicationYear.set(publicationYear);
+        this.id = id;
+        this.title = title;
+        this.publicationYear = publicationYear;
+        this.picturePath = picturePath;
+        this.username = username;
+        this.artist = artist;
+        this.songs = songs;
+    }
+
+
+
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public String getTitle()
+    {
+        return title;
     }
 
     public int getPublicationYear()
     {
-        return publicationYear.get();
-    }
-
-    public SimpleIntegerProperty publicationYearProperty()
-    {
         return publicationYear;
     }
 
-    public void setUsername(String username)
+    public String getPicturePath()
     {
-        this.username.set(username);
+        return picturePath;
     }
 
     public String getUsername()
     {
-        return username.get();
+        return username;
     }
 
-    public void setArtistId(int artistId) {
-        this.id.set(artistId);
+    public ArrayList<Song> getSongs()
+    {
+        return songs;
+    }
+
+    public Artist getArtist()
+    {
+        return artist;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public void setPublicationYear(int publicationYear)
+    {
+        this.publicationYear = publicationYear;
     }
 
     public void setPicturePath(String picturePath)
     {
-        this.picturePath.set(picturePath);
+        this.picturePath = picturePath;
     }
 
-    @Override public String toString()
+    public void setUsername(String username)
     {
-        return "Album{" + "id=" + id + ", title=" + title + ", publicationYear="
-            + publicationYear + ", picturePath=" + picturePath + ", username="
-            + username + '}';
+        this.username = username;
+    }
+
+    public void setSongs(ArrayList<Song> songs)
+    {
+        this.songs = songs;
+    }
+
+    public void setArtist(Artist artist)
+    {
+        this.artist = artist;
+    }
+
+    public Album copy()
+    {
+           return new Album(id,title,publicationYear,picturePath,username,artist,songs);
     }
 }

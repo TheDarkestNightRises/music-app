@@ -6,6 +6,8 @@ public class Song
   private String title;
   private String file_path;
   private int length;
+  private Album album;
+  private Artist artist;
 
   public Song(){}
 

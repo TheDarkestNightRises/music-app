@@ -1,11 +1,15 @@
 package musicApp.client.model;
 
+import java.util.ArrayList;
+
 public class Playlist
 {
   private int playlist_id;
   private String title;
   private String description;
   private String picture_name;
+  private ArrayList<Song> songs;
+
 
   @Override public String toString()
   {
@@ -21,6 +25,17 @@ public class Playlist
     this.title = title;
     this.description = description;
     this.picture_name = picture_name;
+    this.songs = new ArrayList<>();
+  }
+
+  public Playlist(int playlist_id, String title, String description,
+      String picture_name,ArrayList<Song> songs)
+  {
+    this.playlist_id = playlist_id;
+    this.title = title;
+    this.description = description;
+    this.picture_name = picture_name;
+    this.songs = songs;
   }
 
   public int getPlaylist_id()
@@ -56,5 +71,10 @@ public class Playlist
   public void setPicture_name(String picture_name)
   {
     this.picture_name = picture_name;
+  }
+
+  public Playlist copy()
+  {
+    return  new Playlist(playlist_id,title,description,picture_name,songs);
   }
 }

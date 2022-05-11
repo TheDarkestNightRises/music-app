@@ -1,6 +1,7 @@
 package musicApp.client.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class User implements Serializable
@@ -13,6 +14,7 @@ public class User implements Serializable
   private String profile_picture;
   private String nickname;
   private boolean isLoggedIn;
+  private ArrayList<Playlist> playlists;
 
   public User(String username, String password) {
     this.username = username;
@@ -128,4 +130,6 @@ public class User implements Serializable
     User user = (User) o;
     return isLoggedIn == user.isLoggedIn && Objects.equals(username, user.username) && Objects.equals(password, user.password);
   }
+
+
 }
