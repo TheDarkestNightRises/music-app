@@ -15,7 +15,7 @@ public class ServerModelLoginImpl implements ServerModelLogin
 
   private List<User> userList;
   private PropertyChangeSupport support;
-  private UsersDAO user;
+  private UsersDAO userDAO;
 
   public ServerModelLoginImpl()
   {
@@ -23,28 +23,29 @@ public class ServerModelLoginImpl implements ServerModelLogin
     this.support = new PropertyChangeSupport(this);
   }
 
-  @Override public boolean SignIn(User user)
+  @Override public User SignIn(String username, String password)
   {
     try
     {
       for (User currentUser : userList)
         if (currentUser.isLoggedIn() && currentUser.getUsername()
-            .equals(user.getUsername()))
-          return false;
-      if (this.user.accountExists(user.getUsername(), user.getPassword()))
+            .equals(username))
+          return null;
+      if (this.userDAO.accountExists(username, password))
       {
-        user.setLoggedIn(true);
-        System.out.println(user);
-        userList.add(user);
+        User userLogged = userDAO.getUserByName(username);
+        userLogged.setLoggedIn(true);
+        System.out.println(userLogged);
+        userList.add(userLogged);
         System.out.println(userList);
-        return true;
+        return userLogged;
       }
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
-    return false;
+    return null;
   }
 
   @Override public void disconnect(User user)
@@ -65,8 +66,8 @@ public class ServerModelLoginImpl implements ServerModelLogin
   {
     try
     {
-      this.user = new UsersDAOImpl();
-      if (!this.user.accountExists(user.getUsername(), user.getPassword()))
+      this.userDAO = new UsersDAOImpl();
+      if (!this.userDAO.accountExists(user.getUsername(), user.getPassword()))
         return true;
     }
     catch (SQLException e)

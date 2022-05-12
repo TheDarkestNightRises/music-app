@@ -5,7 +5,7 @@ import musicApp.util.Subject;
 
 public interface ServerModelLogin extends Subject {
     //---------Login--------
-    boolean SignIn(User user);
+    User SignIn(String username, String password);
     void disconnect(User user);
     int getNumberOfUsers();
     boolean accountDoesNotExist(User user);

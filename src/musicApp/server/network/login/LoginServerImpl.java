@@ -17,8 +17,8 @@ public class LoginServerImpl implements LoginServer {
     }
 
     @Override
-    public boolean signIn(User user) {
-        return serverModel.getModelLogin().SignIn(user);
+    public User signIn(String username, String password) {
+        return serverModel.getModelLogin().SignIn(username, password);
     }
 
 

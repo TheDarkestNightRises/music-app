@@ -10,10 +10,10 @@ public class RMILoginClient implements LoginClient{
 
 
     @Override
-    public boolean signIn(String username, String password)  {
-        User user = new User(username,password,"","","","",null);
+    public User signIn(String username, String password)  {
+        //User user = new User(username,password,"","","","",null);
         try {
-            return server.getLoginServer().signIn(user);
+            return server.getLoginServer().signIn(username, password);
         } catch (RemoteException e) {
             e.printStackTrace();
             throw new RuntimeException("Cant connect to server");

@@ -24,7 +24,11 @@ public class LoginManagerImplementation implements LogInManager {
 
     @Override
     public boolean signIn(String username, String password) {
-        return client.getLoginClient().signIn(username, password);
+
+         user = client.getLoginClient().signIn(username, password);
+         if(user != null)
+             return true;
+         return false;
     }
 
 

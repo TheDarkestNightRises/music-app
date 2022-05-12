@@ -36,8 +36,8 @@ public class LoginMainController implements ViewController
   {
     boolean canSignedIn = viewModel.signIn();
     if (canSignedIn) {
-      viewModel.setUser();
-      viewHandler.openChat();
+      //viewModel.setUser();
+      viewHandler.openUpdateSettings();
     }
   }
 

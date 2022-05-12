@@ -61,7 +61,10 @@ public class UpdateSettingsViewModel
     InputStream stream = null;
     try
     {
-      stream = new FileInputStream("src/musicApp/server/serverData/ProfilePictures/default_pfp.jpg");
+      String imgPath = mainModel.getLogInManager().getUser().getProfile_picture();
+      if(imgPath == null || imgPath.equals(""))
+        imgPath = "default_pfp.jpg";
+      stream = new FileInputStream("src/musicApp/server/serverData/ProfilePictures/" + imgPath);
     }
     catch (FileNotFoundException e)
     {
@@ -69,7 +72,7 @@ public class UpdateSettingsViewModel
     }
     Image image = new Image(stream);
     profilePicture.setValue(image);//TODO: add link
-    System.out.println(mainModel.getLogInManager().getUser().getPassword());
+    //System.out.println(mainModel.getLogInManager().getUser().getPassword());
 
   }
   public void submit()

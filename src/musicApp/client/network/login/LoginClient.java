@@ -8,7 +8,7 @@ public interface LoginClient {
 
     int getNumberOfUsers();
 
-    boolean signIn(String username, String password);
+    User signIn(String username, String password);
 
     void disconnect(User user);
 

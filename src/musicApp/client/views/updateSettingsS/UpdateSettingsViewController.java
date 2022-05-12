@@ -41,11 +41,18 @@ public class UpdateSettingsViewController implements ViewController
     viewModel.bindImage(profilePicture.imageProperty());
     viewModel.reset();
   }
+  @FXML
   public void submitButtonPressed()
   {
     
   }
+  @FXML
   public void choosePictureButtonPressed()
+  {
+
+  }
+  @FXML
+  public void updatePictureButtonPressed()
   {
 
   }

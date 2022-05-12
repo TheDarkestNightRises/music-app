@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 public interface LoginServer extends Remote {
     //----------Login-------------
 
-    boolean signIn(User user) throws RemoteException;
+    User signIn(String usernme, String password) throws RemoteException;
 
     void disconnect(User user) throws RemoteException;
 
