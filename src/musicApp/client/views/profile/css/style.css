@@ -30,3 +30,7 @@
 .scroll-pane > .viewport{
     -fx-background-color: #181818;
 }
+
+.bodyBg {
+-fx-background-image: url("band-music-black-sabbath-album-cover-hard-rock-wallpaper-preview.jpg");
+}

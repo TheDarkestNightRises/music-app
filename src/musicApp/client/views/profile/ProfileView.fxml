@@ -13,10 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="794.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="235.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,7 +39,7 @@
                         </ImageView>
                         <Label prefHeight="27.0" prefWidth="158.0" text="Home" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -63,7 +62,7 @@
                         </ImageView>
                         <Label prefHeight="27.0" prefWidth="158.0" text="Explore" textFill="#7e7b7b">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -83,7 +82,7 @@
                         </ImageView>
                         <Label prefHeight="27.0" prefWidth="158.0" text="Radio" textFill="#7e7b7b">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -97,7 +96,7 @@
                <children>
                   <Label prefHeight="34.0" prefWidth="222.0" text="YOUR LIBRARY" textFill="#7e7b7b">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="20.0" right="10.0" />
@@ -105,7 +104,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Made for you" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -116,7 +115,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Recently Played" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -127,7 +126,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Liked Songs" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -138,7 +137,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Albums" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -149,7 +148,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Artists" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -160,7 +159,7 @@
                   </Label>
                   <Label prefHeight="34.0" prefWidth="222.0" text="Podcasts" textFill="#7e7b7b">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                      <padding>
                         <Insets left="6.0" />
@@ -208,7 +207,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
                <children>
@@ -240,7 +239,7 @@
                         </HBox>
                      </graphic>
                   </Button>
-                  <HBox alignment="CENTER" prefHeight="41.0" prefWidth="440.0" spacing="10.0" styleClass="search-container" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="42.0" prefWidth="270.0" spacing="10.0" styleClass="search-container" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -259,7 +258,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </HBox.margin>
                   </HBox>
-                  <Pane prefHeight="34.0" prefWidth="554.0" />
+                  <Pane prefHeight="52.0" prefWidth="253.0" />
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="449.0" spacing="15.0">
                      <children>
                         <ImageView fitHeight="70.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -285,9 +284,39 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <ScrollPane prefHeight="694.0" prefWidth="1080.0" style="-fx-background-color: transparent;">
+            <HBox prefHeight="533.0" prefWidth="1080.0" styleClass="bodyBg" />
+            <ScrollPane prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
+                  <VBox prefHeight="464.0" prefWidth="900.0">
+                     <children>
+                        <Label prefHeight="27.0" prefWidth="158.0" text="Favorite" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane prefHeight="314.0" prefWidth="1076.0" style="-fx-background-color: transparent;">
+                           <content>
+                              <HBox fx:id="favoriteContainer" prefHeight="100.0" prefWidth="1000.0" />
+                           </content>
+                        </ScrollPane>
+                        <Label prefHeight="27.0" prefWidth="158.0" text="Recently played" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ScrollPane prefHeight="314.0" prefWidth="1076.0" style="-fx-background-color: transparent;">
+                           <content>
+                              <HBox fx:id="recentlyPlayedContainer" prefHeight="100.0" prefWidth="1000.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
                </content>
             </ScrollPane>
          </children>
