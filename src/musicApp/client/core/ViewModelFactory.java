@@ -7,7 +7,7 @@ import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.signup.SignUpViewModel;
-
+import musicApp.client.views.updateSettingsS.UpdateSettingsViewModel;
 
 public class ViewModelFactory {
     private ModelFactory modelFactory;
@@ -18,6 +18,7 @@ public class ViewModelFactory {
     private MusicPlayerViewModel musicPlayerViewModel;
     private ProfileViewModel profileViewModel;
     private FollowListViewModel followListViewModel;
+    private UpdateSettingsViewModel updateSettingsViewModel;
 
 
     public ViewModelFactory(ModelFactory modelFactory) {
@@ -67,5 +68,12 @@ public class ViewModelFactory {
         followListViewModel = new FollowListViewModel(modelFactory.getMainModel());
       return followListViewModel;
     }
-    }
+
+  public UpdateSettingsViewModel getUpdateSettingsViewModel()
+  {
+    if ( updateSettingsViewModel == null)
+      updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getMainModel());
+    return updateSettingsViewModel;
+  }
+}
 
