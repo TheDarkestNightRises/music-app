@@ -38,7 +38,7 @@ public class ArtistDAOImpl implements ArtistDAO
     return DriverManager.getConnection(URL,USERNAME,PASSWORD);
   }
 
-  @Override public ArrayList<Artist> getAllArtists() // + their albums
+  @Override public ArrayList<Artist> getAllArtists()
   {
     try (Connection connection = getConnection())
     {

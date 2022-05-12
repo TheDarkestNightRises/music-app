@@ -122,7 +122,19 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
-
+    public void openUpdateSettings(){
+        try {
+            Parent root = loadFXML("../views/updateSettingsS/UpdateSettingsView.fxml");
+            Scene settingsScene = new Scene(root);
+            stage.setTitle("Update settings");
+            stage.setScene(settingsScene);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     private Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));

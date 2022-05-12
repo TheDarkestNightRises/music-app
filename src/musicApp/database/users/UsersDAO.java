@@ -1,8 +1,10 @@
 package musicApp.database.users;
 
+import musicApp.server.model.Playlist;
 import musicApp.server.model.User;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface UsersDAO
 {
@@ -10,4 +12,5 @@ public interface UsersDAO
   boolean accountExists(String username, String password) throws SQLException;
   boolean usernameExists(String username) throws SQLException;
   User getUserByName(String username);
+  Playlist getPlaylistFromUserById(User user, int id);
 }

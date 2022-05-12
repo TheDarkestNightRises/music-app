@@ -11,7 +11,7 @@ public class RMILoginClient implements LoginClient{
 
     @Override
     public boolean signIn(String username, String password)  {
-        User user = new User(username,password,"","","","");
+        User user = new User(username,password,"","","","",null);
         try {
             return server.getLoginServer().signIn(user);
         } catch (RemoteException e) {
@@ -46,7 +46,7 @@ public class RMILoginClient implements LoginClient{
     @Override public boolean accountDoesNotExist(String username,
         String password)
     {
-        User user = new User(username,password,"","","","");
+        User user = new User(username,password,"","","","",null);
         try {
             return server.getLoginServer().accountDoesNotExist(user);
         } catch (RemoteException e) {
