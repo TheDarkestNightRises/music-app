@@ -19,7 +19,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openSignUp();
+        openMusicPlayer();
     }
 
     public void openChat() {

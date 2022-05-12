@@ -2,6 +2,7 @@ package musicApp;
 
 import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.artist.ArtistDAOImpl;
+import musicApp.database.follow.FollowDAOImpl;
 import musicApp.database.playlist.PlaylistDAOImpl;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.database.users.UsersDAO;
@@ -24,14 +25,15 @@ public class Hope
 //    AlbumDAOImpl.getInstance().deleteAlbum(album);
 //  Artist artist = ArtistDAOImpl.getInstance().getArtistByName("3daysgrace");
 //    System.out.println(AlbumDAOImpl.getInstance().getArtistAlbums(artist));
-      User user = UsersDAOImpl.getInstance().getUserByName("emanuel");
+      User emanuel = UsersDAOImpl.getInstance().getUserByName("emanuel");
+    User andrei = UsersDAOImpl.getInstance().getUserByName("andrei");
 //    PlaylistDAOImpl.getInstance().createPlayList("Nebunia lui Emanuel", "E nebunia mea", "I am my own picture",user);
 //    System.out.println(UsersDAOImpl.getInstance().getPlaylistFromUserById(user,1));
 //    User user1 = UsersDAOImpl.getInstance().getUserByName("hugo");
 //    FollowDAOImpl.getInstance().Follow(user,user1);
 //    System.out.println(FollowDAOImpl.getInstance().getFollowList(user));
 //    AlbumDAOImpl.getInstance().insertAlbum("da",2022,"picture",artist);'
-     Playlist playlist = UsersDAOImpl.getInstance().getPlaylistFromUserById(user,1);
-
+//     Playlist playlist = UsersDAOImpl.getInstance().getPlaylistFromUserById(user,1);
+    FollowDAOImpl.getInstance().Follow(emanuel,andrei);
   }
 }

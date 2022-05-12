@@ -38,22 +38,15 @@ public class FollowDAOImpl implements FollowDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM followers JOIN user_ ON followed = username WHERE followed = ?" );
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM followers where follower = ?" );
       statement0.executeUpdate();
-      ResultSet resultSet = statement.executeQuery();
       statement.setString(1,user.getUsername());
+      ResultSet resultSet = statement.executeQuery();
       ArrayList<User> list = new ArrayList<>();
       while(resultSet.next())
       {
-        String name = resultSet.getString("follower");
+        String name = resultSet.getString("followed");
         User user1 = UsersDAOImpl.getInstance().getUserByName(name);
-//        String username = resultSet.getString(user1.getUsername());
-//        String password = resultSet.getString(user1.getPassword());
-//        String email = resultSet.getString(user1.getEmail());
-//        String nick = resultSet.getString(user1.getNickname());
-//        String picture = resultSet.getString(user1.getProfile_picture());
-//        String description = resultSet.getString(user1.getDescription());
-//        User user2 = new User(username,password,email,nick,picture,description);
         list.add(user1);
       }
       return list;
@@ -73,7 +66,6 @@ public class FollowDAOImpl implements FollowDAO
 
       statement.setString(1,follower.getUsername());
       statement.setString(2,followed.getUsername());
-
       statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
@@ -81,7 +73,18 @@ public class FollowDAOImpl implements FollowDAO
     }
   }
 
-  @Override public void Unfollow(User user1, User user2)
+  @Override public void Unfollow(User follower, User followed)
   {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("DELETE FROM followers WHERE follower = ? and followed = ?");
+      statement.setString(1,follower.getUsername());
+      statement.setString(2,followed.getUsername());
+      statement0.executeUpdate();
+      statement.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
   }
 }
