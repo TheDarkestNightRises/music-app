@@ -1,4 +1,4 @@
-package musicApp.server.model.network.profile;
+package musicApp.server.network.profile;
 
 import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.ProfileServer;

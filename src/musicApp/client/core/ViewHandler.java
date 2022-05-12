@@ -140,7 +140,8 @@ public class ViewHandler {
         loader.setLocation(getClass().getResource(path));
         Parent root = loader.load();
         ViewController ctrl = loader.getController();
-        ctrl.init(this, vmf);
+        Object object = new Object();
+        ctrl.init(this, vmf,object);
         return root;
     }
 

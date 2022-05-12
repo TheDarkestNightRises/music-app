@@ -6,6 +6,7 @@ import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.server.model.Song;
+import musicApp.server.model.User;
 
 import java.util.List;
 
@@ -22,9 +23,10 @@ public class ProfileViewController implements ViewController {
     private ViewHandler vh;
     private ProfileViewModel viewModel;
 
-    @Override public void init(ViewHandler vh, ViewModelFactory vmf)
+    @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
     {
-
+        this.vh = vh;
+        this.viewModel = vmf.getProfileViewModel();
     }
 
     //    @Override

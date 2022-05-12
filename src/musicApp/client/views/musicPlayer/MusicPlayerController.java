@@ -34,7 +34,7 @@ public class MusicPlayerController implements ViewController {
 
 
     @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf) {
+    public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         this.viewHandler = vh;
         this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
         this.musicPlayerViewModel.addListener("ChangedSong",this::changeSong);

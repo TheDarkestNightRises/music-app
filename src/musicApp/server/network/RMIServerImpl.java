@@ -1,11 +1,11 @@
-package musicApp.server.model.network;
+package musicApp.server.network;
 
 import musicApp.server.model.ServerModel;
-import musicApp.server.model.network.chat.ChatServerImpl;
-import musicApp.server.model.network.login.LoginServerImpl;
-import musicApp.server.model.network.musicplayer.MusicPlayerServerImpl;
-import musicApp.server.model.network.profile.ProfileServerImpl;
-import musicApp.server.model.network.register.SignUpServerImpl;
+import musicApp.server.network.chat.ChatServerImpl;
+import musicApp.server.network.login.LoginServerImpl;
+import musicApp.server.network.musicplayer.MusicPlayerServerImpl;
+import musicApp.server.network.profile.ProfileServerImpl;
+import musicApp.server.network.register.SignUpServerImpl;
 import musicApp.shared.LogEntry;
 import musicApp.shared.networking.*;
 

@@ -25,7 +25,7 @@ public class LogViewController implements ViewController
     viewHandler.openChat();
   }
 
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf)
+  @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
   {
     viewHandler = vh;
     logViewModel = vmf.getLogViewModel();

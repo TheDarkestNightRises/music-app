@@ -1,4 +1,4 @@
-package musicApp.server.model.network.login;
+package musicApp.server.network.login;
 
 import musicApp.server.model.User;
 import musicApp.server.model.ServerModel;

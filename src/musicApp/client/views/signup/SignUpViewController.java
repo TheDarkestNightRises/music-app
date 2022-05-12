@@ -27,7 +27,7 @@ public class SignUpViewController implements ViewController {
 
 
     @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf) {
+    public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         viewHandler = vh;
         viewModel = vmf.getSignUpViewModel();
         viewModel.bindPassword(password.textProperty());

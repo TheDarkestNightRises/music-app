@@ -1,4 +1,4 @@
-package musicApp.server.model.network;
+package musicApp.server.network;
 
 import musicApp.server.model.ServerModelImpl;
 

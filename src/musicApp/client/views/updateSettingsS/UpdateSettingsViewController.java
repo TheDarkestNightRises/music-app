@@ -29,7 +29,7 @@ public class UpdateSettingsViewController implements ViewController
   private ViewHandler viewHandler;
   private UpdateSettingsViewModel viewModel;
 
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf)
+  @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
   {
     this.viewHandler = vh;
 

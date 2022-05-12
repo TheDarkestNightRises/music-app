@@ -19,7 +19,7 @@ public class ContactItemController implements ViewController
   }
 
   @Override
-  public void init(ViewHandler vh, ViewModelFactory vmf) {
+  public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
 
   }
 }

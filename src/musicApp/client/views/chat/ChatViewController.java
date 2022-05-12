@@ -18,7 +18,7 @@ public class ChatViewController implements ViewController {
     private ChatViewModel viewModel;
 
     @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf) {
+    public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getChatViewModel();
         viewModel.fetchNumberOfOnlineUsers();

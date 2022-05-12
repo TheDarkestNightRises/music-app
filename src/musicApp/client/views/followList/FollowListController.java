@@ -24,7 +24,7 @@ public class FollowListController implements ViewController, Initializable
   protected VBox contactsLayout;
 
 
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf)
+  @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
   {
     this.vh = vh;
     this.viewModel = vmf.getFollowListViewModel();
