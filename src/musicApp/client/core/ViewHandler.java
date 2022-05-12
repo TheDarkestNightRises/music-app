@@ -135,13 +135,12 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
-    private Parent loadFXML(String path) throws IOException {
+    private Parent loadFXML(String path,Object... args) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
         Parent root = loader.load();
         ViewController ctrl = loader.getController();
-        Object object = new Object();
-        ctrl.init(this, vmf,object);
+        ctrl.init(this, vmf,args);
         return root;
     }
 
