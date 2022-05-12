@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="794.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -268,7 +268,7 @@
                         </ImageView>
                         <Label prefHeight="27.0" prefWidth="247.0" text="Emanuel-Dan Acalfoaie" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="18.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
@@ -287,7 +287,7 @@
             <HBox prefHeight="533.0" prefWidth="1080.0" styleClass="bodyBg" />
             <ScrollPane prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox prefHeight="464.0" prefWidth="900.0">
+                  <VBox prefHeight="464.0" prefWidth="900.0" spacing="15.0">
                      <children>
                         <Label prefHeight="27.0" prefWidth="158.0" text="Favorite" textFill="WHITE">
                            <font>
