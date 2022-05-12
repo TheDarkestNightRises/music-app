@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,129 +13,194 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="200.0" prefWidth="235.0" spacing="20.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="235.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@img/ic_more.png" />
+                  <Image url="@../img/ic_more.png" />
                </image>
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </ImageView>
-            <VBox prefHeight="182.0" prefWidth="235.0" spacing="10.0">
+            <VBox prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/ic_home.png" />
+                              <Image url="@../img/ic_home.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="18.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="21.0" prefWidth="101.0" text="Home" textFill="WHITE">
+                        <Label prefHeight="27.0" prefWidth="158.0" text="Home" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_browse.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="27.0" prefWidth="158.0" text="Explore" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/ic_browse.png" />
+                              <Image url="@../img/ic_radio.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="21.0" prefWidth="101.0" text="Explore" textFill="#a1a1a1">
+                        <Label prefHeight="27.0" prefWidth="158.0" text="Radio" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_radio.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="21.0" prefWidth="101.0" text="Radio" textFill="#a1a1a1">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="292.0" prefWidth="235.0">
+            <VBox prefHeight="247.0" prefWidth="235.0" spacing="15.0">
                <children>
-                  <Label prefHeight="48.0" prefWidth="192.0" text="YOUR LIBRARY" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="YOUR LIBRARY" textFill="#7e7b7b">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <VBox.margin>
-                        <Insets />
+                        <Insets left="20.0" right="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Made For You" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Made for you" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Recently Played" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Recently Played" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Liked Songs" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Liked Songs" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Albums" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Albums" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Artists" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Artists" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label prefHeight="40.0" prefWidth="192.0" text="Poscasts" textFill="#a1a1a1">
+                  <Label prefHeight="34.0" prefWidth="222.0" text="Podcasts" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
             </VBox>
-            <Label prefHeight="48.0" prefWidth="192.0" text="PLAYLISTS" textFill="#a1a1a1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" />
-               </VBox.margin>
-            </Label>
-            <Pane prefHeight="12.0" prefWidth="235.0" VBox.vgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <VBox prefHeight="236.0" prefWidth="235.0">
+               <children>
+                  <Label prefHeight="34.0" prefWidth="222.0" text="PLAYLISTS" textFill="#7e7b7b">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="20.0" right="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Pane prefHeight="202.0" prefWidth="235.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/ic_add.png" />
+                        <Image url="@../img/ic_add.png" />
                      </image>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
                   </ImageView>
-                  <Label prefHeight="40.0" prefWidth="120.0" text="New Playlist" textFill="#a1a1a1">
+                  <Label prefHeight="27.0" prefWidth="158.0" stylesheets="@css/style.css" text="New Playlist" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
@@ -144,196 +208,89 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="1080.0" spacing="20.0">
+            <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
                <children>
-                  <HBox alignment="CENTER_LEFT">
-                     <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                           <graphic>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="43.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <HBox>
+                           <children>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@img/ic_back.png" />
+                                    <Image url="@../img/ic_forward.png" />
                                  </image>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
                               </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@img/ic_forward.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="215.0" styleClass="search-container" stylesheets="@css/style.css">
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </Button>
+                  <HBox alignment="CENTER" prefHeight="41.0" prefWidth="440.0" spacing="10.0" styleClass="search-container" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/ic_search.png" />
+                              <Image url="@../img/ic_search.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
                         </ImageView>
-                        <TextField prefHeight="31.0" prefWidth="173.0" promptText="Search" style="-fx-background-color: transparent;" />
+                        <TextField prefWidth="250.0" promptText="Search" style="-fx-background-color: transparent;" />
                      </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets bottom="5.0" top="5.0" />
+                     </HBox.margin>
                   </HBox>
-                  <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" styleClass="upgrade-button" stylesheets="@css/style.css" text="UPGRADE" textFill="WHITE" />
-                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="256.0" spacing="10.0">
+                  <Pane prefHeight="34.0" prefWidth="554.0" />
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="449.0" spacing="15.0">
                      <children>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="70.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/user.png" />
+                              <Image url="@../img/user.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="171.0" text="Username" textFill="WHITE">
+                        <Label prefHeight="27.0" prefWidth="247.0" text="Emanuel-Dan Acalfoaie" textAlignment="CENTER" textFill="WHITE">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <ImageView fitHeight="240.0" fitWidth="1080.0" pickOnBounds="true" smooth="false">
-                     <image>
-                        <Image url="@img/sponsered.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </VBox>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+            <ScrollPane prefHeight="694.0" prefWidth="1080.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox prefHeight="570.0" prefWidth="1665.0" spacing="10.0">
-                     <children>
-                        <Label text="Recently Played" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefViewportWidth="10.0" prefWidth="1059.0" style="-fx-background-color: transparent;">
-                           <content>
-                              <HBox fx:id="recentlyPlayedContainer" spacing="30.0" />
-                           </content>
-                        </ScrollPane>
-                        <Label text="Favorite" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane fitToWidth="true" minViewportHeight="270.0" prefHeight="229.0" prefWidth="1059.0" style="-fx-background-color: transparent;">
-                           <content>
-                              <HBox fx:id="favoriteContainer" prefHeight="0.0" prefWidth="0.0" spacing="30.0" />
-                           </content>
-                        </ScrollPane>
-                     </children>
-                     <padding>
-                        <Insets left="20.0" right="20.0" />
-                     </padding>
-                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" />
                </content>
             </ScrollPane>
          </children>
       </VBox>
    </center>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="364.0" spacing="20.0">
-               <children>
-                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/jasmin_thompson.jpg" />
-                     </image>
-                  </ImageView>
-                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="201.0">
-                     <children>
-                        <Label prefHeight="27.0" prefWidth="212.0" text="You Are My Sunshine" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label prefHeight="27.0" prefWidth="212.0" text="Jasmin Thompson" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/ic_love.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-            <Pane prefHeight="100.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="740.0" spacing="10.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="11.0" prefWidth="740.0" spacing="30.0">
-                     <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_shuffle.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_skip_to_start.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_play.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_end.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@img/ic_repeat.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </HBox>
-                  <HBox spacing="10.0">
-                     <children>
-                        <Label text="00:00" textFill="WHITE" />
-                        <Slider HBox.hgrow="ALWAYS" />
-                        <Label text="02:37" textFill="WHITE" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Pane prefHeight="100.0" prefWidth="0.0" HBox.hgrow="ALWAYS" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/ic_devices.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/ic_playlist.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@img/ic_volume.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </HBox>
-   </bottom>
 </BorderPane>
