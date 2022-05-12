@@ -32,7 +32,7 @@ public class FollowDAOImpl implements FollowDAO
   {
     return DriverManager.getConnection(URL,USERNAME,PASSWORD);
   }
-  
+
   @Override public ArrayList<User> getFollowList(User user)
   {
     try (Connection connection = getConnection())
@@ -83,6 +83,5 @@ public class FollowDAOImpl implements FollowDAO
 
   @Override public void Unfollow(User user1, User user2)
   {
-
   }
 }
