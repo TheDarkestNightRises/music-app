@@ -168,7 +168,7 @@ public class SongDAOImpl implements SongDAO
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        return new Song(id1,title,length,picture,albumName,artistName);
+        return new Song(id1,title,picture,length,albumName,artistName);
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -181,14 +181,14 @@ public class SongDAOImpl implements SongDAO
     try (Connection connection = getConnection())
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("UPDATE album SET song_id = ?, title = ?,  length = ?,"
-          + " file_path = ?, album_id = ?, username = ? ");
-      statement.setInt(1, song.getSong_id());
-      statement.setString(2, song.getTitle());
-      statement.setString(3, song.getLength());
-      statement.setString(4, song.getFile_path());
-      statement.setInt(5, song.getAlbum().getId());
+      PreparedStatement statement = connection.prepareStatement("UPDATE album SET title = ?,  length = ?,"
+          + " file_path = ?, album_id = ?, username = ? where song_id = ?");
+      statement.setString(1, song.getTitle());
+      statement.setString(2, song.getLength());
+      statement.setString(3, song.getFile_path());
+      statement.setInt(4, song.getAlbum().getId());
       statement.setString(5, song.getArtist().getName());
+      statement.setInt(6, song.getSong_id());
       statement0.executeUpdate();
       statement.executeUpdate();
     }

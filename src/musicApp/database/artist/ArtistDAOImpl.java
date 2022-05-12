@@ -116,12 +116,13 @@ public class ArtistDAOImpl implements ArtistDAO
     return null;
   }
 
-  @Override public void updateArtistName(Artist artist)
+  @Override public void updateArtistName(Artist artist, String name)
   {
     try (Connection connection = getConnection())
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("UPDATE artist SET username = ?");
+      PreparedStatement statement = connection.prepareStatement("UPDATE artist SET username = ? where username = ?");
+      statement.setString(1, name);
       statement.setString(1, artist.getName());
       statement0.executeUpdate();
       statement.executeUpdate();

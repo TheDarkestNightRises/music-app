@@ -13,4 +13,5 @@ public interface UsersDAO
   boolean usernameExists(String username) throws SQLException;
   User getUserByName(String username);
   Playlist getPlaylistFromUserById(User user, int id);
+  ArrayList<Playlist> getAllPlaylistsFromUser(User user);
 }

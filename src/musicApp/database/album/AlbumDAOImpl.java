@@ -182,13 +182,13 @@ public class AlbumDAOImpl implements AlbumDao
     try (Connection connection = getConnection())
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("UPDATE album SET album_id = ?, title = ?,  publication_year = ?,"
-          + " picture_path = ?, username = ? ");
-      statement.setInt(1, album.getId());
-      statement.setString(2, album.getTitle());
-      statement.setInt(3, album.getPublicationYear());
-      statement.setString(4, album.getPicturePath());
-      statement.setString(5, album.getArtist().getName());
+      PreparedStatement statement = connection.prepareStatement("UPDATE album SET  title = ?,  publication_year = ?,"
+          + " picture_path = ?, username = ? where album_id = ?");
+      statement.setString(1, album.getTitle());
+      statement.setInt(2, album.getPublicationYear());
+      statement.setString(3, album.getPicturePath());
+      statement.setString(4, album.getArtist().getName());
+      statement.setInt(5, album.getId());
       statement0.executeUpdate();
       statement.executeUpdate();
     }

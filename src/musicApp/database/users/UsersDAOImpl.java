@@ -163,6 +163,44 @@ public class UsersDAOImpl implements UsersDAO
     }
     return null;
   }
+
+  @Override public ArrayList<Playlist> getAllPlaylistsFromUser(User user)
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM playlist where username = ?");
+      statement.setString(1, user.getUsername());
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Playlist> playlists= new ArrayList<>();
+      while (resultSet.next())
+      {
+        int id1 = resultSet.getInt("playlist_id");
+        String title = resultSet.getString("title");
+        String description = resultSet.getString("description");
+        String picture = resultSet.getString("picture_path");
+        ArrayList<Song> songs = new ArrayList<>();
+        PreparedStatement statement2 = connection.prepareStatement("Select * FROM playlist_song_pair where playlist_id = ?");
+        statement2.setInt(1, id1);
+        ResultSet resultSet2 = statement2.executeQuery();
+        while (resultSet2.next())
+        {
+          int song_id = resultSet2.getInt("song_id");
+          songs.add(SongDAOImpl.getInstance().getSongById(song_id));
+        }
+        Playlist playlist = new Playlist(id1, title, description, picture, songs);
+        playlists.add(playlist);
+      }
+      return playlists;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
 }
 
 

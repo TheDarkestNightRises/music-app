@@ -75,4 +75,9 @@ public class Playlist
   {
     return  new Playlist(playlist_id,title,description,picture_name,songs);
   }
+
+  public ArrayList<Song> getSongs()
+  {
+    return songs;
+  }
 }
