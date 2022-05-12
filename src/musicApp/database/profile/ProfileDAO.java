@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public interface ProfileDAO
 {
-
   ArrayList<Playlist> getUserPlaylists(User user);
   ArrayList<Integer> getSongIdsByPlaylist(Playlist playlist);
   void updateUserInfo(User user);
