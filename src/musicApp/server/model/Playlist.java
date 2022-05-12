@@ -10,12 +10,10 @@ public class Playlist
   private String picture_name;
   private ArrayList<Song> songs;
 
-
   @Override public String toString()
   {
-    return "Playlist{" + "playlist_id=" + playlist_id + ", title='" + title
-        + '\'' + ", description='" + description + '\'' + ", picture_name='"
-        + picture_name + '\'' + '}';
+    return "Playlist{" + "playlist_id=" + playlist_id + ", title='" + title + '\'' + ", description='" + description + '\''
+        + ", picture_name='" + picture_name + '\'' + ", songs=" + songs + '}';
   }
 
   public Playlist(int playlist_id, String title, String description,

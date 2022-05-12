@@ -21,7 +21,7 @@ public class User implements Serializable
     this.password = password;
   }
 
-  public User(String username, String password, String email, String nickname, String profile_picture, String description)
+  public User(String username, String password, String email, String nickname, String profile_picture, String description, ArrayList<Playlist> playlists)
   {
     this.username = username;
     this.password = password;
@@ -29,6 +29,7 @@ public class User implements Serializable
     this.nickname = nickname;
     this.profile_picture=profile_picture;
     this.description=description;
+    this.playlists = new ArrayList<>();
   }
 
 
