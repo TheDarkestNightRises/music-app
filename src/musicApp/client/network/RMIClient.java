@@ -10,6 +10,8 @@ import musicApp.client.network.profile.ProfileClient;
 import musicApp.client.network.profile.RMIProfileClient;
 import musicApp.client.network.register.RMISignUpClient;
 import musicApp.client.network.register.SignUpClient;
+import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
+import musicApp.client.network.updateSettings.UpdateSettingsClient;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 import musicApp.shared.networking.ClientCallBack;
@@ -31,6 +33,7 @@ public class RMIClient implements Client, ClientCallBack {
     private MusicPlayerClient musicPlayerClient;
     private SignUpClient signUpClient;
     private ProfileClient profileClient;
+    private UpdateSettingsClient updateSettingsClient;
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense
 
     public RMIClient() {
@@ -40,6 +43,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.musicPlayerClient = new RMIMusicPlayerClient();
         this.signUpClient = new RMISignUpClient();
         this.profileClient = new RMIProfileClient();
+        this.updateSettingsClient = new RMIUpdateSettingsClient();
     }
 
     @Override
@@ -55,6 +59,7 @@ public class RMIClient implements Client, ClientCallBack {
             this.musicPlayerClient.setServer(server);
             this.signUpClient.setServer(server);
             this.profileClient.setServer(server);
+            this.updateSettingsClient.setServer(server);
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }

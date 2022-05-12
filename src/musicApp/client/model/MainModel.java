@@ -5,6 +5,7 @@ import musicApp.client.model.login.LogInManager;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.register.SignUpManager;
+import musicApp.client.model.updateSettings.UpdateSettingsManager;
 
 public interface MainModel {
     MusicManager getMusicPlayerManager();
@@ -12,5 +13,5 @@ public interface MainModel {
     ChatManager getChatManager();
     SignUpManager getSignUpManager();
     ProfileManager getProfileManager();
-
+    UpdateSettingsManager getUpdateSettingsManager();
 }

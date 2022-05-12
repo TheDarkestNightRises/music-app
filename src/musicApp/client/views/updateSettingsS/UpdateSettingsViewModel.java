@@ -79,16 +79,67 @@ public class UpdateSettingsViewModel
   {
 
   }
-  public void submitPassword()
+  public boolean updateUserData()
   {
+    try
+    {
+      if (password.get().equals(""))
+      {
+        error.set("Password should not be null!");
+        return false;
+      }
 
+      if (email.get().equals(""))
+      {
+        error.set("Email should not be null!");
+        return false;
+      }
+
+      if (password.get().length() < 8)
+      {
+        error.set("Password must contain at least 8 characters!");
+        return false;
+      }
+
+      if (noDigits())
+      {
+        error.set("Password must contain at least one digit!");
+        return false;
+      }
+
+      if (noUpper())
+      {
+        error.set("Password must contain at least one uppercase!");
+        return false;
+      }
+
+      if(emailNotValid())
+      {
+        error.set("Email is not valid!");
+        return false;
+
+      }
+      //mainModel.getUpdateSettingsManager();
+      return true;
+    }
+    catch (Exception e)
+    {
+      return false;
+    }
   }
-  public void submitNickname()
-  {
 
+  private boolean emailNotValid()
+  {
+    return mainModel.getSignUpManager().emailNotValid(email.get());
   }
-  public void submitEmail()
-  {
 
+  public boolean noDigits()
+  {
+    return mainModel.getSignUpManager().noDigits(password.get());
+  }
+
+  public boolean noUpper()
+  {
+    return mainModel.getSignUpManager().noUpper(password.get());
   }
 }
