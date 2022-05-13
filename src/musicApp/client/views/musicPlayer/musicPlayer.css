@@ -1,5 +1,5 @@
 .slider .track{
-    -fx-background-color: linear-gradient(to left,#37d5d6,#36096d);
+    -fx-background-color: linear-gradient(to left,#5f0a87,#a4508b);
 }
 
 .slider .thumb {
@@ -11,7 +11,7 @@
 }
 
 .buttons1{
- -fx-background-color: #0cbaba;
+ -fx-background-color: #a4508b;
 }
 
 .buttons2{

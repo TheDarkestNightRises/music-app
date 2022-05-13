@@ -15,11 +15,11 @@
    <children>
       <VBox layoutX="-8.0" layoutY="-3.0" prefHeight="550.0" prefWidth="366.0">
          <children>
-            <ScrollPane prefHeight="550.0" prefWidth="366.0" styleClass="item">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="550.0" prefWidth="366.0" styleClass="item" vbarPolicy="NEVER">
                <content>
-                  <VBox fx:id="contactsLayout" prefHeight="650.0" prefWidth="350.0" styleClass="item">
+                  <VBox fx:id="contactsLayout" prefHeight="650.0" prefWidth="365.0" styleClass="item">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="143.0" prefWidth="350.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="99.0" prefWidth="350.0" styleClass="item">
                            <children>
                               <Button mnemonicParsing="false" onAction="#openChat" styleClass="item">
                                  <HBox.margin>
@@ -32,18 +32,29 @@
                                        </image>
                                     </ImageView>
                                  </graphic>
+                                 <padding>
+                                    <Insets left="10.0" top="15.0" />
+                                 </padding>
                               </Button>
-                              <Label alignment="CENTER" prefHeight="114.0" prefWidth="128.0" text="FollowList" textFill="WHITE">
+                              <Label alignment="CENTER" prefHeight="62.0" prefWidth="128.0" text="FollowList" textFill="WHITE">
                                  <HBox.margin>
-                                    <Insets left="65.0" top="30.0" />
+                                    <Insets left="65.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font name="System Bold" size="27.0" />
                                  </font>
                                  <padding>
-                                    <Insets bottom="30.0" top="20.0" />
+                                    <Insets bottom="10.0" top="10.0" />
                                  </padding>
                               </Label>
+                              <ImageView fitHeight="34.0" fitWidth="35.0">
+                                 <image>
+                                    <Image url="@conference-xxl.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </ImageView>
                            </children>
                         </HBox>
                      </children>

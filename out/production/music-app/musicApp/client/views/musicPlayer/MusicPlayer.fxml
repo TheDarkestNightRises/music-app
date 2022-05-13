@@ -25,7 +25,7 @@
                <children>
                   <Button fx:id="previousButton" mnemonicParsing="false" onAction="#previousMedia" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="buttons2" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="39.0" nodeOrientation="RIGHT_TO_LEFT">
+                        <ImageView fitHeight="29.0" fitWidth="27.0" nodeOrientation="RIGHT_TO_LEFT">
                            <image>
                               <Image url="@last.png" />
                            </image>
@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fitHeight="19.0" fitWidth="20.0">
                            <image>
-                              <Image url="@stop-xxl.png" />
+                              <Image url="@pause-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -72,7 +72,7 @@
                   </Button>
                   <Button fx:id="nextButton" mnemonicParsing="false" onAction="#nextMedia" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="buttons2" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="38.0" fitWidth="38.0">
+                        <ImageView fitHeight="29.0" fitWidth="27.0">
                            <image>
                               <Image url="@last.png" />
                            </image>

@@ -20,7 +20,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openLogin();
+        openFollowList();
     }
 
     public void openChat() {
