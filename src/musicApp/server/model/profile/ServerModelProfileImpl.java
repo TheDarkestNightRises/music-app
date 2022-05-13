@@ -26,11 +26,25 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-        return profileDAO.fetchPlaylistsForUser(user);
+        GetAllPlaylistsTask getAllPlaylistsTask = new GetAllPlaylistsTask(user);
+        new Thread(getAllPlaylistsTask).start();
+        try {
+            return getAllPlaylistsTask.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-        return playlistDAO.getAllSongsFromPlayList(playlist);
+        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
+        new Thread(getAllSongsTask).start();
+        try {
+            return getAllSongsTask.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
