@@ -30,6 +30,14 @@ public class ConnectionFactory {
         return connectionFactory;
     }
 
+    public void close() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 //    public boolean open() {
 //        try {
 //            connection = DriverManager.getConnection(CONNECTION_STRING);

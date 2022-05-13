@@ -285,7 +285,7 @@
                </VBox.margin>
             </HBox>
             <HBox prefHeight="533.0" prefWidth="1080.0" styleClass="bodyBg" />
-            <ScrollPane prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                <content>
                   <VBox fx:id="profileContainer" prefHeight="464.0" prefWidth="900.0" spacing="15.0" />
                </content>
