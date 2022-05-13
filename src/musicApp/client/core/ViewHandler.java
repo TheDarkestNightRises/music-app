@@ -84,7 +84,7 @@ public class ViewHandler {
         }
     }
 
-    public void openMusicPlayer(ArrayList<Song> songs){
+    public void openMusicPlayer(Playlist songs){
         try {
             Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml",songs);
             Scene signUp = new Scene(root);

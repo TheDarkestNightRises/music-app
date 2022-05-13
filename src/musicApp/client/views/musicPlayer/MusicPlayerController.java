@@ -38,7 +38,7 @@ public class MusicPlayerController implements ViewController {
         this.viewHandler = vh;
         this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
         this.musicPlayerViewModel.addListener("ChangedSong",this::changeSong);
-        musicPlayerViewModel.init();
+        musicPlayerViewModel.init(args);
         songLabel.textProperty().bind(musicPlayerViewModel.currentSongLabelProperty());
         volumeSlider.valueProperty().addListener(this::changeVolume);
         sliderTime.maxProperty().bind(musicPlayerViewModel.getMaxProperty());

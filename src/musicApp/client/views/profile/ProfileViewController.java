@@ -60,7 +60,7 @@ public class ProfileViewController implements ViewController {
                 Platform.runLater(()->{
                     Button button = new Button();
                     button.setText("Play");
-                    button.setOnAction(event -> vh.openMusicPlayer(songs));
+                    button.setOnAction(event -> vh.openMusicPlayer(new Playlist(songs)));
                     vBoxContainer.getChildren().add(button);
                     HBox hBox = new HBox();
                     for (Song song : songs) {

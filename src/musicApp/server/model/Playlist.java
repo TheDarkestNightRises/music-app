@@ -27,8 +27,12 @@ public class Playlist implements Serializable
     this.songs = new ArrayList<>();
   }
 
+  public Playlist(ArrayList<Song> songs) {
+    this.songs = songs;
+  }
+
   public Playlist(int playlist_id, String title, String description,
-      String picture_name,ArrayList<Song> songs)
+                  String picture_name, ArrayList<Song> songs)
   {
     this.playlist_id = playlist_id;
     this.title = title;

@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ObservableValue;
 import musicApp.client.model.MainModel;
 import musicApp.client.model.chat.ChatManager;
+import musicApp.server.model.Playlist;
 import musicApp.util.Subject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.media.Media;
@@ -20,6 +21,7 @@ public class MusicPlayerViewModel implements Subject {
 
     private Media media;
     private ArrayList<File> songs; //TODO: ARRAYLIST OF SONGS
+    private Playlist playlist;
 
     private SimpleStringProperty currentSongLabel;
     private SimpleDoubleProperty maxProperty;
@@ -34,7 +36,10 @@ public class MusicPlayerViewModel implements Subject {
         maxProperty = new SimpleDoubleProperty();
     }
 
-    public void init() {
+    public void init(Object... args) {
+        for (Object object : args) {
+            playlist = (Playlist) object;
+        }
         songs = mainModel.getMusicPlayerManager().getCurrentPlaylist();
         changeSong();
     }
