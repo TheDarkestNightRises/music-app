@@ -21,6 +21,6 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-        return profileDAO.getUserPlaylists(user);
+        return profileDAO.fetchPlaylistsForUser(user);
     }
 }

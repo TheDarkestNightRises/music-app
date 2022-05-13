@@ -3,12 +3,18 @@ package musicApp.client.views.profile;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.server.model.Playlist;
+import musicApp.server.model.Song;
 import musicApp.server.model.User;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class ProfileViewController implements ViewController {
@@ -32,7 +38,20 @@ public class ProfileViewController implements ViewController {
             playlists = viewModel.fetchPlaylistsForUser((User) object);
         }
         System.out.println(playlists);
-
+        assert playlists != null;
+        for (Playlist playlist: playlists) {
+            //Make text
+            //Make scrollPane
+            //Make Hbox
+            //Put songs inside hbox
+            Text text = new Text(playlist.getTitle());
+            text.setFont(Font.font ("System", FontWeight.BOLD, 18));
+            text.setFill(Color.WHITE);
+            profileContainer.getChildren().add(text);
+            HBox hBox = new HBox();
+            profileContainer.getChildren().add(hBox);
+            ArrayList<Song> songs = viewModel.fetchSongsForPlaylist();
+        }
     }
 
     //    @Override

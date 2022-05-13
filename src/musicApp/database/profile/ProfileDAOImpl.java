@@ -50,7 +50,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 //    return null;
 //  }
     @Override
-    public ArrayList<Playlist> getUserPlaylists(User user) {
+    public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
         try (Connection connection = getConnection()) {
             PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
             PreparedStatement statement = connection.prepareStatement("SELECT playlist_id, title, description, picture_path "
