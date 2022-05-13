@@ -3,6 +3,7 @@ package musicApp.client.views.profile;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -16,7 +17,7 @@ import musicApp.server.model.Playlist;
 import musicApp.server.model.Song;
 import musicApp.server.model.User;
 
-import java.awt.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -51,12 +52,17 @@ public class ProfileViewController implements ViewController {
             text.setFont(Font.font("System", FontWeight.BOLD, 18));
             text.setFill(Color.WHITE);
             profileContainer.getChildren().add(text);
-            HBox hBox = new HBox();
-            profileContainer.getChildren().add(hBox);
+            VBox vBoxContainer = new VBox();
+            profileContainer.getChildren().add(vBoxContainer);
             new Thread(()->{
                 ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
                 System.out.println(songs);
                 Platform.runLater(()->{
+                    Button button = new Button();
+                    button.setText("Play");
+                    button.setOnAction(event -> vh.openMusicPlayer(songs));
+                    vBoxContainer.getChildren().add(button);
+                    HBox hBox = new HBox();
                     for (Song song : songs) {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("song.fxml"));
@@ -70,6 +76,7 @@ public class ProfileViewController implements ViewController {
                         songController.setData(song);
                         hBox.getChildren().add(vBox);
                     }
+                    vBoxContainer.getChildren().add(hBox);
                 });
             }).start();
 

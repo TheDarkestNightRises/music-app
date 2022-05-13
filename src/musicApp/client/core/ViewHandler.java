@@ -4,9 +4,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import musicApp.server.model.Playlist;
+import musicApp.server.model.Song;
 import musicApp.server.model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ViewHandler {
 
@@ -81,9 +84,9 @@ public class ViewHandler {
         }
     }
 
-    public void openMusicPlayer(){
+    public void openMusicPlayer(ArrayList<Song> songs){
         try {
-            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml");
+            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml",songs);
             Scene signUp = new Scene(root);
             stage.setTitle("Music Player");
             stage.setScene(signUp);
