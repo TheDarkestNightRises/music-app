@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import musicApp.client.views.profile.SongController;
 import musicApp.server.model.Playlist;
@@ -181,6 +185,13 @@ public class ViewHandler {
             vBoxContainer.getChildren().add(hBox);
         });
         return vBoxContainer;
+    }
+
+    public Text generateLoadingText(){
+        Text text = new Text("Loading...");
+        text.setFont(Font.font("System", FontWeight.BOLD, 18));
+        text.setFill(Color.WHITE);
+        return text;
     }
 
 }

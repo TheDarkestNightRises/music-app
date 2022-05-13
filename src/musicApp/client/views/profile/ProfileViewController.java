@@ -24,11 +24,6 @@ import java.util.ArrayList;
 public class ProfileViewController implements ViewController {
     @FXML
     public VBox profileContainer;
-    @FXML
-    private HBox recentlyPlayedContainer;
-
-    @FXML
-    private HBox favoriteContainer;
 
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -44,10 +39,8 @@ public class ProfileViewController implements ViewController {
         System.out.println(playlists);
         if (playlists == null) return;
         for (Playlist playlist : playlists) {
-            Text text = new Text("Loading...");
-            text.setFont(Font.font("System", FontWeight.BOLD, 18));
-            text.setFill(Color.WHITE);
-            profileContainer.getChildren().add(text);
+            Text playlistTitleText = vh.generateLoadingText();
+            profileContainer.getChildren().add(playlistTitleText);
             VBox vBoxContainer = new VBox();
             profileContainer.getChildren().add(vBoxContainer);
             new Thread(()->{
@@ -55,7 +48,7 @@ public class ProfileViewController implements ViewController {
                 System.out.println(songs);
                 Platform.runLater(()->{
                     vBoxContainer.getChildren().add(vh.generateView(songs));
-                    text.setText(playlist.getTitle());
+                    playlistTitleText.setText(playlist.getTitle());
                 });
             }).start();
         }
