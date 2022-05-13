@@ -9,6 +9,8 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.server.model.Song;
 
+import java.util.Objects;
+
 /**
  * Created by Alfacoaie on 02-Feb-21.
  */
@@ -23,10 +25,8 @@ public class SongController implements ViewController {
     private Label artist;
 
     public void setData(Song song){
-        Image image = new Image(getClass().getResourceAsStream(song.getFile_path()));
-        img.setImage(image);
         songName.setText(song.getTitle());
-        artist.setText(song.getTitle());
+        artist.setText(song.getArtist().getName());
     }
 
     @Override

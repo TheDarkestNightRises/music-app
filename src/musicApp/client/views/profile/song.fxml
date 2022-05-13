@@ -10,15 +10,15 @@
    <children>
       <ImageView fx:id="img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@img/mühür.jpg" />
+            <Image url="@css/faded.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="songName" prefHeight="20.0" prefWidth="229.0" text="Mühür" textFill="WHITE">
+      <Label fx:id="songName" prefHeight="20.0" prefWidth="229.0" text="Song" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="artist" prefHeight="20.0" prefWidth="229.0" text="Mustafa Ceceli, Irmak" textFill="WHITE">
+      <Label fx:id="artist" prefHeight="20.0" prefWidth="229.0" text="Artist" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

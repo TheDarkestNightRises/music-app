@@ -1,6 +1,7 @@
 package musicApp.client.views.profile;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,6 +16,7 @@ import musicApp.server.model.Song;
 import musicApp.server.model.User;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ProfileViewController implements ViewController {
@@ -29,33 +31,45 @@ public class ProfileViewController implements ViewController {
     private ViewHandler vh;
     private ProfileViewModel viewModel;
 
-    @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
-    {
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
         ArrayList<Playlist> playlists = null;
-        for (Object object: args) {
+        for (Object object : args) {
             playlists = viewModel.fetchPlaylistsForUser((User) object);
         }
         System.out.println(playlists);
         assert playlists != null;
-        for (Playlist playlist: playlists) {
+        for (Playlist playlist : playlists) {
             //Make text
             //Make scrollPane
             //Make Hbox
             //Put songs inside hbox
             Text text = new Text(playlist.getTitle());
-            text.setFont(Font.font ("System", FontWeight.BOLD, 18));
+            text.setFont(Font.font("System", FontWeight.BOLD, 18));
             text.setFill(Color.WHITE);
             profileContainer.getChildren().add(text);
             HBox hBox = new HBox();
             profileContainer.getChildren().add(hBox);
             ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
             System.out.println(songs);
+            for (Song song : songs) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+                VBox vBox = null;
+                try {
+                    vBox = fxmlLoader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                SongController songController = fxmlLoader.getController();
+                songController.setData(song);
+                hBox.getChildren().add(vBox);
+            }
         }
-    }
 
-    //    @Override
+        //    @Override
 //    public void init(ViewHandler vh, ViewModelFactory vmf) {
 //        this.vh = vh;
 //        this.viewModel = vmf.getProfileViewModel();
@@ -201,4 +215,5 @@ public class ProfileViewController implements ViewController {
 //
 //        return ls;
 //    }
+    }
 }
