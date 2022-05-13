@@ -198,7 +198,8 @@ public class AlbumDAOImpl implements AlbumDao
       if (resultSet.next())
       {
         String title = resultSet.getString("username");
-        Album album = new Album(id, title, 0, "", null, null);
+        String cover = resultSet.getString("picture_path");
+        Album album = new Album(id, title, 0, cover, null, null);
         return album;
       }
     }
