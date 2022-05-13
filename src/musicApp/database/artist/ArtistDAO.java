@@ -14,4 +14,5 @@ public interface ArtistDAO
   Artist getArtistByName(String username) throws SQLException;
   void updateArtistName(Artist artist, String name) throws SQLException;
   ArrayList<Album> getArtistAlbums(Artist artist) throws SQLException;
+
 }
