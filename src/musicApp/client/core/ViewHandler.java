@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -18,6 +21,7 @@ import musicApp.server.model.Song;
 import musicApp.server.model.User;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ViewHandler {
@@ -194,9 +198,13 @@ public class ViewHandler {
         return text;
     }
 
-    public Button generatePlayButton(ArrayList<Song> songs) {
-        Button button = new Button();
-        button.setText("Play");
+    public Hyperlink generatePlayButton(ArrayList<Song> songs) {
+        Hyperlink button = new Hyperlink();
+//        Button button = new Button();
+        URL url = getClass().getResource("../views/img/ic_play.png");
+        Image image = new Image(String.valueOf(url));
+        ImageView imageView = new ImageView(image);
+        button.setGraphic(imageView);
         button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
         return button;
     }
