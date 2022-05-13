@@ -2,6 +2,8 @@ package musicApp.client.core;
 
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -167,9 +169,10 @@ public class ViewHandler {
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();
         vBoxContainer.setSpacing(10);
+        vBoxContainer.setPadding(new Insets(10));
         Platform.runLater(() -> {
             if (songs.size() > 0) {
-                vBoxContainer.getChildren().add(generatePlayButton(songs));
+//                vBoxContainer.getChildren().add(generatePlayButton(songs));
                 HBox hBox = new HBox();
                 hBox.setSpacing(10);
                 for (Song song : songs) {
@@ -209,5 +212,14 @@ public class ViewHandler {
         return button;
     }
 
+    public HBox generateTitleHBox(ArrayList<Song> songs) {
+        HBox titleHBox = new HBox();
+        titleHBox.setSpacing(10);
+        if (songs.size() > 0) {
+            Hyperlink button = this.generatePlayButton(songs);
+            titleHBox.getChildren().add(button);
+        }
+        return titleHBox;
+    }
 }
 
