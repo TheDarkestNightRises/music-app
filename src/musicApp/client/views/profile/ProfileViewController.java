@@ -2,23 +2,23 @@ package musicApp.client.views.profile;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.server.model.Song;
+import musicApp.server.model.Playlist;
 import musicApp.server.model.User;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class ProfileViewController implements ViewController {
+    @FXML
+    public VBox profileContainer;
     @FXML
     private HBox recentlyPlayedContainer;
 
     @FXML
     private HBox favoriteContainer;
-
-    List<Song> recentlyPlayed;
-    List<Song> favorites;
 
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -27,6 +27,10 @@ public class ProfileViewController implements ViewController {
     {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
+        for (Object object: args) {
+            ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser((User) object);
+        }
+
     }
 
     //    @Override

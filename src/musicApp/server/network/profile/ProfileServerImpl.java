@@ -1,10 +1,13 @@
 package musicApp.server.network.profile;
 
+import musicApp.server.model.Playlist;
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.User;
 import musicApp.shared.networking.ProfileServer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class ProfileServerImpl implements ProfileServer {
     private final ServerModel serverModel;
@@ -15,4 +18,8 @@ public class ProfileServerImpl implements ProfileServer {
     }
 
 
+    @Override
+    public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
+        return serverModel.getModelProfile().fetchPlaylistsForUser(user);
+    }
 }

@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import musicApp.server.model.User;
 
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openFollowList();
+        openLogin();
     }
 
     public void openChat() {
@@ -94,9 +95,9 @@ public class ViewHandler {
         }
     }
 
-    public void openProfile(){
+    public void openProfile(User user){
         try {
-            Parent root = loadFXML("../views/profile/ProfileView.fxml");
+            Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
             Scene profile = new Scene(root);
             stage.setTitle("Profile");
             stage.setScene(profile);

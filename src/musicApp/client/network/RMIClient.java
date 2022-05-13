@@ -108,4 +108,9 @@ public class RMIClient implements Client, ClientCallBack {
     {
         return signUpClient;
     }
+
+    @Override
+    public ProfileClient getProfileClient() {
+        return profileClient;
+    }
 }
