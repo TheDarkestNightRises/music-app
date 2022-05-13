@@ -26,11 +26,18 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-        GetAllPlaylistsTask getAllPlaylistsTask = new GetAllPlaylistsTask(user);
-        new Thread(getAllPlaylistsTask).start();
+//        GetAllPlaylistsTask getAllPlaylistsTask = new GetAllPlaylistsTask(user);
+//        new Thread(getAllPlaylistsTask).start();
+//        try {
+//            return getAllPlaylistsTask.call();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
         try {
-            return getAllPlaylistsTask.call();
-        } catch (Exception e) {
+            profileDAO = ProfileDAOImpl.getInstance();
+            return profileDAO.fetchPlaylistsForUser(user);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -38,11 +45,19 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
-        new Thread(getAllSongsTask).start();
+//        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
+//        new Thread(getAllSongsTask).start();
+//        try {
+//            return getAllSongsTask.call();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+        PlaylistDAO playlistDAO = null;
         try {
-            return getAllSongsTask.call();
-        } catch (Exception e) {
+            playlistDAO = PlaylistDAOImpl.getInstance();
+            return playlistDAO.getAllSongsFromPlayList(playlist);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;

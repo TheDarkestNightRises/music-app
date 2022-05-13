@@ -1,5 +1,6 @@
 package musicApp.database.song;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.Artist;
@@ -16,10 +17,22 @@ public class SongDAOImpl implements SongDAO
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+  private Connection connection;
 
-  public SongDAOImpl() throws SQLException
+  private SongDAOImpl() throws SQLException
   {
+    try {
+      this.connection = getConnection();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
     DriverManager.registerDriver(new org.postgresql.Driver());
+  }
+
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
 
   public static synchronized SongDAOImpl getInstance() throws SQLException
@@ -31,15 +44,15 @@ public class SongDAOImpl implements SongDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
-  }
+//  private Connection getConnection() throws SQLException
+//  {
+//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
+//  }
 
 
   @Override public ArrayList<Song> getAllSongs()
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song ");
@@ -83,7 +96,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public void insertSong(Song song, Album album, Artist artist)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO song(title,length,file_path,album_id,username)"
@@ -104,7 +117,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public void deleteSong(Song song)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM song WHERE song_id = ?");
@@ -120,7 +133,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public void deleteSongById(int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM song WHERE song_id = ?");
@@ -136,7 +149,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public Song getSongById(int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song where song_id = ?");
@@ -178,7 +191,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public void updateSong(Song song)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE album SET title = ?,  length = ?,"
@@ -200,7 +213,7 @@ public class SongDAOImpl implements SongDAO
 
   @Override public ArrayList<Song> getSongsFromAlbum(Album album)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song where album_id = ?");

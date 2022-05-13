@@ -1,5 +1,6 @@
 package musicApp.database.album;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.Album;
 import musicApp.server.model.Artist;
@@ -15,10 +16,18 @@ public class AlbumDAOImpl implements AlbumDao
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+  private Connection connection;
 
   public AlbumDAOImpl() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
+    connection = getConnection();
+  }
+
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
 
   public static synchronized AlbumDAOImpl getInstance() throws SQLException
@@ -30,14 +39,14 @@ public class AlbumDAOImpl implements AlbumDao
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-  }
+//  private Connection getConnection() throws SQLException
+//  {
+//    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//  }
 
   @Override public ArrayList<Album> getAllAlbums()
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM album");
@@ -81,7 +90,7 @@ public class AlbumDAOImpl implements AlbumDao
 
   @Override public void createAlbum(String title, int publication_year, String picture, Artist artist)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
@@ -104,7 +113,7 @@ public class AlbumDAOImpl implements AlbumDao
 
   @Override public void deleteAlbum(Album album)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM album WHERE album_id = ?");
@@ -120,7 +129,7 @@ public class AlbumDAOImpl implements AlbumDao
 
   @Override public void deleteAlbumById(int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM album WHERE album_id = ?");
@@ -136,7 +145,7 @@ public class AlbumDAOImpl implements AlbumDao
 
   @Override public Album getAlbumById(int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM album where album_id = ?");
@@ -179,7 +188,7 @@ public class AlbumDAOImpl implements AlbumDao
 
   @Override public void updateAlbum(Album album)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE album SET  title = ?,  publication_year = ?,"

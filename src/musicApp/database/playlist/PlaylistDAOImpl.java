@@ -1,5 +1,6 @@
 package musicApp.database.playlist;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.server.model.*;
@@ -13,10 +14,12 @@ public class PlaylistDAOImpl implements PlaylistDAO
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+  private Connection connection;
 
-  public PlaylistDAOImpl() throws SQLException
+  private PlaylistDAOImpl() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
+    connection = getConnection();
   }
 
   public static synchronized PlaylistDAOImpl getInstance() throws SQLException
@@ -28,14 +31,20 @@ public class PlaylistDAOImpl implements PlaylistDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//  private Connection getConnection() throws SQLException
+//  {
+//    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//  }
+
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
 
   @Override public void createPlayList(String title, String description, String picture, User user)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
@@ -58,7 +67,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
 
   @Override public void deletePlayList(Playlist playlist)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM playlist WHERE playlist_id = ?");
@@ -75,7 +84,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
 
   @Override public void deletePlayListById(int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM playlist WHERE playlist_id = ?");
@@ -92,7 +101,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
 
   @Override public void updatePlaylist(Playlist playlist, User user)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
@@ -113,7 +122,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
 
   @Override public void insertSongIntoPlaylist(Playlist playlist, Song song)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
@@ -132,7 +141,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
 
   @Override public ArrayList<Song> getAllSongsFromPlayList(Playlist playlist)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist_song_pair where playlist_id = ?");

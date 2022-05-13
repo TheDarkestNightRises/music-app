@@ -1,5 +1,6 @@
 package musicApp.database.profile;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.server.model.Playlist;
 import musicApp.server.model.User;
 
@@ -11,22 +12,36 @@ public class ProfileDAOImpl implements ProfileDAO {
     public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
     public static String USERNAME = "viinvdnw";
     public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+    private Connection connection;
+
+    private ProfileDAOImpl() throws SQLException {
+        try {
+            this.connection = getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DriverManager.registerDriver(new org.postgresql.Driver());
+    }
 
     public static synchronized ProfileDAO getInstance() throws SQLException {
-        if (ProfileDAOImpl.instance == null) {
-            ProfileDAOImpl.instance = new ProfileDAOImpl();
+        if (instance == null) {
+            instance = new ProfileDAOImpl();
         }
         return ProfileDAOImpl.instance;
     }
 
+//    private Connection getConnection() throws SQLException {
+//        return DriverManager.getConnection(ProfileDAOImpl.URL,
+//                ProfileDAOImpl.USERNAME, ProfileDAOImpl.PASSWORD);
+//    }
+
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(ProfileDAOImpl.URL,
-                ProfileDAOImpl.USERNAME, ProfileDAOImpl.PASSWORD);
+        Connection conn;
+        conn = ConnectionFactory.getInstance().getConnection();
+        return conn;
     }
 
-    private ProfileDAOImpl() throws SQLException {
-        DriverManager.registerDriver(new org.postgresql.Driver());
-    }
+
 
     //  public User createUser(String username, String password, String email)
 //  {
@@ -51,7 +66,7 @@ public class ProfileDAOImpl implements ProfileDAO {
 //  }
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-        try (Connection connection = getConnection()) {
+        try {
             PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
             PreparedStatement statement = connection.prepareStatement("SELECT playlist_id, title, description, picture_path "
                     + "FROM playlist WHERE username = ?;");

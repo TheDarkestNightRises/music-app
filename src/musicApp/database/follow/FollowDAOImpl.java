@@ -1,5 +1,6 @@
 package musicApp.database.follow;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.server.model.User;
 import musicApp.database.users.UsersDAOImpl;
 
@@ -28,10 +29,16 @@ public class FollowDAOImpl implements FollowDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
+
+//  private Connection getConnection() throws SQLException
+//  {
+//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
+//  }
 
   @Override public ArrayList<User> getFollowList(User user)
   {

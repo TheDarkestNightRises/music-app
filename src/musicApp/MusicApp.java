@@ -10,6 +10,9 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import musicApp.database.ConnectionFactory;
+
+import java.sql.Connection;
 
 public class MusicApp extends Application {
     private ModelFactory modelFactory;
@@ -23,6 +26,8 @@ public class MusicApp extends Application {
     @Override
     public void init() throws Exception {
         //Heavy calculation connecting to database whatever.
+        ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
+        Connection connection = connectionFactory.getConnection();
         ClientFactory clientFactory = new ClientFactory();
         this.modelFactory = new ModelFactory(clientFactory);
         ViewModelFactory vmf = new ViewModelFactory(modelFactory);

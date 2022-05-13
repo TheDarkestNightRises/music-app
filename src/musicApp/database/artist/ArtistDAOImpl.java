@@ -1,5 +1,6 @@
 package musicApp.database.artist;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.server.model.Album;
@@ -18,10 +19,18 @@ public class ArtistDAOImpl implements ArtistDAO
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+  private Connection connection;
 
   public ArtistDAOImpl() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
+    connection = getConnection();
+  }
+
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
 
   public static synchronized ArtistDAOImpl getInstance() throws SQLException
@@ -33,14 +42,14 @@ public class ArtistDAOImpl implements ArtistDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
-  }
+//  private Connection getConnection() throws SQLException
+//  {
+//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
+//  }
 
   @Override public ArrayList<Artist> getAllArtists()
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM artist");
@@ -64,7 +73,7 @@ public class ArtistDAOImpl implements ArtistDAO
 
   @Override public void insertArtist(String username)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO artist(username) "
@@ -80,7 +89,7 @@ public class ArtistDAOImpl implements ArtistDAO
 
   @Override public void deleteArtist(Artist artist)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM artist WHERE username = ?");
@@ -94,7 +103,7 @@ public class ArtistDAOImpl implements ArtistDAO
 
   @Override public Artist getArtistByName(String username)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM artist WHERE username = ?");
@@ -118,7 +127,7 @@ public class ArtistDAOImpl implements ArtistDAO
 
   @Override public void updateArtistName(Artist artist, String name)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE artist SET username = ? where username = ?");
@@ -134,7 +143,7 @@ public class ArtistDAOImpl implements ArtistDAO
 
   @Override public ArrayList<Album> getArtistAlbums(Artist artist) throws SQLException
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Album where username = ?");
