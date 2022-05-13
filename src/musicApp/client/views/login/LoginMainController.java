@@ -8,6 +8,7 @@ import musicApp.client.core.ViewModelFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import musicApp.server.model.User;
 
 public class LoginMainController implements ViewController
 {
@@ -36,8 +37,8 @@ public class LoginMainController implements ViewController
   {
     boolean canSignedIn = viewModel.signIn();
     if (canSignedIn) {
-      //viewModel.setUser();
-      viewHandler.openUpdateSettings();
+      viewModel.setUser();
+      viewHandler.openProfile(viewModel.getUser());
     }
   }
 

@@ -27,9 +27,11 @@ public class ProfileViewController implements ViewController {
     {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
+        ArrayList<Playlist> playlists = null;
         for (Object object: args) {
-            ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser((User) object);
+            playlists = viewModel.fetchPlaylistsForUser((User) object);
         }
+        System.out.println(playlists);
 
     }
 

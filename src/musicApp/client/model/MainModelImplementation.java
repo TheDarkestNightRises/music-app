@@ -22,6 +22,7 @@ public class MainModelImplementation implements MainModel{
         this.chatManager = chatManager;
         this.signUpManager = signUpManager;
         this.updateSettingsManager = updateSettingsManager;
+        this.profileManager = profileManager;
     }
 
     public MusicManager getMusicPlayerManager() {

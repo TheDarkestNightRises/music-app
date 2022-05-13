@@ -65,4 +65,8 @@ public class LoginMainViewModel {
     public void bindError(StringProperty property) {
         error.bindBidirectional(property);
     }
+
+    public User getUser() {
+        return model.getLogInManager().getUser();
+    }
 }

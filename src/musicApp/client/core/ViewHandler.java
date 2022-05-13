@@ -136,6 +136,7 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+    
     private Parent loadFXML(String path,Object... args) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
