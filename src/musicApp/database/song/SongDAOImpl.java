@@ -163,14 +163,17 @@ public class SongDAOImpl implements SongDAO
         String title = resultSet.getString("title");
         String length = resultSet.getString("length");
         String picture = resultSet.getString("file_path");
-        Album albumName = new Album();
-        PreparedStatement statement2 = connection.prepareStatement("Select * FROM album where album_id = ?");
+        Album albumName = new Album(0,"",0,"",null);
+        PreparedStatement statement2 = connection.prepareStatement("Select title, picture_path FROM album where album_id = ?");
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
         if(resultSet2.next())
         {
-          albumName = AlbumDAOImpl.getInstance().getAlbumWithOnlyNameById(album_id);
+          String album_title = resultSet2.getString("title");
+          String album_cover = resultSet2.getString("picture_path");
+          albumName.setTitle(album_title);
+          albumName.setPicturePath(album_cover);
         }
         String username = resultSet.getString("username");
         Artist artistName = new Artist(username);

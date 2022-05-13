@@ -186,31 +186,6 @@ public class AlbumDAOImpl implements AlbumDao
     return null;
   }
 
-  @Override public Album getAlbumWithOnlyNameById(int id)
-  {
-    try
-    {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM album where album_id = ?");
-      statement.setInt(1, id);
-      statement0.executeUpdate();
-      ResultSet resultSet = statement.executeQuery();
-      if (resultSet.next())
-      {
-        String title = resultSet.getString("username");
-        String cover = resultSet.getString("picture_path");
-        Album album = new Album(id, title, 0, cover, null, null);
-        return album;
-      }
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return null;
-  }
-
-
   @Override public void updateAlbum(Album album)
   {
     try
