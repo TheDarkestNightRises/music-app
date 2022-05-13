@@ -171,7 +171,7 @@ public class SongDAOImpl implements SongDAO
         ResultSet resultSet2 = statement2.executeQuery();
         if(resultSet2.next())
         {
-          albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
+          albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id); //todo: coaie ce e asta
         }
         PreparedStatement statement3 = connection.prepareStatement("Select * FROM artist where username = ?");
         String username = resultSet.getString("username");
@@ -179,7 +179,7 @@ public class SongDAOImpl implements SongDAO
         ResultSet resultSet3 = statement3.executeQuery();
         if(resultSet3.next())
         {
-          artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
+          artistName = ArtistDAOImpl.getInstance().getArtistByName(username); // todo: wtf
         }
         return new Song(id1,title,picture,length,albumName,artistName);
       }

@@ -26,40 +26,40 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-//        GetAllPlaylistsTask getAllPlaylistsTask = new GetAllPlaylistsTask(user);
-//        new Thread(getAllPlaylistsTask).start();
-//        try {
-//            return getAllPlaylistsTask.call();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
+        GetAllPlaylistsTask getAllPlaylistsTask = new GetAllPlaylistsTask(user);
+        new Thread(getAllPlaylistsTask).start();
         try {
-            profileDAO = ProfileDAOImpl.getInstance();
-            return profileDAO.fetchPlaylistsForUser(user);
-        } catch (SQLException e) {
+            return getAllPlaylistsTask.call();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+//        try {
+//            profileDAO = ProfileDAOImpl.getInstance();
+//            return profileDAO.fetchPlaylistsForUser(user);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
     }
 
     @Override
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-//        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
-//        new Thread(getAllSongsTask).start();
-//        try {
-//            return getAllSongsTask.call();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-        PlaylistDAO playlistDAO = null;
+        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
+        new Thread(getAllSongsTask).start();
         try {
-            playlistDAO = PlaylistDAOImpl.getInstance();
-            return playlistDAO.getAllSongsFromPlayList(playlist);
-        } catch (SQLException e) {
+            return getAllSongsTask.call();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+//        PlaylistDAO playlistDAO = null;
+//        try {
+//            playlistDAO = PlaylistDAOImpl.getInstance();
+//            return playlistDAO.getAllSongsFromPlayList(playlist);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
     }
 }

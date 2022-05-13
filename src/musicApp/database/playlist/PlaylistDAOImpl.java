@@ -139,6 +139,8 @@ public class PlaylistDAOImpl implements PlaylistDAO
     }
   }
 
+
+  //TODO: TOO SLOW
   @Override public ArrayList<Song> getAllSongsFromPlayList(Playlist playlist)
   {
     try
