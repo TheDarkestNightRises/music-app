@@ -18,7 +18,7 @@ public class ProfileViewModel {
         return mainModel.getProfileManager().fetchPlaylistsForUser(user);
     }
 
-    public ArrayList<Song> fetchSongsForPlaylist() {
-        return null;
+    public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
+        return mainModel.getProfileManager().fetchSongsForPlaylist(playlist);
     }
 }

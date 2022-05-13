@@ -2,6 +2,7 @@ package musicApp.server.network.profile;
 
 import musicApp.server.model.Playlist;
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.Song;
 import musicApp.server.model.User;
 import musicApp.shared.networking.ProfileServer;
 
@@ -21,5 +22,10 @@ public class ProfileServerImpl implements ProfileServer {
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
         return serverModel.getModelProfile().fetchPlaylistsForUser(user);
+    }
+
+    @Override
+    public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
+        return serverModel.getModelProfile().fetchSongsForPlaylist(playlist);
     }
 }

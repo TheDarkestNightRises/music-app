@@ -1,8 +1,9 @@
 package musicApp.server.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Artist {
+public class Artist implements Serializable {
 
     private String name;
     private ArrayList<Album> albums;

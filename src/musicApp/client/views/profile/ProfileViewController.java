@@ -50,7 +50,8 @@ public class ProfileViewController implements ViewController {
             profileContainer.getChildren().add(text);
             HBox hBox = new HBox();
             profileContainer.getChildren().add(hBox);
-            ArrayList<Song> songs = viewModel.fetchSongsForPlaylist();
+            ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
+            System.out.println(songs);
         }
     }
 

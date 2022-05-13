@@ -1,6 +1,8 @@
 package musicApp.server.model;
 
-public class Song
+import java.io.Serializable;
+
+public class Song implements Serializable
 {
   private int song_id;
   private String title;

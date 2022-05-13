@@ -1,6 +1,7 @@
 package musicApp.client.network.profile;
 
 import musicApp.server.model.Playlist;
+import musicApp.server.model.Song;
 import musicApp.server.model.User;
 import musicApp.shared.networking.RMIServer;
 
@@ -20,6 +21,16 @@ public class RMIProfileClient implements ProfileClient{
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
         try {
             return rmiServer.getProfileServer().fetchPlaylistsForUser(user);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
+        try {
+            return rmiServer.getProfileServer().fetchSongsForPlaylist(playlist);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
