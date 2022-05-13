@@ -42,13 +42,9 @@ public class ProfileViewController implements ViewController {
             playlists = viewModel.fetchPlaylistsForUser((User) object);
         }
         System.out.println(playlists);
-        assert playlists != null;
+        if (playlists == null) return;
         for (Playlist playlist : playlists) {
-            //Make text
-            //Make scrollPane
-            //Make Hbox
-            //Put songs inside hbox
-            Text text = new Text(playlist.getTitle());
+            Text text = new Text("Loading...");
             text.setFont(Font.font("System", FontWeight.BOLD, 18));
             text.setFill(Color.WHITE);
             profileContainer.getChildren().add(text);
@@ -58,28 +54,10 @@ public class ProfileViewController implements ViewController {
                 ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
                 System.out.println(songs);
                 Platform.runLater(()->{
-                    Button button = new Button();
-                    button.setText("Play");
-                    button.setOnAction(event -> vh.openMusicPlayer(new Playlist(songs)));
-                    vBoxContainer.getChildren().add(button);
-                    HBox hBox = new HBox();
-                    for (Song song : songs) {
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("song.fxml"));
-                        VBox vBox = null;
-                        try {
-                            vBox = fxmlLoader.load();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        SongController songController = fxmlLoader.getController();
-                        songController.setData(song);
-                        hBox.getChildren().add(vBox);
-                    }
-                    vBoxContainer.getChildren().add(hBox);
+                    vBoxContainer.getChildren().add(vh.generateView(songs));
+                    text.setText(playlist.getTitle());
                 });
             }).start();
-
         }
 
         //    @Override

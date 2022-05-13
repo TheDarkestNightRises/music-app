@@ -1,9 +1,14 @@
 package musicApp.client.core;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import musicApp.client.views.profile.SongController;
 import musicApp.server.model.Playlist;
 import musicApp.server.model.Song;
 import musicApp.server.model.User;
@@ -56,7 +61,8 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
-    public void openLogin(){
+
+    public void openLogin() {
         try {
             Parent root = loadFXML("../views/login/LoginMain.fxml");
             Scene loginScene = new Scene(root);
@@ -65,12 +71,12 @@ public class ViewHandler {
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void openSignUp(){
+    public void openSignUp() {
         try {
             Parent root = loadFXML("../views/signup/SignUpView.fxml");
             Scene signUp = new Scene(root);
@@ -79,41 +85,41 @@ public class ViewHandler {
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void openMusicPlayer(Playlist songs){
+    public void openMusicPlayer(Playlist songs) {
         try {
-            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml",songs);
+            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", songs);
             Scene signUp = new Scene(root);
             stage.setTitle("Music Player");
             stage.setScene(signUp);
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void openProfile(User user){
+    public void openProfile(User user) {
         try {
-            Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
+            Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
             Scene profile = new Scene(root);
             stage.setTitle("Profile");
             stage.setScene(profile);
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    public void openFollowList(){
+    public void openFollowList() {
         try {
             Parent root = loadFXML("../views/followList/FollowList.fxml");
             Scene signUp = new Scene(root);
@@ -122,11 +128,12 @@ public class ViewHandler {
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void openUpdateSettings(){
+
+    public void openUpdateSettings() {
         try {
             Parent root = loadFXML("../views/updateSettingsS/UpdateSettingsView.fxml");
             Scene settingsScene = new Scene(root);
@@ -135,18 +142,45 @@ public class ViewHandler {
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
-    private Parent loadFXML(String path,Object... args) throws IOException {
+
+    private Parent loadFXML(String path, Object... args) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
         Parent root = loader.load();
         ViewController ctrl = loader.getController();
-        ctrl.init(this, vmf,args);
+        ctrl.init(this, vmf, args);
         return root;
+    }
+
+    public VBox generateView(ArrayList<Song> songs) {
+        VBox vBoxContainer = new VBox();
+        Platform.runLater(() -> {
+            Button button = new Button();
+            button.setText("Play");
+            button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
+            vBoxContainer.getChildren().add(button);
+            HBox hBox = new HBox();
+            hBox.setSpacing(10);
+            for (Song song : songs) {
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+                VBox vBox = null;
+                try {
+                    vBox = fxmlLoader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                SongController songController = fxmlLoader.getController();
+                songController.setData(song);
+                hBox.getChildren().add(vBox);
+            }
+            vBoxContainer.getChildren().add(hBox);
+        });
+        return vBoxContainer;
     }
 
 }
