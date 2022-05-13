@@ -40,6 +40,7 @@ public class ConnectionFactory {
 
 //    public boolean open() {
 //        try {
+//            connection = DriverManager.getConnection(CONNECTION_STRING);
 //            querySongInfoView = connection.prepareStatement(QUERY_VIEW_SONG_INFO_PREP);
 //            insertIntoArtists = connection.prepareStatement(INSERT_ARTIST);
 //            insertIntoAlbums = connection.prepareStatement(INSERT_ALBUMS);
@@ -54,7 +55,7 @@ public class ConnectionFactory {
 //            return false;
 //        }
 //    }
-
+//
 //    public void close() {
 //        try {
 //            if (querySongInfoView != null) {

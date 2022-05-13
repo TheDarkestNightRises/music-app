@@ -1,6 +1,5 @@
 package musicApp.database.users;
 
-import musicApp.database.ConnectionFactory;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.server.model.*;
@@ -11,6 +10,9 @@ import java.util.ArrayList;
 public class UsersDAOImpl implements UsersDAO
 {
   private static UsersDAOImpl instance;
+  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+  public static String USERNAME = "viinvdnw";
+  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
 
   public UsersDAOImpl() throws SQLException
   {
@@ -26,16 +28,16 @@ public class UsersDAOImpl implements UsersDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException {
-    Connection conn;
-    conn = ConnectionFactory.getInstance().getConnection();
-    return conn;
+  private Connection getConnection() throws SQLException
+  {
+    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
   }
 
   public User createUser(String username, String password, String email)
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "INSERT INTO User_(username, password_, email, nickname, profile_picture_path, description) " + "VALUES (?, ?, ?, ?, ?, ?);");
       statement.setString(1, username);
@@ -44,6 +46,7 @@ public class UsersDAOImpl implements UsersDAO
       statement.setString(4, "");
       statement.setString(5, "");
       statement.setString(6, "");
+      statement0.executeUpdate();
       statement.executeUpdate();
       return new User(username, password, email, "", "", "",null);
     }
@@ -58,6 +61,8 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      statement0.executeUpdate();
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ? AND password_ = ?");
       statement.setString(1, username);
       statement.setString(2, password);
@@ -77,6 +82,8 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      statement0.executeUpdate();
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ? ");
       statement.setString(1, username);
       ResultSet resultSet = statement.executeQuery();
@@ -95,9 +102,11 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ?");
       ArrayList<Playlist> playlists = new ArrayList<>();
       statement.setString(1, username);
+      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next())
@@ -123,10 +132,12 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "SELECT * FROM playlist where username = ? and playlist_id = ?");
       statement.setString(1, user.getUsername());
       statement.setInt(2, id);
+      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next())
       {
@@ -157,9 +168,11 @@ public class UsersDAOImpl implements UsersDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "SELECT * FROM playlist where username = ?");
       statement.setString(1, user.getUsername());
+      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Playlist> playlists= new ArrayList<>();
       while (resultSet.next())

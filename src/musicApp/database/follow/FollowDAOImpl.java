@@ -11,6 +11,10 @@ public class FollowDAOImpl implements FollowDAO
 {
 
   private static FollowDAOImpl instance;
+  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+  public static String USERNAME = "viinvdnw";
+  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+
   public FollowDAOImpl() throws SQLException
   {
     DriverManager.registerDriver(new org.postgresql.Driver());
@@ -40,7 +44,9 @@ public class FollowDAOImpl implements FollowDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM followers where follower = ?" );
+      statement0.executeUpdate();
       statement.setString(1,user.getUsername());
       ResultSet resultSet = statement.executeQuery();
       ArrayList<User> list = new ArrayList<>();
@@ -61,10 +67,13 @@ public class FollowDAOImpl implements FollowDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO followers(follower,followed) "
           + "VALUES (?, ?);");
+
       statement.setString(1,follower.getUsername());
       statement.setString(2,followed.getUsername());
+      statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -75,9 +84,11 @@ public class FollowDAOImpl implements FollowDAO
   {
     try (Connection connection = getConnection())
     {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM followers WHERE follower = ? and followed = ?");
       statement.setString(1,follower.getUsername());
       statement.setString(2,followed.getUsername());
+      statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();

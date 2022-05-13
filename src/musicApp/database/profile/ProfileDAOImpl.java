@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 public class ProfileDAOImpl implements ProfileDAO {
     private static ProfileDAOImpl instance;
+    public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+    public static String USERNAME = "viinvdnw";
+    public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
     private Connection connection;
 
     private ProfileDAOImpl() throws SQLException {
@@ -64,9 +67,11 @@ public class ProfileDAOImpl implements ProfileDAO {
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
         try {
+            PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
             PreparedStatement statement = connection.prepareStatement("SELECT playlist_id, title, description, picture_path "
                     + "FROM playlist WHERE username = ?;");
             statement.setString(1, user.getUsername());
+            statement1.executeUpdate();
             ResultSet rs = statement.executeQuery();
             ArrayList<Playlist> playlists = new ArrayList<>();
             while (rs.next()) {
@@ -87,9 +92,11 @@ public class ProfileDAOImpl implements ProfileDAO {
     @Override
     public ArrayList<Integer> getSongIdsByPlaylist(Playlist playlist) {
         try (Connection connection = getConnection()) {
+            PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
             PreparedStatement statement = connection.prepareStatement("SELECT song_id "
                     + "FROM playlist_song_pair WHERE playlist_id = ?;");
             statement.setInt(1, playlist.getPlaylist_id());
+            statement1.executeUpdate();
             ResultSet rs = statement.executeQuery();
             ArrayList<Integer> songs = new ArrayList<>();
             while (rs.next()) {
@@ -107,6 +114,8 @@ public class ProfileDAOImpl implements ProfileDAO {
     @Override
     public void updateUserInfo(User user) {
         try (Connection connection = getConnection()) {
+            PreparedStatement statement0 = connection.prepareStatement(
+                    "SET SCHEMA 'music_app'");
             PreparedStatement statement = connection.prepareStatement(
                     "UPDATE user_ SET nickname = ?, profile_picture_path = ?, description = ? "
                             + "WHERE username = ?");
@@ -114,6 +123,7 @@ public class ProfileDAOImpl implements ProfileDAO {
             statement.setString(2, user.getProfile_picture());
             statement.setString(3, user.getDescription());
             statement.setString(4, user.getUsername());
+            statement0.executeUpdate();
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
