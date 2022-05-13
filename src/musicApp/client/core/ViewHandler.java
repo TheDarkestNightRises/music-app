@@ -162,27 +162,27 @@ public class ViewHandler {
 
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();
+        vBoxContainer.setSpacing(10);
         Platform.runLater(() -> {
-            Button button = new Button();
-            button.setText("Play");
-            button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
-            vBoxContainer.getChildren().add(button);
-            HBox hBox = new HBox();
-            hBox.setSpacing(10);
-            for (Song song : songs) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
-                VBox vBox = null;
-                try {
-                    vBox = fxmlLoader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            if (songs.size() > 0) {
+                vBoxContainer.getChildren().add(generatePlayButton(songs));
+                HBox hBox = new HBox();
+                hBox.setSpacing(10);
+                for (Song song : songs) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+                    VBox vBox = null;
+                    try {
+                        vBox = fxmlLoader.load();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    SongController songController = fxmlLoader.getController();
+                    songController.setData(song);
+                    hBox.getChildren().add(vBox);
                 }
-                SongController songController = fxmlLoader.getController();
-                songController.setData(song);
-                hBox.getChildren().add(vBox);
+                vBoxContainer.getChildren().add(hBox);
             }
-            vBoxContainer.getChildren().add(hBox);
         });
         return vBoxContainer;
     }
@@ -192,6 +192,13 @@ public class ViewHandler {
         text.setFont(Font.font("System", FontWeight.BOLD, 18));
         text.setFill(Color.WHITE);
         return text;
+    }
+
+    public Button generatePlayButton(ArrayList<Song> songs) {
+        Button button = new Button();
+        button.setText("Play");
+        button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
+        return button;
     }
 
 }
