@@ -13,9 +13,6 @@ public class AlbumDAOImpl implements AlbumDao
 {
 
   private static AlbumDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   public AlbumDAOImpl() throws SQLException
@@ -39,18 +36,11 @@ public class AlbumDAOImpl implements AlbumDao
     return instance;
   }
 
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//  }
-
   @Override public ArrayList<Album> getAllAlbums()
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM album");
-      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Album> list = new ArrayList<>();
       while (resultSet.next())
@@ -92,7 +82,6 @@ public class AlbumDAOImpl implements AlbumDao
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "INSERT INTO album(title, publication_year, picture_path, username) " + "VALUES (?, ?, ?, ?);",
           Statement.RETURN_GENERATED_KEYS);
@@ -101,7 +90,6 @@ public class AlbumDAOImpl implements AlbumDao
       statement.setInt(2, publication_year);
       statement.setString(3, picture);
       statement.setString(4, artist.getName());
-      statement0.executeUpdate();
       statement.executeUpdate();
       statement.getGeneratedKeys();
     }
@@ -115,10 +103,8 @@ public class AlbumDAOImpl implements AlbumDao
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM album WHERE album_id = ?");
       statement.setInt(1, album.getId());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -131,10 +117,8 @@ public class AlbumDAOImpl implements AlbumDao
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM album WHERE album_id = ?");
       statement.setInt(1, id);
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -147,10 +131,8 @@ public class AlbumDAOImpl implements AlbumDao
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM album where album_id = ?");
       statement.setInt(1, id);
-      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next())
       {
@@ -190,7 +172,6 @@ public class AlbumDAOImpl implements AlbumDao
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE album SET  title = ?,  publication_year = ?,"
           + " picture_path = ?, username = ? where album_id = ?");
       statement.setString(1, album.getTitle());
@@ -198,7 +179,6 @@ public class AlbumDAOImpl implements AlbumDao
       statement.setString(3, album.getPicturePath());
       statement.setString(4, album.getArtist().getName());
       statement.setInt(5, album.getId());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)

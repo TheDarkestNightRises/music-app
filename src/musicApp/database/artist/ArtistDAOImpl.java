@@ -16,9 +16,6 @@ public class ArtistDAOImpl implements ArtistDAO
 {
 
   private static ArtistDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   public ArtistDAOImpl() throws SQLException
@@ -51,9 +48,7 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM artist");
-      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Artist> list = new ArrayList<>();
       while(resultSet.next())
@@ -75,11 +70,9 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO artist(username) "
           + "VALUES (?);");
       statement.setString(1,username);
-      statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -91,10 +84,8 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM artist WHERE username = ?");
       statement.setString(1, artist.getName());
-      statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -105,10 +96,8 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM artist WHERE username = ?");
       statement.setString(1, username);
-      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       if(resultSet.next())
@@ -129,11 +118,9 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE artist SET username = ? where username = ?");
       statement.setString(1, name);
       statement.setString(1, artist.getName());
-      statement0.executeUpdate();
       statement.executeUpdate();
     } catch (SQLException e) {
       e.printStackTrace();
@@ -145,10 +132,8 @@ public class ArtistDAOImpl implements ArtistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Album where username = ?");
       statement.setString(1, artist.getName());
-      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Album> albums = new ArrayList<>();

@@ -11,9 +11,6 @@ import java.util.ArrayList;
 public class PlaylistDAOImpl implements PlaylistDAO
 {
   private static PlaylistDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   private PlaylistDAOImpl() throws SQLException
@@ -46,7 +43,6 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "INSERT INTO playlist(title, description, picture_path, username) " + "VALUES (?, ?, ?, ?);",
           Statement.RETURN_GENERATED_KEYS);
@@ -55,7 +51,6 @@ public class PlaylistDAOImpl implements PlaylistDAO
       statement.setString(2, description);
       statement.setString(3, picture);
       statement.setString(4, user.getUsername());
-      statement0.executeUpdate();
       statement.executeUpdate();
       statement.getGeneratedKeys();
     }
@@ -69,10 +64,8 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM playlist WHERE playlist_id = ?");
       statement.setInt(1, playlist.getPlaylist_id());
-      statement0.executeUpdate();
       statement.executeUpdate();
       PreparedStatement statement2 = connection.prepareStatement("DELETE FROM playlist_song_pair WHERE playlist_id = ?");
       statement2.setInt(1,playlist.getPlaylist_id());
@@ -86,10 +79,8 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM playlist WHERE playlist_id = ?");
       statement.setInt(1, id);
-      statement0.executeUpdate();
       statement.executeUpdate();
       PreparedStatement statement2 = connection.prepareStatement("DELETE FROM playlist_song_pair WHERE playlist_id = ?");
       statement2.setInt(1,id);
@@ -103,7 +94,6 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "UPDATE playlist SET  title = ?, description = ?, picture_path = ?, username= ? where playlist_id = ? ");
       statement.setString(1, playlist.getTitle());
@@ -111,7 +101,6 @@ public class PlaylistDAOImpl implements PlaylistDAO
       statement.setString(3, playlist.getPicture_name());
       statement.setString(4, user.getUsername());
       statement.setInt(5, playlist.getPlaylist_id());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -124,13 +113,11 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(
           "INSERT INTO playlist_song_pair(playlist_id, song_id) " + "VALUES (?, ?);", Statement.RETURN_GENERATED_KEYS);
 
       statement.setInt(1, playlist.getPlaylist_id());
       statement.setInt(2, song.getSong_id());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -145,10 +132,8 @@ public class PlaylistDAOImpl implements PlaylistDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist_song_pair where playlist_id = ?");
       statement.setInt(1, playlist.getPlaylist_id());
-      statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
       while (resultSet.next())

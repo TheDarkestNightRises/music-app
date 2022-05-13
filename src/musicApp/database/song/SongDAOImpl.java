@@ -14,9 +14,6 @@ public class SongDAOImpl implements SongDAO
 {
 
   private static SongDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   private SongDAOImpl() throws SQLException
@@ -54,9 +51,7 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song ");
-      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
@@ -98,7 +93,6 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO song(title,length,file_path,album_id,username)"
           + "VALUES (?, ?, ?, ?,?);", Statement.RETURN_GENERATED_KEYS);
 
@@ -107,7 +101,6 @@ public class SongDAOImpl implements SongDAO
       statement.setString(3,song.getFile_path());
       statement.setInt(4,album.getId());
       statement.setString(5, artist.getName());
-      statement0.executeUpdate();
       statement.executeUpdate();
       statement.getGeneratedKeys();
     } catch (SQLException e) {
@@ -119,10 +112,8 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM song WHERE song_id = ?");
       statement.setInt(1, song.getSong_id());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -135,10 +126,8 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("DELETE FROM song WHERE song_id = ?");
       statement.setInt(1, id);
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -151,10 +140,8 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song where song_id = ?");
       statement.setInt(1, id);
-      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       while(resultSet.next())
@@ -189,7 +176,6 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("UPDATE album SET title = ?,  length = ?,"
           + " file_path = ?, album_id = ?, username = ? where song_id = ?");
       statement.setString(1, song.getTitle());
@@ -198,7 +184,6 @@ public class SongDAOImpl implements SongDAO
       statement.setInt(4, song.getAlbum().getId());
       statement.setString(5, song.getArtist().getName());
       statement.setInt(6, song.getSong_id());
-      statement0.executeUpdate();
       statement.executeUpdate();
     }
     catch (SQLException e)
@@ -211,10 +196,8 @@ public class SongDAOImpl implements SongDAO
   {
     try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("Select * FROM Song where album_id = ?");
       statement.setInt(1, album.getId());
-      statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
