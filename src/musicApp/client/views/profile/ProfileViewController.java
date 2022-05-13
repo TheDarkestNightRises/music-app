@@ -1,5 +1,6 @@
 package musicApp.client.views.profile;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
@@ -52,21 +53,26 @@ public class ProfileViewController implements ViewController {
             profileContainer.getChildren().add(text);
             HBox hBox = new HBox();
             profileContainer.getChildren().add(hBox);
-            ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
-            System.out.println(songs);
-            for (Song song : songs) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("song.fxml"));
-                VBox vBox = null;
-                try {
-                    vBox = fxmlLoader.load();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                SongController songController = fxmlLoader.getController();
-                songController.setData(song);
-                hBox.getChildren().add(vBox);
-            }
+            new Thread(()->{
+                ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
+                System.out.println(songs);
+                Platform.runLater(()->{
+                    for (Song song : songs) {
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(getClass().getResource("song.fxml"));
+                        VBox vBox = null;
+                        try {
+                            vBox = fxmlLoader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        SongController songController = fxmlLoader.getController();
+                        songController.setData(song);
+                        hBox.getChildren().add(vBox);
+                    }
+                });
+            }).start();
+
         }
 
         //    @Override
