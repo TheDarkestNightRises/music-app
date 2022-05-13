@@ -17,6 +17,7 @@ import java.sql.Connection;
 public class MusicApp extends Application {
     private ModelFactory modelFactory;
     private ViewHandler vh;
+    ConnectionFactory connectionFactory;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -26,7 +27,7 @@ public class MusicApp extends Application {
     @Override
     public void init() throws Exception {
         //Heavy calculation connecting to database whatever.
-        ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
+        connectionFactory = ConnectionFactory.getInstance();
         Connection connection = connectionFactory.getConnection();
         ClientFactory clientFactory = new ClientFactory();
         this.modelFactory = new ModelFactory(clientFactory);
@@ -43,6 +44,7 @@ public class MusicApp extends Application {
     public void stop() throws Exception {
         super.stop();
         modelFactory.getMainModel().getLogInManager().disconnect(); //TODO: BREAK LAW OF DEMETER
+        connectionFactory.close();
         Platform.exit();
         System.exit(0);
     }
