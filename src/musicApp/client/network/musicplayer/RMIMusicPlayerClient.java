@@ -3,6 +3,7 @@ package musicApp.client.network.musicplayer;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
     }
 
     @Override
-    public File fetchAlbumCover(String picturePath) {
+    public FileInputStream fetchAlbumCover(String picturePath) {
         try {
             return server.getMusicPlayerServer().fetchAlbumCover(picturePath);
         } catch (RemoteException e) {

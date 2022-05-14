@@ -4,6 +4,7 @@ import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.MusicPlayerServer;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
     }
 
     @Override
-    public File fetchAlbumCover(String picturePath) {
+    public FileInputStream fetchAlbumCover(String picturePath) {
         return serverModel.getModelMusic().fetchAlbumCover(picturePath);
     }
 }

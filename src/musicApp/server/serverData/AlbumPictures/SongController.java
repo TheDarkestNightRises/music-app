@@ -11,6 +11,7 @@ import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.server.model.Song;
 
 import java.io.File;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Objects;
 
@@ -33,7 +34,6 @@ public class SongController implements ViewController {
         songName.setText(song.getTitle());
         artist.setText(song.getArtist().getName());
         System.out.println(song.getAlbum().getPicturePath());
-        File image = musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath());
         URL url = getClass().getResource(song.getAlbum().getPicturePath());
         Image image1 = new Image(String.valueOf(url));
         img.setImage(image1);

@@ -3,6 +3,7 @@ package musicApp.client.model.music;
 import musicApp.client.network.Client;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class MusicManagerImplementation implements MusicManager {
@@ -18,7 +19,7 @@ public class MusicManagerImplementation implements MusicManager {
     }
 
     @Override
-    public File fetchAlbumCover(String picturePath) {
+    public FileInputStream fetchAlbumCover(String picturePath) {
         return client.getMusicPlayerClient().fetchAlbumCover(picturePath);
     }
 }

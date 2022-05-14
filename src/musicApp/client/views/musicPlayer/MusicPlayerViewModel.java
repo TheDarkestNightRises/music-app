@@ -12,6 +12,7 @@ import javafx.scene.media.Media;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class MusicPlayerViewModel implements Subject {
@@ -91,7 +92,7 @@ public class MusicPlayerViewModel implements Subject {
         maxProperty.set(v);
     }
 
-    public File fetchAlbumCover(String picturePath) {
+    public FileInputStream fetchAlbumCover(String picturePath) {
         return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
     }
 }
