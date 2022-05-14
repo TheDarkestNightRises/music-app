@@ -1,4 +1,4 @@
-package musicApp.server.serverData.AlbumPictures;
+package musicApp.server.model.musicplayer;
 
 import javafx.scene.image.Image;
 import musicApp.server.model.musicplayer.ServerModelMusic;
@@ -26,7 +26,7 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     @Override
     public byte[] fetchAlbumCover(String picturePath) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        URL url = getClass().getResource(picturePath);
+        URL url = getClass().getResource("../../serverData/AlbumPictures/" + picturePath);
         BufferedImage image = null;
         try {
             image = ImageIO.read(url);

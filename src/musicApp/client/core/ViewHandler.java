@@ -15,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import musicApp.server.serverData.AlbumPictures.SongController;
+import musicApp.client.views.profile.SongController;
 import musicApp.server.model.Playlist;
 import musicApp.server.model.Song;
 import musicApp.server.model.User;

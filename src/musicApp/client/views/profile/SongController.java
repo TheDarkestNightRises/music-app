@@ -1,4 +1,4 @@
-package musicApp.server.serverData.AlbumPictures;
+package musicApp.client.views.profile;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
