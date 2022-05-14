@@ -39,13 +39,8 @@ public class SongController implements ViewController {
     public void setData(Song song) {
         songName.setText(song.getTitle());
         artist.setText(song.getArtist().getName());
-        System.out.println(song.getAlbum().getPicturePath());
-        URL url = getClass().getResource(song.getAlbum().getPicturePath());
         Image image = new Image(new ByteArrayInputStream(musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath())));
         img.setImage(image);
-
-//        Image image1 = new Image(String.valueOf(url));
-//        img.setImage(image1);
     }
 
     @Override
