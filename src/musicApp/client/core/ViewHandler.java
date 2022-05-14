@@ -185,7 +185,7 @@ public class ViewHandler {
                         e.printStackTrace();
                     }
                     SongController songController = fxmlLoader.getController();
-                    songController.setData(song);
+                    songController.init(this,vmf,song);
                     hBox.getChildren().add(vBox);
                 }
                 vBoxContainer.getChildren().add(hBox);

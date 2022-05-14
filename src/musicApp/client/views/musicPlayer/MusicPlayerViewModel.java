@@ -2,9 +2,8 @@ package musicApp.client.views.musicPlayer;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
-import musicApp.client.model.chat.ChatManager;
 import musicApp.server.model.Playlist;
 import musicApp.util.Subject;
 import javafx.beans.property.SimpleStringProperty;
@@ -90,5 +89,9 @@ public class MusicPlayerViewModel implements Subject {
 
     public void setMaximumDuration(double v) {
         maxProperty.set(v);
+    }
+
+    public Image fetchAlbumCover(String picturePath) {
+        return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
     }
 }

@@ -5,7 +5,7 @@ import musicApp.server.model.chat.ServerModelChatImpl;
 import musicApp.server.model.login.ServerModelLogin;
 import musicApp.server.model.login.ServerModelLoginImpl;
 import musicApp.server.model.musicplayer.ServerModelMusic;
-import musicApp.server.model.musicplayer.ServerModelMusicImpl;
+import musicApp.server.serverData.AlbumPictures.ServerModelMusicImpl;
 import musicApp.server.model.profile.ServerModelProfile;
 import musicApp.server.model.profile.ServerModelProfileImpl;
 import musicApp.server.model.register.ServerModelSignUp;

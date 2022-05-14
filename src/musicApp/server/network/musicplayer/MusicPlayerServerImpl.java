@@ -1,5 +1,6 @@
 package musicApp.server.network.musicplayer;
 
+import javafx.scene.image.Image;
 import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.MusicPlayerServer;
 
@@ -19,5 +20,10 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
     @Override
     public ArrayList<File> getCurrentPlaylist() {
         return serverModel.getModelMusic().getCurrentPlaylist();
+    }
+
+    @Override
+    public Image fetchAlbumCover(String picturePath) {
+        return serverModel.getModelMusic().fetchAlbumCover(picturePath);
     }
 }
