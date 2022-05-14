@@ -3,10 +3,8 @@ package musicApp.client.core;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,7 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import musicApp.client.views.profile.SongController;
+import musicApp.server.serverData.AlbumPictures.SongController;
 import musicApp.server.model.Playlist;
 import musicApp.server.model.Song;
 import musicApp.server.model.User;
@@ -185,7 +183,8 @@ public class ViewHandler {
                         e.printStackTrace();
                     }
                     SongController songController = fxmlLoader.getController();
-                    songController.init(this,vmf,song);
+                    songController.init(this,vmf);
+                    songController.setData(song);
                     hBox.getChildren().add(vBox);
                 }
                 vBoxContainer.getChildren().add(hBox);

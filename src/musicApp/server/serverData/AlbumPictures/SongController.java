@@ -1,4 +1,4 @@
-package musicApp.client.views.profile;
+package musicApp.server.serverData.AlbumPictures;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +10,7 @@ import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.server.model.Song;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Objects;
 
@@ -32,19 +33,15 @@ public class SongController implements ViewController {
         songName.setText(song.getTitle());
         artist.setText(song.getArtist().getName());
         System.out.println(song.getAlbum().getPicturePath());
-        Image image = musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath());
-        img.setImage(image);
+        File image = musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath());
+        URL url = getClass().getResource(song.getAlbum().getPicturePath());
+        Image image1 = new Image(String.valueOf(url));
+        img.setImage(image1);
     }
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
-        Song song = null;
-        for (Object object : args) {
-            song = (Song) object;
-        }
-        if (song == null) return;
-        setData(song);
     }
 }

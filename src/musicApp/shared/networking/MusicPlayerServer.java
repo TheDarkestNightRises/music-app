@@ -1,7 +1,5 @@
 package musicApp.shared.networking;
 
-import javafx.scene.image.Image;
-
 import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -11,5 +9,5 @@ public interface MusicPlayerServer extends Remote {
     //-----------MusicPlayer-------------
     ArrayList<File> getCurrentPlaylist() throws RemoteException;
 
-    Image fetchAlbumCover(String picturePath) throws RemoteException;
+    File fetchAlbumCover(String picturePath) throws RemoteException;
 }

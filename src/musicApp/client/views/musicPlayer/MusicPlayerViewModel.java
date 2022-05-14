@@ -91,7 +91,7 @@ public class MusicPlayerViewModel implements Subject {
         maxProperty.set(v);
     }
 
-    public Image fetchAlbumCover(String picturePath) {
+    public File fetchAlbumCover(String picturePath) {
         return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
     }
 }

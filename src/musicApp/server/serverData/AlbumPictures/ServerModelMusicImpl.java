@@ -1,6 +1,5 @@
 package musicApp.server.serverData.AlbumPictures;
 
-import javafx.scene.image.Image;
 import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.musicplayer.filemanager.FileManager;
 
@@ -21,9 +20,9 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     }
 
     @Override
-    public Image fetchAlbumCover(String picturePath) {
-        System.out.println(picturePath);
+    public File fetchAlbumCover(String picturePath) {
         URL url = getClass().getResource(picturePath);
-        return new Image(String.valueOf(url));
+        File file = new File(String.valueOf(url));
+        return new File(String.valueOf(url));
     }
 }

@@ -1,7 +1,5 @@
 package musicApp.client.network.musicplayer;
 
-import javafx.scene.image.Image;
-import musicApp.client.network.chat.ChatClient;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;
@@ -26,7 +24,7 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
     }
 
     @Override
-    public Image fetchAlbumCover(String picturePath) {
+    public File fetchAlbumCover(String picturePath) {
         try {
             return server.getMusicPlayerServer().fetchAlbumCover(picturePath);
         } catch (RemoteException e) {

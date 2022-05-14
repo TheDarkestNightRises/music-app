@@ -1,6 +1,5 @@
 package musicApp.client.network.musicplayer;
 
-import javafx.scene.image.Image;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;
@@ -11,5 +10,5 @@ public interface MusicPlayerClient {
     ArrayList<File> getCurrentPlaylist();
     void setServer(RMIServer server);
 
-    Image fetchAlbumCover(String picturePath);
+    File fetchAlbumCover(String picturePath);
 }

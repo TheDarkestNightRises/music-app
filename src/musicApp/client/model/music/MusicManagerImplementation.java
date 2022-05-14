@@ -1,6 +1,5 @@
 package musicApp.client.model.music;
 
-import javafx.scene.image.Image;
 import musicApp.client.network.Client;
 
 import java.io.File;
@@ -19,7 +18,7 @@ public class MusicManagerImplementation implements MusicManager {
     }
 
     @Override
-    public Image fetchAlbumCover(String picturePath) {
+    public File fetchAlbumCover(String picturePath) {
         return client.getMusicPlayerClient().fetchAlbumCover(picturePath);
     }
 }
