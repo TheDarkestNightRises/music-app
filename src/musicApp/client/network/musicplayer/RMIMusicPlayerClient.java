@@ -25,7 +25,7 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
     }
 
     @Override
-    public FileInputStream fetchAlbumCover(String picturePath) {
+    public byte[] fetchAlbumCover(String picturePath) {
         try {
             return server.getMusicPlayerServer().fetchAlbumCover(picturePath);
         } catch (RemoteException e) {

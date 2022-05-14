@@ -11,5 +11,5 @@ public interface MusicPlayerClient {
     ArrayList<File> getCurrentPlaylist();
     void setServer(RMIServer server);
 
-    FileInputStream fetchAlbumCover(String picturePath);
+    byte[] fetchAlbumCover(String picturePath);
 }

@@ -10,5 +10,5 @@ public interface MusicPlayerServer extends Remote {
     //-----------MusicPlayer-------------
     ArrayList<File> getCurrentPlaylist() throws RemoteException;
 
-    FileInputStream fetchAlbumCover(String picturePath) throws RemoteException;
+    byte[] fetchAlbumCover(String picturePath) throws RemoteException;
 }

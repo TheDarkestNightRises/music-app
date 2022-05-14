@@ -23,7 +23,7 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
     }
 
     @Override
-    public FileInputStream fetchAlbumCover(String picturePath) {
+    public byte[] fetchAlbumCover(String picturePath) {
         return serverModel.getModelMusic().fetchAlbumCover(picturePath);
     }
 }

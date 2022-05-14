@@ -7,5 +7,5 @@ import java.util.ArrayList;
 public interface MusicManager {
     ArrayList<File> getCurrentPlaylist();
 
-    FileInputStream fetchAlbumCover(String picturePath);
+    byte[] fetchAlbumCover(String picturePath);
 }

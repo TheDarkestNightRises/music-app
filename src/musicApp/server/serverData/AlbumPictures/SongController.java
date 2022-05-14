@@ -1,6 +1,8 @@
 package musicApp.server.serverData.AlbumPictures;
 
 import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,7 +12,11 @@ import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.server.model.Song;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Objects;
@@ -35,8 +41,11 @@ public class SongController implements ViewController {
         artist.setText(song.getArtist().getName());
         System.out.println(song.getAlbum().getPicturePath());
         URL url = getClass().getResource(song.getAlbum().getPicturePath());
-        Image image1 = new Image(String.valueOf(url));
-        img.setImage(image1);
+        Image image = new Image(new ByteArrayInputStream(musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath())));
+        img.setImage(image);
+
+//        Image image1 = new Image(String.valueOf(url));
+//        img.setImage(image1);
     }
 
     @Override

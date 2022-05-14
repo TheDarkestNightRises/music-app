@@ -1,11 +1,13 @@
 package musicApp.server.serverData.AlbumPictures;
 
+import javafx.scene.image.Image;
 import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.musicplayer.filemanager.FileManager;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -22,12 +24,16 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     }
 
     @Override
-    public FileInputStream fetchAlbumCover(String picturePath) {
+    public byte[] fetchAlbumCover(String picturePath) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        URL url = getClass().getResource(picturePath);
+        BufferedImage image = null;
         try {
-            return new FileInputStream("src/musicApp/server/serverData/AlbumPictures/" + picturePath);
-        } catch (FileNotFoundException e) {
+            image = ImageIO.read(url);
+            ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return byteArrayOutputStream.toByteArray();
     }
 }

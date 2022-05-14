@@ -19,7 +19,7 @@ public class MusicManagerImplementation implements MusicManager {
     }
 
     @Override
-    public FileInputStream fetchAlbumCover(String picturePath) {
+    public byte[] fetchAlbumCover(String picturePath) {
         return client.getMusicPlayerClient().fetchAlbumCover(picturePath);
     }
 }
