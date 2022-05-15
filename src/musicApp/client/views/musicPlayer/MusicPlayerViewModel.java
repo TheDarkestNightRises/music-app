@@ -38,9 +38,7 @@ public class MusicPlayerViewModel implements Subject {
     }
 
     public void init(Object... args) {
-        for (Object object : args) {
-            playlist = (Playlist) object;
-        }
+        playlist = (Playlist) args[0];
         songs = mainModel.getMusicPlayerManager().getCurrentPlaylistFiles(playlist);
         changeSong();
     }
@@ -68,7 +66,7 @@ public class MusicPlayerViewModel implements Subject {
         media = new Media(songs.get(songNumber).toURI().toString()); // TODO this should be in the controller
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
-        currentSongLabel.set(currentSong.getArtist().getName()  + " - " +  currentSong.getTitle());
+        currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
         support.firePropertyChange("ChangedSong", null, media);
     }
 
@@ -100,8 +98,7 @@ public class MusicPlayerViewModel implements Subject {
         return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
     }
 
-    public void bindImage(ObjectProperty<Image> property)
-    {
+    public void bindImage(ObjectProperty<Image> property) {
         albumPicture.bindBidirectional(property);
     }
 }

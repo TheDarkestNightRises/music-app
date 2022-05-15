@@ -28,10 +28,7 @@ public class ProfileViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
-        ArrayList<Playlist> playlists = null;
-        for (Object object : args) {
-            playlists = viewModel.fetchPlaylistsForUser((User) object);
-        }
+        ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser((User) args[0]);
         System.out.println(playlists);
         if (playlists == null) return;
         initPlaylistsView(playlists);
