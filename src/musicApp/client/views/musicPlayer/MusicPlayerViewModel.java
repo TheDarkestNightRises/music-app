@@ -1,15 +1,16 @@
 package musicApp.client.views.musicPlayer;
 
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.Playlist;
+import musicApp.server.model.Song;
 import musicApp.util.Subject;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.media.Media;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class MusicPlayerViewModel implements Subject {
     private SimpleStringProperty currentSongLabel;
     private SimpleDoubleProperty maxProperty;
     private PropertyChangeSupport support;
+    private ObjectProperty<Image> albumPicture;
 
     public MusicPlayerViewModel(MainModel mainModel) {
         this.mainModel = mainModel;
@@ -32,6 +34,7 @@ public class MusicPlayerViewModel implements Subject {
         support = new PropertyChangeSupport(this);
         currentSongLabel = new SimpleStringProperty();
         maxProperty = new SimpleDoubleProperty();
+        albumPicture = new SimpleObjectProperty<>();
     }
 
     public void init(Object... args) {
@@ -61,8 +64,11 @@ public class MusicPlayerViewModel implements Subject {
     }
 
     public void changeSong() {
+        Song currentSong = playlist.getSong(songNumber);
         media = new Media(songs.get(songNumber).toURI().toString()); // TODO this should be in the controller
-        currentSongLabel.set(songs.get(songNumber).getName());
+        Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
+        albumPicture.set(image);
+        currentSongLabel.set(currentSong.getArtist().getName()  + " - " +  currentSong.getTitle());
         support.firePropertyChange("ChangedSong", null, media);
     }
 
@@ -92,5 +98,10 @@ public class MusicPlayerViewModel implements Subject {
 
     public byte[] fetchAlbumCover(String picturePath) {
         return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
+    }
+
+    public void bindImage(ObjectProperty<Image> property)
+    {
+        albumPicture.bindBidirectional(property);
     }
 }

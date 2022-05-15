@@ -85,4 +85,9 @@ public class Playlist implements Serializable
   {
     return songs;
   }
+
+  public Song getSong(int number)
+  {
+    return songs.get(number);
+  }
 }

@@ -1,5 +1,6 @@
 package musicApp.client.views.musicPlayer;
 
+import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
@@ -18,9 +19,12 @@ import java.beans.PropertyChangeEvent;
 
 public class MusicPlayerController implements ViewController {
 
+
     private Media media;
     private MediaPlayer mediaPlayer;
 
+    @FXML
+    public ImageView albumCover;
     @FXML
     private Slider sliderTime;
     @FXML
@@ -31,17 +35,16 @@ public class MusicPlayerController implements ViewController {
     private ViewHandler viewHandler;
     private MusicPlayerViewModel musicPlayerViewModel;
 
-
-
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         this.viewHandler = vh;
         this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
         this.musicPlayerViewModel.addListener("ChangedSong",this::changeSong);
-        musicPlayerViewModel.init(args);
         songLabel.textProperty().bind(musicPlayerViewModel.currentSongLabelProperty());
         volumeSlider.valueProperty().addListener(this::changeVolume);
         sliderTime.maxProperty().bind(musicPlayerViewModel.getMaxProperty());
+        musicPlayerViewModel.bindImage(albumCover.imageProperty());
+        musicPlayerViewModel.init(args);
     }
 
     private void changeVolume(Observable observable) {

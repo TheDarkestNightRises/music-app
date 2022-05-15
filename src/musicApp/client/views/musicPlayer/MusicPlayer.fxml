@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" styleClass="bg" stylesheets="@musicPlayer.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.musicPlayer.MusicPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" styleClass="bg" stylesheets="@musicPlayer.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.musicPlayer.MusicPlayerController">
    <children>
       <VBox layoutX="22.0" layoutY="275.0" prefHeight="201.0" prefWidth="750.0" spacing="15.0">
          <children>
@@ -86,11 +86,7 @@
             </HBox>
          </children>
       </VBox>
-      <ImageView fitHeight="221.0" fitWidth="237.0" layoutX="282.0" layoutY="41.0">
-         <image>
-            <Image url="@peakpx%20(1).jpg" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="albumCover" fitHeight="221.0" fitWidth="237.0" layoutX="282.0" layoutY="41.0" />
       <ImageView fitHeight="40.0" fitWidth="43.0" layoutX="743.0" layoutY="242.0">
          <image>
             <Image url="@icons8-dislike-64.png" />
