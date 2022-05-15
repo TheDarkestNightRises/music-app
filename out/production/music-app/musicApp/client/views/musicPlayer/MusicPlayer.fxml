@@ -97,7 +97,7 @@
             <Image url="@icons8-like-64%20(1).png" />
          </image>
       </ImageView>
-      <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="bg">
+      <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="bg">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT">
                <image>

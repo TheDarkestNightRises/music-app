@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class ViewHandler {
 
-    private Scene chatScene;
+    private Scene profileScene;
     private Stage stage;
     private ViewModelFactory vmf;
 
@@ -40,20 +40,18 @@ public class ViewHandler {
     }
 
     public void openChat() {
-        if (chatScene == null) {
-            try {
-                Parent root = loadFXML("../views/chat/ChatView.fxml");
-                stage.setTitle("Chat");
-                chatScene = new Scene(root);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            Parent root = loadFXML("../views/chat/ChatView.fxml");
+            stage.setTitle("Chat");
+            Scene scene = new Scene(root);
+            stage.setTitle("Chat");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        stage.setTitle("Chat");
-        stage.setScene(chatScene);
-        stage.show();
-        stage.setResizable(false);
-        stage.centerOnScreen();
     }
 
     public void openLog() {
@@ -113,19 +111,30 @@ public class ViewHandler {
     }
 
     public void openProfile(User user) {
-        try {
-            Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
-            Scene profile = new Scene(root);
-            stage.setTitle("Profile");
-            stage.setScene(profile);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (profileScene == null) {
+            try {
+                Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
+                stage.setTitle("Chat");
+                profileScene = new Scene(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        stage.setTitle("Profile");
+        stage.setScene(profileScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
+    public void openProfile() {
+        //This method is used after profile has been generated.
+        stage.setTitle("Profile");
+        stage.setScene(profileScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
+    }
 
     public void openFollowList() {
         try {
@@ -183,7 +192,7 @@ public class ViewHandler {
                         e.printStackTrace();
                     }
                     SongController songController = fxmlLoader.getController();
-                    songController.init(this,vmf);
+                    songController.init(this, vmf);
                     songController.setData(song);
                     hBox.getChildren().add(vBox);
                 }
@@ -193,7 +202,7 @@ public class ViewHandler {
         return vBoxContainer;
     }
 
-    public Text generateLoadingText(){
+    public Text generateLoadingText() {
         Text text = new Text("Loading...");
         text.setFont(Font.font("System", FontWeight.BOLD, 18));
         text.setFill(Color.WHITE);

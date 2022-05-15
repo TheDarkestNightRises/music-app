@@ -1,5 +1,6 @@
 package musicApp.client.views.musicPlayer;
 
+import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
@@ -112,4 +113,8 @@ public class MusicPlayerController implements ViewController {
         });
     }
 
+    public void onBackButton() {
+        mediaPlayer.stop();
+        viewHandler.openProfile();
+    }
 }
