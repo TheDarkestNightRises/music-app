@@ -202,7 +202,6 @@ public class ViewHandler {
 
     public Hyperlink generatePlayButton(ArrayList<Song> songs) {
         Hyperlink button = new Hyperlink();
-//        Button button = new Button();
         URL url = getClass().getResource("../views/img/ic_play.png");
         Image image = new Image(String.valueOf(url));
         ImageView imageView = new ImageView(image);

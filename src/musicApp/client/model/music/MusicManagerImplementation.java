@@ -1,9 +1,9 @@
 package musicApp.client.model.music;
 
 import musicApp.client.network.Client;
+import musicApp.server.model.Playlist;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class MusicManagerImplementation implements MusicManager {
@@ -14,8 +14,8 @@ public class MusicManagerImplementation implements MusicManager {
     }
 
     @Override
-    public ArrayList<File> getCurrentPlaylist() {
-        return client.getMusicPlayerClient().getCurrentPlaylist();
+    public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
+        return client.getMusicPlayerClient().getCurrentPlaylistFiles(playlist);
     }
 
     @Override

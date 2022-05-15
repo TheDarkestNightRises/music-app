@@ -1,10 +1,10 @@
 package musicApp.server.network.musicplayer;
 
+import musicApp.server.model.Playlist;
 import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.MusicPlayerServer;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
     }
 
     @Override
-    public ArrayList<File> getCurrentPlaylist() {
-        return serverModel.getModelMusic().getCurrentPlaylist();
+    public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
+        return serverModel.getModelMusic().getCurrentPlaylistFiles(playlist);
     }
 
     @Override

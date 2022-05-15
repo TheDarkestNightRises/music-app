@@ -1,9 +1,9 @@
 package musicApp.client.network.musicplayer;
 
+import musicApp.server.model.Playlist;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,9 +11,9 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
     private RMIServer server;
 
     @Override
-    public ArrayList<File> getCurrentPlaylist() {
+    public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
         try {
-            return server.getMusicPlayerServer().getCurrentPlaylist();
+            return server.getMusicPlayerServer().getCurrentPlaylistFiles(playlist);
         } catch (RemoteException e) {
             e.printStackTrace(); //Todo: Throw Runtime Exception catch in viewModel set error
             return null;

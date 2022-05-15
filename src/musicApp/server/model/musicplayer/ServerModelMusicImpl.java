@@ -1,7 +1,6 @@
 package musicApp.server.model.musicplayer;
 
-import javafx.scene.image.Image;
-import musicApp.server.model.musicplayer.ServerModelMusic;
+import musicApp.server.model.Playlist;
 import musicApp.server.model.musicplayer.filemanager.FileManager;
 
 import javax.imageio.ImageIO;
@@ -19,8 +18,8 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     }
 
     @Override
-    public ArrayList<File> getCurrentPlaylist() {
-        return fileManager.getCurrentPlaylist();
+    public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
+        return fileManager.getCurrentPlaylistFiles(playlist);
     }
 
     @Override
