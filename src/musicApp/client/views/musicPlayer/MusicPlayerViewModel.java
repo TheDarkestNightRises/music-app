@@ -40,34 +40,33 @@ public class MusicPlayerViewModel implements Subject {
     public void init(Object... args) {
         playlist = (Playlist) args[0];
         songs = mainModel.getMusicPlayerManager().getCurrentPlaylistFiles(playlist);
-        changeSong();
+        currentSong();
     }
 
-    public void previousMedia() {
+    public String previousMedia() {
         if (songNumber > 0) {
             songNumber--;
         } else {
             songNumber = songs.size() - 1;
         }
-        changeSong();
+        return currentSong();
     }
 
-    public void nextMedia() {
+    public String nextMedia() {
         if (songNumber < songs.size() - 1) {
             songNumber++;
         } else {
             songNumber = 0;
         }
-        changeSong();
+       return currentSong();
     }
 
-    public void changeSong() {
+    public String currentSong() {
         Song currentSong = playlist.getSong(songNumber);
-        media = new Media(songs.get(songNumber).toURI().toString()); // TODO this should be in the controller
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
         currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
-        support.firePropertyChange("ChangedSong", null, media);
+        return songs.get(songNumber).toURI().toString();
     }
 
 

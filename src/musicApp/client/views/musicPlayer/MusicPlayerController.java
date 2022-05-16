@@ -1,6 +1,5 @@
 package musicApp.client.views.musicPlayer;
 
-import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
@@ -14,8 +13,6 @@ import javafx.scene.control.Slider;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
-
-import java.beans.PropertyChangeEvent;
 
 
 public class MusicPlayerController implements ViewController {
@@ -40,21 +37,21 @@ public class MusicPlayerController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         this.viewHandler = vh;
         this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
-        this.musicPlayerViewModel.addListener("ChangedSong",this::changeSong);
         songLabel.textProperty().bind(musicPlayerViewModel.currentSongLabelProperty());
         volumeSlider.valueProperty().addListener(this::changeVolume);
         sliderTime.maxProperty().bind(musicPlayerViewModel.getMaxProperty());
         musicPlayerViewModel.bindImage(albumCover.imageProperty());
         musicPlayerViewModel.init(args);
+        changeSong(musicPlayerViewModel.currentSong());
     }
 
     private void changeVolume(Observable observable) {
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
     }
 
-    private void changeSong(PropertyChangeEvent event)  {
+    private void changeSong(String path)  {
         if (mediaPlayer != null) mediaPlayer.stop();
-        media = (Media) event.getNewValue();
+        media = new Media(path);
         mediaPlayer = new MediaPlayer(media);
         setTimeSliderListeners();
         mediaPlayer.play();
@@ -75,11 +72,11 @@ public class MusicPlayerController implements ViewController {
     }
 
     public void previousMedia() {
-        musicPlayerViewModel.previousMedia();
+        changeSong(musicPlayerViewModel.previousMedia());
     }
 
     public void nextMedia() {
-        musicPlayerViewModel.nextMedia();
+        changeSong(musicPlayerViewModel.nextMedia());
     }
 
     private void setTimeSliderListeners() {
