@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="358.0" stylesheets="@FollowList.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.FollowListController">
    <children>
-      <VBox layoutX="-8.0" layoutY="-3.0" prefHeight="550.0" prefWidth="366.0">
+      <VBox layoutX="-8.0" layoutY="-3.0" prefHeight="550.0" prefWidth="366.0" styleClass="item">
          <children>
             <ScrollPane hbarPolicy="NEVER" prefHeight="550.0" prefWidth="366.0" styleClass="item" vbarPolicy="NEVER">
                <content>

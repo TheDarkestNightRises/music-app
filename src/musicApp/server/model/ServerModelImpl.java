@@ -2,6 +2,8 @@ package musicApp.server.model;
 
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.chat.ServerModelChatImpl;
+import musicApp.server.model.followList.ServerModelFollowList;
+import musicApp.server.model.followList.ServerModelFollowListImpl;
 import musicApp.server.model.login.ServerModelLogin;
 import musicApp.server.model.login.ServerModelLoginImpl;
 import musicApp.server.model.musicplayer.ServerModelMusic;
@@ -27,6 +29,7 @@ public class ServerModelImpl implements ServerModel
   private ServerModelSignUp modelSignUp;
   private ServerModelUpdateSettings modelUpdateSettings;
   private ServerModelSearch modelSearch;
+  private ServerModelFollowList modelFollowList;
 
   private PropertyChangeSupport support;
 
@@ -39,6 +42,7 @@ public class ServerModelImpl implements ServerModel
     this.modelProfile = new ServerModelProfileImpl();
     this.modelUpdateSettings = new ServerModelUpdateSettingsImpl();
     this.modelSearch = new ServerModelSearchImpl();
+    this.modelFollowList = new ServerModelFollowListImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -68,6 +72,11 @@ public class ServerModelImpl implements ServerModel
   @Override
   public ServerModelSearch getModelSearch() {
     return modelSearch;
+  }
+
+  @Override public ServerModelFollowList getModelFollowList()
+  {
+    return modelFollowList;
   }
 
   public ServerModelUpdateSettings getModelUpdateSettings()

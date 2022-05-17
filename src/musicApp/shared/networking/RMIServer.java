@@ -1,5 +1,7 @@
 package musicApp.shared.networking;
 
+import musicApp.client.network.followList.FollowListClient;
+
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -20,4 +22,6 @@ public interface RMIServer extends Remote {
     ProfileServer getProfileServer() throws RemoteException;
 
     SearchServer getSearchServer() throws RemoteException;
+
+    FollowListServer getFollowListServer() throws RemoteException;
 }

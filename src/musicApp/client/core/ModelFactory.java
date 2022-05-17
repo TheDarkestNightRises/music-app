@@ -4,6 +4,8 @@ import musicApp.client.model.MainModel;
 import musicApp.client.model.MainModelImplementation;
 import musicApp.client.model.chat.ChatManager;
 import musicApp.client.model.chat.ChatManagerImplementation;
+import musicApp.client.model.followList.FollowListManager;
+import musicApp.client.model.followList.FollowListManagerImplementation;
 import musicApp.client.model.login.LogInManager;
 import musicApp.client.model.login.LoginManagerImplementation;
 import musicApp.client.model.music.MusicManager;
@@ -25,6 +27,7 @@ public class ModelFactory {
     private ProfileManager profileManager;
     private UpdateSettingsManager updateSettingsManager;
     private SearchManager searchManager;
+    private FollowListManager followListManager;
 
     private ClientFactory clientFactory;
     private MainModel mainModel;
@@ -36,7 +39,7 @@ public class ModelFactory {
 
     public MainModel getMainModel() {
         if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager());
+            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager());
         }
         return mainModel;
     }
@@ -45,6 +48,12 @@ public class ModelFactory {
         if(chatManager == null)
             chatManager = new ChatManagerImplementation(clientFactory.getClient());
         return chatManager;
+    }
+
+    public FollowListManager getFollowListManager() {
+        if(followListManager == null)
+            followListManager = new FollowListManagerImplementation(clientFactory.getClient());
+        return followListManager;
     }
 
     public LogInManager getLoginManager() {

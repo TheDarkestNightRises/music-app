@@ -20,14 +20,6 @@ public class FollowListViewModel
   public List<User> getFollowList()
   {
     User user = model.getLogInManager().getUser();
-    try
-    {
-      return FollowDAOImpl.getInstance().getFollowList(user);
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return null;
+    return model.getFollowListManager().getFollowList(user);
   }
 }
