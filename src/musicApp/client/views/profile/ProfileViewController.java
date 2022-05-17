@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
+import musicApp.client.views.customControls.LoadingTextControl;
 import musicApp.client.views.customControls.PlaylistViewControl;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -55,8 +56,12 @@ public class ProfileViewController implements ViewController {
 //                    containerHBox.getChildren().add(vh.generateTitleHBox(songs));
 //                });
 //            }).start();
-            ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
-            PlaylistViewControl playlistViewControl = new PlaylistViewControl(songs, vh, playlist, profileContainer);
+            new Thread(() -> {
+                ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
+                Platform.runLater(() -> {
+                    PlaylistViewControl playlistViewControl = new PlaylistViewControl(songs, vh, playlist, profileContainer);
+                });
+            }).start();
         }
     }
 }
