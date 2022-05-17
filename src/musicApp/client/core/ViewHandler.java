@@ -194,10 +194,12 @@ public class ViewHandler {
         vBoxContainer.setPadding(new Insets(10));
         Platform.runLater(() -> {
             if (songs.size() > 0) {
-//                vBoxContainer.getChildren().add(generatePlayButton(songs));
+                vBoxContainer.getChildren().add(generatePlayButton(songs));
                 HBox hBox = new HBox();
                 hBox.setSpacing(10);
+                int counterUntilSpace = 0;
                 for (Song song : songs) {
+                    counterUntilSpace++;
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
                     VBox vBox = null;
@@ -210,6 +212,11 @@ public class ViewHandler {
                     songController.init(this, vmf);
                     songController.setData(song);
                     hBox.getChildren().add(vBox);
+                    if (counterUntilSpace == 4) {
+                        vBoxContainer.getChildren().add(hBox);
+                        hBox = new HBox();
+                        hBox.setSpacing(10);
+                    }
                 }
                 vBoxContainer.getChildren().add(hBox);
             }
