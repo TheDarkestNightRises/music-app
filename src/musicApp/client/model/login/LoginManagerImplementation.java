@@ -1,6 +1,6 @@
 package musicApp.client.model.login;
 
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.User;
 import musicApp.client.network.Client;
 
 import java.beans.PropertyChangeEvent;

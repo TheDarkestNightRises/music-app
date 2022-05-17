@@ -4,10 +4,8 @@ import javafx.concurrent.Task;
 import musicApp.database.playlist.PlaylistDAO;
 import musicApp.database.playlist.PlaylistDAOImpl;
 import musicApp.database.profile.ProfileDAO;
-import musicApp.database.profile.ProfileDAOImpl;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
 
 import java.util.ArrayList;
 

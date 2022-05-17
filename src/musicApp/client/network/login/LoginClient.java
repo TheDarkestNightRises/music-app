@@ -1,6 +1,6 @@
 package musicApp.client.network.login;
 
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.RMIServer;
 
 public interface LoginClient {

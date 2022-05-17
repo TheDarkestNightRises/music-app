@@ -1,8 +1,6 @@
 package musicApp.client.views.profile;
 
 import javafx.fxml.FXML;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,16 +8,9 @@ import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Song;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Objects;
 
 /**
  * Created by Alfacoaie on 02-Feb-21.

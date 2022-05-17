@@ -1,8 +1,8 @@
 package musicApp.client.network.profile;
 
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.RMIServer;
 
 import java.util.ArrayList;

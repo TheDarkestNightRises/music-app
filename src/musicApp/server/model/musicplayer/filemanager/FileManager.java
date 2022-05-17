@@ -1,7 +1,7 @@
 package musicApp.server.model.musicplayer.filemanager;
 
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package musicApp.database.follow;
 
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 

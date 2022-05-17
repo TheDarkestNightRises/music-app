@@ -1,8 +1,5 @@
 package musicApp.shared.networking;
 
-import javafx.collections.transformation.SortedList;
-import musicApp.server.model.Song;
-
 import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;

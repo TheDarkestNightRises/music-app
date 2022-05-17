@@ -1,7 +1,7 @@
 package musicApp.database.artist;
 
-import musicApp.server.model.Album;
-import musicApp.server.model.Artist;
+import musicApp.server.model.domainModel.Album;
+import musicApp.server.model.domainModel.Artist;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

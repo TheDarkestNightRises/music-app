@@ -1,14 +1,10 @@
 package musicApp.database.artist;
 
 import musicApp.database.ConnectionFactory;
-import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.song.SongDAOImpl;
-import musicApp.server.model.Album;
-import musicApp.server.model.Artist;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Album;
+import musicApp.server.model.domainModel.Artist;
+import musicApp.server.model.domainModel.Song;
 
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.ArrayList;
 

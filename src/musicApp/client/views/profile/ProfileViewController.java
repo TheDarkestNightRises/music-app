@@ -10,9 +10,9 @@ import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package musicApp.shared.networking;
 
-import musicApp.server.model.Playlist;
+import musicApp.server.model.domainModel.Playlist;
 
 import java.io.File;
 import java.rmi.Remote;

@@ -1,17 +1,10 @@
 package musicApp;
 
-import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.database.follow.FollowDAOImpl;
-import musicApp.database.playlist.PlaylistDAOImpl;
-import musicApp.database.song.SongDAOImpl;
-import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
-import musicApp.server.model.*;
+import musicApp.server.model.domainModel.User;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.ArrayList;
 
 public class Hope
 {

@@ -1,6 +1,8 @@
 package musicApp.database.playlist;
 
-import musicApp.server.model.*;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 

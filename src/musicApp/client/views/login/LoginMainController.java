@@ -5,10 +5,8 @@ import javafx.scene.control.Label;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import musicApp.server.model.User;
 
 public class LoginMainController implements ViewController
 {

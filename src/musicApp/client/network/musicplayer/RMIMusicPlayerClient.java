@@ -1,6 +1,6 @@
 package musicApp.client.network.musicplayer;
 
-import musicApp.server.model.Playlist;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;

@@ -1,4 +1,4 @@
-package musicApp.server.model;
+package musicApp.server.model.domainModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;

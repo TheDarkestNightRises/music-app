@@ -1,8 +1,9 @@
 package musicApp.database.users;
 
-import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.database.song.SongDAOImpl;
-import musicApp.server.model.*;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 
 import java.sql.*;
 import java.util.ArrayList;

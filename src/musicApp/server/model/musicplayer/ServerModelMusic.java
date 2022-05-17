@@ -1,6 +1,6 @@
 package musicApp.server.model.musicplayer;
 
-import musicApp.server.model.Playlist;
+import musicApp.server.model.domainModel.Playlist;
 
 import java.io.File;
 import java.util.ArrayList;

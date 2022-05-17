@@ -16,9 +16,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import musicApp.client.views.profile.SongController;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 
 import java.io.IOException;
 import java.net.URL;

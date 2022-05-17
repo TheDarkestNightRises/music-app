@@ -1,7 +1,7 @@
 package musicApp.database.profile;
 
-import musicApp.server.model.Playlist;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 

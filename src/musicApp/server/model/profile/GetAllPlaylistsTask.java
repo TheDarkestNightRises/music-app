@@ -3,8 +3,8 @@ package musicApp.server.model.profile;
 import javafx.concurrent.Task;
 import musicApp.database.profile.ProfileDAO;
 import musicApp.database.profile.ProfileDAOImpl;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 

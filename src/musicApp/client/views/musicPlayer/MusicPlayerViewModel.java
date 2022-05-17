@@ -3,8 +3,8 @@ package musicApp.client.views.musicPlayer;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
 import musicApp.util.Subject;
 import javafx.scene.media.Media;
 

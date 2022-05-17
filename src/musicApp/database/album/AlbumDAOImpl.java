@@ -2,9 +2,9 @@ package musicApp.database.album;
 
 import musicApp.database.ConnectionFactory;
 import musicApp.database.artist.ArtistDAOImpl;
-import musicApp.server.model.Album;
-import musicApp.server.model.Artist;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Album;
+import musicApp.server.model.domainModel.Artist;
+import musicApp.server.model.domainModel.Song;
 
 import java.sql.*;
 import java.util.ArrayList;

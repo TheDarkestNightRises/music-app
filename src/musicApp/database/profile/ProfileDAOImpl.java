@@ -1,8 +1,8 @@
 package musicApp.database.profile;
 
 import musicApp.database.ConnectionFactory;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.User;
 
 import java.sql.*;
 import java.util.ArrayList;

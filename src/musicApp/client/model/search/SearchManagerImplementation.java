@@ -2,7 +2,7 @@ package musicApp.client.model.search;
 
 import javafx.collections.transformation.SortedList;
 import musicApp.client.network.Client;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Song;
 
 public class SearchManagerImplementation implements SearchManager{
     private final Client client;

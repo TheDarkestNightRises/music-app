@@ -1,7 +1,7 @@
 package musicApp.client.model.music;
 
 import musicApp.client.network.Client;
-import musicApp.server.model.Playlist;
+import musicApp.server.model.domainModel.Playlist;
 
 import java.io.File;
 import java.util.ArrayList;

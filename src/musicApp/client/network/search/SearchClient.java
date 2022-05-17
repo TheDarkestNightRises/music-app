@@ -1,7 +1,7 @@
 package musicApp.client.network.search;
 
 import javafx.collections.transformation.SortedList;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Song;
 import musicApp.shared.networking.RMIServer;
 
 public interface SearchClient {

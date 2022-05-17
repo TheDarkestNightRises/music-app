@@ -1,6 +1,5 @@
 package musicApp.client.network;
 
-import musicApp.client.model.search.SearchManager;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
 import musicApp.client.network.login.LoginClient;
@@ -15,8 +14,6 @@ import musicApp.client.network.search.RMISearchClient;
 import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 import musicApp.shared.networking.ClientCallBack;
@@ -29,7 +26,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallBack {
     private PropertyChangeSupport support;

@@ -1,6 +1,6 @@
 package musicApp.server.model.search;
 
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Song;
 
 import java.util.List;
 import java.util.function.Predicate;

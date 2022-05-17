@@ -1,7 +1,7 @@
 package musicApp.database.users;
 
-import musicApp.server.model.Playlist;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.User;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -8,7 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import musicApp.client.model.MainModel;
-import musicApp.server.model.Song;
+import musicApp.server.model.domainModel.Song;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;

@@ -1,9 +1,9 @@
 package musicApp.client.views.profile;
 
 import musicApp.client.model.MainModel;
-import musicApp.server.model.Playlist;
-import musicApp.server.model.Song;
-import musicApp.server.model.User;
+import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 

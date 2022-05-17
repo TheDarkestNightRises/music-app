@@ -10,6 +10,8 @@ import musicApp.server.model.profile.ServerModelProfile;
 import musicApp.server.model.profile.ServerModelProfileImpl;
 import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.register.ServerModelSignUpImpl;
+import musicApp.server.model.search.ServerModelSearch;
+import musicApp.server.model.search.ServerModelSearchImpl;
 import musicApp.server.model.updateSettings.ServerModelUpdateSettings;
 import musicApp.server.model.updateSettings.ServerModelUpdateSettingsImpl;
 
@@ -24,6 +26,7 @@ public class ServerModelImpl implements ServerModel
   private ServerModelMusic modelMusic;
   private ServerModelSignUp modelSignUp;
   private ServerModelUpdateSettings modelUpdateSettings;
+  private ServerModelSearch modelSearch;
 
   private PropertyChangeSupport support;
 
@@ -35,6 +38,7 @@ public class ServerModelImpl implements ServerModel
     this.modelSignUp = new ServerModelSignUpImpl();
     this.modelProfile = new ServerModelProfileImpl();
     this.modelUpdateSettings = new ServerModelUpdateSettingsImpl();
+    this.modelSearch = new ServerModelSearchImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -59,6 +63,11 @@ public class ServerModelImpl implements ServerModel
 
   public ServerModelProfile getModelProfile() {
     return modelProfile;
+  }
+
+  @Override
+  public ServerModelSearch getModelSearch() {
+    return modelSearch;
   }
 
   public ServerModelUpdateSettings getModelUpdateSettings()

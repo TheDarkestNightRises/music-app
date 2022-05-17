@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.server.model.Contact;
+import musicApp.server.model.domainModel.Contact;
 
 public class ContactItemController implements ViewController
 {

@@ -1,6 +1,6 @@
 package musicApp.server.network.musicplayer;
 
-import musicApp.server.model.Playlist;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.ServerModel;
 import musicApp.shared.networking.MusicPlayerServer;
 

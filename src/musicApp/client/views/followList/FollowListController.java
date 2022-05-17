@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.server.model.Contact;
+import musicApp.server.model.domainModel.Contact;
 
 import java.io.IOException;
 import java.net.URL;
