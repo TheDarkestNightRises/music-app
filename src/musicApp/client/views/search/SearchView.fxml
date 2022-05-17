@@ -31,7 +31,7 @@
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/ic_home.png" />
+                              <Image url="@../img/ic_back.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="18.0" />
@@ -286,7 +286,7 @@
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                <content>
-                  <VBox fx:id="profileContainer" prefHeight="669.0" prefWidth="900.0" />
+                  <VBox fx:id="searchContainer" prefHeight="669.0" prefWidth="900.0" />
                </content>
             </ScrollPane>
          </children>
