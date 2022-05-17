@@ -2,17 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" prefHeight="79.0" prefWidth="322.0" styleClass="item" stylesheets="@contact_item.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.ContactItemController">
+<HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="323.0" styleClass="item" stylesheets="@contact_item.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.followList.ContactItemController">
    <children>
-      <ImageView fitHeight="19.0" fitWidth="19.0">
-         <image>
-            <Image url="@icons8-red-circle-48%20(1).png" />
-         </image>
+      <ImageView fx:id="status" fitHeight="19.0" fitWidth="19.0">
          <HBox.margin>
             <Insets left="15.0" />
          </HBox.margin>

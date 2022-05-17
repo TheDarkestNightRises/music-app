@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -36,6 +37,11 @@ public class ProfileViewController implements ViewController {
         initPlaylistsView(playlists);
     }
 
+    @FXML public void openChat()
+    {
+        vh.openChat();
+    }
+
     public void initPlaylistsView(ArrayList<Playlist> playlists) {
         for (Playlist playlist : playlists) {
 //            Text playlistTitleText = vh.generateLoadingText();
@@ -64,4 +70,5 @@ public class ProfileViewController implements ViewController {
             }).start();
         }
     }
+
 }

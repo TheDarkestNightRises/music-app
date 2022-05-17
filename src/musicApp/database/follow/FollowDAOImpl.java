@@ -42,10 +42,10 @@ public class FollowDAOImpl implements FollowDAO
 
   @Override public ArrayList<User> getFollowList(User user)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM followers where follower = ?" );
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM followers where follower = ?" );
       statement0.executeUpdate();
       statement.setString(1,user.getUsername());
       ResultSet resultSet = statement.executeQuery();
@@ -65,10 +65,10 @@ public class FollowDAOImpl implements FollowDAO
 
   @Override public void Follow(User follower, User followed)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO followers(follower,followed) "
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement("INSERT INTO followers(follower,followed) "
           + "VALUES (?, ?);");
 
       statement.setString(1,follower.getUsername());
@@ -82,10 +82,10 @@ public class FollowDAOImpl implements FollowDAO
 
   @Override public void Unfollow(User follower, User followed)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("DELETE FROM followers WHERE follower = ? and followed = ?");
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement("DELETE FROM followers WHERE follower = ? and followed = ?");
       statement.setString(1,follower.getUsername());
       statement.setString(2,followed.getUsername());
       statement0.executeUpdate();
