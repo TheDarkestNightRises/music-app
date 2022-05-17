@@ -113,7 +113,7 @@ public class ViewHandler {
     public void openProfile(User user) {
         if (profileScene == null) {
             try {
-                Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
+                Parent root = loadFXML("../views/profile/SearchView.fxml",user);
                 stage.setTitle("Chat");
                 profileScene = new Scene(root);
             } catch (IOException e) {
@@ -172,6 +172,7 @@ public class ViewHandler {
         ctrl.init(this, vmf, args);
         return root;
     }
+
 
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();

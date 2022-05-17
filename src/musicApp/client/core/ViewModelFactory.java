@@ -6,6 +6,7 @@ import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
+import musicApp.client.views.search.SearchViewModel;
 import musicApp.client.views.signup.SignUpViewModel;
 import musicApp.client.views.updateSettingsS.UpdateSettingsViewModel;
 
@@ -19,7 +20,7 @@ public class ViewModelFactory {
     private ProfileViewModel profileViewModel;
     private FollowListViewModel followListViewModel;
     private UpdateSettingsViewModel updateSettingsViewModel;
-
+    private SearchViewModel searchViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -75,5 +76,11 @@ public class ViewModelFactory {
       updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getMainModel());
     return updateSettingsViewModel;
   }
+
+    public SearchViewModel getSearchViewModel() {
+        if ( searchViewModel == null)
+            searchViewModel = new SearchViewModel(modelFactory.getMainModel());
+        return searchViewModel;
+    }
 }
 
