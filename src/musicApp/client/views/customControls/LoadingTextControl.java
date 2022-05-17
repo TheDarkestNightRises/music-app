@@ -17,4 +17,8 @@ public class LoadingTextControl extends Text {
         text.setFont(Font.font("System", FontWeight.BOLD, 18));
         text.setFill(Color.WHITE);
     }
+
+    public void setTextForLoading(String text) {
+        this.text.setText(text);
+    }
 }

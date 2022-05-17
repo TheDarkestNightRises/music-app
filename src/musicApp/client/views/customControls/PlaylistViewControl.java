@@ -31,20 +31,12 @@ public class PlaylistViewControl extends VBox {
 
     private void initCustomLook() {
         playlistTitleText = new LoadingTextControl();
-        HBox containerHBox = new HBox();
-        containerHBox.setAlignment(Pos.CENTER_LEFT);
-        containerHBox.setPadding(new Insets(10));
-        containerHBox.setSpacing(10);
-        containerHBox.getChildren().add(playlistTitleText);
-        fatherContainer.getChildren().add(containerHBox);
-        VBox vBoxContainer = new VBox();
-        fatherContainer.getChildren().add(vBoxContainer);
+        fatherContainer.getChildren().add(playlistTitleText);
         new Thread(()->{
             System.out.println(songs);
             Platform.runLater(()->{
-                vBoxContainer.getChildren().add(new SongsViewControl(songs,viewHandler));
-                playlistTitleText.setText(playlist.getTitle());
-                containerHBox.getChildren().add(new PlaylistTitleControl(viewHandler,songs));
+                fatherContainer.getChildren().add(new PlaylistTitleControl(viewHandler,songs,playlist));
+                fatherContainer.getChildren().add(new SongsViewControl(songs,viewHandler));
             });
         }).start();
     }

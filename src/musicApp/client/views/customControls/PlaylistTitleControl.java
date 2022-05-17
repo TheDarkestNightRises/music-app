@@ -10,28 +10,30 @@ import java.util.ArrayList;
 
 public class PlaylistTitleControl extends HBox {
     private HBox titleHBox;
+    private LoadingTextControl loadingTextControl;
     private Hyperlink button;
 
     private ArrayList<Song> songs;
     private ViewHandler viewHandler;
+    private Playlist playlist;
 
-    public PlaylistTitleControl(ViewHandler viewHandler, ArrayList<Song> songs) {
+    public PlaylistTitleControl(ViewHandler viewHandler, ArrayList<Song> songs,Playlist playlist) {
         this.viewHandler = viewHandler;
         this.songs = songs;
+        this.playlist = playlist;
         initCustomLook();
     }
 
     public void initCustomLook() {
         titleHBox = new HBox();
         titleHBox.setSpacing(10);
+        loadingTextControl = new LoadingTextControl();
+        loadingTextControl.setTextForLoading(playlist.getTitle());
         if (songs.size() > 0) {
             button = new PlayButtonControl(viewHandler,songs);
-            titleHBox.getChildren().add(button);
-            System.out.println(button);
-            this.getChildren().addAll(titleHBox,button);
+            this.getChildren().addAll(loadingTextControl,button);
             return;
         }
-        System.out.println(button);
-        this.getChildren().addAll(titleHBox);
+        this.getChildren().addAll(loadingTextControl);
     }
 }
