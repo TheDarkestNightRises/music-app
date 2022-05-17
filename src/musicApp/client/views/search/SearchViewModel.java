@@ -9,10 +9,12 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.search.SongPredicate;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class SearchViewModel implements Subject {
     private ObservableList<Song> songs;
@@ -23,32 +25,34 @@ public class SearchViewModel implements Subject {
 
     public SearchViewModel(MainModel mainModel) {
         this.mainModel = mainModel;
-        this.songs = new SimpleListProperty<>(FXCollections.observableArrayList());
+        this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
+        this.search = new SimpleStringProperty();
     }
 
     public void init() {
         FilteredList<Song> filteredData = new FilteredList<>(songs);
-        SortedList<Song> sortedList = new SortedList<>(filteredData);//Fetch sorted list
-        //bind sorted list
-        fetchSortedList().comparatorProperty().bind(songs.sorted().comparatorProperty());
+        search.addListener(((observable, oldValue, newValue) -> {
+            if (newValue.isEmpty() || newValue.isBlank()) return;
+            filteredData.setPredicate(p->p.getTitle().equals(search.get()));
+            System.out.println(filteredData);
+        }));
     }
 
-    public void bindSearch(StringProperty property)
-    {
+    public void bindSearch(StringProperty property) {
         search.bindBidirectional(property);
     }
 
-    public SortedList<Song> fetchSortedList() {
+    public ArrayList<Song> fetchSortedList() {
         return mainModel.getSearchManager().fetchSortedList();
     }
 
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(eventName,listener);
+        support.addPropertyChangeListener(eventName, listener);
     }
 
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(eventName,listener);
+        support.addPropertyChangeListener(eventName, listener);
     }
 }

@@ -1,8 +1,11 @@
 package musicApp.client.model.search;
 
-import javafx.collections.transformation.SortedList;
 import musicApp.server.model.domainModel.Song;
 
+import java.util.ArrayList;
+
 public interface SearchManager {
-    SortedList<Song> fetchSortedList();
+    ArrayList<Song> fetchSortedList();
+
+    void search(String newValue);
 }

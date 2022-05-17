@@ -1,8 +1,9 @@
 package musicApp.client.model.search;
 
-import javafx.collections.transformation.SortedList;
 import musicApp.client.network.Client;
 import musicApp.server.model.domainModel.Song;
+
+import java.util.ArrayList;
 
 public class SearchManagerImplementation implements SearchManager{
     private final Client client;
@@ -12,7 +13,12 @@ public class SearchManagerImplementation implements SearchManager{
     }
 
     @Override
-    public SortedList<Song> fetchSortedList() {
+    public ArrayList<Song> fetchSortedList() {
         return client.getSearchClient().fetchSortedList();
+    }
+
+    @Override
+    public void search(String newValue) {
+        client.getSearchClient().search(newValue);
     }
 }

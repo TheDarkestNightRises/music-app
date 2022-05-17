@@ -36,7 +36,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openLogin();
+        openSearch();
     }
 
     public void openChat() {
@@ -156,6 +156,20 @@ public class ViewHandler {
             Scene settingsScene = new Scene(root);
             stage.setTitle("Update settings");
             stage.setScene(settingsScene);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void openSearch() {
+        try {
+            Parent root = loadFXML("../views/search/SearchView.fxml");
+            Scene scene = new Scene(root);
+            stage.setTitle("Search");
+            stage.setScene(scene);
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();

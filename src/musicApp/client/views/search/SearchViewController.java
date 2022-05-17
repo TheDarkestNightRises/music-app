@@ -24,6 +24,7 @@ public class SearchViewController implements ViewController {
        this.viewHandler = vh;
        this.searchViewModel = vmf.getSearchViewModel();
        searchViewModel.bindSearch(searchTextField.textProperty());
+       searchViewModel.init();
     }
 
 

@@ -1,13 +1,12 @@
 package musicApp.server.network.search;
 
-import javafx.collections.transformation.SortedList;
 import musicApp.server.model.ServerModel;
 import musicApp.server.model.domainModel.Song;
-import musicApp.server.model.search.SongPredicate;
 import musicApp.shared.networking.SearchServer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class SearchServerImpl implements SearchServer {
     private ServerModel serverModel;
@@ -18,7 +17,12 @@ public class SearchServerImpl implements SearchServer {
     }
 
     @Override
-    public SortedList<Song> fetchSortedList() {
+    public ArrayList<Song> fetchSortedList() {
         return serverModel.getModelSearch().fetchSortedList();
+    }
+
+    @Override
+    public void search(String newValue) {
+        serverModel.getModelSearch().search(newValue);
     }
 }
