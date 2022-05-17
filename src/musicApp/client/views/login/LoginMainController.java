@@ -33,10 +33,11 @@ public class LoginMainController implements ViewController
 
   public void signInButtonPressed()
   {
-    boolean canSignedIn = viewModel.signIn();
-    if (canSignedIn) {
-      viewModel.setUser();
+    boolean isSignedIn = viewModel.signIn();
+    if (isSignedIn) {
+      //viewModel.setUser();please do not use
       viewHandler.openProfile(viewModel.getUser());
+      //viewHandler.openUpdateSettings();
     }
   }
 

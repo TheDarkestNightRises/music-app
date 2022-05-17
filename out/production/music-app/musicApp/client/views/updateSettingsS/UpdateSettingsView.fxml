@@ -1,30 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="475.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettingsS.UpdateSettingsViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettingsS.UpdateSettingsViewController">
    <children>
-      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="150.0" prefHeight="18.0" prefWidth="99.0" text="Change password:" />
-      <PasswordField fx:id="passwordField" layoutX="247.0" layoutY="146.0" />
-      <Label layoutX="189.0" layoutY="24.0" text="Update your settings">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="198.0" prefHeight="26.0" prefWidth="99.0" text="Change nickname:" />
-      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="249.0" prefHeight="26.0" prefWidth="99.0" text="Change email:" />
-      <Button layoutX="451.0" layoutY="287.0" mnemonicParsing="false" onAction="#submitButtonPressed" text="Submit changes" />
-      <Label fx:id="errorLabel" layoutX="139.0" layoutY="291.0" prefHeight="18.0" prefWidth="254.0" textFill="RED" />
-      <TextField fx:id="nicknameField" layoutX="247.0" layoutY="199.0" />
-      <TextField fx:id="emailField" layoutX="247.0" layoutY="250.0" />
-      <ImageView fx:id="profilePicture" fitHeight="105.0" fitWidth="130.0" layoutX="108.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="350.0" layoutY="341.0" mnemonicParsing="false" onAction="#choosePictureButtonPressed" text="Choose profile picture" />
-      <Button layoutX="351.0" layoutY="393.0" mnemonicParsing="false" onAction="#updatePictureButtonPressed" text="Update profile picture" />
+      <ImageView fitHeight="720.0" fitWidth="1086.0" layoutX="-2.0" layoutY="-1.0">
+         <image>
+            <Image url="@wp4438964-neon-retro-girl-wallpapers.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="99.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@signUp.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
+                     <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bodoni MT Poster Compressed" size="7.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="28.0">
+                           <image>
+                              <Image url="@back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="384.0">
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               <children>
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="UPDATE YOUR SETTINGS" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                     <font>
+                        <Font name="Arial Black" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="63.0" prefWidth="384.0" styleClass="text" stylesheets="@signUp.css" />
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+               <children>
+                  <PasswordField fx:id="passwordField" onAction="#submitPassword" prefHeight="34.0" prefWidth="281.0" promptText="Password" styleClass="SignUpInput" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="93.0" prefHeight="65.0" prefWidth="384.0">
+               <children>
+                  <TextField fx:id="emailField" onAction="#submitEmail" prefHeight="34.0" prefWidth="282.0" promptText="Email" styleClass="SignUpInput" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="142.0" layoutY="256.0" prefHeight="65.0" prefWidth="384.0">
+               <children>
+                  <TextField fx:id="nicknameField" onAction="#submitNickname" prefHeight="34.0" prefWidth="281.0" promptText="Nickname" styleClass="SignUpInput" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
+               <children>
+                  <Label fx:id="errorLabel" textFill="#fdfdfd">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
+               <children>
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Reset">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="SignUpButton" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="384.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+               <children>
+                  <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Submit changes">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="SignUpButton" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="583.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@signUp.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0" />
+            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="384.0">
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               <children>
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="UPDATE YOUR PROFILE PICTURE" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                     <font>
+                        <Font name="Arial Black" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="244.0" prefWidth="384.0" styleClass="text" stylesheets="@signUp.css">
+               <children>
+                  <ImageView fx:id="profilePicture" fitHeight="178.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
+               <children>
+                  <Label fx:id="errorLabel1" textFill="#fdfdfd">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
+               <children>
+                  <Button fx:id="resetPictureButton" mnemonicParsing="false" onAction="#choosePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Choose a picture">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="SignUpButton" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="384.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+               <children>
+                  <Button fx:id="signUpButton1" mnemonicParsing="false" onAction="#updatePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Submit Picture">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="SignUpButton" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

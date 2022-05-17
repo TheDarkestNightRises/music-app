@@ -56,4 +56,20 @@ public class UpdateSettingsViewController implements ViewController
   {
 
   }
+  @FXML
+  public void resetButtonPressed()
+  {
+
+  }
+  @FXML
+  public void submitPassword(){ emailField.requestFocus();}
+  @FXML
+  public void submitEmail(){ nicknameField.requestFocus();}
+  @FXML
+  public void submitNickname(){ submitButtonPressed();}
+  @FXML
+  public void backButtonPressed()
+  {
+
+  }
 }

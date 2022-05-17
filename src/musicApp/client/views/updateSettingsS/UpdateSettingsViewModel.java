@@ -58,6 +58,7 @@ public class UpdateSettingsViewModel
     error.set("");
     email.set(mainModel.getLogInManager().getUser().getEmail());
     nickaname.set(mainModel.getLogInManager().getUser().getNickname());
+    System.out.println(mainModel.getLogInManager().getUser().getNickname());
     InputStream stream = null;
     try
     {

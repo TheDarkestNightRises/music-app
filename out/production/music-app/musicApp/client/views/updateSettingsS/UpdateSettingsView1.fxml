@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="475.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettingsS.UpdateSettingsViewController">
+   <children>
+      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="150.0" prefHeight="18.0" prefWidth="99.0" text="Change password:" />
+      <PasswordField fx:id="passwordField" layoutX="247.0" layoutY="146.0" />
+      <Label layoutX="189.0" layoutY="24.0" text="Update your settings">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="198.0" prefHeight="26.0" prefWidth="99.0" text="Change nickname:" />
+      <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="249.0" prefHeight="26.0" prefWidth="99.0" text="Change email:" />
+      <Button layoutX="451.0" layoutY="287.0" mnemonicParsing="false" onAction="#submitButtonPressed" text="Submit changes" />
+      <Label fx:id="errorLabel" layoutX="139.0" layoutY="291.0" prefHeight="18.0" prefWidth="254.0" textFill="RED" />
+      <TextField fx:id="nicknameField" layoutX="247.0" layoutY="199.0" />
+      <TextField fx:id="emailField" layoutX="247.0" layoutY="250.0" />
+      <ImageView fx:id="profilePicture" fitHeight="105.0" fitWidth="130.0" layoutX="108.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="350.0" layoutY="341.0" mnemonicParsing="false" onAction="#choosePictureButtonPressed" text="Choose profile picture" />
+      <Button layoutX="351.0" layoutY="393.0" mnemonicParsing="false" onAction="#updatePictureButtonPressed" text="Update profile picture" />
+   </children>
+</AnchorPane>
