@@ -113,7 +113,7 @@ public class ViewHandler {
     public void openProfile(User user) {
         if (profileScene == null) {
             try {
-                Parent root = loadFXML("../views/profile/SearchView.fxml",user);
+                Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
                 stage.setTitle("Chat");
                 profileScene = new Scene(root);
             } catch (IOException e) {
