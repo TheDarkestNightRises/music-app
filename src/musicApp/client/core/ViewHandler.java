@@ -36,7 +36,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openSearch();
+        openLogin();
     }
 
     public void openChat() {
@@ -113,7 +113,7 @@ public class ViewHandler {
     public void openProfile(User user) {
         if (profileScene == null) {
             try {
-                Parent root = loadFXML("../views/profile/ProfileView.fxml",user);
+                Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
                 stage.setTitle("Chat");
                 profileScene = new Scene(root);
             } catch (IOException e) {
@@ -249,6 +249,21 @@ public class ViewHandler {
             titleHBox.getChildren().add(button);
         }
         return titleHBox;
+    }
+
+    public VBox openSongView(Song song) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+        VBox vBox = null;
+        try {
+            vBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SongController songController = fxmlLoader.getController();
+        songController.init(this, vmf);
+        songController.setData(song);
+        return vBox;
     }
 }
 

@@ -16,7 +16,8 @@ public class ServerModelSearchImpl implements ServerModelSearch{
         try {
             this.songDAO = SongDAOImpl.getInstance();
             this.searchResultsSorted = new ArrayList<>();
-            this.songs = songDAO.getAllSongs();
+//            this.songs = songDAO.getAllSongs();
+            this.songs = new ArrayList<>();
             System.out.println(songs);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -13,11 +13,9 @@ public class SongPredicate {
         return p -> p.getTitle().equalsIgnoreCase(searchResult);
     }
 
-    public static List<Song> filterSongs (ArrayList<Song> songs,
-                                          Predicate<Song> predicate)
-    {
+    public static List<Song> filterSongs(ArrayList<Song> songs, Predicate<Song> predicate) {
         return songs.stream()
-                .filter( predicate )
+                .filter(predicate)
                 .collect(Collectors.<Song>toList());
     }
 }
