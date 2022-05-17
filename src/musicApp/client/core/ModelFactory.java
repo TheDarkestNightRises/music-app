@@ -12,6 +12,8 @@ import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.profile.ProfileManagerImplementation;
 import musicApp.client.model.register.SignUpManager;
 import musicApp.client.model.register.SignUpManagerImplementation;
+import musicApp.client.model.search.SearchManager;
+import musicApp.client.model.search.SearchManagerImplementation;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManagerImplementation;
 
@@ -22,6 +24,7 @@ public class ModelFactory {
     private MusicManager musicManager;
     private ProfileManager profileManager;
     private UpdateSettingsManager updateSettingsManager;
+    private SearchManager searchManager;
 
     private ClientFactory clientFactory;
     private MainModel mainModel;
@@ -33,7 +36,7 @@ public class ModelFactory {
 
     public MainModel getMainModel() {
         if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager());
+            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager());
         }
         return mainModel;
     }
@@ -72,5 +75,11 @@ public class ModelFactory {
         if(updateSettingsManager == null)
             updateSettingsManager = new UpdateSettingsManagerImplementation(clientFactory.getClient());
         return updateSettingsManager;
+    }
+
+    public SearchManager getSearchManager() {
+        if(searchManager == null)
+            searchManager = new SearchManagerImplementation(clientFactory.getClient());
+        return searchManager;
     }
 }

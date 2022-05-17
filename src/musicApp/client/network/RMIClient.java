@@ -1,5 +1,6 @@
 package musicApp.client.network;
 
+import musicApp.client.model.search.SearchManager;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
 import musicApp.client.network.login.LoginClient;
@@ -10,6 +11,8 @@ import musicApp.client.network.profile.ProfileClient;
 import musicApp.client.network.profile.RMIProfileClient;
 import musicApp.client.network.register.RMISignUpClient;
 import musicApp.client.network.register.SignUpClient;
+import musicApp.client.network.search.RMISearchClient;
+import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
 import musicApp.server.model.Playlist;
@@ -37,6 +40,8 @@ public class RMIClient implements Client, ClientCallBack {
     private SignUpClient signUpClient;
     private ProfileClient profileClient;
     private UpdateSettingsClient updateSettingsClient;
+    private SearchClient searchClient;
+
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense
 
     public RMIClient() {
@@ -47,6 +52,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.signUpClient = new RMISignUpClient();
         this.profileClient = new RMIProfileClient();
         this.updateSettingsClient = new RMIUpdateSettingsClient();
+        this.searchClient = new RMISearchClient();
     }
 
     @Override
@@ -63,6 +69,7 @@ public class RMIClient implements Client, ClientCallBack {
             this.signUpClient.setServer(server);
             this.profileClient.setServer(server);
             this.updateSettingsClient.setServer(server);
+            this.searchClient.setServer(server);
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
@@ -116,4 +123,10 @@ public class RMIClient implements Client, ClientCallBack {
     public ProfileClient getProfileClient() {
         return profileClient;
     }
+
+    @Override
+    public SearchClient getSearchClient() {
+        return searchClient;
+    }
+
 }

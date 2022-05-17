@@ -27,17 +27,17 @@
             </ImageView>
             <VBox prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/ic_home.png" />
+                              <Image url="@../img/ic_back.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="18.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="158.0" text="Home" textFill="WHITE">
+                        <Label prefHeight="27.0" prefWidth="128.0" text="Home" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -60,7 +60,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="158.0" text="Explore" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="134.0" text="Explore" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -70,7 +70,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
                      <children>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -80,7 +80,7 @@
                               <Insets left="25.0" />
                            </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="27.0" prefWidth="158.0" text="Search" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="168.0" stylesheets="@css/style.css" text="Search" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -249,7 +249,7 @@
                               <Insets left="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <TextField prefWidth="250.0" promptText="Search" style="-fx-background-color: transparent;" />
+                        <TextField fx:id="searchTextField" prefWidth="250.0" promptText="Search" style="-fx-background-color: transparent;" />
                      </children>
                      <opaqueInsets>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -286,7 +286,7 @@
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                <content>
-                  <VBox fx:id="profileContainer" prefHeight="464.0" prefWidth="900.0" />
+                  <VBox fx:id="searchContainer" prefHeight="669.0" prefWidth="900.0" />
                </content>
             </ScrollPane>
          </children>

@@ -1,6 +1,7 @@
 package musicApp.client.views.search;
 
 
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -22,6 +23,7 @@ public class SearchViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
        this.viewHandler = vh;
        this.searchViewModel = vmf.getSearchViewModel();
+       searchViewModel.bindSearch(searchTextField.textProperty());
     }
 
 
