@@ -27,13 +27,15 @@ public class SearchViewModel implements Subject {
         this.mainModel = mainModel;
         this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
         this.search = new SimpleStringProperty();
+        this.support = new PropertyChangeSupport(this);
     }
 
     public void init() {
         FilteredList<Song> filteredData = new FilteredList<>(songs);
         search.addListener(((observable, oldValue, newValue) -> {
             if (newValue.isEmpty() || newValue.isBlank()) return;
-            filteredData.setPredicate(p->p.getTitle().equals(search.get()));
+            filteredData.setPredicate(p->p.getTitle().contains(search.get()));
+            support.firePropertyChange("newSearch",null,filteredData);
             System.out.println(filteredData);
         }));
     }
