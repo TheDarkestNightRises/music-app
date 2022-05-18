@@ -20,4 +20,9 @@ public class FollowListManagerImplementation implements FollowListManager
   {
    return client.getFollowListClient().getFollowList(user);
   }
+
+  @Override public boolean isOnline(User user)
+  {
+    return client.getFollowListClient().isOnline(user);
+  }
 }

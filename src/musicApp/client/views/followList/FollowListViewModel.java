@@ -22,4 +22,9 @@ public class FollowListViewModel
     User user = model.getLogInManager().getUser();
     return model.getFollowListManager().getFollowList(user);
   }
+
+  public boolean isOnline(User user)
+  {
+    return model.getFollowListManager().isOnline(user);
+  }
 }

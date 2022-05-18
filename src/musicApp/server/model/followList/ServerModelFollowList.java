@@ -7,4 +7,5 @@ import java.util.List;
 public interface ServerModelFollowList
 {
   List<User> getFollowList(User user);
+
 }

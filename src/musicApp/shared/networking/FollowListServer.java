@@ -10,4 +10,5 @@ public interface FollowListServer extends Remote
 {
 
   List<User> getFollowList(User user) throws RemoteException;
+  boolean isOnline(User user) throws RemoteException;
 }

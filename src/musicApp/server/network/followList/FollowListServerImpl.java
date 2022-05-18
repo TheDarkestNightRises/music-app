@@ -22,4 +22,9 @@ public class FollowListServerImpl implements FollowListServer
   {
     return serverModel.getModelFollowList().getFollowList(user);
   }
+
+  @Override public boolean isOnline(User user) throws RemoteException
+  {
+    return serverModel.getModelLogin().isOnline(user);
+  }
 }

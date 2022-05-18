@@ -20,6 +20,16 @@ public class RMIFollowListClient implements FollowListClient
     }
   }
 
+  @Override public boolean isOnline(User user)
+  {
+    try {
+      return server.getFollowListServer().isOnline(user);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+      throw new RuntimeException("Cant connect to server");
+    }
+  }
+
   public void setServer(RMIServer server) {
     this.server = server;
   }

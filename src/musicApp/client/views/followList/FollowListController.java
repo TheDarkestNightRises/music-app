@@ -72,7 +72,6 @@ public class FollowListController implements ViewController
 
   private boolean userIsOnline(User user)
   {
-//    return viewModel.isOnline(user);
-    return true;
+   return viewModel.isOnline(user);
   }
 }

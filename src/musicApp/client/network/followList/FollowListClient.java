@@ -9,4 +9,5 @@ public interface FollowListClient
 {
   void setServer(RMIServer server);
   List<User> getFollowList(User user);
+  boolean isOnline(User user);
 }

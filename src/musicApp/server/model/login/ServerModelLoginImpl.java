@@ -81,6 +81,14 @@ public class ServerModelLoginImpl implements ServerModelLogin {
 
     }
 
+    @Override public boolean isOnline(User user)
+    {
+        for(User value: userList)
+            if(value.getUsername().equals(user.getUsername()))
+             return true;
+        return false;
+    }
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);

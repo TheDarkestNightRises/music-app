@@ -7,4 +7,5 @@ import java.util.List;
 public interface FollowListManager
 {
   List<User> getFollowList(User user);
+  boolean isOnline(User user);
 }
