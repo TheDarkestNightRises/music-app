@@ -31,7 +31,7 @@ public class ServerModelLoginImpl implements ServerModelLogin {
             if (this.userDAO.accountExists(username, password)) {
                 User userLogged = userDAO.getUserByName(username);
                 userLogged.setLoggedIn(true);
-                System.out.println(userLogged);
+                //System.out.println(userLogged);
                 userList.add(userLogged);
                 System.out.println(userList);
                 return userLogged;
@@ -65,6 +65,20 @@ public class ServerModelLoginImpl implements ServerModelLogin {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override public void updateUserInfoInList(String username, String password,
+        String email, String nickname)
+    {
+        for (User currentUser : userList)
+            if (currentUser.getUsername().equals(username))
+            {
+                currentUser.setPassword(password);
+                currentUser.setEmail(email);
+                currentUser.setNickname(nickname);
+                break;
+            }
+
     }
 
     @Override

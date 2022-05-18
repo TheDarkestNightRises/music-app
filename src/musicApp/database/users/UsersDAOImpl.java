@@ -202,6 +202,29 @@ public class UsersDAOImpl implements UsersDAO
     }
     return null;
   }
+
+  @Override public void updateUserInfo(String username, String password,
+      String email, String nickname)
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement(
+          "UPDATE user_ SET password_ = ?, email = ?, nickname = ? WHERE username = ?");
+      statement.setString(1, password);
+      statement.setString(2, email);
+      statement.setString(3, nickname);
+      statement.setString(4, username);
+      statement0.executeUpdate();
+      statement.executeUpdate();
+
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+      throw new RuntimeException("Database error");
+    }
+  }
 }
 
 

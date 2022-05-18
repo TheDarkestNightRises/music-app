@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
+import musicApp.client.model.updateSettings.UpdateSettingsManager;
+import musicApp.server.model.domainModel.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -29,6 +31,7 @@ public class UpdateSettingsViewModel
     nickaname = new SimpleStringProperty("");
     profilePicture = new SimpleObjectProperty<Image>();
   }
+
   public void bindPassword(StringProperty property)
   {
     password.bindBidirectional(property);
@@ -58,7 +61,6 @@ public class UpdateSettingsViewModel
     error.set("");
     email.set(mainModel.getLogInManager().getUser().getEmail());
     nickaname.set(mainModel.getLogInManager().getUser().getNickname());
-    System.out.println(mainModel.getLogInManager().getUser().getNickname());
     InputStream stream = null;
     try
     {
@@ -78,9 +80,25 @@ public class UpdateSettingsViewModel
   }
   public void submit()
   {
-
+    if(validateUserData())
+    {
+      try
+      {
+        mainModel.getUpdateSettingsManager()
+            .updateUserInfo(mainModel.getLogInManager().getUser().getUsername(), password.get(), email.get(),
+                nickaname.get());
+        mainModel.getLogInManager().getUser().setPassword(password.get());
+        mainModel.getLogInManager().getUser().setEmail(email.get());
+        mainModel.getLogInManager().getUser().setNickname(nickaname.get());
+        error.set("Settings changed successfully");
+      }
+      catch (Exception e)
+      {
+        error.set(e.getMessage());
+      }
+    }
   }
-  public boolean updateUserData()
+  public boolean validateUserData()
   {
     try
     {
@@ -120,13 +138,24 @@ public class UpdateSettingsViewModel
         return false;
 
       }
-      //mainModel.getUpdateSettingsManager();
+      if(nicknameNotValid())
+      {
+        error.set("Nickname cannot be empty");
+      }
+
+
+      //mainModel.getLogInManager().updateUserInfo(password.get(), email.get(), nickaname.get());
       return true;
     }
     catch (Exception e)
     {
       return false;
     }
+  }
+
+  private boolean nicknameNotValid()
+  {
+    return mainModel.getUpdateSettingsManager().nicknameNotValid(nickaname.get());
   }
 
   private boolean emailNotValid()

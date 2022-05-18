@@ -9,4 +9,6 @@ public interface ServerModelLogin extends Subject {
     void disconnect(User user);
     int getNumberOfUsers();
     boolean accountDoesNotExist(User user);
+
+    void updateUserInfoInList(String username, String password, String email, String nickname);
 }

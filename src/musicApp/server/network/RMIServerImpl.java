@@ -8,6 +8,7 @@ import musicApp.server.network.musicplayer.MusicPlayerServerImpl;
 import musicApp.server.network.profile.ProfileServerImpl;
 import musicApp.server.network.register.SignUpServerImpl;
 import musicApp.server.network.search.SearchServerImpl;
+import musicApp.server.network.updateSettings.UpdateSettingsServerImpl;
 import musicApp.shared.LogEntry;
 import musicApp.shared.networking.*;
 
@@ -26,6 +27,7 @@ public class RMIServerImpl implements RMIServer {
     private ProfileServer profileServer;
     private SearchServer searchServer;
     private FollowListServer followListServer;
+    private UpdateSettingsServer updateSettingsServer;
 
     public RMIServerImpl(ServerModel serverModel) throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
@@ -37,6 +39,7 @@ public class RMIServerImpl implements RMIServer {
         this.profileServer = new ProfileServerImpl(serverModel);
         this.searchServer = new SearchServerImpl(serverModel);
         this.followListServer = new FollowListServerImpl(serverModel);
+        this.updateSettingsServer = new UpdateSettingsServerImpl(serverModel);
     }
 
     @Override
@@ -93,5 +96,10 @@ public class RMIServerImpl implements RMIServer {
     public FollowListServer getFollowListServer() throws RemoteException
     {
         return followListServer;
+    }
+
+    public UpdateSettingsServer getUpdateSettingsServer() throws RemoteException
+    {
+        return updateSettingsServer;
     }
 }

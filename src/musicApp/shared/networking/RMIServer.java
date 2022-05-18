@@ -24,4 +24,6 @@ public interface RMIServer extends Remote {
     SearchServer getSearchServer() throws RemoteException;
 
     FollowListServer getFollowListServer() throws RemoteException;
+
+    UpdateSettingsServer getUpdateSettingsServer() throws RemoteException;
 }

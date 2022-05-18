@@ -5,4 +5,5 @@ import musicApp.shared.networking.RMIServer;
 public interface UpdateSettingsClient
 {
   void setServer(RMIServer server);
+  void updateUserInfo(String username, String password, String email, String nickname);
 }

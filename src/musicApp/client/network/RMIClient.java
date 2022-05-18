@@ -71,6 +71,7 @@ public class RMIClient implements Client, ClientCallBack {
             this.updateSettingsClient.setServer(server);
             this.searchClient.setServer(server);
             this.followListClient.setServer(server);
+            this.updateSettingsClient.setServer(server);
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
@@ -133,6 +134,11 @@ public class RMIClient implements Client, ClientCallBack {
     @Override public FollowListClient getFollowListClient()
     {
         return followListClient;
+    }
+
+    @Override public UpdateSettingsClient getUpdateSettingsclient()
+    {
+        return updateSettingsClient;
     }
 
 }

@@ -7,6 +7,7 @@ import musicApp.client.network.musicplayer.MusicPlayerClient;
 import musicApp.client.network.profile.ProfileClient;
 import musicApp.client.network.register.SignUpClient;
 import musicApp.client.network.search.SearchClient;
+import musicApp.client.network.updateSettings.UpdateSettingsClient;
 import musicApp.util.Subject;
 
 public interface Client extends Subject {
@@ -26,4 +27,5 @@ public interface Client extends Subject {
     SearchClient getSearchClient();
 
     FollowListClient getFollowListClient();
+  UpdateSettingsClient getUpdateSettingsclient();
 }

@@ -7,6 +7,7 @@ import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.profile.ServerModelProfile;
 import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.search.ServerModelSearch;
+import musicApp.server.model.updateSettings.ServerModelUpdateSettings;
 import musicApp.shared.networking.ProfileServer;
 
 public interface ServerModel {
@@ -24,4 +25,5 @@ public interface ServerModel {
     ServerModelSearch getModelSearch();
 
     ServerModelFollowList getModelFollowList();
+  ServerModelUpdateSettings getModelUpdateSettings();
 }

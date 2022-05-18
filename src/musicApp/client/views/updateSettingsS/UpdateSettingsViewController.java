@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
+import musicApp.server.model.domainModel.User;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -44,7 +45,7 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public void submitButtonPressed()
   {
-    
+    viewModel.submit();
   }
   @FXML
   public void choosePictureButtonPressed()
@@ -59,7 +60,7 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public void resetButtonPressed()
   {
-
+    viewModel.reset();
   }
   @FXML
   public void submitPassword(){ emailField.requestFocus();}

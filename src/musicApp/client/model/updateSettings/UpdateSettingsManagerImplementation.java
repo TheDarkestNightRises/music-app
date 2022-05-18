@@ -9,4 +9,22 @@ public class UpdateSettingsManagerImplementation implements UpdateSettingsManage
   {
     this.client = client;
   }
+
+  @Override public boolean nicknameNotValid(String nick)
+  {
+    return nick == null || nick.equals("");
+  }
+
+  @Override public void updateUserInfo(String username, String password,
+      String email, String nickname) throws Exception
+  {
+    try{
+      client.getUpdateSettingsclient().updateUserInfo(username, password, email, nickname);
+    }
+    catch (Exception e)
+    {
+      e.printStackTrace();
+      throw e;
+    }
+  }
 }

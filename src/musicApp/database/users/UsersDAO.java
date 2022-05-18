@@ -14,4 +14,5 @@ public interface UsersDAO
   User getUserByName(String username);
   Playlist getPlaylistFromUserById(User user, int id);
   ArrayList<Playlist> getAllPlaylistsFromUser(User user);
+  void updateUserInfo(String username, String password, String email, String nickname);
 }
