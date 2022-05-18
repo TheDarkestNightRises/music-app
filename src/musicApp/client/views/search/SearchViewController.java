@@ -13,6 +13,9 @@ import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
+import musicApp.client.views.customControls.LoadingTextControl;
+import musicApp.client.views.customControls.PlaylistTitleControl;
+import musicApp.client.views.customControls.SongsHBoxControl;
 import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeEvent;
@@ -38,12 +41,12 @@ public class SearchViewController implements ViewController {
     }
 
     private void showSearchResults(PropertyChangeEvent event) {
-        Text loadingText = viewHandler.generateLoadingText();
+        LoadingTextControl loadingTextControl = new LoadingTextControl();
         HBox containerHBox = new HBox();
         containerHBox.setAlignment(Pos.CENTER_LEFT);
         containerHBox.setPadding(new Insets(10));
         containerHBox.setSpacing(10);
-        containerHBox.getChildren().add(loadingText);
+        containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
         searchContainer.getChildren().add(containerHBox);
         VBox vBoxContainer = new VBox();
         searchContainer.getChildren().add(vBoxContainer);
@@ -52,12 +55,9 @@ public class SearchViewController implements ViewController {
             ArrayList<Song> songs = new ArrayList<>(filteredList);
             Platform.runLater(()->{
                 searchContainer.getChildren().clear();
-                containerHBox.getChildren().add(viewHandler.generateTitleHBox(songs));
-                searchContainer.getChildren().add(viewHandler.generateView(songs));
-                loadingText.setText("SearchDone");
+                SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, viewHandler, searchContainer);
+                loadingTextControl.setText("Search Done");
             });
         }).start();
     }
-
-
 }
