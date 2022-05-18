@@ -2,6 +2,8 @@ package musicApp.server.network.musicplayer;
 
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.MusicPlayerServer;
 
 import java.io.File;
@@ -25,5 +27,15 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
     @Override
     public byte[] fetchAlbumCover(String picturePath) {
         return serverModel.getModelMusic().fetchAlbumCover(picturePath);
+    }
+
+    @Override public void addToLikedSongs(User user, Song song) throws RemoteException
+    {
+        serverModel.getModelMusic().addToLikedSongs(user, song);
+    }
+
+    @Override public void removeToLikedSongs(User user) throws RemoteException
+    {
+        serverModel.getModelMusic().removeToLikedSongs(user);
     }
 }

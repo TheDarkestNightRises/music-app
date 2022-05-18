@@ -112,6 +112,14 @@ public class MusicPlayerController implements ViewController {
         });
     }
 
+    @FXML public void addToLikedSongs(){
+    musicPlayerViewModel.addToLikedSongs();
+    }
+
+    @FXML public void removeFromLikedSongs(){
+        musicPlayerViewModel.removeToLikedSongs();
+    }
+
     public void onBackButton() {
         mediaPlayer.stop();
         viewHandler.openProfile();

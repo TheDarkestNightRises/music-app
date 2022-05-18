@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 import javafx.scene.media.Media;
 
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 public class MusicPlayerViewModel implements Subject {
     private final MainModel mainModel;
     private int songNumber;
-
     private Media media;
     private ArrayList<File> songs; //TODO: ARRAYLIST OF SONGS
     private Playlist playlist;
@@ -101,4 +101,19 @@ public class MusicPlayerViewModel implements Subject {
     public void bindImage(ObjectProperty<Image> property) {
         albumPicture.bindBidirectional(property);
     }
+
+  public void addToLikedSongs()
+  {
+      User user = mainModel.getLogInManager().getUser();
+      Song song = playlist.getSong(songNumber);
+      mainModel.getMusicPlayerManager().addToLikedSongs(user, song);
+  }
+
+  public void removeToLikedSongs()
+  {
+      User user = mainModel.getLogInManager().getUser();
+      Song song = playlist.getSong(songNumber);
+      mainModel.getMusicPlayerManager().removeToLikedSongs(user);
+  }
+
 }

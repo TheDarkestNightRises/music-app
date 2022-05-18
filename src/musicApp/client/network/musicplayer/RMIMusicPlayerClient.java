@@ -1,6 +1,8 @@
 package musicApp.client.network.musicplayer;
 
 import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.RMIServer;
 
 import java.io.File;
@@ -32,5 +34,23 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @Override public void addToLikedSongs(User user, Song song)
+    {
+        try {
+             server.getMusicPlayerServer().addToLikedSongs(user, song);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override public void removeToLikedSongs(User user)
+    {
+        try {
+            server.getMusicPlayerServer().removeToLikedSongs(user);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
