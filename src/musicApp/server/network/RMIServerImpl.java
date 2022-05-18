@@ -1,6 +1,7 @@
 package musicApp.server.network;
 
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.domainModel.Song;
 import musicApp.server.network.chat.ChatServerImpl;
 import musicApp.server.network.followList.FollowListServerImpl;
 import musicApp.server.network.login.LoginServerImpl;
@@ -17,6 +18,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class RMIServerImpl implements RMIServer {
     private ServerModel serverModel;
@@ -60,6 +62,13 @@ public class RMIServerImpl implements RMIServer {
         serverModel.getModelLogin().addListener("OnNewUserEntry", evt -> {
             try {
                 client.updateUserNumber((int) evt.getNewValue());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
+        serverModel.getModelSearch().addListener("newSearch", evt -> {
+            try {
+                client.updateSearchResult((ArrayList<Song>) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

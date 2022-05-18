@@ -30,7 +30,6 @@ public class ChatViewModel
     this.onlineUsers = new SimpleStringProperty("");
     this.mainModel.getChatManager().addListener("MessageAdded", this::updateChat);
     this.mainModel.getLogInManager().addListener("OnNewUserEntry", this::onNewUserEntry);
-
   }
 
   /**

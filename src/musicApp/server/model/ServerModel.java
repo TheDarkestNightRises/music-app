@@ -25,5 +25,6 @@ public interface ServerModel {
     ServerModelSearch getModelSearch();
 
     ServerModelFollowList getModelFollowList();
-  ServerModelUpdateSettings getModelUpdateSettings();
+
+    ServerModelUpdateSettings getModelUpdateSettings();
 }

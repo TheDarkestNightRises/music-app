@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -41,23 +42,28 @@ public class SearchViewController implements ViewController {
     }
 
     private void showSearchResults(PropertyChangeEvent event) {
-        LoadingTextControl loadingTextControl = new LoadingTextControl();
-        HBox containerHBox = new HBox();
-        containerHBox.setAlignment(Pos.CENTER_LEFT);
-        containerHBox.setPadding(new Insets(10));
-        containerHBox.setSpacing(10);
-        containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
-        searchContainer.getChildren().add(containerHBox);
-        VBox vBoxContainer = new VBox();
-        searchContainer.getChildren().add(vBoxContainer);
+        Platform.runLater(()->{
+            LoadingTextControl loadingTextControl = new LoadingTextControl();
+            HBox containerHBox = new HBox();
+            containerHBox.setAlignment(Pos.CENTER_LEFT);
+            containerHBox.setPadding(new Insets(10));
+            containerHBox.setSpacing(10);
+            containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
+            searchContainer.getChildren().add(containerHBox);
+            VBox vBoxContainer = new VBox();
+            searchContainer.getChildren().add(vBoxContainer);
+        });
         new Thread(()->{
-            FilteredList<Song> filteredList = (FilteredList<Song>) event.getNewValue();
-            ArrayList<Song> songs = new ArrayList<>(filteredList);
+            System.out.println(event.getNewValue());
+            ArrayList<Song> songs = (ArrayList<Song>) event.getNewValue();
             Platform.runLater(()->{
                 searchContainer.getChildren().clear();
                 SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, viewHandler, searchContainer);
-                loadingTextControl.setText("Search Done");
             });
         }).start();
+    }
+
+    public void search() {
+        searchViewModel.search(searchTextField.getText());
     }
 }

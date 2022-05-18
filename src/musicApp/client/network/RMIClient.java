@@ -16,6 +16,7 @@ import musicApp.client.network.search.RMISearchClient;
 import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
+import musicApp.server.model.domainModel.Song;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 import musicApp.shared.networking.ClientCallBack;
@@ -28,6 +29,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 public class RMIClient implements Client, ClientCallBack {
     private PropertyChangeSupport support;
@@ -87,6 +89,11 @@ public class RMIClient implements Client, ClientCallBack {
     @Override
     public void updateUserNumber(int newValue) {
         support.firePropertyChange("OnNewUserEntry",null,newValue);
+    }
+
+    @Override
+    public void updateSearchResult(ArrayList<Song> songsSearchResult)  {
+        support.firePropertyChange("newSearch",null,songsSearchResult);
     }
 
     @Override

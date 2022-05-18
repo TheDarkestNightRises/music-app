@@ -12,6 +12,7 @@ import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.search.SongPredicate;
 import musicApp.util.Subject;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -28,16 +29,21 @@ public class SearchViewModel implements Subject {
         this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
         this.search = new SimpleStringProperty();
         this.support = new PropertyChangeSupport(this);
+        this.mainModel.getSearchManager().addListener("newSearch", this::updateSearch);
+    }
+
+    private void updateSearch(PropertyChangeEvent event) {
+        support.firePropertyChange("newSearch", null, event.getNewValue());
     }
 
     public void init() {
-        FilteredList<Song> filteredData = new FilteredList<>(songs);
-        search.addListener(((observable, oldValue, newValue) -> {
-            if (newValue.isEmpty() || newValue.isBlank()) return;
-            filteredData.setPredicate(p->p.getTitle().contains(search.get()));
-            support.firePropertyChange("newSearch",null,filteredData);
-            System.out.println(filteredData);
-        }));
+//        FilteredList<Song> filteredData = new FilteredList<>(songs);
+//        search.addListener(((observable, oldValue, newValue) -> {
+//            if (newValue.isEmpty() || newValue.isBlank()) return;
+//            filteredData.setPredicate(p -> p.getTitle().contains(search.get()));
+//            support.firePropertyChange("newSearch", null, filteredData);
+//            System.out.println(filteredData);
+//        }));
     }
 
     public void bindSearch(StringProperty property) {
@@ -57,4 +63,9 @@ public class SearchViewModel implements Subject {
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);
     }
+
+    public void search(String text) {
+        mainModel.getSearchManager().search(text);
+    }
+
 }
