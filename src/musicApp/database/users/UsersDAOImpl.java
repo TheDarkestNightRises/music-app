@@ -1,5 +1,6 @@
 package musicApp.database.users;
 
+import musicApp.database.ConnectionFactory;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -11,9 +12,10 @@ import java.util.ArrayList;
 public class UsersDAOImpl implements UsersDAO
 {
   private static UsersDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
 
   public UsersDAOImpl() throws SQLException
   {
@@ -29,9 +31,10 @@ public class UsersDAOImpl implements UsersDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException
-  {
-    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+  private Connection getConnection() throws SQLException {
+    Connection conn;
+    conn = ConnectionFactory.getInstance().getConnection();
+    return conn;
   }
 
   public User createUser(String username, String password, String email)
@@ -60,11 +63,12 @@ public class UsersDAOImpl implements UsersDAO
 
   @Override public boolean accountExists(String username, String password) throws SQLException
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
       statement0.executeUpdate();
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ? AND password_ = ?");
+      PreparedStatement statement = getConnection().prepareStatement(
+          "SELECT * FROM User_ WHERE username = ? AND password_ = ?");
       statement.setString(1, username);
       statement.setString(2, password);
       ResultSet resultSet = statement.executeQuery();
@@ -77,15 +81,19 @@ public class UsersDAOImpl implements UsersDAO
         return false;
       }
     }
+    finally
+    {
+
+    }
   }
 
   @Override public boolean usernameExists(String username) throws SQLException
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
       statement0.executeUpdate();
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ? ");
+      PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM User_ WHERE username = ? ");
       statement.setString(1, username);
       ResultSet resultSet = statement.executeQuery();
       if (resultSet.next())
@@ -97,14 +105,18 @@ public class UsersDAOImpl implements UsersDAO
         return false;
       }
     }
+    finally
+    {
+
+    }
   }
 
   @Override public User getUserByName(String username)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM User_ WHERE username = ?");
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM User_ WHERE username = ?");
       ArrayList<Playlist> playlists = new ArrayList<>();
       statement.setString(1, username);
       statement0.execute();
@@ -131,10 +143,10 @@ public class UsersDAOImpl implements UsersDAO
 
   @Override public Playlist getPlaylistFromUserById(User user, int id)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement(
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement(
           "SELECT * FROM playlist where username = ? and playlist_id = ?");
       statement.setString(1, user.getUsername());
       statement.setInt(2, id);
@@ -147,7 +159,7 @@ public class UsersDAOImpl implements UsersDAO
         String description = resultSet.getString("description");
         String picture = resultSet.getString("picture_path");
         ArrayList<Song> songs = new ArrayList<>();
-        PreparedStatement statement2 = connection.prepareStatement("Select * FROM playlist_song_pair where playlist_id = ?");
+        PreparedStatement statement2 = getConnection().prepareStatement("Select * FROM playlist_song_pair where playlist_id = ?");
         statement2.setInt(1, id1);
         ResultSet resultSet2 = statement2.executeQuery();
         while (resultSet2.next())
@@ -167,10 +179,10 @@ public class UsersDAOImpl implements UsersDAO
 
   @Override public ArrayList<Playlist> getAllPlaylistsFromUser(User user)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement(
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement(
           "SELECT * FROM playlist where username = ?");
       statement.setString(1, user.getUsername());
       statement0.executeUpdate();
@@ -183,7 +195,7 @@ public class UsersDAOImpl implements UsersDAO
         String description = resultSet.getString("description");
         String picture = resultSet.getString("picture_path");
         ArrayList<Song> songs = new ArrayList<>();
-        PreparedStatement statement2 = connection.prepareStatement("Select * FROM playlist_song_pair where playlist_id = ?");
+        PreparedStatement statement2 = getConnection().prepareStatement("Select * FROM playlist_song_pair where playlist_id = ?");
         statement2.setInt(1, id1);
         ResultSet resultSet2 = statement2.executeQuery();
         while (resultSet2.next())
@@ -206,10 +218,10 @@ public class UsersDAOImpl implements UsersDAO
   @Override public void updateUserInfo(String username, String password,
       String email, String nickname)
   {
-    try (Connection connection = getConnection())
+    try
     {
-      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement(
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement(
           "UPDATE user_ SET password_ = ?, email = ?, nickname = ? WHERE username = ?");
       statement.setString(1, password);
       statement.setString(2, email);
