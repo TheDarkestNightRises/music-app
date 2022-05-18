@@ -55,6 +55,7 @@ public class ChatViewModel
   public void send()
   {
     mainModel.getChatManager().sendMessage(mainModel.getLogInManager().getUser(),messageBody.get());
+    messageBody.set("");
   }
 
   public void bindChat(ObjectProperty<ObservableList<String>> property)
@@ -72,10 +73,6 @@ public class ChatViewModel
     property.bind(user);
   }
 
-  public void bindOnlineUsers(StringProperty textProperty)
-  {
-    textProperty.bindBidirectional(onlineUsers);
-  }
 
   public void fetchNumberOfOnlineUsers()
   {

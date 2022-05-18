@@ -13,7 +13,6 @@ public class ChatViewController implements ViewController {
     @FXML private ListView<String> chatView;
     @FXML private TextField message;
     @FXML private Label user;
-    @FXML private Text onlineUsers;
     private ViewHandler vh;
     private ChatViewModel viewModel;
 
@@ -25,7 +24,6 @@ public class ChatViewController implements ViewController {
         viewModel.bindChat(chatView.itemsProperty());
         viewModel.bindMessage(message.textProperty());
         viewModel.bindUser(user.textProperty());
-        viewModel.bindOnlineUsers(onlineUsers.textProperty());
     }
     @FXML protected void viewLogButtonPressed()
     {
