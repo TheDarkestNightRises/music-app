@@ -38,12 +38,16 @@ public class FileManager {
     }
 
     public byte[] fetchPhotoFromProfile(String picturePath) {
+        if(picturePath == null || picturePath.equals(""))
+            picturePath = "default_pfp.jpg";
         String path = "../ProfilePictures/" + picturePath;
         System.out.println(path);
         return extractPhoto(path);
     }
 
     public byte[] fetchPhotoFromAlbum(String picturePath) {
+        if(picturePath == null || picturePath.equals(""))
+            picturePath = "default_album.png";
         String path = "../AlbumPictures/" + picturePath;
         System.out.println(path);
         return extractPhoto(path);
