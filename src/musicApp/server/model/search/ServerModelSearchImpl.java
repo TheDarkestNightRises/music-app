@@ -3,7 +3,6 @@ package musicApp.server.model.search;
 import musicApp.database.song.SongDAO;
 import musicApp.database.song.SongDAOImpl;
 import musicApp.server.model.domainModel.Song;
-import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -35,6 +34,15 @@ public class ServerModelSearchImpl implements ServerModelSearch {
 
     @Override
     public void search(String newValue) {
+        if (songs.isEmpty()) {
+            GetAllSongsTask getAllSongs = new GetAllSongsTask();
+            new Thread(getAllSongs).start();
+            try {
+                songs = getAllSongs.call();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         searchResultsSorted = (ArrayList<Song>) SongPredicate.filterSongs(songs, SongPredicate.containsSongTitleOrContainsArtist(newValue));
         System.out.println(searchResultsSorted);
         //Search ready fire property to client.

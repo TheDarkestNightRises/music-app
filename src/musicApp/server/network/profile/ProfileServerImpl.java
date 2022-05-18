@@ -28,4 +28,9 @@ public class ProfileServerImpl implements ProfileServer {
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
         return serverModel.getModelProfile().fetchSongsForPlaylist(playlist);
     }
+
+    @Override
+    public byte[] fetchProfilePicture(String profile_picture) throws RemoteException {
+        return serverModel.getModelProfile().fetchProfilePicture(profile_picture);
+    }
 }

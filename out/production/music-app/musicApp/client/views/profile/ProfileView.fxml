@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
    <left>
@@ -231,7 +232,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
                <children>
@@ -291,9 +292,34 @@
             </HBox>
             <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                <content>
-                  <VBox fx:id="profileContainer" prefHeight="464.0" prefWidth="900.0" />
-               </content>
-            </ScrollPane>
+                  <VBox fx:id="profileContainer" prefHeight="464.0" prefWidth="900.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <ImageView fx:id="profilePicture" fitHeight="166.0" fitWidth="339.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/In_the_Name_of_Love.jpeg" />
+                                 </image>
+                              </ImageView>
+                              <VBox prefHeight="166.0" prefWidth="759.0" spacing="10.0">
+                                 <children>
+                                    <Text fx:id="profileName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="26.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="profileDescription" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Description" textAlignment="RIGHT">
+                                       <font>
+                                          <Font size="19.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content></ScrollPane>
          </children>
       </VBox>
    </center>

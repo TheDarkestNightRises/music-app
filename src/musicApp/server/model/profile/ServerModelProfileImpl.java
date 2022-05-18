@@ -1,27 +1,17 @@
 package musicApp.server.model.profile;
 
-import musicApp.database.playlist.PlaylistDAO;
-import musicApp.database.playlist.PlaylistDAOImpl;
-import musicApp.database.profile.ProfileDAO;
-import musicApp.database.profile.ProfileDAOImpl;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
+import musicApp.server.serverData.filemanager.FileManager;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ServerModelProfileImpl implements ServerModelProfile {
-    private ProfileDAO profileDAO;
-    private PlaylistDAO playlistDAO;
+    private FileManager fileManager;
 
     public ServerModelProfileImpl() {
-        try {
-            profileDAO = ProfileDAOImpl.getInstance();
-            playlistDAO = PlaylistDAOImpl.getInstance();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        this.fileManager = FileManager.getInstance();
     }
 
     @Override
@@ -45,10 +35,10 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 
     @Override
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-        GetAllSongsTask getAllSongsTask = new GetAllSongsTask(playlist);
-        new Thread(getAllSongsTask).start();
+        GetAllSongsFromPlaylistTask getAllSongsFromPlaylistTask = new GetAllSongsFromPlaylistTask(playlist);
+        new Thread(getAllSongsFromPlaylistTask).start();
         try {
-            return getAllSongsTask.call();
+            return getAllSongsFromPlaylistTask.call();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,5 +51,11 @@ public class ServerModelProfileImpl implements ServerModelProfile {
 //            e.printStackTrace();
 //        }
 //        return null;
+    }
+
+    @Override
+    public byte[] fetchProfilePicture(String profile_picture) {
+        System.out.println(profile_picture);
+        return fileManager.fetchPhotoFromProfile(profile_picture);
     }
 }

@@ -21,4 +21,8 @@ public class ProfileViewModel {
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
         return mainModel.getProfileManager().fetchSongsForPlaylist(playlist);
     }
+
+    public byte[] fetchProfilePicture(String profile_picture) {
+        return mainModel.getProfileManager().fetchProfilePicture(profile_picture);
+    }
 }

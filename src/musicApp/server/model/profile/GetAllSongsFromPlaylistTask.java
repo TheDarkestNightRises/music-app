@@ -9,11 +9,11 @@ import musicApp.server.model.domainModel.Song;
 
 import java.util.ArrayList;
 
-public class GetAllSongsTask extends Task {
+public class GetAllSongsFromPlaylistTask extends Task {
     private ProfileDAO profileDAO;
     private Playlist playlist;
 
-    public GetAllSongsTask(Playlist playlist) {
+    public GetAllSongsFromPlaylistTask(Playlist playlist) {
         this.playlist = playlist;
     }
 

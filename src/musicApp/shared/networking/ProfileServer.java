@@ -12,4 +12,6 @@ public interface ProfileServer extends Remote {
     ArrayList<Playlist> fetchPlaylistsForUser(User user) throws RemoteException;
 
     ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) throws RemoteException;
+
+    byte[] fetchProfilePicture(String profile_picture) throws RemoteException;
 }

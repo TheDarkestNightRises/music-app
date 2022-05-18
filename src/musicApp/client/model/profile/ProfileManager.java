@@ -10,4 +10,6 @@ public interface ProfileManager {
     ArrayList<Playlist> fetchPlaylistsForUser(User user);
 
     ArrayList<Song> fetchSongsForPlaylist(Playlist playlist);
+
+    byte[] fetchProfilePicture(String profile_picture);
 }

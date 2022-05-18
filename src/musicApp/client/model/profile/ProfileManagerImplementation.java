@@ -23,4 +23,9 @@ public class ProfileManagerImplementation implements ProfileManager{
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
         return client.getProfileClient().fetchSongsForPlaylist(playlist);
     }
+
+    @Override
+    public byte[] fetchProfilePicture(String profile_picture) {
+        return client.getProfileClient().fetchProfilePicture(profile_picture);
+    }
 }

@@ -1,11 +1,11 @@
 package musicApp.client.views.profile;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -18,11 +18,18 @@ import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ProfileViewController implements ViewController {
     @FXML
     public VBox profileContainer;
+    @FXML
+    public ImageView profilePicture;
+    @FXML
+    public Text profileName;
+    @FXML
+    public Text profileDescription;
 
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -31,10 +38,19 @@ public class ProfileViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
-        ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser((User) args[0]);
+        User user = (User) args[0];
+        ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser(user);
         System.out.println(playlists);
         if (playlists == null) return;
         initPlaylistsView(playlists);
+        initProfileInfo(user);
+    }
+
+    private void initProfileInfo(User user) {
+        profileName.setText(user.getUsername());
+        Image image = new Image(new ByteArrayInputStream(fetchProfilePicture(user.getProfile_picture())));
+        profilePicture.setImage(image);
+        profileDescription.setText(user.getDescription());
     }
 
     @FXML
@@ -81,6 +97,10 @@ public class ProfileViewController implements ViewController {
                 });
             }).start();
         }
+    }
+
+    public byte[] fetchProfilePicture(String picturePath) {
+        return viewModel.fetchProfilePicture(picturePath);
     }
 
     public void openSearch() {

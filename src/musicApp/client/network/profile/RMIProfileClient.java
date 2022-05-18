@@ -36,4 +36,14 @@ public class RMIProfileClient implements ProfileClient{
         }
         return null;
     }
+
+    @Override
+    public byte[] fetchProfilePicture(String profile_picture) {
+        try {
+            return rmiServer.getProfileServer().fetchProfilePicture(profile_picture);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
