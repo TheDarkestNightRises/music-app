@@ -52,7 +52,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink>
                            <graphic>
@@ -63,7 +63,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="129.0" text="Explore" textFill="WHITE">
+                        <Label prefHeight="27.0" prefWidth="118.0" text="Explore" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -73,7 +73,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink onAction="#openSearch">
                            <graphic>
@@ -84,7 +84,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="122.0" text="Search" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="122.0" text="Search" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -105,7 +105,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="119.0" text="Chat" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="116.0" text="Chat" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

@@ -15,7 +15,7 @@ public class Song implements Serializable
   {
   }
 
-  public Song(int song_id, String title, String file_path, String length,
+  public Song(int song_id, String title, String length, String file_path,
       Album album, Artist artist)
 
   {
