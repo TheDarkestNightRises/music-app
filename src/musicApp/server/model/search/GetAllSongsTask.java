@@ -24,8 +24,7 @@ public class GetAllSongsTask extends Task {
     }
 
     @Override
-    protected ArrayList<Song> call() throws Exception {
-        PlaylistDAO playlistDAO = PlaylistDAOImpl.getInstance();
+    protected ArrayList<Song> call()  {
         return songDAO.getAllSongs();
     }
 }

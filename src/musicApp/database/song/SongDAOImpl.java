@@ -84,7 +84,8 @@ public class SongDAOImpl implements SongDAO
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        songs.add(new Song(id,title,length,picture,albumName,artistName));
+        songs.add(new Song(id,title,picture,length,albumName,artistName));
+//        songs.add(new Song(id,title,length,picture,albumName,artistName));
       }
       return songs;
     } catch (SQLException e) {

@@ -43,7 +43,7 @@ public class MusicPlayerViewModel implements Subject {
         currentSong();
     }
 
-    public String previousMedia() {
+    public File previousMedia() {
         if (songNumber > 0) {
             songNumber--;
         } else {
@@ -52,7 +52,7 @@ public class MusicPlayerViewModel implements Subject {
         return currentSong();
     }
 
-    public String nextMedia() {
+    public File nextMedia() {
         if (songNumber < songs.size() - 1) {
             songNumber++;
         } else {
@@ -61,12 +61,12 @@ public class MusicPlayerViewModel implements Subject {
        return currentSong();
     }
 
-    public String currentSong() {
+    public File currentSong() {
         Song currentSong = playlist.getSong(songNumber);
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
         currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
-        return songs.get(songNumber).toURI().toString();
+        return songs.get(songNumber);
     }
 
 

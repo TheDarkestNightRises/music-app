@@ -14,6 +14,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+import java.io.File;
+
 
 public class MusicPlayerController implements ViewController {
 
@@ -49,9 +51,9 @@ public class MusicPlayerController implements ViewController {
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
     }
 
-    private void changeSong(String path)  {
+    private void changeSong(File file)  {
         if (mediaPlayer != null) mediaPlayer.stop();
-        media = new Media(path);
+        media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         setTimeSliderListeners();
         mediaPlayer.play();

@@ -30,7 +30,7 @@ public class FileManager {
         for (Song song:playlist.getSongs()) {
             String songFilePath = song.getFile_path();
             if (songFilePath != null) {
-                File file = new File("../Music/" + songFilePath);
+                File file = new File("src/musicApp/server/serverData/Music/" + songFilePath);
                 songsFiles.add(file);
             }
         }
