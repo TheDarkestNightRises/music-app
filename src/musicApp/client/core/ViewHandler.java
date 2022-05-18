@@ -36,7 +36,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openSearch();
+        openLogin();
     }
 
     public void openChat() {

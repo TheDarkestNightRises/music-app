@@ -1,6 +1,7 @@
 package musicApp.client.views.profile;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -79,8 +80,10 @@ public class ProfileViewController implements ViewController {
                     SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, vh, vBoxContainer);
                 });
             }).start();
-
         }
     }
 
+    public void openSearch() {
+        vh.openSearch();
+    }
 }

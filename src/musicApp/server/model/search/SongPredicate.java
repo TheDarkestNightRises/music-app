@@ -9,8 +9,8 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class SongPredicate {
-    public static Predicate<Song> hasSameSongTitle(String searchResult) {
-        return p -> p.getTitle().equalsIgnoreCase(searchResult);
+    public static Predicate<Song> containsSongTitleOrContainsArtist(String searchResult) {
+        return p -> p.getTitle().contains(searchResult) || p.getArtist().getName().contains(searchResult);
     }
 
     public static List<Song> filterSongs(ArrayList<Song> songs, Predicate<Song> predicate) {

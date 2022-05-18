@@ -35,7 +35,7 @@ public class ServerModelSearchImpl implements ServerModelSearch {
 
     @Override
     public void search(String newValue) {
-        searchResultsSorted = (ArrayList<Song>) SongPredicate.filterSongs(songs, SongPredicate.hasSameSongTitle(newValue));
+        searchResultsSorted = (ArrayList<Song>) SongPredicate.filterSongs(songs, SongPredicate.containsSongTitleOrContainsArtist(newValue));
         System.out.println(searchResultsSorted);
         //Search ready fire property to client.
         support.firePropertyChange("newSearch", null, searchResultsSorted);

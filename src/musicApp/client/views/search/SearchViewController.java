@@ -3,6 +3,7 @@ package musicApp.client.views.search;
 
 import javafx.application.Platform;
 import javafx.collections.transformation.FilteredList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -65,5 +66,13 @@ public class SearchViewController implements ViewController {
 
     public void search() {
         searchViewModel.search(searchTextField.getText());
+    }
+
+    public void openChat() {
+        viewHandler.openChat();
+    }
+
+    public void openSearch() {
+        viewHandler.openSearch();
     }
 }

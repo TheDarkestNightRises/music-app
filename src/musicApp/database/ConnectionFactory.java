@@ -6,9 +6,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnectionFactory {
-    public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-    public static String USERNAME = "viinvdnw";
-    public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+    // -------------------------------- ELEPHANT ------------------------------------------------------------
+    //    public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+//    public static String USERNAME = "viinvdnw";
+//    public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
+
+    // -------------------------------- EMANUEL ------------------------------------------------------------
+    private static final String URL = "jdbc:postgresql://localhost/music_app";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "htmlhacker";
 
     private static Connection connection;
     private static ConnectionFactory connectionFactory = null;
@@ -18,7 +24,7 @@ public class ConnectionFactory {
 
     public Connection getConnection() throws SQLException {
         if (connection == null) {
-            connection = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            connection = DriverManager. getConnection(URL, USERNAME, PASSWORD);
         }
         return connection;
     }
