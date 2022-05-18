@@ -21,4 +21,8 @@ public class LoadingTextControl extends Text {
     public void setTextForLoading(String text) {
         this.text.setText(text);
     }
+
+    public Text getTextFromControl() {
+        return text;
+    }
 }

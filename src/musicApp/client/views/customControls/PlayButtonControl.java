@@ -25,20 +25,20 @@ public class PlayButtonControl extends Hyperlink {
         this.viewHandler = viewHandler;
         this.songs = songs;
         initCustomLook();
-        initButtonFunctionality();
     }
 
     private void initButtonFunctionality() {
-        this.setOnAction(event -> viewHandler.openMusicPlayer(new Playlist(songs)));
+        button.setOnAction(event -> viewHandler.openMusicPlayer(new Playlist(songs)));
     }
 
     private void initCustomLook() {
         button = new Hyperlink();
         URL url = getClass().getResource("../img/ic_play.png");
         Image image = new Image(String.valueOf(url));
+        System.out.println(image);
         imageView = new ImageView(image);
         button.setGraphic(imageView);
-        getChildren().addAll(button,imageView);
+        initButtonFunctionality();
     }
 
     public Hyperlink getButton() {

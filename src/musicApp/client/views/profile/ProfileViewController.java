@@ -11,8 +11,7 @@ import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.customControls.LoadingTextControl;
-import musicApp.client.views.customControls.PlaylistViewControl;
+import musicApp.client.views.customControls.*;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -37,8 +36,8 @@ public class ProfileViewController implements ViewController {
         initPlaylistsView(playlists);
     }
 
-    @FXML public void openChat()
-    {
+    @FXML
+    public void openChat() {
         vh.openChat();
     }
 
@@ -53,21 +52,34 @@ public class ProfileViewController implements ViewController {
 //            profileContainer.getChildren().add(containerHBox);
 //            VBox vBoxContainer = new VBox();
 //            profileContainer.getChildren().add(vBoxContainer);
-//            new Thread(()->{
+//            new Thread(() -> {
 //                ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
 //                System.out.println(songs);
-//                Platform.runLater(()->{
+//                Platform.runLater(() -> {
 //                    vBoxContainer.getChildren().add(vh.generateView(songs));
 //                    playlistTitleText.setText(playlist.getTitle());
 //                    containerHBox.getChildren().add(vh.generateTitleHBox(songs));
 //                });
 //            }).start();
+
+            LoadingTextControl loadingTextControl = new LoadingTextControl();
+            HBox containerHBox = new HBox();
+            containerHBox.setAlignment(Pos.CENTER_LEFT);
+            containerHBox.setPadding(new Insets(10));
+            containerHBox.setSpacing(10);
+            containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
+            profileContainer.getChildren().add(containerHBox);
+            VBox vBoxContainer = new VBox();
+            profileContainer.getChildren().add(vBoxContainer);
             new Thread(() -> {
                 ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
                 Platform.runLater(() -> {
-                    PlaylistViewControl playlistViewControl = new PlaylistViewControl(songs, vh, playlist, profileContainer);
+                    containerHBox.getChildren().remove(0);
+                    containerHBox.getChildren().add(new PlaylistTitleControl(vh, songs, playlist));
+                    SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, vh, vBoxContainer);
                 });
             }).start();
+
         }
     }
 

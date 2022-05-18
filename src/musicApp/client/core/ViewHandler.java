@@ -187,7 +187,22 @@ public class ViewHandler {
         return root;
     }
 
+    public VBox openSongView(Song song) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+        VBox vBox = null;
+        try {
+            vBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SongController songController = fxmlLoader.getController();
+        songController.init(this, vmf);
+        songController.setData(song);
+        return vBox;
+    }
 
+// -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();
         vBoxContainer.setSpacing(10);
@@ -251,19 +266,6 @@ public class ViewHandler {
         return titleHBox;
     }
 
-    public VBox openSongView(Song song) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
-        VBox vBox = null;
-        try {
-            vBox = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SongController songController = fxmlLoader.getController();
-        songController.init(this, vmf);
-        songController.setData(song);
-        return vBox;
-    }
+
 }
 
