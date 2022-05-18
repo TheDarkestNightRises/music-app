@@ -15,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import musicApp.client.views.profile.SinglesController;
 import musicApp.client.views.profile.SongController;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -96,9 +97,9 @@ public class ViewHandler {
         }
     }
 
-    public void openMusicPlayer(Playlist songs) {
+    public void openMusicPlayer(Playlist playlist) {
         try {
-            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", songs);
+            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", playlist);
             Scene signUp = new Scene(root);
             stage.setTitle("Music Player");
             stage.setScene(signUp);
@@ -202,6 +203,21 @@ public class ViewHandler {
         return vBox;
     }
 
+    public VBox openSingleView(Song song) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/profile/single.fxml"));
+        VBox vBox = null;
+        try {
+            vBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        SinglesController songController = fxmlLoader.getController();
+        songController.init(this, vmf,song);
+        songController.setData(song);
+        return vBox;
+    }
+
 // -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();
@@ -265,6 +281,7 @@ public class ViewHandler {
         }
         return titleHBox;
     }
+
 
 
 }

@@ -17,6 +17,7 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.customControls.LoadingTextControl;
 import musicApp.client.views.customControls.PlaylistTitleControl;
+import musicApp.client.views.customControls.SinglesHBoxControl;
 import musicApp.client.views.customControls.SongsHBoxControl;
 import musicApp.server.model.domainModel.Song;
 
@@ -59,7 +60,7 @@ public class SearchViewController implements ViewController {
             ArrayList<Song> songs = (ArrayList<Song>) event.getNewValue();
             Platform.runLater(()->{
                 searchContainer.getChildren().clear();
-                SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, viewHandler, searchContainer);
+                SinglesHBoxControl songsHBoxControl = new SinglesHBoxControl(songs, viewHandler, searchContainer);
             });
         }).start();
     }
