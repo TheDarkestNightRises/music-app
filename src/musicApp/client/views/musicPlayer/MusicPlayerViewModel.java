@@ -40,6 +40,7 @@ public class MusicPlayerViewModel implements Subject {
     public void init(Object... args) {
         playlist = (Playlist) args[0];
         songs = mainModel.getMusicPlayerManager().getCurrentPlaylistFiles(playlist);
+        songNumber = 0;
         currentSong();
     }
 
