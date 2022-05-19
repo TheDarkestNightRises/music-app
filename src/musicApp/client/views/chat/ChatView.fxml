@@ -17,6 +17,5 @@
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font></Label>
-      <Button layoutX="447.0" layoutY="14.0" mnemonicParsing="false" onAction="#viewFollowListButtonPressed" text="FollowList" />
    </children>
 </AnchorPane>
