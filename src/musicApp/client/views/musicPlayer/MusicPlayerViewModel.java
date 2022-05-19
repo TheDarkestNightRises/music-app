@@ -116,4 +116,8 @@ public class MusicPlayerViewModel implements Subject {
       mainModel.getMusicPlayerManager().removeToLikedSongs(user, song);
   }
 
+  public User fetchUser()
+  {
+      return mainModel.getLogInManager().getUser();
+  }
 }

@@ -25,274 +25,328 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ViewHandler {
+public class ViewHandler
+{
 
-    private Scene profileScene;
-    private Stage stage;
-    private ViewModelFactory vmf;
+  private Scene profileScene;
+  private Stage stage;
+  private ViewModelFactory vmf;
 
-    public ViewHandler(ViewModelFactory vmf) {
-        this.vmf = vmf;
-    }
+  public ViewHandler(ViewModelFactory vmf)
+  {
+    this.vmf = vmf;
+  }
 
-    public void start() {
-        stage = new Stage();
-        openLogin();
-    }
+  public void start()
+  {
+    stage = new Stage();
+    openLogin();
+  }
 
-    public Stage getStage()
+  public Stage getStage()
+  {
+    return stage;
+  }
+
+  public void setStage(Stage stage)
+  {
+    this.stage = stage;
+  }
+
+  public void openChat()
+  {
+    try
     {
-        return stage;
+      Parent root = loadFXML("../views/chat/ChatView.fxml");
+      stage.setTitle("Chat");
+      Scene scene = new Scene(root);
+      stage.setTitle("Chat");
+      stage.setScene(scene);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
-
-    public void setStage(Stage stage)
+    catch (IOException e)
     {
-        this.stage = stage;
+      e.printStackTrace();
     }
+  }
 
-    public void openChat() {
-        try {
-            Parent root = loadFXML("../views/chat/ChatView.fxml");
-            stage.setTitle("Chat");
-            Scene scene = new Scene(root);
-            stage.setTitle("Chat");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  public void openLog()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/log/LogView.fxml");
+      Scene logScene = new Scene(root);
+      stage.setTitle("Log");
+      stage.setScene(logScene);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
-
-    public void openLog() {
-        try {
-            Parent root = loadFXML("../views/log/LogView.fxml");
-            Scene logScene = new Scene(root);
-            stage.setTitle("Log");
-            stage.setScene(logScene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    catch (IOException e)
+    {
+      e.printStackTrace();
     }
+  }
 
-    public void openLogin() {
-        try {
-            Parent root = loadFXML("../views/login/LoginMain.fxml");
-            Scene loginScene = new Scene(root);
-            stage.setTitle("Login");
-            stage.setScene(loginScene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  public void openLogin()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/login/LoginMain.fxml");
+      Scene loginScene = new Scene(root);
+      stage.setTitle("Login");
+      stage.setScene(loginScene);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
-
-    public void openSignUp() {
-        try {
-            Parent root = loadFXML("../views/signup/SignUpView.fxml");
-            Scene signUp = new Scene(root);
-            stage.setTitle("Sign Up");
-            stage.setScene(signUp);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    catch (IOException e)
+    {
+      e.printStackTrace();
     }
+  }
 
-    public void openMusicPlayer(Playlist playlist) {
-        try {
-            Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", playlist);
-            Scene signUp = new Scene(root);
-            stage.setTitle("Music Player");
-            stage.setScene(signUp);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  public void openSignUp()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/signup/SignUpView.fxml");
+      Scene signUp = new Scene(root);
+      stage.setTitle("Sign Up");
+      stage.setScene(signUp);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
-
-    public void openProfile(User user) {
-        if (profileScene == null) {
-            try {
-                Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
-                stage.setTitle("Chat");
-                profileScene = new Scene(root);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        stage.setTitle("Profile");
-        stage.setScene(profileScene);
-        stage.show();
-        stage.setResizable(false);
-        stage.centerOnScreen();
+    catch (IOException e)
+    {
+      e.printStackTrace();
     }
+  }
 
-    public void openProfile() {
-        //This method is used after profile has been generated.
-        stage.setTitle("Profile");
-        stage.setScene(profileScene);
-        stage.show();
-        stage.setResizable(false);
-        stage.centerOnScreen();
+  public void openMusicPlayer(Playlist playlist)
+  {
+    try
+    {
+      Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", playlist);
+      Scene signUp = new Scene(root);
+      stage.setTitle("Music Player");
+      stage.setScene(signUp);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
-
-    public void openFollowList() {
-        try {
-            Parent root = loadFXML("../views/followList/FollowList.fxml");
-            Scene signUp = new Scene(root);
-            stage.setTitle("FollowList");
-            stage.setScene(signUp);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    catch (IOException e)
+    {
+      e.printStackTrace();
     }
+  }
 
-    public void openUpdateSettings(User user) {
-        try {
-            Parent root = loadFXML("../views/updateSettingsS/UpdateSettingsView.fxml", user);
-            Scene settingsScene = new Scene(root);
-            stage.setTitle("Update settings");
-            stage.setScene(settingsScene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+  public void openProfile(User user)
+  {
+    try {
+      Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
+      stage.setTitle("Chat");
+      profileScene = new Scene(root);
     }
-
-    public void openSearch() {
-        try {
-            Parent root = loadFXML("../views/search/SearchView.fxml");
-            Scene scene = new Scene(root);
-            stage.setTitle("Search");
-            stage.setScene(scene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    catch (IOException e) {
+      e.printStackTrace();
     }
+    stage.setTitle("Profile");
+    stage.setScene(profileScene);
+    stage.show();
+    stage.setResizable(false);
+    stage.centerOnScreen();
+  }
 
-    private Parent loadFXML(String path, Object... args) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(path));
-        Parent root = loader.load();
-        ViewController ctrl = loader.getController();
-        ctrl.init(this, vmf, args);
-        return root;
+  public void openProfile()
+  {
+    //This method is used after profile has been generated.
+    stage.setTitle("Profile");
+    stage.setScene(profileScene);
+    stage.show();
+    stage.setResizable(false);
+    stage.centerOnScreen();
+  }
+
+  public void openFollowList()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/followList/FollowList.fxml");
+      Scene signUp = new Scene(root);
+      stage.setTitle("FollowList");
+      stage.setScene(signUp);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
     }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
 
-    public VBox openSongView(Song song) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
-        VBox vBox = null;
-        try {
+  public void openUpdateSettings(User user)
+  {
+    try
+    {
+      Parent root = loadFXML("../views/updateSettingsS/UpdateSettingsView.fxml", user);
+      Scene settingsScene = new Scene(root);
+      stage.setTitle("Update settings");
+      stage.setScene(settingsScene);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  public void openSearch()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/search/SearchView.fxml");
+      Scene scene = new Scene(root);
+      stage.setTitle("Search");
+      stage.setScene(scene);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private Parent loadFXML(String path, Object... args) throws IOException
+  {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource(path));
+    Parent root = loader.load();
+    ViewController ctrl = loader.getController();
+    ctrl.init(this, vmf, args);
+    return root;
+  }
+
+  public VBox openSongView(Song song)
+  {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+    fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+    VBox vBox = null;
+    try
+    {
+      vBox = fxmlLoader.load();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    SongController songController = fxmlLoader.getController();
+    songController.init(this, vmf);
+    songController.setData(song);
+    return vBox;
+  }
+
+  public VBox openSingleView(Song song)
+  {
+    FXMLLoader fxmlLoader = new FXMLLoader();
+    fxmlLoader.setLocation(getClass().getResource("../views/profile/single.fxml"));
+    VBox vBox = null;
+    try
+    {
+      vBox = fxmlLoader.load();
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    SinglesController songController = fxmlLoader.getController();
+    songController.init(this, vmf, song);
+    songController.setData(song);
+    return vBox;
+  }
+
+  // -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
+  public VBox generateView(ArrayList<Song> songs)
+  {
+    VBox vBoxContainer = new VBox();
+    vBoxContainer.setSpacing(10);
+    vBoxContainer.setPadding(new Insets(10));
+    Platform.runLater(() -> {
+      if (songs.size() > 0)
+      {
+        vBoxContainer.getChildren().add(generatePlayButton(songs));
+        HBox hBox = new HBox();
+        hBox.setSpacing(10);
+        int counterUntilSpace = 0;
+        for (Song song : songs)
+        {
+          counterUntilSpace++;
+          FXMLLoader fxmlLoader = new FXMLLoader();
+          fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+          VBox vBox = null;
+          try
+          {
             vBox = fxmlLoader.load();
-        } catch (IOException e) {
+          }
+          catch (IOException e)
+          {
             e.printStackTrace();
+          }
+          SongController songController = fxmlLoader.getController();
+          songController.init(this, vmf);
+          songController.setData(song);
+          hBox.getChildren().add(vBox);
+          if (counterUntilSpace == 4)
+          {
+            vBoxContainer.getChildren().add(hBox);
+            hBox = new HBox();
+            hBox.setSpacing(10);
+          }
         }
-        SongController songController = fxmlLoader.getController();
-        songController.init(this, vmf);
-        songController.setData(song);
-        return vBox;
+        vBoxContainer.getChildren().add(hBox);
+      }
+    });
+    return vBoxContainer;
+  }
+
+  public Text generateLoadingText()
+  {
+    Text text = new Text("Loading...");
+    text.setFont(Font.font("System", FontWeight.BOLD, 18));
+    text.setFill(Color.WHITE);
+    return text;
+  }
+
+  public Hyperlink generatePlayButton(ArrayList<Song> songs)
+  {
+    Hyperlink button = new Hyperlink();
+    URL url = getClass().getResource("../views/img/ic_play.png");
+    Image image = new Image(String.valueOf(url));
+    ImageView imageView = new ImageView(image);
+    button.setGraphic(imageView);
+    button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
+    return button;
+  }
+
+  public HBox generateTitleHBox(ArrayList<Song> songs)
+  {
+    HBox titleHBox = new HBox();
+    titleHBox.setSpacing(10);
+    if (songs.size() > 0)
+    {
+      Hyperlink button = this.generatePlayButton(songs);
+      titleHBox.getChildren().add(button);
     }
-
-    public VBox openSingleView(Song song) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/single.fxml"));
-        VBox vBox = null;
-        try {
-            vBox = fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        SinglesController songController = fxmlLoader.getController();
-        songController.init(this, vmf,song);
-        songController.setData(song);
-        return vBox;
-    }
-
-// -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
-    public VBox generateView(ArrayList<Song> songs) {
-        VBox vBoxContainer = new VBox();
-        vBoxContainer.setSpacing(10);
-        vBoxContainer.setPadding(new Insets(10));
-        Platform.runLater(() -> {
-            if (songs.size() > 0) {
-                vBoxContainer.getChildren().add(generatePlayButton(songs));
-                HBox hBox = new HBox();
-                hBox.setSpacing(10);
-                int counterUntilSpace = 0;
-                for (Song song : songs) {
-                    counterUntilSpace++;
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
-                    VBox vBox = null;
-                    try {
-                        vBox = fxmlLoader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    SongController songController = fxmlLoader.getController();
-                    songController.init(this, vmf);
-                    songController.setData(song);
-                    hBox.getChildren().add(vBox);
-                    if (counterUntilSpace == 4) {
-                        vBoxContainer.getChildren().add(hBox);
-                        hBox = new HBox();
-                        hBox.setSpacing(10);
-                    }
-                }
-                vBoxContainer.getChildren().add(hBox);
-            }
-        });
-        return vBoxContainer;
-    }
-
-    public Text generateLoadingText() {
-        Text text = new Text("Loading...");
-        text.setFont(Font.font("System", FontWeight.BOLD, 18));
-        text.setFill(Color.WHITE);
-        return text;
-    }
-
-    public Hyperlink generatePlayButton(ArrayList<Song> songs) {
-        Hyperlink button = new Hyperlink();
-        URL url = getClass().getResource("../views/img/ic_play.png");
-        Image image = new Image(String.valueOf(url));
-        ImageView imageView = new ImageView(image);
-        button.setGraphic(imageView);
-        button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
-        return button;
-    }
-
-    public HBox generateTitleHBox(ArrayList<Song> songs) {
-        HBox titleHBox = new HBox();
-        titleHBox.setSpacing(10);
-        if (songs.size() > 0) {
-            Hyperlink button = this.generatePlayButton(songs);
-            titleHBox.getChildren().add(button);
-        }
-        return titleHBox;
-    }
-
-
+    return titleHBox;
+  }
 
 }
 
