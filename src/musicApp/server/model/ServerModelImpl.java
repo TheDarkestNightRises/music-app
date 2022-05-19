@@ -6,6 +6,8 @@ import musicApp.server.model.followList.ServerModelFollowList;
 import musicApp.server.model.followList.ServerModelFollowListImpl;
 import musicApp.server.model.login.ServerModelLogin;
 import musicApp.server.model.login.ServerModelLoginImpl;
+import musicApp.server.model.mainMenu.ServerModelMainMenu;
+import musicApp.server.model.mainMenu.ServerModelMainMenuImpl;
 import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.musicplayer.ServerModelMusicImpl;
 import musicApp.server.model.profile.ServerModelProfile;
@@ -30,6 +32,7 @@ public class ServerModelImpl implements ServerModel
   private ServerModelUpdateSettings modelUpdateSettings;
   private ServerModelSearch modelSearch;
   private ServerModelFollowList modelFollowList;
+  private ServerModelMainMenu serverModelMainMenu;
 
   private PropertyChangeSupport support;
 
@@ -43,6 +46,7 @@ public class ServerModelImpl implements ServerModel
     this.modelUpdateSettings = new ServerModelUpdateSettingsImpl();
     this.modelSearch = new ServerModelSearchImpl();
     this.modelFollowList = new ServerModelFollowListImpl();
+    this.serverModelMainMenu = new ServerModelMainMenuImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -82,5 +86,10 @@ public class ServerModelImpl implements ServerModel
   public ServerModelUpdateSettings getModelUpdateSettings()
   {
     return modelUpdateSettings;
+  }
+
+  @Override
+  public ServerModelMainMenu getModelMainMenu() {
+    return serverModelMainMenu;
   }
 }

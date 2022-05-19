@@ -36,7 +36,8 @@ public class LoginMainController implements ViewController
     boolean isSignedIn = viewModel.signIn();
     if (isSignedIn) {
       //viewModel.setUser();please do not use
-      viewHandler.openProfile(viewModel.getUser());
+//      viewHandler.openProfile(viewModel.getUser());
+      viewHandler.openMainMenu();
     }
   }
 

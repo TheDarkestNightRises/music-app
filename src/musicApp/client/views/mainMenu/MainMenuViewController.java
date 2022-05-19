@@ -30,6 +30,7 @@ public class MainMenuViewController implements ViewController {
 
     private void initRandomSongs() {
         ArrayList<Song> songs = viewModelMainMenu.fetchRandomSongs();
+        System.out.println(songs);
     }
 
     private void initLastSongs() {

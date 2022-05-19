@@ -8,6 +8,8 @@ import musicApp.client.model.followList.FollowListManager;
 import musicApp.client.model.followList.FollowListManagerImplementation;
 import musicApp.client.model.login.LogInManager;
 import musicApp.client.model.login.LoginManagerImplementation;
+import musicApp.client.model.mainMenu.MainMenuManager;
+import musicApp.client.model.mainMenu.MainMenuManagerImplementation;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.music.MusicManagerImplementation;
 import musicApp.client.model.profile.ProfileManager;
@@ -28,6 +30,7 @@ public class ModelFactory {
     private UpdateSettingsManager updateSettingsManager;
     private SearchManager searchManager;
     private FollowListManager followListManager;
+    private MainMenuManager mainMenuManager;
 
     private ClientFactory clientFactory;
     private MainModel mainModel;
@@ -39,7 +42,7 @@ public class ModelFactory {
 
     public MainModel getMainModel() {
         if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager());
+            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager());
         }
         return mainModel;
     }
@@ -90,5 +93,11 @@ public class ModelFactory {
         if(searchManager == null)
             searchManager = new SearchManagerImplementation(clientFactory.getClient());
         return searchManager;
+    }
+
+    public MainMenuManager getMainMenuManager() {
+        if (mainMenuManager == null)
+            mainMenuManager = new MainMenuManagerImplementation(clientFactory.getClient());
+        return mainMenuManager;
     }
 }

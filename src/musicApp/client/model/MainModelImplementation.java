@@ -24,7 +24,7 @@ public class MainModelImplementation implements MainModel{
 
     public MainModelImplementation(MusicManager musicManager, LogInManager logInManager, ChatManager chatManager,
                                    SignUpManager signUpManager, ProfileManager profileManager,
-                                   UpdateSettingsManager updateSettingsManager,SearchManager searchManager, FollowListManager followListManager) {
+                                   UpdateSettingsManager updateSettingsManager, SearchManager searchManager, FollowListManager followListManager, MainMenuManager mainMenuManager) {
         this.musicManager = musicManager;
         this.logInManager = logInManager;
         this.chatManager = chatManager;
@@ -33,6 +33,7 @@ public class MainModelImplementation implements MainModel{
         this.profileManager = profileManager;
         this.searchManager = searchManager;
         this.followListManager = followListManager;
+        this.mainMenuManager = mainMenuManager;
     }
 
     public MusicManager getMusicPlayerManager() {
