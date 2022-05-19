@@ -274,6 +274,22 @@ public class ViewHandler {
         return vBox;
     }
 
+    public Parent openProfileCard() {
+        try {
+            Parent root = loadFXML("../views/profileCard/ProfileCardView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("FollowList");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            return root;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     // -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
     public VBox generateView(ArrayList<Song> songs) {
         VBox vBoxContainer = new VBox();
@@ -337,5 +353,7 @@ public class ViewHandler {
         }
         return titleHBox;
     }
+
+
 }
 

@@ -25,4 +25,8 @@ public class ProfileViewModel {
     public byte[] fetchProfilePicture(String profile_picture) {
         return mainModel.getProfileManager().fetchProfilePicture(profile_picture);
     }
+
+    public User fetchUser() {
+        return mainModel.getLogInManager().getUser();
+    }
 }

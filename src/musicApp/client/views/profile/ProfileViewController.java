@@ -33,6 +33,8 @@ public class ProfileViewController implements ViewController {
     public Text profileDescription;
     @FXML
     public VBox followListSubView;
+    @FXML
+    public HBox profileCardContainer;
 
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -48,6 +50,7 @@ public class ProfileViewController implements ViewController {
         initPlaylistsView(playlists);
         initProfileInfo(user);
         openFollowList();
+        openProfileCard();
     }
 
     private void initProfileInfo(User user) {
@@ -61,6 +64,12 @@ public class ProfileViewController implements ViewController {
         Parent followListRoot = vh.openFollowListSubView();
         followListSubView.getChildren().clear();
         followListSubView.getChildren().add(followListRoot);
+    }
+
+    private void openProfileCard() {
+        Parent profileCardRoot = vh.openProfileCard();
+        profileCardContainer.getChildren().clear();
+        profileCardContainer.getChildren().add(profileCardRoot);
     }
 
     @FXML
