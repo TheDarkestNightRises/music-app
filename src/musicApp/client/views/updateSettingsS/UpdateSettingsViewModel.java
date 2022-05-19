@@ -9,9 +9,10 @@ import musicApp.client.model.MainModel;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.server.model.domainModel.User;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
+import java.io.*;
 
 public class UpdateSettingsViewModel
 {
@@ -21,6 +22,8 @@ public class UpdateSettingsViewModel
   private final StringProperty email;
   private final StringProperty nickaname;
   private ObjectProperty<Image> profilePicture;
+  private FileInputStream tempImgStream;
+  private File imgFile;
 
   public UpdateSettingsViewModel(MainModel mainModel)
   {
@@ -30,53 +33,34 @@ public class UpdateSettingsViewModel
     email = new SimpleStringProperty("");
     nickaname = new SimpleStringProperty("");
     profilePicture = new SimpleObjectProperty<Image>();
+    tempImgStream = null;
+    imgFile = null;
   }
 
-  public void bindPassword(StringProperty property)
-  {
-    password.bindBidirectional(property);
-  }
 
-  public void bindError(StringProperty property)
-  {
-    error.bindBidirectional(property);
-  }
-  public void bindEmail(StringProperty property)
-  {
-    email.bindBidirectional(property);
-  }
-
-  public void bindNickname(StringProperty property)
-  {
-    nickaname.bindBidirectional(property);
-  }
-
-  public void bindImage(ObjectProperty<Image> property)
-  {
-    profilePicture.bindBidirectional(property);
-  }
   public void reset()
   {
     password.set(mainModel.getLogInManager().getUser().getPassword());
     error.set("");
     email.set(mainModel.getLogInManager().getUser().getEmail());
     nickaname.set(mainModel.getLogInManager().getUser().getNickname());
-    InputStream stream = null;
+    tempImgStream = null;
+    imgFile = null;
+    //InputStream stream = null;
     try
     {
-      String imgPath = mainModel.getLogInManager().getUser().getProfile_picture();
-      if(imgPath == null || imgPath.equals(""))
-        imgPath = "default_pfp.jpg";
-      stream = new FileInputStream("src/musicApp/server/serverData/ProfilePictures/" + imgPath);
+//      String imgPath = mainModel.getLogInManager().getUser().getProfile_picture();
+//      if(imgPath == null || imgPath.equals(""))
+//        imgPath = "default_pfp.jpg";
+//      stream = new FileInputStream("src/musicApp/server/serverData/ProfilePictures/" + imgPath);
+//      Image image = new Image(stream);
+      Image image = new Image(new ByteArrayInputStream(mainModel.getProfileManager().fetchProfilePicture(mainModel.getLogInManager().getUser().getProfile_picture())));
+      profilePicture.setValue(image);//TODO: add link
     }
-    catch (FileNotFoundException e)
+    catch (Exception e)
     {
       e.printStackTrace();
     }
-    Image image = new Image(stream);
-    profilePicture.setValue(image);//TODO: add link
-    //System.out.println(mainModel.getLogInManager().getUser().getPassword());
-
   }
   public void submit()
   {
@@ -96,6 +80,44 @@ public class UpdateSettingsViewModel
       {
         error.set(e.getMessage());
       }
+    }
+  }
+  public void choosePicture(File pictureFile)
+  {
+    try
+    {
+      tempImgStream = new FileInputStream(pictureFile);
+      profilePicture.setValue(new Image(tempImgStream));
+      imgFile = pictureFile;
+    }
+    catch (FileNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+  public void uploadPicture()
+  {
+    if(tempImgStream != null)
+    {
+      try
+      {
+        BufferedImage image = ImageIO.read(imgFile);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
+        String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), byteArrayOutputStream.toByteArray());
+        //String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), tempImgStream.readAllBytes());
+        if(uploaded != null)
+        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
+        else 
+        error.set("Could not upload image");
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+        error.set("Could not upload image");
+      }
+
     }
   }
   public boolean validateUserData()
@@ -172,4 +194,28 @@ public class UpdateSettingsViewModel
   {
     return mainModel.getSignUpManager().noUpper(password.get());
   }
+  public void bindPassword(StringProperty property)
+  {
+    password.bindBidirectional(property);
+  }
+
+  public void bindError(StringProperty property)
+  {
+    error.bindBidirectional(property);
+  }
+  public void bindEmail(StringProperty property)
+  {
+    email.bindBidirectional(property);
+  }
+
+  public void bindNickname(StringProperty property)
+  {
+    nickaname.bindBidirectional(property);
+  }
+
+  public void bindImage(ObjectProperty<Image> property)
+  {
+    profilePicture.bindBidirectional(property);
+  }
+
 }

@@ -40,6 +40,16 @@ public class ViewHandler {
         openLogin();
     }
 
+    public Stage getStage()
+    {
+        return stage;
+    }
+
+    public void setStage(Stage stage)
+    {
+        this.stage = stage;
+    }
+
     public void openChat() {
         try {
             Parent root = loadFXML("../views/chat/ChatView.fxml");

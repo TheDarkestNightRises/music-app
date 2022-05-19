@@ -31,4 +31,17 @@ public class RMIUpdateSettingsClient implements UpdateSettingsClient
     }
 
   }
+
+  @Override public String uploadImage(String username, byte[] bytes)
+  {
+    try
+    {
+      return server.getUpdateSettingsServer().uploadImage(username, bytes);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
+  }
 }

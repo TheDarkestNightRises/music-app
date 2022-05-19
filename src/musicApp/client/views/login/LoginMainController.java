@@ -37,7 +37,7 @@ public class LoginMainController implements ViewController
     if (isSignedIn) {
       //viewModel.setUser();please do not use
       viewHandler.openProfile(viewModel.getUser());
-      //viewHandler.openUpdateSettings();
+      viewHandler.openUpdateSettings(viewModel.getUser());
     }
   }
 

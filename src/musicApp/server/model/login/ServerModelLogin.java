@@ -12,4 +12,5 @@ public interface ServerModelLogin extends Subject {
 
     void updateUserInfoInList(String username, String password, String email, String nickname);
     boolean isOnline(User user);
+  void updatePicturePathForUser(String username, String path);
 }

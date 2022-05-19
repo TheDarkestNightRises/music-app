@@ -6,4 +6,5 @@ public interface UpdateSettingsClient
 {
   void setServer(RMIServer server);
   void updateUserInfo(String username, String password, String email, String nickname);
+  String uploadImage(String username, byte[] bytes);
 }

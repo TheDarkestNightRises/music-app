@@ -6,11 +6,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.server.model.domainModel.User;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -50,12 +52,19 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public void choosePictureButtonPressed()
   {
-
+    FileChooser chooser = new FileChooser();
+    chooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+        new FileChooser.ExtensionFilter("PNG", "*.png")
+    );
+    File file = chooser.showOpenDialog(viewHandler.getStage());
+    if(file != null)
+      viewModel.choosePicture(file);
   }
   @FXML
   public void updatePictureButtonPressed()
   {
-
+    viewModel.uploadPicture();
   }
   @FXML
   public void resetButtonPressed()

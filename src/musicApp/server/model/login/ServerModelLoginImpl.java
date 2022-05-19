@@ -89,6 +89,16 @@ public class ServerModelLoginImpl implements ServerModelLogin {
         return false;
     }
 
+    @Override public void updatePicturePathForUser(String username, String path)
+    {
+        for (User currentUser : userList)
+            if (currentUser.getUsername().equals(username))
+            {
+                currentUser.setProfile_picture(path);
+                break;
+            }
+    }
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);

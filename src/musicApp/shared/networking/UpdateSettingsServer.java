@@ -8,4 +8,5 @@ public interface UpdateSettingsServer extends Remote
 
   void updateUserInfo(String username, String password, String email,
       String nickname) throws RemoteException;
+  String uploadImage(String username, byte[] bytes) throws RemoteException;
 }

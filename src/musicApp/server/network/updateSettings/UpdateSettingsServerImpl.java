@@ -27,4 +27,13 @@ public class UpdateSettingsServerImpl implements UpdateSettingsServer
       throw e;
     }
   }
+
+  @Override public String uploadImage(String username, byte[] bytes)
+  {
+
+    String path = serverModel.getModelUpdateSettings().uploadPicture(username, bytes);
+    if(path != null)
+    serverModel.getModelLogin().updatePicturePathForUser(username, path);
+    return path;
+  }
 }

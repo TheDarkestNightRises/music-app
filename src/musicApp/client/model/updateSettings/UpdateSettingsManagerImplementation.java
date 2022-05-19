@@ -2,6 +2,8 @@ package musicApp.client.model.updateSettings;
 
 import musicApp.client.network.Client;
 
+import java.io.FileInputStream;
+
 public class UpdateSettingsManagerImplementation implements UpdateSettingsManager
 {
   private Client client;
@@ -26,5 +28,10 @@ public class UpdateSettingsManagerImplementation implements UpdateSettingsManage
       e.printStackTrace();
       throw e;
     }
+  }
+
+  @Override public String uploadImage(String username, byte[] bytes)
+  {
+    return client.getUpdateSettingsclient().uploadImage(username, bytes);
   }
 }

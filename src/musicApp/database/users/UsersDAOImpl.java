@@ -285,6 +285,27 @@ public class UsersDAOImpl implements UsersDAO
     }
     return false;
   }
+  @Override public void uploadPicture(String username, String pictureName)
+  {
+    try (Connection connection = getConnection())
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement(
+          "UPDATE user_ SET profile_picture_path = ? WHERE username = ?");
+      statement.setString(1, pictureName);
+      statement.setString(2, username);
+      statement0.executeUpdate();
+      statement.executeUpdate();
+
+
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+
+    }
+    throw new RuntimeException("Database error");
+  }
 }
 
 
