@@ -46,7 +46,11 @@ public class ServerModelLoginImpl implements ServerModelLogin {
     public void disconnect(User user) {
         for (User currentUser : userList) {
             if (currentUser.getUsername().equals(user.getUsername()))
+            {
                 currentUser.setLoggedIn(false);
+                userList.remove(currentUser);
+            }
+
         }
     }
 

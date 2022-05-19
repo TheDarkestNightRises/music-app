@@ -87,7 +87,7 @@
          </children>
       </VBox>
       <ImageView fx:id="albumCover" fitHeight="221.0" fitWidth="237.0" layoutX="282.0" layoutY="41.0" />
-      <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="bg">
+      <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackButton" prefHeight="50.0" prefWidth="53.0" style="-fx-background-radius: 30;" styleClass="rate">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="30.0" nodeOrientation="RIGHT_TO_LEFT">
                <image>
@@ -96,10 +96,10 @@
             </ImageView>
          </graphic>
          <padding>
-            <Insets right="20.0" />
+            <Insets right="5.0" />
          </padding>
       </Button>
-      <Button layoutX="712.0" layoutY="144.0" mnemonicParsing="false" onAction="#addToLikedSongs" prefHeight="50.0" prefWidth="61.0" styleClass="bg">
+      <Button layoutX="712.0" layoutY="144.0" mnemonicParsing="false" onAction="#addToLikedSongs" prefHeight="50.0" prefWidth="61.0" style="-fx-background-radius: 10;" styleClass="rate">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="43.0">
                <image>
@@ -108,7 +108,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="711.0" layoutY="211.0" mnemonicParsing="false" onAction="#removeFromLikedSongs" prefHeight="50.0" prefWidth="62.0" styleClass="bg">
+      <Button layoutX="711.0" layoutY="211.0" mnemonicParsing="false" onAction="#removeFromLikedSongs" prefHeight="50.0" prefWidth="62.0" style="-fx-background-radius: 10;" styleClass="rate">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="43.0">
                <image>

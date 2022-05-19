@@ -27,5 +27,6 @@ public interface Client extends Subject {
     SearchClient getSearchClient();
 
     FollowListClient getFollowListClient();
-  UpdateSettingsClient getUpdateSettingsclient();
+
+    UpdateSettingsClient getUpdateSettingsclient();
 }
