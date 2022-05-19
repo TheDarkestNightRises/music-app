@@ -14,6 +14,7 @@ public interface AlbumDao
   void deleteAlbumById(int id);
   Album getAlbumById(int id);
   void updateAlbum(Album album);
+  ArrayList<Album> get4RandomAlbums();
 
 
 

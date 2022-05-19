@@ -207,4 +207,48 @@ public class AlbumDAOImpl implements AlbumDao
     }
   }
 
+  @Override public ArrayList<Album> get4RandomAlbums()
+  {
+    try
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM album ORDER BY random() LIMIT 4;");
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Album> list = new ArrayList<>();
+      while (resultSet.next())
+      {
+        int id = resultSet.getInt("album_id");
+        String title = resultSet.getString("title");
+        int year = resultSet.getInt("publication_year");
+        String picture = resultSet.getString("picture_path");
+        String name = resultSet.getString("username");
+        Artist artist = new Artist();
+        artist.setName(name);
+        artist.setAlbums(ArtistDAOImpl.getInstance().getArtistAlbums(artist));
+        ArrayList<Song> songs = new ArrayList<>();
+        Album album = new Album(id, title, year, picture, artist, songs);
+        PreparedStatement statement2 = connection.prepareStatement("Select * FROM song where album_id = ?");
+        statement2.setInt(1, id);
+        ResultSet resultSet2 = statement2.executeQuery();
+        while (resultSet2.next())
+        {
+          int song_id = resultSet2.getInt("song_id");
+          String song_title = resultSet2.getString("title");
+          String length = resultSet2.getString("length");
+          String file = resultSet2.getString("file_path");
+          Song song = new Song(song_id, song_title, file, length, album, artist);
+          songs.add(song);
+        }
+        list.add(album);
+      }
+      return list;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
 }
