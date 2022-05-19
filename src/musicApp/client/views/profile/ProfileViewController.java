@@ -58,9 +58,9 @@ public class ProfileViewController implements ViewController {
     }
 
     private void openFollowList() {
-//        Parent followListRoot = vh.openFollowListSubView();
-//        followListSubView.getChildren().clear();
-//        followListSubView.getChildren().add(followListRoot);
+        Parent followListRoot = vh.openFollowListSubView();
+        followListSubView.getChildren().clear();
+        followListSubView.getChildren().add(followListRoot);
     }
 
     @FXML

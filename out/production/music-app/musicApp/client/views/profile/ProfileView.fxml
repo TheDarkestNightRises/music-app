@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -168,9 +168,9 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="715.0" prefWidth="1045.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
+            <HBox prefHeight="52.0" prefWidth="1044.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
                      <graphic>
@@ -201,7 +201,7 @@
                      </graphic>
                   </Button>
                   <Pane prefHeight="52.0" prefWidth="469.0" />
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="449.0" spacing="15.0">
+                  <HBox alignment="CENTER" prefHeight="52.0" prefWidth="410.0" spacing="15.0">
                      <children>
                         <ImageView fitHeight="70.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -226,7 +226,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="694.0" prefWidth="842.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="630.0" prefWidth="1039.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
                <content>
                   <VBox fx:id="profileContainer" prefHeight="464.0" prefWidth="900.0">
                      <children>
@@ -259,4 +259,11 @@
          </children>
       </VBox>
    </center>
+   <right>
+      <HBox prefHeight="715.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="followListSubView" prefHeight="715.0" prefWidth="233.0" />
+         </children>
+      </HBox>
+   </right>
 </BorderPane>
