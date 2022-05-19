@@ -44,11 +44,6 @@ public class SongDAOImpl implements SongDAO
     return instance;
   }
 
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
-//  }
-
 
   @Override public ArrayList<Song> getAllSongs()
   {
@@ -85,7 +80,7 @@ public class SongDAOImpl implements SongDAO
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
         songs.add(new Song(id,title,picture,length,albumName,artistName));
-//        songs.add(new Song(id,title,length,picture,albumName,artistName));
+
       }
       return songs;
     } catch (SQLException e) {
@@ -102,7 +97,6 @@ public class SongDAOImpl implements SongDAO
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement("INSERT INTO song(title,length,file_path,album_id,username)"
           + "VALUES (?, ?, ?, ?,?);", Statement.RETURN_GENERATED_KEYS);
-
       statement.setString(1,song.getTitle());
       statement.setString(2,song.getLength());
       statement.setString(3,song.getFile_path());
@@ -252,8 +246,76 @@ public class SongDAOImpl implements SongDAO
     return null;
   }
 
+  @Override public ArrayList<Song> getLast4Songs()
+  {
+    try
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("Select * FROM Song ORDER BY song_id DESC LIMIT 4;");
+      statement0.execute();
+      statement.execute();
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Song> songs = new ArrayList<>();
+      while(resultSet.next())
+      {
+        int id = resultSet.getInt("song_id");
+        String title = resultSet.getString("title");
+        String length = resultSet.getString("length");
+        String picture = resultSet.getString("file_path");
+        Album albumName = new Album();
+        Artist artistName = new Artist();
+        PreparedStatement statement3 = connection.prepareStatement("Select * FROM artist where username = ?");
+        String username = resultSet.getString("username");
+        statement3.setString(1, username);
+        ResultSet resultSet3 = statement3.executeQuery();
+        if(resultSet3.next())
+        {
+          artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
+        }
+        songs.add(new Song(id,title,picture,length,albumName,artistName));
 
+      }
+      return songs;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
+  @Override public ArrayList<Song> get4RandomSongs()
+  {
+    try
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("Select * FROM Song ORDER BY random() LIMIT 4;");
+      statement0.execute();
+      statement.execute();
+      ResultSet resultSet = statement.executeQuery();
+      ArrayList<Song> songs = new ArrayList<>();
+      while(resultSet.next())
+      {
+        int id = resultSet.getInt("song_id");
+        String title = resultSet.getString("title");
+        String length = resultSet.getString("length");
+        String picture = resultSet.getString("file_path");
+        Album albumName = new Album();
+        Artist artistName = new Artist();
+        PreparedStatement statement3 = connection.prepareStatement("Select * FROM artist where username = ?");
+        String username = resultSet.getString("username");
+        statement3.setString(1, username);
+        ResultSet resultSet3 = statement3.executeQuery();
+        if(resultSet3.next())
+        {
+          artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
+        }
+        songs.add(new Song(id,title,picture,length,albumName,artistName));
 
+      }
+      return songs;
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
 
 }

@@ -1,6 +1,7 @@
 package musicApp;
 
 import musicApp.database.follow.FollowDAOImpl;
+import musicApp.database.song.SongDAOImpl;
 import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.model.domainModel.User;
 
@@ -27,6 +28,7 @@ public class Hope
 //    System.out.println(FollowDAOImpl.getInstance().getFollowList(user));
 //    AlbumDAOImpl.getInstance().insertAlbum("da",2022,"picture",artist);'
 //     Playlist playlist = UsersDAOImpl.getInstance().getPlaylistFromUserById(user,1);
-    FollowDAOImpl.getInstance().Follow(emanuel,andrei);
+//    FollowDAOImpl.getInstance().Follow(emanuel,andrei);
+    System.out.println(SongDAOImpl.getInstance().get4RandomSongs());
   }
 }

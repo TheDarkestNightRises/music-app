@@ -15,5 +15,6 @@ public interface SongDAO
   Song getSongById(int id);
   void updateSong(Song song);
   ArrayList<Song> getSongsFromAlbum(Album album);
-
+  ArrayList<Song> getLast4Songs();
+  ArrayList<Song> get4RandomSongs();
 }
