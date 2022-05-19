@@ -1,18 +1,23 @@
 package musicApp.server.model.domainModel;
 
+import musicApp.database.users.UsersDAOImpl;
+
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Artist implements Serializable {
+public class Artist extends User implements Serializable {
 
     private String name;
     private ArrayList<Album> albums;
 
-    public Artist(){};
+    public Artist(){
+        super("","","","","","",null);
+    };
 
 
     public Artist(String name) {
-
+        super("","","","","","",null);
         this.name = name;
         this.albums = new ArrayList<>();
     }

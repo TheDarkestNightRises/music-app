@@ -32,6 +32,8 @@ public class User implements Serializable
     this.playlists = new ArrayList<>();
   }
 
+  public User(){};
+
 
   public String getUsername()
   {
@@ -105,6 +107,11 @@ public class User implements Serializable
 
   public void setLoggedIn(boolean loggedIn) {
     isLoggedIn = loggedIn;
+  }
+
+  public ArrayList<Playlist> getPlaylists()
+  {
+    return playlists;
   }
 
   @Override
