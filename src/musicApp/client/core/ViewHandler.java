@@ -251,12 +251,12 @@ public class ViewHandler {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            stage.setTitle("Main menu");
-            stage.setScene(mainMenuScene);
-            stage.show();
-            stage.setResizable(false);
-            stage.centerOnScreen();
         }
+        stage.setTitle("Main menu");
+        stage.setScene(mainMenuScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     public VBox openAlbumView(Album album) {
