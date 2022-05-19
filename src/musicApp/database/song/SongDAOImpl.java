@@ -264,6 +264,14 @@ public class SongDAOImpl implements SongDAO
         String picture = resultSet.getString("file_path");
         Album albumName = new Album();
         Artist artistName = new Artist();
+        PreparedStatement statement2 = connection.prepareStatement("Select * FROM album where album_id = ?");
+        int album_id = resultSet.getInt("album_id");
+        statement2.setInt(1, album_id);
+        ResultSet resultSet2 = statement2.executeQuery();
+        if(resultSet2.next())
+        {
+          albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
+        }
         PreparedStatement statement3 = connection.prepareStatement("Select * FROM artist where username = ?");
         String username = resultSet.getString("username");
         statement3.setString(1, username);
@@ -300,6 +308,14 @@ public class SongDAOImpl implements SongDAO
         String picture = resultSet.getString("file_path");
         Album albumName = new Album();
         Artist artistName = new Artist();
+        PreparedStatement statement2 = connection.prepareStatement("Select * FROM album where album_id = ?");
+        int album_id = resultSet.getInt("album_id");
+        statement2.setInt(1, album_id);
+        ResultSet resultSet2 = statement2.executeQuery();
+        if(resultSet2.next())
+        {
+          albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
+        }
         PreparedStatement statement3 = connection.prepareStatement("Select * FROM artist where username = ?");
         String username = resultSet.getString("username");
         statement3.setString(1, username);
