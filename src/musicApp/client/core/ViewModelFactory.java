@@ -4,6 +4,7 @@ import musicApp.client.views.chat.ChatViewModel;
 import musicApp.client.views.followList.FollowListViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
+import musicApp.client.views.mainMenu.MainMenuViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.search.SearchViewModel;
@@ -21,6 +22,7 @@ public class ViewModelFactory {
     private FollowListViewModel followListViewModel;
     private UpdateSettingsViewModel updateSettingsViewModel;
     private SearchViewModel searchViewModel;
+    private MainMenuViewModel mainMenuViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -81,6 +83,13 @@ public class ViewModelFactory {
         if ( searchViewModel == null)
             searchViewModel = new SearchViewModel(modelFactory.getMainModel());
         return searchViewModel;
+    }
+
+    public MainMenuViewModel getMainMenuViewModel() {
+        if (mainMenuViewModel == null) {
+            mainMenuViewModel = new MainMenuViewModel(modelFactory.getMainModel());
+        }
+        return mainMenuViewModel;
     }
 }
 

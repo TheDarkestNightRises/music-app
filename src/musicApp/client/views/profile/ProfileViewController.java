@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -30,6 +31,8 @@ public class ProfileViewController implements ViewController {
     public Text profileName;
     @FXML
     public Text profileDescription;
+    @FXML
+    public VBox followListSubView;
 
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -44,6 +47,7 @@ public class ProfileViewController implements ViewController {
         if (playlists == null) return;
         initPlaylistsView(playlists);
         initProfileInfo(user);
+        openFollowList();
     }
 
     private void initProfileInfo(User user) {
@@ -51,6 +55,12 @@ public class ProfileViewController implements ViewController {
         Image image = new Image(new ByteArrayInputStream(fetchProfilePicture(user.getProfile_picture())));
         profilePicture.setImage(image);
         profileDescription.setText(user.getDescription());
+    }
+
+    private void openFollowList() {
+//        Parent followListRoot = vh.openFollowListSubView();
+//        followListSubView.getChildren().clear();
+//        followListSubView.getChildren().add(followListRoot);
     }
 
     @FXML

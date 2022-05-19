@@ -189,6 +189,26 @@ public class ViewHandler
     }
   }
 
+  public Parent openFollowListSubView()
+  {
+    try
+    {
+      Parent root = loadFXML("../views/followList/FollowList.fxml");
+      Scene signUp = new Scene(root);
+      stage.setTitle("FollowList");
+      stage.setScene(signUp);
+      stage.show();
+      stage.setResizable(false);
+      stage.centerOnScreen();
+      return root;
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
   public void openUpdateSettings(User user)
   {
     try

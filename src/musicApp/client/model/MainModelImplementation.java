@@ -3,6 +3,7 @@ package musicApp.client.model;
 import musicApp.client.model.chat.ChatManager;
 import musicApp.client.model.followList.FollowListManager;
 import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.mainMenu.MainMenuManager;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.register.SignUpManager;
@@ -18,6 +19,7 @@ public class MainModelImplementation implements MainModel{
     private UpdateSettingsManager updateSettingsManager;
     private SearchManager searchManager;
     private FollowListManager followListManager;
+    private MainMenuManager mainMenuManager;
 
 
     public MainModelImplementation(MusicManager musicManager, LogInManager logInManager, ChatManager chatManager,
@@ -68,5 +70,10 @@ public class MainModelImplementation implements MainModel{
     @Override public FollowListManager getFollowListManager()
     {
         return followListManager;
+    }
+
+    @Override
+    public MainMenuManager getMainMenuManager() {
+        return mainMenuManager;
     }
 }
