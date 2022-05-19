@@ -177,6 +177,31 @@ public class UsersDAOImpl implements UsersDAO
     return null;
   }
 
+  @Override public Playlist getPlaylistIdFromUserByName(User user, String title)
+  {
+    try
+    {
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement(
+          "SELECT * FROM playlist WHERE username = ? AND title = ?");
+      statement.setString(1, user.getUsername());
+      statement.setString(2, title);
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next())
+      {
+        int id = resultSet.getInt("playlist_id");
+        return new Playlist(id,title,"","",null);
+      }
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+   return null;
+  }
+
+
   @Override public ArrayList<Playlist> getAllPlaylistsFromUser(User user)
   {
     try
@@ -236,6 +261,29 @@ public class UsersDAOImpl implements UsersDAO
       e.printStackTrace();
       throw new RuntimeException("Database error");
     }
+  }
+
+  @Override public boolean PlaylistExists(User user, String playlistName)
+  {
+    try
+    {
+      PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = getConnection().prepareStatement(
+          "SELECT * FROM playlist WHERE username = ? AND title = ?");
+      statement.setString(1, user.getUsername());
+      statement.setString(2, playlistName);
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      if (resultSet.next())
+      {
+        return true;
+      }
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return false;
   }
 }
 

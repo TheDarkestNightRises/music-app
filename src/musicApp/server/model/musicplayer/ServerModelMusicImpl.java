@@ -29,24 +29,31 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     }
 
     @Override public void addToLikedSongs(User user, Song song)
-    {}
-//        try
-//        {
-//            System.out.println(user.getUsername());
-////            System.out.println(UsersDAOImpl.getInstance().getPlaylistFromUserByPlaylistName(user,"Liked songs"));
-//
-////         {
-//////             PlaylistDAOImpl.getInstance().createPlayList("Liked songs", "Songs that I have liked", "", user);
-////         }
-////        }
-////        catch (SQLException e)
-////        {
-////            e.printStackTrace();
-////        }
-//    }}
-
-    @Override public void removeToLikedSongs(User user)
     {
+        try
+        {
+           Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user,"Liked songs");
+            if(!UsersDAOImpl.getInstance().PlaylistExists(user,"Liked songs")){
+                PlaylistDAOImpl.getInstance().createPlayList("Liked songs","Songs that I like","",user);
+            }
+            PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist,song);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 
+    @Override public void removeToLikedSongs(User user, Song song)
+    {
+        try
+        {
+            Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user,"Liked songs");
+            PlaylistDAOImpl.getInstance().removeSongFromPlaylist(playlist,song);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -12,5 +12,5 @@ public interface MusicManager {
 
     byte[] fetchAlbumCover(String picturePath);
     void addToLikedSongs(User user, Song song);
-    void removeToLikedSongs(User user);
+    void removeToLikedSongs(User user, Song song);
 }

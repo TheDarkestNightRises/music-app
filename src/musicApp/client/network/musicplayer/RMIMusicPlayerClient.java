@@ -45,10 +45,10 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
         }
     }
 
-    @Override public void removeToLikedSongs(User user)
+    @Override public void removeToLikedSongs(User user, Song song)
     {
         try {
-            server.getMusicPlayerServer().removeToLikedSongs(user);
+            server.getMusicPlayerServer().removeToLikedSongs(user, song);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

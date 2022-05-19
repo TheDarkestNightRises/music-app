@@ -34,8 +34,8 @@ public class MusicPlayerServerImpl implements MusicPlayerServer {
         serverModel.getModelMusic().addToLikedSongs(user, song);
     }
 
-    @Override public void removeToLikedSongs(User user) throws RemoteException
+    @Override public void removeToLikedSongs(User user, Song song) throws RemoteException
     {
-        serverModel.getModelMusic().removeToLikedSongs(user);
+        serverModel.getModelMusic().removeToLikedSongs(user,song);
     }
 }

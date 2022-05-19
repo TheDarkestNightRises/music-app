@@ -13,6 +13,8 @@ public interface UsersDAO
   boolean usernameExists(String username) throws SQLException;
   User getUserByName(String username);
   Playlist getPlaylistFromUserById(User user, int id);
+  Playlist getPlaylistIdFromUserByName(User user, String title);
   ArrayList<Playlist> getAllPlaylistsFromUser(User user);
   void updateUserInfo(String username, String password, String email, String nickname);
+  boolean PlaylistExists(User user, String playlistName);
 }

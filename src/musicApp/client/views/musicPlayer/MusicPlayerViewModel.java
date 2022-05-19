@@ -113,7 +113,7 @@ public class MusicPlayerViewModel implements Subject {
   {
       User user = mainModel.getLogInManager().getUser();
       Song song = playlist.getSong(songNumber);
-      mainModel.getMusicPlayerManager().removeToLikedSongs(user);
+      mainModel.getMusicPlayerManager().removeToLikedSongs(user, song);
   }
 
 }

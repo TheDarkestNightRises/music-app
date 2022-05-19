@@ -13,5 +13,6 @@ public interface PlaylistDAO
   void deletePlayListById(int id);
   void updatePlaylist(Playlist playlist,User user);
   void insertSongIntoPlaylist(Playlist playlist, Song song);
+  void removeSongFromPlaylist(Playlist playlist, Song song);
   ArrayList<Song> getAllSongsFromPlayList(Playlist playlist);
 }

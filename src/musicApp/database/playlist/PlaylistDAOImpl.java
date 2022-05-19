@@ -140,6 +140,25 @@ public class PlaylistDAOImpl implements PlaylistDAO
     }
   }
 
+  @Override public void removeSongFromPlaylist(Playlist playlist, Song song)
+  {
+    try
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement(
+          "DELETE FROM playlist_song_pair WHERE playlist_id = ? AND song_id = ?");
+
+      statement.setInt(1, playlist.getPlaylist_id());
+      statement.setInt(2, song.getSong_id());
+      statement0.executeUpdate();
+      statement.executeUpdate();
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
 
   //TODO: TOO SLOW
   @Override public ArrayList<Song> getAllSongsFromPlayList(Playlist playlist)

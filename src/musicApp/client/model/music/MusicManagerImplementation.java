@@ -30,8 +30,8 @@ public class MusicManagerImplementation implements MusicManager {
         client.getMusicPlayerClient().addToLikedSongs(user, song);
     }
 
-    @Override public void removeToLikedSongs(User user)
+    @Override public void removeToLikedSongs(User user, Song song)
     {
-        client.getMusicPlayerClient().removeToLikedSongs(user);
+        client.getMusicPlayerClient().removeToLikedSongs(user, song);
     }
 }
