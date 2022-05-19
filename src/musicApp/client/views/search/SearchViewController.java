@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -33,6 +34,8 @@ public class SearchViewController implements ViewController {
 
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
+    @FXML
+    public VBox followListSubView;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
@@ -41,6 +44,7 @@ public class SearchViewController implements ViewController {
        searchViewModel.bindSearch(searchTextField.textProperty());
        searchViewModel.init();
        searchViewModel.addListener("newSearch",this::showSearchResults);
+        openFollowList();
     }
 
     private void showSearchResults(PropertyChangeEvent event) {
@@ -75,5 +79,11 @@ public class SearchViewController implements ViewController {
 
     public void openSearch() {
         viewHandler.openSearch();
+    }
+
+    private void openFollowList() {
+        Parent followListRoot = viewHandler.openFollowListSubView();
+        followListSubView.getChildren().clear();
+        followListSubView.getChildren().add(followListRoot);
     }
 }
