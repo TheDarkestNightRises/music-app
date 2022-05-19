@@ -1,5 +1,6 @@
 package musicApp.client.network.mainMenu;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 import musicApp.shared.networking.RMIServer;
 
@@ -9,4 +10,8 @@ public interface MainMenuClient {
     ArrayList<Song> fetchRandomSongs();
 
     void setServer(RMIServer server);
+
+    ArrayList<Song> fetchLastSongs();
+
+    ArrayList<Album> fetchRandomAlbums();
 }

@@ -4,6 +4,7 @@ import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.album.AlbumDao;
 import musicApp.database.song.SongDAO;
 import musicApp.database.song.SongDAOImpl;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 
 import java.sql.SQLException;
@@ -25,5 +26,15 @@ public class ServerModelMainMenuImpl implements ServerModelMainMenu{
     @Override
     public ArrayList<Song> fetchRandomSongs() {
         return songDAO.get4RandomSongs();
+    }
+
+    @Override
+    public ArrayList<Song> fetchLastSongs() {
+        return songDAO.getLast4Songs();
+    }
+
+    @Override
+    public ArrayList<Album> fetchRandomAlbums() {
+        return albumDao.get4RandomAlbums();
     }
 }

@@ -1,6 +1,7 @@
 package musicApp.server.network.mainMenu;
 
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 import musicApp.shared.networking.MainMenuServer;
 
@@ -20,5 +21,15 @@ public class MainMenuServerImpl implements MainMenuServer {
     @Override
     public ArrayList<Song> fetchRandomSongs() {
         return serverModel.getModelMainMenu().fetchRandomSongs();
+    }
+
+    @Override
+    public ArrayList<Song> fetchLastSongs() throws RemoteException {
+        return serverModel.getModelMainMenu().fetchLastSongs();
+    }
+
+    @Override
+    public ArrayList<Album> fetchRandomAlbums() throws RemoteException {
+        return serverModel.getModelMainMenu().fetchRandomAlbums();
     }
 }

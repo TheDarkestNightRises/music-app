@@ -1,6 +1,7 @@
 package musicApp.client.model.mainMenu;
 
 import musicApp.client.network.Client;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeSupport;
@@ -19,5 +20,15 @@ public class MainMenuManagerImplementation implements MainMenuManager{
     @Override
     public ArrayList<Song> fetchRandomSongs() {
         return client.getMainMenuClient().fetchRandomSongs();
+    }
+
+    @Override
+    public ArrayList<Song> fetchLastSongs() {
+        return client.getMainMenuClient().fetchLastSongs();
+    }
+
+    @Override
+    public ArrayList<Album> fetchRandomAlbums() {
+        return client.getMainMenuClient().fetchRandomAlbums();
     }
 }

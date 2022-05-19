@@ -1,5 +1,6 @@
 package musicApp.client.network.mainMenu;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 import musicApp.shared.networking.RMIServer;
 
@@ -22,5 +23,25 @@ public class RMIMainMenu implements MainMenuClient{
     @Override
     public void setServer(RMIServer server) {
         this.server = server;
+    }
+
+    @Override
+    public ArrayList<Song> fetchLastSongs() {
+        try {
+            return server.getMainMenuServer().fetchLastSongs();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Album> fetchRandomAlbums() {
+        try {
+            return server.getMainMenuServer().fetchRandomAlbums();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

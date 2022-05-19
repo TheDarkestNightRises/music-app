@@ -15,8 +15,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import musicApp.client.views.profile.AlbumViewController;
 import musicApp.client.views.profile.SinglesController;
 import musicApp.client.views.profile.SongController;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -235,9 +237,9 @@ public class ViewHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SinglesController songController = fxmlLoader.getController();
-        songController.init(this, vmf, song);
-        songController.setData(song);
+        SinglesController singlesController = fxmlLoader.getController();
+        singlesController.init(this, vmf, song);
+        singlesController.setData(song);
         return vBox;
     }
 
@@ -255,6 +257,21 @@ public class ViewHandler {
             stage.setResizable(false);
             stage.centerOnScreen();
         }
+    }
+
+    public VBox openAlbumView(Album album) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/profile/AlbumView.fxml"));
+        VBox vBox = null;
+        try {
+            vBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        AlbumViewController albumViewController = fxmlLoader.getController();
+        albumViewController.init(this, vmf, album);
+        albumViewController.setData(album);
+        return vBox;
     }
 
     // -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
@@ -320,6 +337,5 @@ public class ViewHandler {
         }
         return titleHBox;
     }
-
 }
 
