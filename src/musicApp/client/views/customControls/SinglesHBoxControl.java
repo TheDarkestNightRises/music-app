@@ -31,12 +31,7 @@ public class SinglesHBoxControl extends HBox {
         counterUntilSpace = 0;
         Platform.runLater(()->{
             for (Song song : songs) {
-                counterUntilSpace++;
-                VBox songViewVbox = viewHandler.openSingleView(song);
-                hBox.getChildren().add(songViewVbox);
-                if (counterUntilSpace == 4) {
-                    makeNewHBox();
-                }
+                addSongView(song);
             }
             fatherContainer.getChildren().add(hBox);
         });
@@ -48,14 +43,23 @@ public class SinglesHBoxControl extends HBox {
         hBox.setSpacing(10);
     }
 
+    private void addSongView(Song song) {
+        counterUntilSpace++;
+        VBox songViewVbox = viewHandler.openSingleView(song);
+        hBox.getChildren().add(songViewVbox);
+        if (counterUntilSpace == 4) {
+            makeNewHBox();
+        }
+    }
+
     private HBox returnLastUsedHBox() {
         return hBox;
     }
 
 
     public void addNewSong(PropertyChangeEvent event) {
-        ArrayList<Song> single = new ArrayList<>();
-        single.add((Song) event.getNewValue());
-        initCustomLook(songs);
+        Platform.runLater(()->{
+            addSongView((Song) event.getNewValue());
+        });
     }
 }
