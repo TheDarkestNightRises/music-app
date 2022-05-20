@@ -18,6 +18,7 @@ import musicApp.client.network.search.RMISearchClient;
 import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
@@ -62,9 +63,9 @@ public class RMIClient implements Client, ClientCallBack {
     }
 
     @Override
-    public void startClient()  {
+    public void startClient() {
         try {
-            UnicastRemoteObject.exportObject(this,0);
+            UnicastRemoteObject.exportObject(this, 0);
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             server = (RMIServer) registry.lookup("Server");
             server.registerClient(this);
@@ -88,32 +89,43 @@ public class RMIClient implements Client, ClientCallBack {
     //ASYNC UPDATE FROM SERVER -- INTERFACE CLIENT CALLBACK
     @Override
     public void updateChat(Message message) {
-        support.firePropertyChange("MessageAdded",null,message);
+        support.firePropertyChange("MessageAdded", null, message);
     }
 
     @Override
     public void updateUserNumber(int newValue) {
-        support.firePropertyChange("OnNewUserEntry",null,newValue);
+        support.firePropertyChange("OnNewUserEntry", null, newValue);
     }
 
     @Override
-    public void updateSearchResult(ArrayList<Song> songsSearchResult)  {
-        support.firePropertyChange("newSearch",null,songsSearchResult);
+    public void updateSearchResult(ArrayList<Song> songsSearchResult) {
+        support.firePropertyChange("newSearch", null, songsSearchResult);
+    }
+
+    @Override
+    public void updatePlaylists(Playlist newValue) throws RemoteException {
+        support.firePropertyChange("newPlaylist", null, newValue);
+    }
+
+    @Override
+    public void updateSongsFromPlaylist(Playlist newValue) throws RemoteException {
+        System.out.println("Fired from profile client");
+        support.firePropertyChange("newSongAddedToPlaylist", null, newValue);
     }
 
     @Override
     public void updateLog(LogEntry log) {
-        support.firePropertyChange("NewLogEntry",null,log);
+        support.firePropertyChange("NewLogEntry", null, log);
     }
 
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
-        support.addPropertyChangeListener(eventName,listener);
+        support.addPropertyChangeListener(eventName, listener);
     }
 
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
-        support.removePropertyChangeListener(eventName,listener);
+        support.removePropertyChangeListener(eventName, listener);
     }
 
     public ChatClient getChatClient() {
@@ -128,8 +140,7 @@ public class RMIClient implements Client, ClientCallBack {
         return musicPlayerClient;
     }
 
-     public SignUpClient getSignUpClient()
-    {
+    public SignUpClient getSignUpClient() {
         return signUpClient;
     }
 
@@ -143,13 +154,13 @@ public class RMIClient implements Client, ClientCallBack {
         return searchClient;
     }
 
-    @Override public FollowListClient getFollowListClient()
-    {
+    @Override
+    public FollowListClient getFollowListClient() {
         return followListClient;
     }
 
-    @Override public UpdateSettingsClient getUpdateSettingsclient()
-    {
+    @Override
+    public UpdateSettingsClient getUpdateSettingsclient() {
         return updateSettingsClient;
     }
 

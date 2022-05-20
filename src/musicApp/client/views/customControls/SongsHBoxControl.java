@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewHandler;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeEvent;
@@ -14,17 +15,19 @@ public class SongsHBoxControl extends HBox {
     private int counterUntilSpace;
     private HBox hBox;
     private VBox fatherContainer;
-    private HashMap<Song,VBox> songsView;
+    private HashMap<Song, VBox> songsView;
 
     private ArrayList<Song> songs;
+    private Playlist playlist;
     private ViewHandler viewHandler;
 
-    public SongsHBoxControl(ArrayList<Song> songs, ViewHandler viewHandler,VBox vBox) {
+    public SongsHBoxControl(ArrayList<Song> songs, Playlist playlist, ViewHandler viewHandler, VBox vBox) {
         this.viewHandler = viewHandler;
         this.songs = songs;
         this.fatherContainer = vBox;
         this.hBox = new HBox();
         this.songsView = new HashMap<>();
+        this.playlist = playlist;
         initCustomLook();
     }
 
@@ -32,15 +35,9 @@ public class SongsHBoxControl extends HBox {
         hBox = new HBox();
         hBox.setSpacing(10);
         counterUntilSpace = 0;
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             for (Song song : songs) {
-                counterUntilSpace++;
-                VBox songViewVbox = viewHandler.openSongView(song);
-                songsView.put(song,songViewVbox);
-                hBox.getChildren().add(songViewVbox);
-                if (counterUntilSpace == 4) {
-                    makeNewHBox();
-                }
+                addSongView(song);
             }
             fatherContainer.getChildren().add(hBox);
         });
@@ -52,7 +49,27 @@ public class SongsHBoxControl extends HBox {
         hBox.setSpacing(10);
     }
 
+    private void addSongView(Song song) {
+        counterUntilSpace++;
+        VBox songViewVbox = viewHandler.openSongView(song);
+        hBox.getChildren().add(songViewVbox);
+        if (counterUntilSpace == 4) {
+            makeNewHBox();
+        }
+    }
+
     public void onNewSong(PropertyChangeEvent event) {
+        System.out.println("GUI updates");
+        Playlist playlist = (Playlist) event.getNewValue();
+        System.out.println(playlist);
+        if (this.playlist.getPlaylist_id() != playlist.getPlaylist_id()) {
+            System.out.println("Wrong playlist");
+            return;
+        }
+
+        ArrayList<Song> songs = playlist.getSongs();
+        Song lastSong = songs.get(songs.size() - 1);
+        addSongView(lastSong);
     }
 
     public void onRemovedSong(PropertyChangeEvent event) {

@@ -53,11 +53,12 @@ public class ProfileViewController implements ViewController {
         openFollowList();
         openProfileCard();
         viewModel.addListener("newPlaylist", this::onNewPlaylist);
-
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
-        initPlaylistsView((ArrayList<Playlist>) event.getNewValue());
+        ArrayList<Playlist> playlists = new ArrayList<>();
+        playlists.add((Playlist) event.getNewValue());
+        initPlaylistsView(playlists);
     }
 
     private void initProfileInfo(User user) {
@@ -120,11 +121,11 @@ public class ProfileViewController implements ViewController {
                     containerHBox.getChildren().remove(0);
                     PlaylistTitleControl playlistTitleControl = new PlaylistTitleControl(vh, songs, playlist);
                     containerHBox.getChildren().add(playlistTitleControl);
-                    SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, vh, vBoxContainer);
-                    viewModel.addListener("newSongAddedTo" + playlist, songsHBoxControl::onNewSong);
-                    viewModel.addListener("newSongAddedTo" + playlist, playlistTitleControl::onNewSong);
-                    viewModel.addListener("newSongRemovedFrom" + playlist,songsHBoxControl::onRemovedSong);
-                    viewModel.addListener("newSongRemovedFrom" + playlist,playlistTitleControl::onRemovedSong);
+                    SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs,playlist, vh, vBoxContainer);
+                    viewModel.addListener("newSongAddedToPlaylist", songsHBoxControl::onNewSong);
+//                    viewModel.addListener("newSongAddedToPlaylist", playlistTitleControl::onNewSong);
+                    viewModel.addListener("newSongRemovedFromPlaylist", songsHBoxControl::onRemovedSong);
+//                    viewModel.addListener("newSongRemovedFromPlaylist", playlistTitleControl::onRemovedSong);
                 });
             }).start();
         }

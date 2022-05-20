@@ -15,6 +15,7 @@ public class MainMenuViewModel implements Subject {
 
     public MainMenuViewModel(MainModel mainModel) {
         this.mainModel = mainModel;
+        this.support = new PropertyChangeSupport(this);
     }
 
     public ArrayList<Song> fetchRandomSongs() {

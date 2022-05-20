@@ -7,15 +7,19 @@ import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.server.serverData.filemanager.FileManager;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ServerModelMusicImpl implements ServerModelMusic {
     private FileManager fileManager;
+    private PropertyChangeSupport support;
 
     public ServerModelMusicImpl() {
         this.fileManager = FileManager.getInstance();
+        this.support = new PropertyChangeSupport(this);
     }
 
     @Override
@@ -28,32 +32,41 @@ public class ServerModelMusicImpl implements ServerModelMusic {
         return fileManager.fetchPhotoFromAlbum(picturePath);
     }
 
-    @Override public void addToLikedSongs(User user, Song song)
-    {
-        try
-        {
-           Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user,"Liked songs");
-            if(!UsersDAOImpl.getInstance().PlaylistExists(user,"Liked songs")){
-                PlaylistDAOImpl.getInstance().createPlayList("Liked songs","Songs that I like","",user);
+    @Override
+    public void addToLikedSongs(User user, Song song) {
+        try {
+            if (!UsersDAOImpl.getInstance().PlaylistExists(user, "Liked songs")) {
+                PlaylistDAOImpl.getInstance().createPlayList("Liked songs", "Songs that I like", "", user);
+                Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
+                support.firePropertyChange("newPlaylist", null, playlist);
+            } else {
+                Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
+                PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist, song);
+                support.firePropertyChange("newSongAddedToPlaylist" , null, playlist);
+                System.out.println("Fired from server model");
             }
-            PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist,song);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    @Override public void removeToLikedSongs(User user, Song song)
-    {
-        try
-        {
-            Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user,"Liked songs");
-            PlaylistDAOImpl.getInstance().removeSongFromPlaylist(playlist,song);
-        }
-        catch (SQLException e)
-        {
+    @Override
+    public void removeToLikedSongs(User user, Song song) {
+        try {
+            Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
+            PlaylistDAOImpl.getInstance().removeSongFromPlaylist(playlist, song);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void addListener(String eventName, PropertyChangeListener listener) {
+        support.addPropertyChangeListener(eventName, listener);
+    }
+
+    @Override
+    public void removeListener(String eventName, PropertyChangeListener listener) {
+        support.removePropertyChangeListener(eventName, listener);
     }
 }

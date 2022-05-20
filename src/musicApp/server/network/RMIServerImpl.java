@@ -1,6 +1,7 @@
 package musicApp.server.network;
 
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.network.chat.ChatServerImpl;
 import musicApp.server.network.followList.FollowListServerImpl;
@@ -72,6 +73,20 @@ public class RMIServerImpl implements RMIServer {
         serverModel.getModelSearch().addListener("newSearch", evt -> {
             try {
                 client.updateSearchResult((ArrayList<Song>) evt.getNewValue());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
+        serverModel.getModelMusic().addListener("newPlaylist",evt -> {
+            try {
+                client.updatePlaylists((Playlist) evt.getNewValue());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
+        serverModel.getModelMusic().addListener("newSongAddedToPlaylist",evt -> {
+            try {
+                client.updateSongsFromPlaylist((Playlist) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

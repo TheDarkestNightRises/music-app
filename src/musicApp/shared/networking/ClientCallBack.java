@@ -1,5 +1,6 @@
 package musicApp.shared.networking;
 
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
@@ -17,4 +18,8 @@ public interface ClientCallBack extends Remote {
     void updateUserNumber(int newValue) throws RemoteException;
 
     void updateSearchResult(ArrayList<Song> songsSearchResult) throws RemoteException;
+
+    void updatePlaylists(Playlist newValue) throws RemoteException;
+
+    void updateSongsFromPlaylist(Playlist newValue) throws RemoteException;
 }
