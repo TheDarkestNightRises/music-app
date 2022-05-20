@@ -37,20 +37,25 @@ public class ServerModelMusicImpl implements ServerModelMusic {
     @Override
     public void addToLikedSongs(User user, Song song) {
         try {
-            if (!UsersDAOImpl.getInstance().PlaylistExists(user, "Liked songs")) {
-                PlaylistDAOImpl.getInstance().createPlayList("Liked songs", "Songs that I like", "", user);
+                if (!UsersDAOImpl.getInstance().PlaylistExists(user, "Liked songs"))
+                {
+                    PlaylistDAOImpl.getInstance().createPlayList("Liked songs", "Songs that I like", "", user);
+                    Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
+                    support.firePropertyChange("newPlaylist", null, playlist);
+                }
                 Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
-                support.firePropertyChange("newPlaylist", null, playlist);
+            if (PlaylistDAOImpl.getInstance().songIsNotInThePlaylist(playlist,song))
+            {
+                PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist, song);
+                ArrayList<Song> songs = PlaylistDAOImpl.getInstance().getAllSongsFromPlayList(playlist);
+                for (Song currentSong : songs)
+                {
+                    playlist.getSongs().add(currentSong);
+                }
+                System.out.println(playlist);
+                support.firePropertyChange("newSongAddedToPlaylist", null, playlist);
+                System.out.println("Fired from server model");
             }
-            Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
-            PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist, song);
-            ArrayList<Song> songs = PlaylistDAOImpl.getInstance().getAllSongsFromPlayList(playlist);
-            for (Song currentSong : songs) {
-                playlist.getSongs().add(currentSong);
-            }
-            System.out.println(playlist);
-            support.firePropertyChange("newSongAddedToPlaylist", null, playlist);
-            System.out.println("Fired from server model");
         } catch (SQLException e) {
             e.printStackTrace();
         }

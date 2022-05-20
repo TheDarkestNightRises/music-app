@@ -15,4 +15,5 @@ public interface PlaylistDAO
   void insertSongIntoPlaylist(Playlist playlist, Song song);
   void removeSongFromPlaylist(Playlist playlist, Song song);
   ArrayList<Song> getAllSongsFromPlayList(Playlist playlist);
+  boolean songIsNotInThePlaylist(Playlist playlist, Song song);
 }

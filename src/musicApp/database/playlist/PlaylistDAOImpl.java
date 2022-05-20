@@ -185,4 +185,27 @@ public class PlaylistDAOImpl implements PlaylistDAO
     }
     return null;
   }
+
+  @Override public boolean songIsNotInThePlaylist(Playlist playlist, Song song)
+  {
+    try
+    {
+      PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
+      PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist_song_pair where playlist_id = ? and song_id = ?");
+      statement.setInt(1, playlist.getPlaylist_id());
+      statement.setInt(2,song.getSong_id());
+      statement0.executeUpdate();
+      ResultSet resultSet = statement.executeQuery();
+      if(resultSet.next())
+      {
+        return false;
+      }
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return true;
+  }
+
 }
