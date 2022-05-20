@@ -65,7 +65,7 @@ public class SignUpViewController implements ViewController {
 
     @FXML
     protected void signUpButtonPressed() {
-       if(viewModel.canCreateUser()) //TODO: IF CREATE USER CREATE USER
+       if(viewModel.canCreateUser())
        {
            viewModel.createUser();
            viewHandler.openLogin();

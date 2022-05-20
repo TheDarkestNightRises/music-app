@@ -46,6 +46,8 @@ public class LoginMainController implements ViewController
     viewHandler.openSignUp();
   }
 
+  public void artistSignUpButtonPressed(){viewHandler.openArtistSignUp();}
+
 
 }
 

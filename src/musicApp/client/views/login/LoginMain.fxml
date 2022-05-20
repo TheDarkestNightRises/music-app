@@ -13,12 +13,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.98" prefHeight="720.0" prefWidth="1080.0" styleClass="bodyBg" stylesheets="@login.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.login.LoginMainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.98" prefHeight="720.0" prefWidth="1080.0" styleClass="bodyBg" stylesheets="@login.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.login.LoginMainController">
     <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0">
+         <image>
+            <Image url="@sherift-retro-road-4k-06-1920x1080.jpg" />
+         </image>
+      </ImageView>
         <HBox layoutX="89.0" layoutY="72.0" prefHeight="33.0" prefWidth="117.0" />
-      <VBox layoutX="99.0" layoutY="82.0" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back">
+      <VBox alignment="CENTER" layoutX="99.0" layoutY="82.0" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back">
          <children>
-            <HBox alignment="BOTTOM_CENTER" opacity="0.98" prefHeight="193.0" prefWidth="384.0">
+            <HBox alignment="BOTTOM_CENTER" opacity="0.98" prefHeight="167.0" prefWidth="384.0">
                <children>
                   <ImageView fitHeight="129.0" fitWidth="140.0">
                      <image>
@@ -44,7 +49,7 @@
                   <TextField fx:id="username" prefHeight="34.0" prefWidth="282.0" promptText="Username" styleClass="SignIpInput" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="44.0" prefWidth="384.0">
                <children>
                   <PasswordField fx:id="password" prefHeight="34.0" prefWidth="282.0" promptText="Password" styleClass="SignIpInput" />
                </children>
@@ -54,7 +59,7 @@
                   <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="311.0" textFill="WHITE" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="82.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="384.0">
                <children>
                   <Button fx:id="signIn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#signInButtonPressed" prefHeight="34.0" prefWidth="51.0" style="-fx-background-radius: 10;" styleClass="LogInButton">
                      <font>
@@ -70,7 +75,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="14.0" prefWidth="384.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="error" text="Create free account!">
                      <font>
@@ -79,9 +84,14 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="TOP_CENTER" prefHeight="71.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="49.0" prefWidth="384.0">
                <children>
-                  <Button fx:id="signUp" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="34.0" prefWidth="107.0" style="-fx-background-radius: 10;" styleClass="LogInButton" text="Register" />
+                  <Button fx:id="signUp" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="34.0" prefWidth="132.0" style="-fx-background-radius: 10;" styleClass="LogInButton" text="Register as an User" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="42.0" prefWidth="384.0">
+               <children>
+                  <Button fx:id="signUp1" mnemonicParsing="false" onAction="#artistSignUpButtonPressed" prefHeight="34.0" prefWidth="136.0" style="-fx-background-radius: 10;" styleClass="LogInButton" text="Register as an Artist" />
                </children>
             </HBox>
          </children>

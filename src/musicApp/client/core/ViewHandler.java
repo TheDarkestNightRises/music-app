@@ -204,6 +204,20 @@ public class ViewHandler {
         }
     }
 
+    public void openArtistSignUp() {
+        try {
+            Parent root = loadFXML("../views/artistSignUp/ArtistSignUpView.fxml");
+            Scene scene = new Scene(root);
+            stage.setTitle("Search");
+            stage.setScene(scene);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Parent loadFXML(String path, Object... args) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));

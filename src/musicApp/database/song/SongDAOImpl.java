@@ -152,7 +152,7 @@ public class SongDAOImpl implements SongDAO
       statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
-      while(resultSet.next())
+      if(resultSet.next())
       {
         int id1 = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
@@ -171,7 +171,8 @@ public class SongDAOImpl implements SongDAO
           albumName.setPicturePath(album_cover);
         }
         String username = resultSet.getString("username");
-        Artist artistName = new Artist(username);
+        Artist artistName = new Artist();
+        artistName.setName(username);
         return new Song(id1,title,picture,length,albumName,artistName);
       }
     } catch (SQLException e) {

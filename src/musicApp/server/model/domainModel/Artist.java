@@ -20,6 +20,7 @@ public class Artist extends User implements Serializable {
         super("","","","","","",null);
         this.name = name;
         this.albums = new ArrayList<>();
+
     }
 
     public String getName() {

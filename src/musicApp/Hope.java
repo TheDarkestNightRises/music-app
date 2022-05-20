@@ -30,6 +30,7 @@ public class Hope
 //    AlbumDAOImpl.getInstance().insertAlbum("da",2022,"picture",artist);'
 //     Playlist playlist = UsersDAOImpl.getInstance().getPlaylistFromUserById(user,1);
 //    FollowDAOImpl.getInstance().Follow(emanuel,andrei);
-    System.out.println(AlbumDAOImpl.getInstance().get4RandomAlbums());
+//    System.out.println(AlbumDAOImpl.getInstance().get4RandomAlbums());
+    System.out.println(SongDAOImpl.getInstance().get4RandomSongs());
   }
 }
