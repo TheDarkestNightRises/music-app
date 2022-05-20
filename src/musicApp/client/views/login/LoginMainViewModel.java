@@ -20,27 +20,7 @@ public class LoginMainViewModel {
     }
 
     public boolean signIn() {
-        if (password.get().equals("") && username.get().equals("")) {
-            error.set("No data inserted");
-            return false; }
-        if (username.get().equals("")) {
-            error.set("Username should not be null!");
-            return false; }
-        if (password.get().equals("")) {
-            error.set("Password should not be null!");
-            return false; }
-        if(accountDoesNotExist())
-          {
-            error.set("The password is wrong");
-            return false;
-          }
-        if(model.getLogInManager().signIn(username.get(), password.get()))
-            return true;
-              else
-        {
-            error.set("Account already logged in");
-            return false;
-        }
+      return  loginValidation();
     }
 
     private boolean accountDoesNotExist()
@@ -68,5 +48,30 @@ public class LoginMainViewModel {
 
     public User getUser() {
         return model.getLogInManager().getUser();
+    }
+
+    public boolean loginValidation()
+    {
+        if (password.get().equals("") && username.get().equals("")) {
+            error.set("No data inserted");
+            return false; }
+        if (username.get().equals("")) {
+            error.set("Username should not be null!");
+            return false; }
+        if (password.get().equals("")) {
+            error.set("Password should not be null!");
+            return false; }
+        if(accountDoesNotExist())
+        {
+            error.set("The password is wrong");
+            return false;
+        }
+        if(model.getLogInManager().signIn(username.get(), password.get()))
+            return true;
+        else
+        {
+            error.set("Account already logged in");
+            return false;
+        }
     }
 }

@@ -9,7 +9,7 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.signup.SignUpViewModel;
 
-public class ArtistVSignUpViewController implements ViewController
+public class ArtistSignUpViewController implements ViewController
 {
   @FXML
   private PasswordField password;
@@ -22,13 +22,13 @@ public class ArtistVSignUpViewController implements ViewController
   @FXML
   private TextField email;
   private ViewHandler viewHandler;
-  private SignUpViewModel viewModel;
+  private ArtistSignUpViewModel viewModel;
 
 
   @Override
   public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
     viewHandler = vh;
-    viewModel = vmf.getSignUpViewModel();
+    viewModel = vmf.getArtistSignUpViewModel();
     viewModel.bindPassword(password.textProperty());
     viewModel.bindUsername(username.textProperty());
     viewModel.bindError(errorLabel.textProperty());
@@ -64,9 +64,9 @@ public class ArtistVSignUpViewController implements ViewController
 
   @FXML
   protected void signUpButtonPressed() {
-    if(viewModel.canCreateUser())
+    if(viewModel.canCreateArtistUser())
     {
-      viewModel.createUser();
+      viewModel.createArtistUser();
       viewHandler.openLogin();
     }
   }

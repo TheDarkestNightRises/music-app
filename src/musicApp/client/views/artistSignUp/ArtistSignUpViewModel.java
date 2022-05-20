@@ -1,12 +1,10 @@
-package musicApp.client.views.signup;
+package musicApp.client.views.artistSignUp;
 
-import com.sun.tools.javac.Main;
-import musicApp.client.model.MainModel;
-import musicApp.client.model.chat.ChatManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import musicApp.client.model.MainModel;
 
-public class SignUpViewModel
+public class ArtistSignUpViewModel
 {
   private final MainModel mainModel;
   private final StringProperty username;
@@ -15,7 +13,7 @@ public class SignUpViewModel
   private final StringProperty email;
   private final StringProperty repeatPassword;
 
-  public SignUpViewModel(MainModel model)
+  public ArtistSignUpViewModel(MainModel model)
   {
     this.mainModel = model;
     this.username = new SimpleStringProperty("");
@@ -26,12 +24,13 @@ public class SignUpViewModel
 
   }
 
-  public boolean createUser()
+  public boolean createArtistUser()
   {
     try
     {
-     registerValidation();
+      registerValidation();
       mainModel.getSignUpManager().addUser(username.get(), password.get(), email.get());
+      mainModel.getArtistSignUpManager().addArtist(username.get(), password.get(), email.get());
       reset();
       return true;
     }
@@ -95,74 +94,74 @@ public class SignUpViewModel
     email.bindBidirectional(property);
   }
 
-  public boolean canCreateUser()
+  public boolean canCreateArtistUser()
   {
-    return createUser();
+    return createArtistUser();
   }
 
   public boolean registerValidation()
   {
-      if (UsernameExists())
-      {
-        error.set("Username already exists!");
-        return false;
-      }
+    if (UsernameExists())
+    {
+      error.set("Username already exists!");
+      return false;
+    }
 
-      if (password.get().equals("") && username.get().equals("") && email.get().equals("") && repeatPassword.get().equals(""))
-      {
-        error.set("No data inserted!");
-        return false;
-      }
+    if (password.get().equals("") && username.get().equals("") && email.get().equals("") && repeatPassword.get().equals(""))
+    {
+      error.set("No data inserted!");
+      return false;
+    }
 
-      if (username.get().equals(""))
-      {
-        error.set("Username should not be null!");
-        return false;
-      }
+    if (username.get().equals(""))
+    {
+      error.set("Username should not be null!");
+      return false;
+    }
 
-      if (password.get().equals(""))
-      {
-        error.set("Password should not be null!");
-        return false;
-      }
+    if (password.get().equals(""))
+    {
+      error.set("Password should not be null!");
+      return false;
+    }
 
-      if (email.get().equals(""))
-      {
-        error.set("Email should not be null!");
-        return false;
-      }
+    if (email.get().equals(""))
+    {
+      error.set("Email should not be null!");
+      return false;
+    }
 
-      if (password.get().length() < 8)
-      {
-        error.set("Password must contain at least 8 characters!");
-        return false;
-      }
+    if (password.get().length() < 8)
+    {
+      error.set("Password must contain at least 8 characters!");
+      return false;
+    }
 
-      if (noDigits())
-      {
-        error.set("Password must contain at least one digit!");
-        return false;
-      }
+    if (noDigits())
+    {
+      error.set("Password must contain at least one digit!");
+      return false;
+    }
 
-      if (noUpper())
-      {
-        error.set("Password must contain at least one uppercase!");
-        return false;
-      }
+    if (noUpper())
+    {
+      error.set("Password must contain at least one uppercase!");
+      return false;
+    }
 
-      if(emailNotValid())
-      {
-        error.set("Email is not valid!");
-        return false;
-      }
+    if(emailNotValid())
+    {
+      error.set("Email is not valid!");
+      return false;
+    }
 
-      if(!password.toString().equals(repeatPassword.toString()))
-      {
-        error.set("Password does not match!");
-        password.set("");
-        repeatPassword.set("");
-        return false;
-      }
-      return true;
+    if(!password.toString().equals(repeatPassword.toString()))
+    {
+      error.set("Password does not match!");
+      password.set("");
+      repeatPassword.set("");
+      return false;
+    }
+    return true;
   }
 }

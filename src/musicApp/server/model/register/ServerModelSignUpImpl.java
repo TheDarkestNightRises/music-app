@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class ServerModelSignUpImpl implements ServerModelSignUp
 {
   private PropertyChangeSupport support;
-  private UsersDAO d;
+  private UsersDAO userDAO;
 
   public ServerModelSignUpImpl()
   {
@@ -52,8 +52,8 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
   {
     try
     {
-      d = new UsersDAOImpl();
-      return d.usernameExists(username);
+      userDAO = new UsersDAOImpl();
+      return userDAO.usernameExists(username);
     }
     catch (SQLException e)
     {
@@ -66,7 +66,7 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
   {
     try
     {
-      d.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+      this.userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
     }
     catch (SQLException e)
     {
