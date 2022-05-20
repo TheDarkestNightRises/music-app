@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewHandler;
 import musicApp.server.model.domainModel.Song;
 
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 public class SongsHBoxControl extends HBox {
@@ -45,5 +46,8 @@ public class SongsHBoxControl extends HBox {
         fatherContainer.getChildren().add(hBox);
         hBox = new HBox();
         hBox.setSpacing(10);
+    }
+
+    public void onNewSong(PropertyChangeEvent event) {
     }
 }

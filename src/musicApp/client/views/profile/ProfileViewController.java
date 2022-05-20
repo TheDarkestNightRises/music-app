@@ -19,6 +19,7 @@ import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 
 
+import java.beans.PropertyChangeEvent;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
@@ -51,6 +52,12 @@ public class ProfileViewController implements ViewController {
         initProfileInfo(user);
         openFollowList();
         openProfileCard();
+        viewModel.addListener("newPlaylist", this::onNewPlaylist);
+
+    }
+
+    private void onNewPlaylist(PropertyChangeEvent event) {
+        initPlaylistsView((ArrayList<Playlist>) event.getNewValue());
     }
 
     private void initProfileInfo(User user) {
@@ -111,8 +118,11 @@ public class ProfileViewController implements ViewController {
                 ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
                 Platform.runLater(() -> {
                     containerHBox.getChildren().remove(0);
-                    containerHBox.getChildren().add(new PlaylistTitleControl(vh, songs, playlist));
+                    PlaylistTitleControl playlistTitleControl = new PlaylistTitleControl(vh, songs, playlist);
+                    containerHBox.getChildren().add(playlistTitleControl);
                     SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, vh, vBoxContainer);
+                    viewModel.addListener("newSongAddedTo" + playlist, songsHBoxControl::onNewSong);
+                    viewModel.addListener("newSongAddedTo" + playlist, playlistTitleControl::onNewSong);
                 });
             }).start();
         }

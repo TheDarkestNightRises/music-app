@@ -8,6 +8,7 @@ import musicApp.client.core.ViewHandler;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 public class PlaylistTitleControl extends HBox {
@@ -40,5 +41,9 @@ public class PlaylistTitleControl extends HBox {
         }
         titleHBox.getChildren().add(loadingTextControl.getTextFromControl());
         this.getChildren().addAll(titleHBox);
+    }
+
+    public void onNewSong(PropertyChangeEvent event) {
+
     }
 }
