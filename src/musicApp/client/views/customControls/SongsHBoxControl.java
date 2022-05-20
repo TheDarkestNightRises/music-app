@@ -32,14 +32,12 @@ public class SongsHBoxControl extends HBox {
     }
 
     private void initCustomLook() {
-        hBox = new HBox();
-        hBox.setSpacing(10);
+        makeNewHBox();
         counterUntilSpace = 0;
         Platform.runLater(() -> {
             for (Song song : songs) {
                 addSongView(song);
             }
-            fatherContainer.getChildren().add(hBox);
         });
     }
 
@@ -52,6 +50,7 @@ public class SongsHBoxControl extends HBox {
     private void addSongView(Song song) {
         counterUntilSpace++;
         if (counterUntilSpace == 5) {
+            counterUntilSpace = 0;
             makeNewHBox();
         }
         VBox songViewVbox = viewHandler.openSongView(song);
@@ -66,7 +65,6 @@ public class SongsHBoxControl extends HBox {
             System.out.println("Wrong playlist");
             return;
         }
-
         ArrayList<Song> songs = playlist.getSongs();
         Song lastSong = songs.get(songs.size() - 1);
         addSongView(lastSong);
