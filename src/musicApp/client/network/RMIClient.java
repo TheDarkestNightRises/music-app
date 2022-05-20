@@ -2,6 +2,8 @@ package musicApp.client.network;
 
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
+import musicApp.client.network.createPlaylist.CreatePlaylistClient;
+import musicApp.client.network.createPlaylist.RMICreatePlayListClient;
 import musicApp.client.network.followList.FollowListClient;
 import musicApp.client.network.followList.RMIFollowListClient;
 import musicApp.client.network.login.LoginClient;
@@ -46,6 +48,7 @@ public class RMIClient implements Client, ClientCallBack {
     private SearchClient searchClient;
     private FollowListClient followListClient;
     private MainMenuClient mainMenuClient;
+    private CreatePlaylistClient createPlaylistClient;
 
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
@@ -60,6 +63,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.searchClient = new RMISearchClient();
         this.followListClient = new RMIFollowListClient();
         this.mainMenuClient = new RMIMainMenu();
+        this.createPlaylistClient = new RMICreatePlayListClient();
     }
 
     @Override
@@ -162,6 +166,11 @@ public class RMIClient implements Client, ClientCallBack {
     @Override
     public UpdateSettingsClient getUpdateSettingsclient() {
         return updateSettingsClient;
+    }
+
+    @Override public CreatePlaylistClient getCreatePlaylistClient()
+    {
+        return createPlaylistClient;
     }
 
     @Override

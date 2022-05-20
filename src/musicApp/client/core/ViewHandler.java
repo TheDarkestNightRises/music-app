@@ -368,6 +368,19 @@ public class ViewHandler {
         return titleHBox;
     }
 
+    public void openCreatePlaylist() {
+        try {
+            Parent root = loadFXML("../views/createPlaylist/CreatePlaylistView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Create playlist");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
 

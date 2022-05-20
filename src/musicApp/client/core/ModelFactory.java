@@ -1,5 +1,7 @@
 package musicApp.client.core;
 
+import musicApp.client.model.createPlaylist.CreatePlayListManagerImplementation;
+import musicApp.client.model.createPlaylist.CreatePlaylistManager;
 import musicApp.client.model.MainModel;
 import musicApp.client.model.MainModelImplementation;
 import musicApp.client.model.chat.ChatManager;
@@ -34,7 +36,7 @@ public class ModelFactory {
 
     private ClientFactory clientFactory;
     private MainModel mainModel;
-
+    private CreatePlaylistManager createPlaylistManager;
 
     public ModelFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
@@ -42,7 +44,8 @@ public class ModelFactory {
 
     public MainModel getMainModel() {
         if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager());
+            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
+                getCreatePlaylistManager());
         }
         return mainModel;
     }
@@ -94,10 +97,15 @@ public class ModelFactory {
             searchManager = new SearchManagerImplementation(clientFactory.getClient());
         return searchManager;
     }
-
+    public CreatePlaylistManager getCreatePlaylistManager() {
+        if(createPlaylistManager == null)
+            createPlaylistManager = new CreatePlayListManagerImplementation(clientFactory.getClient());
+        return createPlaylistManager;
+    }
     public MainMenuManager getMainMenuManager() {
         if (mainMenuManager == null)
             mainMenuManager = new MainMenuManagerImplementation(clientFactory.getClient());
         return mainMenuManager;
     }
+
 }

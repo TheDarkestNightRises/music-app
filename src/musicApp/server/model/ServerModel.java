@@ -1,6 +1,7 @@
 package musicApp.server.model;
 
 import musicApp.server.model.chat.ServerModelChat;
+import musicApp.server.model.createPlaylist.ServerModelCreatePlaylist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.followList.ServerModelFollowList;
 import musicApp.server.model.login.ServerModelLogin;
@@ -33,4 +34,6 @@ public interface ServerModel {
     ServerModelUpdateSettings getModelUpdateSettings();
 
     ServerModelMainMenu getModelMainMenu();
+
+    ServerModelCreatePlaylist getServerModelCreatePlaylist();
 }

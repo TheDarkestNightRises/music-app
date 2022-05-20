@@ -1,6 +1,7 @@
 package musicApp.client.network;
 
 import musicApp.client.network.chat.ChatClient;
+import musicApp.client.network.createPlaylist.CreatePlaylistClient;
 import musicApp.client.network.followList.FollowListClient;
 import musicApp.client.network.login.LoginClient;
 import musicApp.client.network.mainMenu.MainMenuClient;
@@ -30,6 +31,8 @@ public interface Client extends Subject {
     FollowListClient getFollowListClient();
 
     UpdateSettingsClient getUpdateSettingsclient();
+
+    CreatePlaylistClient getCreatePlaylistClient();
 
     MainMenuClient getMainMenuClient();
 }

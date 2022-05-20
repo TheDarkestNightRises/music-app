@@ -2,6 +2,7 @@ package musicApp.client.core;
 
 import musicApp.client.views.artistSignUp.ArtistSignUpViewModel;
 import musicApp.client.views.chat.ChatViewModel;
+import musicApp.client.views.createPlaylist.CreatePlaylistViewModel;
 import musicApp.client.views.followList.FollowListViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
@@ -25,8 +26,9 @@ public class ViewModelFactory {
     private SearchViewModel searchViewModel;
     private MainMenuViewModel mainMenuViewModel;
     private ArtistSignUpViewModel artistSignUpViewModel;
+    private CreatePlaylistViewModel createPlaylistViewModel;
 
-    public ViewModelFactory(ModelFactory modelFactory) {
+  public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
     }
 
@@ -100,6 +102,14 @@ public class ViewModelFactory {
       artistSignUpViewModel = new ArtistSignUpViewModel(modelFactory.getMainModel());
     }
     return artistSignUpViewModel;
+  }
+
+  public CreatePlaylistViewModel getCreatePlaylistViewModel()
+  {
+    if(createPlaylistViewModel == null)
+      createPlaylistViewModel = new CreatePlaylistViewModel(
+          modelFactory.getMainModel());
+    return createPlaylistViewModel;
   }
 }
 
