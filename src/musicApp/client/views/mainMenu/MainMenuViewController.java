@@ -61,7 +61,8 @@ public class MainMenuViewController implements ViewController {
         new Thread(() -> {
             ArrayList<Song> songs = viewModelMainMenu.fetchLastSongs();
             Platform.runLater(() -> {
-                SinglesHBoxControl singlesHBoxControl= new SinglesHBoxControl(songs, viewHandler, newHitsContainer);
+                SinglesHBoxControl singlesHBoxControl = new SinglesHBoxControl(songs, viewHandler, newHitsContainer);
+                viewModelMainMenu.addListener("songAdded", singlesHBoxControl::addNewSong);
             });
         }).start();
     }

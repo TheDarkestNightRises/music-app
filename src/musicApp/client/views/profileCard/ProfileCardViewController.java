@@ -37,7 +37,7 @@ public class ProfileCardViewController implements ViewController {
         user = profileViewModel.fetchUser();
         profileName.setText(user.getUsername());
         Image image = new Image(new ByteArrayInputStream(profileViewModel.fetchProfilePicture(user.getProfile_picture())));
-        profilePicture.setImage(image);
+        profilePicture.setImage(image); //todo:bindings
     }
 
     @FXML

@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewHandler;
 import musicApp.server.model.domainModel.Song;
 
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 public class SinglesHBoxControl extends HBox {
@@ -21,10 +22,10 @@ public class SinglesHBoxControl extends HBox {
         this.songs = songs;
         this.fatherContainer = vBox;
         this.hBox = new HBox();
-        initCustomLook();
+        initCustomLook(songs);
     }
 
-    private void initCustomLook() {
+    private void initCustomLook(ArrayList<Song> songs) {
         hBox = new HBox();
         hBox.setSpacing(10);
         counterUntilSpace = 0;
@@ -45,5 +46,16 @@ public class SinglesHBoxControl extends HBox {
         fatherContainer.getChildren().add(hBox);
         hBox = new HBox();
         hBox.setSpacing(10);
+    }
+
+    private HBox returnLastUsedHBox() {
+        return hBox;
+    }
+
+
+    public void addNewSong(PropertyChangeEvent event) {
+        ArrayList<Song> single = new ArrayList<>();
+        single.add((Song) event.getNewValue());
+        initCustomLook(songs);
     }
 }
