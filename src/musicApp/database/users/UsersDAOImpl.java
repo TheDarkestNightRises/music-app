@@ -191,7 +191,7 @@ public class UsersDAOImpl implements UsersDAO
       if (resultSet.next())
       {
         int id = resultSet.getInt("playlist_id");
-        return new Playlist(id,title,"","",null);
+        return new Playlist(id,title,"","",new ArrayList<>());
       }
     }
     catch (SQLException e)
