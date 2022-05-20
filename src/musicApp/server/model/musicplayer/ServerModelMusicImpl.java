@@ -1,5 +1,6 @@
 package musicApp.server.model.musicplayer;
 
+import musicApp.database.playlist.PlaylistDAO;
 import musicApp.database.playlist.PlaylistDAOImpl;
 import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.model.domainModel.Playlist;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ServerModelMusicImpl implements ServerModelMusic {
     private FileManager fileManager;
     private PropertyChangeSupport support;
+
 
     public ServerModelMusicImpl() {
         this.fileManager = FileManager.getInstance();
@@ -39,12 +41,16 @@ public class ServerModelMusicImpl implements ServerModelMusic {
                 PlaylistDAOImpl.getInstance().createPlayList("Liked songs", "Songs that I like", "", user);
                 Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
                 support.firePropertyChange("newPlaylist", null, playlist);
-            } else {
-                Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
-                PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist, song);
-                support.firePropertyChange("newSongAddedToPlaylist" , null, playlist);
-                System.out.println("Fired from server model");
             }
+            Playlist playlist = UsersDAOImpl.getInstance().getPlaylistIdFromUserByName(user, "Liked songs");
+            PlaylistDAOImpl.getInstance().insertSongIntoPlaylist(playlist, song);
+            ArrayList<Song> songs = PlaylistDAOImpl.getInstance().getAllSongsFromPlayList(playlist);
+            for (Song currentSong : songs) {
+                playlist.getSongs().add(currentSong);
+            }
+            System.out.println(playlist);
+            support.firePropertyChange("newSongAddedToPlaylist", null, playlist);
+            System.out.println("Fired from server model");
         } catch (SQLException e) {
             e.printStackTrace();
         }

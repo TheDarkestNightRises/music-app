@@ -44,18 +44,18 @@ public class SongsHBoxControl extends HBox {
     }
 
     private void makeNewHBox() {
-        fatherContainer.getChildren().add(hBox);
         hBox = new HBox();
         hBox.setSpacing(10);
+        fatherContainer.getChildren().add(hBox);
     }
 
     private void addSongView(Song song) {
         counterUntilSpace++;
-        VBox songViewVbox = viewHandler.openSongView(song);
-        hBox.getChildren().add(songViewVbox);
-        if (counterUntilSpace == 4) {
+        if (counterUntilSpace == 5) {
             makeNewHBox();
         }
+        VBox songViewVbox = viewHandler.openSongView(song);
+        hBox.getChildren().add(songViewVbox);
     }
 
     public void onNewSong(PropertyChangeEvent event) {
