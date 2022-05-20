@@ -31,6 +31,11 @@ public class SignUpManagerImplementation implements SignUpManager
     return client.getSignUpClient().emailNotValid(email);
   }
 
+  @Override public void addArtist(String username, String password, String email)
+  {
+    client.getSignUpClient().addArtist(username, password, email);
+  }
+
   @Override
   public boolean noDigits(String password) {
     return client.getSignUpClient().noDigits(password);

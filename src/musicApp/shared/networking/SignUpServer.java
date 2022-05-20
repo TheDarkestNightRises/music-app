@@ -16,4 +16,6 @@ public interface SignUpServer extends Remote
   boolean noUpper(String password) throws RemoteException;
 
   boolean emailNotValid(String email) throws RemoteException;
+
+  void addArtist(User user) throws RemoteException;
 }

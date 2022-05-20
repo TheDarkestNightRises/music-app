@@ -15,6 +15,16 @@ public class RMISignUpClient implements SignUpClient
     this.server = server;
   }
 
+  @Override public void addArtist(String username, String password, String email)
+  {
+    User user = new User(username,password,email,"","","",null);
+    try {
+      server.getSignUpServer().addArtist(user);
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+  }
+
   @Override public void addUser(String username, String password, String email)
   {
     User user = new User(username,password,email,"","","",null);

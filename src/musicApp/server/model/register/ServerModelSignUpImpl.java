@@ -1,5 +1,6 @@
 package musicApp.server.model.register;
 
+import musicApp.database.artist.ArtistDAO;
 import musicApp.server.model.domainModel.User;
 import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
@@ -14,6 +15,7 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
 {
   private PropertyChangeSupport support;
   private UsersDAO userDAO;
+  private ArtistDAO artistDAO;
 
   public ServerModelSignUpImpl()
   {
@@ -67,6 +69,19 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     try
     {
       this.userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  @Override public void addArtist(User user)
+  {
+    try
+    {
+      this.userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+      this.artistDAO.insertArtist(user.getUsername());
     }
     catch (SQLException e)
     {

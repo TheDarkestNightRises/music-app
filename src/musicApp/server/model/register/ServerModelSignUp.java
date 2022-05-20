@@ -10,4 +10,5 @@ public interface ServerModelSignUp extends Subject
   boolean emailNotValid(String email);
   boolean usernameExists(String username);
   void addUser(User user);
+  void addArtist(User user);
 }

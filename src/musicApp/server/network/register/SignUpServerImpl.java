@@ -42,4 +42,9 @@ public class SignUpServerImpl implements SignUpServer
   {
     return serverModel.getModelSignUp().emailNotValid(email);
   }
+
+  @Override public void addArtist(User user) throws RemoteException
+  {
+    serverModel.getModelSignUp().addArtist(user);
+  }
 }

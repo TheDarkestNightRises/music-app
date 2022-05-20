@@ -11,4 +11,6 @@ public interface SignUpManager
   boolean noUpper(String password);
 
   boolean emailNotValid(String email);
+
+  void addArtist(String username, String password, String email);
 }

@@ -29,8 +29,7 @@ public class ArtistSignUpViewModel
     try
     {
       registerValidation();
-      mainModel.getSignUpManager().addUser(username.get(), password.get(), email.get());
-      mainModel.getArtistSignUpManager().addArtist(username.get(), password.get(), email.get());
+      mainModel.getSignUpManager().addArtist(username.get(), password.get(), email.get());
       reset();
       return true;
     }
