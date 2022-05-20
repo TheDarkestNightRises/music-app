@@ -123,6 +123,8 @@ public class ProfileViewController implements ViewController {
                     SongsHBoxControl songsHBoxControl = new SongsHBoxControl(songs, vh, vBoxContainer);
                     viewModel.addListener("newSongAddedTo" + playlist, songsHBoxControl::onNewSong);
                     viewModel.addListener("newSongAddedTo" + playlist, playlistTitleControl::onNewSong);
+                    viewModel.addListener("newSongRemovedFrom" + playlist,songsHBoxControl::onRemovedSong);
+                    viewModel.addListener("newSongRemovedFrom" + playlist,playlistTitleControl::onRemovedSong);
                 });
             }).start();
         }

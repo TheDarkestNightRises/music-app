@@ -8,11 +8,13 @@ import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SongsHBoxControl extends HBox {
     private int counterUntilSpace;
     private HBox hBox;
     private VBox fatherContainer;
+    private HashMap<Song,VBox> songsView;
 
     private ArrayList<Song> songs;
     private ViewHandler viewHandler;
@@ -33,6 +35,7 @@ public class SongsHBoxControl extends HBox {
             for (Song song : songs) {
                 counterUntilSpace++;
                 VBox songViewVbox = viewHandler.openSongView(song);
+                songsView.put(song,songViewVbox);
                 hBox.getChildren().add(songViewVbox);
                 if (counterUntilSpace == 4) {
                     makeNewHBox();
@@ -49,5 +52,11 @@ public class SongsHBoxControl extends HBox {
     }
 
     public void onNewSong(PropertyChangeEvent event) {
+    }
+
+    public void onRemovedSong(PropertyChangeEvent event) {
+        Song song = (Song) event.getNewValue();
+        VBox vBoxForSong = songsView.get(song);
+        vBoxForSong.getChildren().removeAll();
     }
 }

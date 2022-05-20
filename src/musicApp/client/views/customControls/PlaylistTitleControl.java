@@ -10,6 +10,7 @@ import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PlaylistTitleControl extends HBox {
     private HBox titleHBox;
@@ -45,5 +46,8 @@ public class PlaylistTitleControl extends HBox {
 
     public void onNewSong(PropertyChangeEvent event) {
 
+    }
+
+    public void onRemovedSong(PropertyChangeEvent event) {
     }
 }
