@@ -95,7 +95,7 @@
                 </HBox>
                 <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
                     <children>
-                        <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="33.0" prefWidth="247.0" style="-fx-background-radius: 20;" stylesheets="@artistSignUp.css" text="Sign Up">
+                        <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpPressed" prefHeight="33.0" prefWidth="247.0" style="-fx-background-radius: 20;" stylesheets="@artistSignUp.css" text="Sign Up">
                             <HBox.margin>
                                 <Insets />
                             </HBox.margin>

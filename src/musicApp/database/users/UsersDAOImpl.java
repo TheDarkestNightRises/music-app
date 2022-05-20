@@ -16,9 +16,11 @@ public class UsersDAOImpl implements UsersDAO
   public static String USERNAME = "viinvdnw";
   public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
+  private Connection connection;
 
   public UsersDAOImpl() throws SQLException
   {
+    this.connection = getConnection();
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
@@ -39,7 +41,7 @@ public class UsersDAOImpl implements UsersDAO
 
   public User createUser(String username, String password, String email)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(

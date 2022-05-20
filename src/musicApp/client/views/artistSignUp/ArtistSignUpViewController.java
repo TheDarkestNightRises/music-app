@@ -53,7 +53,7 @@ public class ArtistSignUpViewController implements ViewController
   @FXML
   public void submitRepeatPassword()
   {
-    signUpButtonPressed();
+    signUpPressed();
   }
 
   @FXML
@@ -63,8 +63,8 @@ public class ArtistSignUpViewController implements ViewController
   }
 
   @FXML
-  protected void signUpButtonPressed() {
-    if(viewModel.canCreateArtistUser())
+  protected void signUpPressed() {
+    if(viewModel.registerValidation())
     {
       viewModel.createArtistUser();
       viewHandler.openLogin();

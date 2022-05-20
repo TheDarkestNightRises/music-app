@@ -30,7 +30,6 @@ public class SignUpViewModel
   {
     try
     {
-     registerValidation();
       mainModel.getSignUpManager().addUser(username.get(), password.get(), email.get());
       reset();
       return true;

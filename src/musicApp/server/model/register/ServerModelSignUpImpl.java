@@ -1,6 +1,7 @@
 package musicApp.server.model.register;
 
 import musicApp.database.artist.ArtistDAO;
+import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.User;
 import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
@@ -80,8 +81,9 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
   {
     try
     {
-      this.userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
-      this.artistDAO.insertArtist(user.getUsername());
+      artistDAO = new ArtistDAOImpl();
+      userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+      artistDAO.insertArtist(user.getUsername());
     }
     catch (SQLException e)
     {
