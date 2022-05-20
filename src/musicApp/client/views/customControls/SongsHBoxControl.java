@@ -24,6 +24,7 @@ public class SongsHBoxControl extends HBox {
         this.songs = songs;
         this.fatherContainer = vBox;
         this.hBox = new HBox();
+        this.songsView = new HashMap<>();
         initCustomLook();
     }
 
