@@ -27,5 +27,7 @@ public interface RMIServer extends Remote {
 
     UpdateSettingsServer getUpdateSettingsServer() throws RemoteException;
 
+    CreatePLayListServer getCreatePlaylistServer() throws RemoteException;
+
     MainMenuServer getMainMenuServer() throws RemoteException;
 }

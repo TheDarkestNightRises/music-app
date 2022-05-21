@@ -133,7 +133,7 @@ public class RMIServerImpl implements RMIServer {
         return updateSettingsServer;
     }
 
-    public CreatePLayListServer getCreatePLayListServer()
+    public CreatePLayListServer getCreatePlaylistServer()
     {
         return createPLayListServer;
     }

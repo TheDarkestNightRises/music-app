@@ -82,7 +82,7 @@ public class ProfileViewController implements ViewController {
 
     @FXML
     public void openChat() {
-        vh.openChat();
+        vh.openCreatePlaylist();
     }
 
     public void initPlaylistsView(ArrayList<Playlist> playlists) {
@@ -137,5 +137,13 @@ public class ProfileViewController implements ViewController {
 
     public void openSearch() {
         vh.openSearch();
+    }
+    public void openCreatePlaylist()
+    {
+        vh.openCreatePlaylist();
+    }
+    public void openUpdateSettings()
+    {
+        vh.openUpdateSettings(viewModel.fetchUser());
     }
 }

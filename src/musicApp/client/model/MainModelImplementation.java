@@ -85,6 +85,6 @@ public class MainModelImplementation implements MainModel{
 
     @Override public CreatePlaylistManager getCreatePlaylistManager()
     {
-        return null;
+        return createPlaylistManager;
     }
 }

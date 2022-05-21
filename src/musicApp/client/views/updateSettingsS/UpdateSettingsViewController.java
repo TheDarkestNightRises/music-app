@@ -80,6 +80,6 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public void backButtonPressed()
   {
-
+    viewHandler.openProfile(viewModel.fetchUser());
   }
 }

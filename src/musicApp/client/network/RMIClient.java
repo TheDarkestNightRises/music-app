@@ -83,6 +83,7 @@ public class RMIClient implements Client, ClientCallBack {
             this.searchClient.setServer(server);
             this.followListClient.setServer(server);
             this.updateSettingsClient.setServer(server);
+            this.createPlaylistClient.setServer(server);
             this.mainMenuClient.setServer(server);
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();

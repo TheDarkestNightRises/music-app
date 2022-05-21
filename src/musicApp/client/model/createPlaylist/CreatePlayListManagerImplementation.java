@@ -1,6 +1,7 @@
 package musicApp.client.model.createPlaylist;
 
 import musicApp.client.network.Client;
+import musicApp.server.model.domainModel.User;
 
 public class CreatePlayListManagerImplementation implements CreatePlaylistManager
 {
@@ -8,5 +9,11 @@ public class CreatePlayListManagerImplementation implements CreatePlaylistManage
   public CreatePlayListManagerImplementation(Client client)
   {
     this.client = client;
+  }
+
+  @Override public void createPlaylist(String title, String description,
+      User user) throws Exception
+  {
+    client.getCreatePlaylistClient().createPlaylist(title, description, user);
   }
 }

@@ -304,9 +304,9 @@ public class UsersDAOImpl implements UsersDAO
     catch (SQLException e)
     {
       e.printStackTrace();
-
+      throw new RuntimeException("Database error");
     }
-    throw new RuntimeException("Database error");
+
   }
 }
 

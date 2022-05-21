@@ -218,4 +218,8 @@ public class UpdateSettingsViewModel
     profilePicture.bindBidirectional(property);
   }
 
+  public User fetchUser()
+  {
+    return mainModel.getLogInManager().getUser();
+  }
 }
