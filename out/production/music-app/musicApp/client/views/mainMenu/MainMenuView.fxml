@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1140.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -138,12 +138,12 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="241.0" prefWidth="215.0">
+            <VBox prefHeight="264.0" prefWidth="215.0">
                <children>
                   <Pane prefHeight="206.0" prefWidth="215.0" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="215.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -167,7 +167,7 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="25.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="715.0" prefWidth="1045.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
                <children>
@@ -200,22 +200,7 @@
                      </graphic>
                   </Button>
                   <Pane prefHeight="52.0" prefWidth="469.0" />
-                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="449.0" spacing="15.0">
-                     <children>
-                        <ImageView fitHeight="70.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/user.png" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="27.0" prefWidth="247.0" text="Emanuel-Dan Acalfoaie" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
+                  <HBox fx:id="profileCardContainer" alignment="CENTER" prefHeight="50.0" prefWidth="449.0" spacing="15.0">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -251,4 +236,11 @@
          </children>
       </VBox>
    </center>
+   <right>
+      <HBox prefHeight="715.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="followListSubView" prefHeight="750.0" prefWidth="228.0" />
+         </children>
+      </HBox>
+   </right>
 </BorderPane>

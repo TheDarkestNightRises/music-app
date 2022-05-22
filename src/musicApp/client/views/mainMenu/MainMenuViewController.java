@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import musicApp.client.core.ViewController;
@@ -26,6 +27,10 @@ public class MainMenuViewController implements ViewController {
     public VBox newHitsContainer;
     @FXML
     public VBox selectionContainer;
+    @FXML
+    public HBox profileCardContainer;
+    @FXML
+    public VBox followListSubView;
 
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
@@ -37,6 +42,8 @@ public class MainMenuViewController implements ViewController {
         initLastSongs();
         initAlbums();
         initRandomSongs();
+        openFollowList();
+        openProfileCard();
     }
 
     private void initAlbums() {
@@ -75,5 +82,17 @@ public class MainMenuViewController implements ViewController {
     @FXML
     public void openChat() {
         viewHandler.openChat();
+    }
+
+    private void openProfileCard() {
+        Parent profileCardRoot = viewHandler.openProfileCard();
+        profileCardContainer.getChildren().clear();
+        profileCardContainer.getChildren().add(profileCardRoot);
+    }
+
+    private void openFollowList() {
+        Parent followListRoot = viewHandler.openFollowListSubView();
+        followListSubView.getChildren().clear();
+        followListSubView.getChildren().add(followListRoot);
     }
 }

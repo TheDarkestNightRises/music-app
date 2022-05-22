@@ -14,24 +14,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.profile.ProfileViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
-            <Hyperlink mnemonicParsing="false" prefHeight="41.0" prefWidth="62.0">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <HBox alignment="CENTER" prefHeight="168.0" prefWidth="215.0">
+               <children>
+                  <ImageView fitHeight="109.0" fitWidth="117.0">
                      <image>
-                        <Image url="@../img/ic_more.png" />
+                        <Image url="@../signup/recon.png" />
                      </image>
                   </ImageView>
-               </graphic>
-            </Hyperlink>
+               </children></HBox>
             <VBox prefHeight="314.0" prefWidth="215.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
                      <children>
-                        <Hyperlink prefHeight="38.0" prefWidth="31.0">
+                        <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
                            <graphic>
                               <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -52,27 +51,6 @@
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
-                     <children>
-                        <Hyperlink>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/ic_browse.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="129.0" text="Followlist" textFill="#7e7b7b">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
@@ -137,11 +115,32 @@
                         </Label>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <Hyperlink>
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_browse.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Create Album" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="241.0" prefWidth="215.0">
+            <VBox prefHeight="174.0" prefWidth="215.0">
                <children>
-                  <Pane prefHeight="206.0" prefWidth="215.0" />
+                  <Pane prefHeight="156.0" prefWidth="215.0" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
@@ -174,31 +173,13 @@
             <HBox prefHeight="52.0" prefWidth="1044.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/ic_back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox>
-                           <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/ic_forward.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets top="10.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
+                        <HBox />
                      </graphic>
                   </Button>
                   <Pane prefHeight="52.0" prefWidth="469.0" />

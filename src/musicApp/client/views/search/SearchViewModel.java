@@ -9,6 +9,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.server.model.search.SongPredicate;
 import musicApp.util.Subject;
 
@@ -68,4 +69,8 @@ public class SearchViewModel implements Subject {
         mainModel.getSearchManager().search(text);
     }
 
+
+    public User fetchUser() {
+        return mainModel.getLogInManager().getUser();
+    }
 }

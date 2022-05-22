@@ -31,11 +31,12 @@ public class SearchViewController implements ViewController {
     public VBox searchContainer;
     @FXML
     public TextField searchTextField;
-
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
     @FXML
     public VBox followListSubView;
+    @FXML
+    public HBox profileCardContainer;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
@@ -45,6 +46,7 @@ public class SearchViewController implements ViewController {
        searchViewModel.init();
        searchViewModel.addListener("newSearch",this::showSearchResults);
         openFollowList();
+        openProfileCard();
     }
 
     private void showSearchResults(PropertyChangeEvent event) {
@@ -69,6 +71,12 @@ public class SearchViewController implements ViewController {
         }).start();
     }
 
+    private void openProfileCard() {
+        Parent profileCardRoot = viewHandler.openProfileCard();
+        profileCardContainer.getChildren().clear();
+        profileCardContainer.getChildren().add(profileCardRoot);
+    }
+
     public void search() {
         searchViewModel.search(searchTextField.getText());
     }
@@ -86,4 +94,7 @@ public class SearchViewController implements ViewController {
         followListSubView.getChildren().clear();
         followListSubView.getChildren().add(followListRoot);
     }
+
+    public void openMain() { viewHandler.openMainMenu(); }
+    public void openSettings() { viewHandler.openUpdateSettings(searchViewModel.fetchUser());}
 }
