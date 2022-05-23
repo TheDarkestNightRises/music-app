@@ -27,7 +27,7 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox prefHeight="314.0" prefWidth="214.0" spacing="20.0">
+            <VBox prefHeight="314.0" prefWidth="214.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="226.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
@@ -140,7 +140,7 @@
                </children>
             </VBox>
             <VBox prefHeight="143.0" prefWidth="214.0" />
-            <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <Hyperlink alignment="CENTER">
                      <graphic>

@@ -26,7 +26,7 @@
                      </image>
                   </ImageView>
                </children></HBox>
-            <VBox prefHeight="314.0" prefWidth="215.0">
+            <VBox prefHeight="314.0" prefWidth="214.0">
                <children>
                   <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
                      <children>
@@ -138,12 +138,15 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="174.0" prefWidth="215.0">
+            <VBox prefHeight="143.0" prefWidth="215.0">
                <children>
-                  <Pane prefHeight="156.0" prefWidth="215.0" />
+                  <Pane prefHeight="206.0" prefWidth="215.0">
+                     <children>
+                        <Button layoutX="44.0" layoutY="53.0" mnemonicParsing="false" onAction="#isArtist" text="isArtist?" />
+                     </children></Pane>
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <Hyperlink alignment="CENTER" onAction="#openCreatePlaylist">
                      <graphic>
