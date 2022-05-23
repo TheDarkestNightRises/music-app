@@ -74,15 +74,21 @@ public class MainMenuViewController implements ViewController {
         }).start();
     }
 
-    @FXML
-    public void openSearch() {
-        viewHandler.openSearch();
-    }
+
+
 
     @FXML
     public void openChat() {
         viewHandler.openChat();
     }
+
+    public void openMain() { viewHandler.openMainMenu(); }
+    public void openSettings() { viewHandler.openUpdateSettings(viewModelMainMenu.fetchUser());}
+    public void openCreatePlaylist()
+    {
+        viewHandler.openCreatePlaylist();
+    }
+    public void openSearch() {viewHandler.openSearch();}
 
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();

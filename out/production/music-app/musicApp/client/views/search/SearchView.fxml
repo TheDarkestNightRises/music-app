@@ -29,7 +29,7 @@
             </HBox>
             <VBox prefHeight="314.0" prefWidth="214.0" spacing="20.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="226.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="226.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
                            <graphic>
@@ -53,7 +53,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink onAction="#openSearch">
                            <graphic>
@@ -74,7 +74,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink onAction="#openChat">
                            <graphic>
@@ -95,7 +95,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink onAction="#openSettings">
                            <graphic>
@@ -116,13 +116,13 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="27.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                      <children>
                         <Hyperlink>
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/ic_browse.png" />
+                                    <Image url="@../img/ic_add.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -142,14 +142,15 @@
             <VBox prefHeight="143.0" prefWidth="214.0" />
             <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/ic_add.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="25.0" />
-                     </HBox.margin>
-                  </ImageView>
+                  <Hyperlink alignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ic_add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Hyperlink>
                   <Label prefHeight="27.0" prefWidth="158.0" stylesheets="@css/style.css" text="New Playlist" textFill="#7e7b7b">
                      <font>
                         <Font name="System Bold" size="18.0" />
@@ -169,31 +170,13 @@
             <HBox prefHeight="26.0" prefWidth="1080.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                     <graphic>
-                        <ImageView fitHeight="43.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/ic_back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <HBox>
-                           <children>
-                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/ic_forward.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets top="10.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
+                        <HBox />
                      </graphic>
                   </Button>
                   <HBox alignment="CENTER" prefHeight="42.0" prefWidth="270.0" spacing="10.0" styleClass="search-container" stylesheets="@css/style.css">

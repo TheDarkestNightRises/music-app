@@ -119,9 +119,9 @@
                      <children>
                         <Hyperlink>
                            <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/ic_browse.png" />
+                                    <Image url="@../img/ic_add.png" />
                                  </image>
                               </ImageView>
                            </graphic>

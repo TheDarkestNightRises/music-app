@@ -3,6 +3,7 @@ package musicApp.client.views.mainMenu;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;
@@ -28,6 +29,10 @@ public class MainMenuViewModel implements Subject {
 
     public ArrayList<Album> fetchRandomAlbums() {
         return mainModel.getMainMenuManager().fetchRandomAlbums();
+    }
+
+    public User fetchUser() {
+        return mainModel.getLogInManager().getUser();
     }
 
     @Override
