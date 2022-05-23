@@ -120,4 +120,8 @@ public class MusicPlayerViewModel implements Subject {
   {
       return mainModel.getLogInManager().getUser();
   }
+  public Song fetchCurrentSong()
+  {
+      return playlist.getSong(songNumber);
+  }
 }

@@ -382,5 +382,19 @@ public class ViewHandler {
         }
     }
 
+    public void openAddToPlaylist(Song song)
+    {
+        try {
+            Parent root = loadFXML("../views/addToPlaylist/AddToPlaylistView.fxml", song);
+            Scene signUp = new Scene(root);
+            stage.setTitle("Add song to playlist playlist");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 

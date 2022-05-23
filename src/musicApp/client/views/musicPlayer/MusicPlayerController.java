@@ -124,4 +124,9 @@ public class MusicPlayerController implements ViewController {
         mediaPlayer.stop();
         viewHandler.openProfile();
     }
+
+    public void addToPlaylistButtonPressed()
+    {
+        viewHandler.openAddToPlaylist(musicPlayerViewModel.fetchCurrentSong());
+    }
 }
