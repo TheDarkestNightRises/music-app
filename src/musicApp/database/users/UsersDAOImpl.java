@@ -289,7 +289,7 @@ public class UsersDAOImpl implements UsersDAO
   }
   @Override public void uploadPicture(String username, String pictureName)
   {
-    try (Connection connection = getConnection())
+    try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = connection.prepareStatement(

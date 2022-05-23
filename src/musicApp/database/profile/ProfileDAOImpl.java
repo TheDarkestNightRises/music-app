@@ -67,8 +67,8 @@ public class ProfileDAOImpl implements ProfileDAO {
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
         try {
-            PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
-            PreparedStatement statement = connection.prepareStatement("SELECT playlist_id, title, description, picture_path "
+            PreparedStatement statement1 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT playlist_id, title, description, picture_path "
                     + "FROM playlist WHERE username = ?;");
             statement.setString(1, user.getUsername());
             statement1.executeUpdate();
@@ -91,9 +91,9 @@ public class ProfileDAOImpl implements ProfileDAO {
 
     @Override
     public ArrayList<Integer> getSongIdsByPlaylist(Playlist playlist) {
-        try (Connection connection = getConnection()) {
-            PreparedStatement statement1 = connection.prepareStatement("SET SCHEMA 'music_app'");
-            PreparedStatement statement = connection.prepareStatement("SELECT song_id "
+        try  {
+            PreparedStatement statement1 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT song_id "
                     + "FROM playlist_song_pair WHERE playlist_id = ?;");
             statement.setInt(1, playlist.getPlaylist_id());
             statement1.executeUpdate();
@@ -113,10 +113,10 @@ public class ProfileDAOImpl implements ProfileDAO {
 
     @Override
     public void updateUserInfo(User user) {
-        try (Connection connection = getConnection()) {
-            PreparedStatement statement0 = connection.prepareStatement(
+        try {
+            PreparedStatement statement0 = getConnection().prepareStatement(
                     "SET SCHEMA 'music_app'");
-            PreparedStatement statement = connection.prepareStatement(
+            PreparedStatement statement = getConnection().prepareStatement(
                     "UPDATE user_ SET nickname = ?, profile_picture_path = ?, description = ? "
                             + "WHERE username = ?");
             statement.setString(1, user.getNickname());

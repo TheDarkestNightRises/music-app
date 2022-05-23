@@ -31,6 +31,7 @@ public class ViewHandler {
 
     private Scene profileScene;
     private Scene mainMenuScene;
+    private Scene mediaPlayerScene;
     private Stage stage;
     private ViewModelFactory vmf;
 
@@ -111,15 +112,22 @@ public class ViewHandler {
     public void openMusicPlayer(Playlist playlist) {
         try {
             Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", playlist);
-            Scene signUp = new Scene(root);
+            mediaPlayerScene = new Scene(root);
             stage.setTitle("Music Player");
-            stage.setScene(signUp);
+            stage.setScene(mediaPlayerScene);
             stage.show();
             stage.setResizable(false);
             stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void openMusicPlayer() {
+        stage.setTitle("Music Player");
+        stage.setScene(mediaPlayerScene);
+        stage.show();
+        stage.setResizable(false);
     }
 
     public void openProfile(User user) {
