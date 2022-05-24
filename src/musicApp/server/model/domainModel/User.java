@@ -32,6 +32,15 @@ public class User implements Serializable
     this.playlists = new ArrayList<>();
   }
 
+  public User(String username, String password, String email, String description, String profile_picture, String nickname) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.description = description;
+    this.profile_picture = profile_picture;
+    this.nickname = nickname;
+  }
+
   public User(){};
 
 
@@ -120,7 +129,11 @@ public class User implements Serializable
             "username='" + username + '\'' +
             ", password='" + password + '\'' +
             ", email='" + email + '\'' +
+            ", description='" + description + '\'' +
+            ", profile_picture='" + profile_picture + '\'' +
+            ", nickname='" + nickname + '\'' +
             ", isLoggedIn=" + isLoggedIn +
+            ", playlists=" + playlists +
             '}';
   }
 

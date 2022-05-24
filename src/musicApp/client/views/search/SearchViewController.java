@@ -53,7 +53,7 @@ public class SearchViewController implements ViewController {
     }
 
     private void showProfileSearchResults(PropertyChangeEvent event) {
-
+        System.out.println("Search Received");
     }
 
     private void showSongSearchResults(PropertyChangeEvent event) {

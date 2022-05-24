@@ -21,6 +21,7 @@ public class ServerModelSearchImpl implements ServerModelSearch {
     public ServerModelSearchImpl() {
         this.songs = new ArrayList<>();
         this.albums = new ArrayList<>();
+        this.users = new ArrayList<>();
         this.support = new PropertyChangeSupport(this);
     }
 
@@ -66,15 +67,15 @@ public class ServerModelSearchImpl implements ServerModelSearch {
     @Override
     public void searchProfile(String search) {
         if (users.isEmpty()) {
-            GetAllAlbumsTask getAllAlbums = new GetAllAlbumsTask();
-            new Thread(getAllAlbums).start();
+            GetAllUsersTask getAllUsersTask = new GetAllUsersTask();
+            new Thread(getAllUsersTask).start();
             try {
-                albums = getAllAlbums.call();
+                users = getAllUsersTask.call();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        ArrayList<Album> searchResultsSorted = AlbumPredicate.filterAlbums(albums, AlbumPredicate.containsAlbumTitleOrContainsArtist(search));
+        ArrayList<User> searchResultsSorted = ProfilePredicate.filterUsers(users, ProfilePredicate.hasSameUserNameOrNickName(search));
         System.out.println(searchResultsSorted);
         //Search ready fire property to client.
         support.firePropertyChange("newSearchProfile", null, searchResultsSorted);

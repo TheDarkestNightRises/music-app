@@ -4,6 +4,7 @@ import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.database.follow.FollowDAOImpl;
 import musicApp.database.song.SongDAOImpl;
+import musicApp.database.users.UsersDAO;
 import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.model.domainModel.User;
 
@@ -33,5 +34,6 @@ public class Hope
 //    FollowDAOImpl.getInstance().Follow(emanuel,andrei);
 //    System.out.println(AlbumDAOImpl.getInstance().get4RandomAlbums());
 //    ArtistDAOImpl.getInstance().insertArtist("artist1");
+    System.out.println(UsersDAOImpl.getInstance().getAllUsers());
   }
 }
