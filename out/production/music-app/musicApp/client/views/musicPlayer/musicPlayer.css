@@ -15,6 +15,12 @@
 }
 
 
+.rate:hover{
+  -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+      -fx-scale-y: 1.1;
+}
+
+
 .buttons1{
  -fx-background-color: #a4508b;
 }

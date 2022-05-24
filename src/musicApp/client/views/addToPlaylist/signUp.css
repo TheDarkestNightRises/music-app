@@ -1,4 +1,4 @@
-.SignUpButton {
+.Button {
     -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
         -fx-text-fill: white;
         -fx-font-size: 13px;
@@ -6,20 +6,29 @@
 
 }
 
-.SignUpInput {
+.Button:hover {
+    -fx-background-color: linear-gradient(#242526, #242526);
+        -fx-text-fill: white;
+        -fx-font-size: 13px;
+        -fx-padding: 10 20 10 20;
+}
+
+.Input {
      -fx-background-color: linear-gradient(#323232, #323232);
             -fx-text-fill: white;
             -fx-font-size: 13px;
             -fx-padding: 10 20 10 5;
 }
 
-.Back{
--fx-background-color: linear-gradient(#191919, #0F0E0E)
-}
 
-.BackButton{
+
+.Back{
 -fx-background-color: linear-gradient(#191919, #191919)
 }
+
+.Back:hover{
+ -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+    -fx-scale-y: 1.1;}
 
 
 .signUpTitle{
@@ -28,9 +37,7 @@
    -fx-text-fill: white;
 }
 
-/*.bodybg {
--fx-background-image: url("wp4438964-neon-retro-girl-wallpapers.png");
-}*/
+
 
 @font-face {
     font-family: 'BebasNeue-Regular';
@@ -40,5 +47,15 @@
 .text {
     -fx-font-family: "BebasNeue-Regular";
 }
+
+ .list-cell:filled:selected:focused, .list-cell:filled:selected {
+     -fx-background-color: linear-gradient(#328BDB 0%, #207BCF 25%, #1973C9 75%, #0A65BF 100%);
+     -fx-text-fill: white;
+ }
+
+ .list-cell{
+     -fx-background-color: #2b2b2b;
+       -fx-text-fill: white;
+ }
 
 

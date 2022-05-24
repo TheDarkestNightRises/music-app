@@ -22,6 +22,11 @@
 -fx-background-color: linear-gradient(#191919, #0F0E0E)
 }
 
+.BackButton:hover{
+-fx-background-color: linear-gradient(#a4508b, #a4508b);
+    -fx-scale-y: 1.1;
+}
+
 .BackButton{
 -fx-background-color: linear-gradient(#191919, #191919)
 }

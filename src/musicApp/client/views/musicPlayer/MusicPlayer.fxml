@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" styleClass="bg" stylesheets="@musicPlayer.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.musicPlayer.MusicPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="800.0" styleClass="bg" stylesheets="@musicPlayer.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.musicPlayer.MusicPlayerController">
    <children>
       <VBox layoutX="22.0" layoutY="275.0" prefHeight="201.0" prefWidth="750.0" spacing="15.0">
          <children>
@@ -119,7 +119,7 @@
       </Button>
       <Button layoutX="17.0" layoutY="208.0" mnemonicParsing="false" onAction="#addToPlaylistButtonPressed" prefHeight="55.0" prefWidth="62.0" styleClass="rate">
          <graphic>
-            <ImageView fitHeight="47.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="47.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" styleClass="rate">
                <image>
                   <Image url="@icons8-add-to-playlist-50.png" />
                </image>
