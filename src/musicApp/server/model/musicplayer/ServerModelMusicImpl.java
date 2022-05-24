@@ -59,6 +59,10 @@ public class ServerModelMusicImpl implements ServerModelMusic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

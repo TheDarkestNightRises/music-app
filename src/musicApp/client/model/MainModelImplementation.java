@@ -1,5 +1,6 @@
 package musicApp.client.model;
 
+import musicApp.client.model.addToPlaylist.AddToPlaylistManager;
 import musicApp.client.model.createPlaylist.CreatePlaylistManager;
 import musicApp.client.model.chat.ChatManager;
 import musicApp.client.model.followList.FollowListManager;
@@ -22,13 +23,14 @@ public class MainModelImplementation implements MainModel{
     private FollowListManager followListManager;
     private MainMenuManager mainMenuManager;
     private CreatePlaylistManager createPlaylistManager;
+    private AddToPlaylistManager addToPlaylistManager;
 
 
     public MainModelImplementation(MusicManager musicManager, LogInManager logInManager, ChatManager chatManager,
         SignUpManager signUpManager, ProfileManager profileManager,
         UpdateSettingsManager updateSettingsManager, SearchManager searchManager, FollowListManager followListManager,
         MainMenuManager mainMenuManager,
-        CreatePlaylistManager createPlaylistManager) {
+        CreatePlaylistManager createPlaylistManager, AddToPlaylistManager addToPlaylistManager) {
         this.musicManager = musicManager;
         this.logInManager = logInManager;
         this.chatManager = chatManager;
@@ -39,6 +41,7 @@ public class MainModelImplementation implements MainModel{
         this.followListManager = followListManager;
         this.mainMenuManager = mainMenuManager;
         this.createPlaylistManager = createPlaylistManager;
+        this.addToPlaylistManager = addToPlaylistManager;
     }
 
     public MusicManager getMusicPlayerManager() {
@@ -86,5 +89,10 @@ public class MainModelImplementation implements MainModel{
     @Override public CreatePlaylistManager getCreatePlaylistManager()
     {
         return createPlaylistManager;
+    }
+
+    @Override public AddToPlaylistManager getAddToPlaylistManager()
+    {
+        return addToPlaylistManager;
     }
 }

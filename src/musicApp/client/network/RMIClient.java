@@ -1,5 +1,7 @@
 package musicApp.client.network;
 
+import musicApp.client.network.addToPlaylist.AddToPlaylistClient;
+import musicApp.client.network.addToPlaylist.RMIAddToPlaylistClient;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
 import musicApp.client.network.createPlaylist.CreatePlaylistClient;
@@ -49,6 +51,7 @@ public class RMIClient implements Client, ClientCallBack {
     private FollowListClient followListClient;
     private MainMenuClient mainMenuClient;
     private CreatePlaylistClient createPlaylistClient;
+    private AddToPlaylistClient addToPlaylistClient;
 
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
@@ -64,6 +67,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.followListClient = new RMIFollowListClient();
         this.mainMenuClient = new RMIMainMenu();
         this.createPlaylistClient = new RMICreatePlayListClient();
+        this.addToPlaylistClient = new RMIAddToPlaylistClient();
     }
 
     @Override
@@ -84,7 +88,9 @@ public class RMIClient implements Client, ClientCallBack {
             this.followListClient.setServer(server);
             this.updateSettingsClient.setServer(server);
             this.createPlaylistClient.setServer(server);
+            this.addToPlaylistClient.setServer(server);
             this.mainMenuClient.setServer(server);
+
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
         }
@@ -177,6 +183,11 @@ public class RMIClient implements Client, ClientCallBack {
     @Override
     public MainMenuClient getMainMenuClient() {
         return mainMenuClient;
+    }
+
+    @Override public AddToPlaylistClient getAddToPlaylistClient()
+    {
+        return addToPlaylistClient;
     }
 
 }

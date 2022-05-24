@@ -3,6 +3,7 @@ package musicApp.server.network;
 import musicApp.server.model.ServerModel;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.network.addToPlaylist.AddToPlaylistServerImpl;
 import musicApp.server.network.chat.ChatServerImpl;
 import musicApp.server.network.createPlaylist.CreatePlaylistServerImpl;
 import musicApp.server.network.followList.FollowListServerImpl;
@@ -24,6 +25,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 public class RMIServerImpl implements RMIServer {
+    private AddToPlaylistServer addToPlaylistServer;
     private ServerModel serverModel;
     private ChatServer chatServer;
     private LoginServer loginServer;
@@ -49,6 +51,7 @@ public class RMIServerImpl implements RMIServer {
         this.updateSettingsServer = new UpdateSettingsServerImpl(serverModel);
         this.mainMenuServer = new MainMenuServerImpl(serverModel);
         this.createPLayListServer = new CreatePlaylistServerImpl(serverModel);
+        this.addToPlaylistServer = new AddToPlaylistServerImpl(serverModel);
     }
 
     @Override
@@ -141,5 +144,10 @@ public class RMIServerImpl implements RMIServer {
     @Override
     public MainMenuServer getMainMenuServer() throws RemoteException {
         return mainMenuServer;
+    }
+
+    @Override public AddToPlaylistServer getAddToPlaylistServer() throws RemoteException
+    {
+        return addToPlaylistServer;
     }
 }

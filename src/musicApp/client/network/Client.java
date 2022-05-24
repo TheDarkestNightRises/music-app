@@ -1,5 +1,6 @@
 package musicApp.client.network;
 
+import musicApp.client.network.addToPlaylist.AddToPlaylistClient;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.createPlaylist.CreatePlaylistClient;
 import musicApp.client.network.followList.FollowListClient;
@@ -12,27 +13,30 @@ import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
 import musicApp.util.Subject;
 
-public interface Client extends Subject {
-    //-----------CLIENT-----------
-    void startClient();
+public interface Client extends Subject
+{
+  //-----------CLIENT-----------
+  void startClient();
 
-    ChatClient getChatClient();
+  ChatClient getChatClient();
 
-    LoginClient getLoginClient();
+  LoginClient getLoginClient();
 
-    MusicPlayerClient getMusicPlayerClient();
+  MusicPlayerClient getMusicPlayerClient();
 
-    SignUpClient getSignUpClient();
+  SignUpClient getSignUpClient();
 
-    ProfileClient getProfileClient();
+  ProfileClient getProfileClient();
 
-    SearchClient getSearchClient();
+  SearchClient getSearchClient();
 
-    FollowListClient getFollowListClient();
+  FollowListClient getFollowListClient();
 
-    UpdateSettingsClient getUpdateSettingsclient();
+  UpdateSettingsClient getUpdateSettingsclient();
 
-    CreatePlaylistClient getCreatePlaylistClient();
+  CreatePlaylistClient getCreatePlaylistClient();
 
-    MainMenuClient getMainMenuClient();
+  MainMenuClient getMainMenuClient();
+
+  AddToPlaylistClient getAddToPlaylistClient();
 }

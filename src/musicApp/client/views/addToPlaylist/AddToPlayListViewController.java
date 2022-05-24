@@ -1,18 +1,18 @@
 package musicApp.client.views.addToPlaylist;
 
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.server.model.domainModel.Playlist;
+import musicApp.server.model.domainModel.Song;
 
 public class AddToPlayListViewController implements ViewController {
     @FXML
     private ListView<String> list;
-
+    @FXML
+    private Label errorLabel;
     private ViewHandler viewHandler;
     private AddToPlaylistViewModel viewModel;
     
@@ -21,15 +21,17 @@ public class AddToPlayListViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         viewHandler = vh;
         viewModel = vmf.getAddToPlaylistViewModel();
-        //viewModel.reset();
-        viewModel.bindLogs(list.itemsProperty());
+        viewModel.bindList(list.itemsProperty());
+        viewModel.bindError(errorLabel.textProperty());
+        Song song  = (Song) args[0];
         viewModel.reset();
+        viewModel.setSong(song);
     }
 
     @FXML
     public void backToMusicPlayer()
     {
-
+        viewHandler.openMusicPlayer();
     }
     @FXML
     public void addButtonPressed()

@@ -12,7 +12,7 @@ public interface PlaylistDAO
   void deletePlayList(Playlist playlist);
   void deletePlayListById(int id);
   void updatePlaylist(Playlist playlist,User user);
-  void insertSongIntoPlaylist(Playlist playlist, Song song);
+  void insertSongIntoPlaylist(Playlist playlist, Song song) throws Exception;
   void removeSongFromPlaylist(Playlist playlist, Song song);
   ArrayList<Song> getAllSongsFromPlayList(Playlist playlist);
   boolean songIsNotInThePlaylist(Playlist playlist, Song song);

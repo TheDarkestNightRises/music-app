@@ -1,5 +1,6 @@
 package musicApp.server.model;
 
+import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylist;
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.createPlaylist.ServerModelCreatePlaylist;
 import musicApp.server.model.domainModel.Song;
@@ -15,25 +16,28 @@ import musicApp.shared.networking.ProfileServer;
 
 import java.util.ArrayList;
 
-public interface ServerModel {
-    //-----------MainServerModel----------
-    ServerModelChat getModelChat();
+public interface ServerModel
+{
+  //-----------MainServerModel----------
+  ServerModelChat getModelChat();
 
-    ServerModelLogin getModelLogin();
+  ServerModelLogin getModelLogin();
 
-    ServerModelMusic getModelMusic();
+  ServerModelMusic getModelMusic();
 
-    ServerModelSignUp getModelSignUp();
+  ServerModelSignUp getModelSignUp();
 
-    ServerModelProfile getModelProfile();
+  ServerModelProfile getModelProfile();
 
-    ServerModelSearch getModelSearch();
+  ServerModelSearch getModelSearch();
 
-    ServerModelFollowList getModelFollowList();
+  ServerModelFollowList getModelFollowList();
 
-    ServerModelUpdateSettings getModelUpdateSettings();
+  ServerModelUpdateSettings getModelUpdateSettings();
 
-    ServerModelMainMenu getModelMainMenu();
+  ServerModelMainMenu getModelMainMenu();
 
-    ServerModelCreatePlaylist getServerModelCreatePlaylist();
+  ServerModelCreatePlaylist getServerModelCreatePlaylist();
+
+  ServerModelAddToPlaylist getModelAddToPlaylist();
 }

@@ -122,6 +122,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
   }
 
   @Override public void insertSongIntoPlaylist(Playlist playlist, Song song)
+      throws Exception
   {
     try
     {
@@ -137,6 +138,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
     catch (SQLException e)
     {
       e.printStackTrace();
+      throw new Exception("Could not add song to the playlist");
     }
   }
 
@@ -156,6 +158,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
     catch (SQLException e)
     {
       e.printStackTrace();
+
     }
   }
 
