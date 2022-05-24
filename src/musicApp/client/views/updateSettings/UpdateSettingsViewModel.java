@@ -1,4 +1,4 @@
-package musicApp.client.views.updateSettingsS;
+package musicApp.client.views.updateSettings;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
-import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.server.model.domainModel.User;
 
 import javax.imageio.ImageIO;

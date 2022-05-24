@@ -1,4 +1,4 @@
-.SignUpButton {
+.Button {
     -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
         -fx-text-fill: white;
         -fx-font-size: 13px;
@@ -6,7 +6,12 @@
 
 }
 
-.SignUpInput {
+.Button:hover{
+   -fx-background-color: linear-gradient(#a4508b, #a4508b);
+    -fx-scale-y: 1.1;
+}
+
+.Input {
      -fx-background-color: linear-gradient(#323232, #323232);
             -fx-text-fill: white;
             -fx-font-size: 13px;
@@ -22,7 +27,7 @@
 }
 
 
-.signUpTitle{
+.Title{
    -fx-font-size: 30px;
    -fx-padding: 10 10 10 10;
    -fx-text-fill: white;

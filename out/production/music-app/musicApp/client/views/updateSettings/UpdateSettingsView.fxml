@@ -14,14 +14,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettingsS.UpdateSettingsViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@settings.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettings.UpdateSettingsViewController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1086.0" layoutX="-2.0" layoutY="-1.0">
          <image>
             <Image url="@wp4438964-neon-retro-girl-wallpapers.png" />
          </image>
       </ImageView>
-      <VBox layoutX="99.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@signUp.css">
+      <VBox layoutX="99.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@settings.css">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
                <children>
@@ -47,27 +47,27 @@
                   <Insets top="15.0" />
                </padding>
                <children>
-                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="UPDATE YOUR SETTINGS" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Title" text="UPDATE YOUR SETTINGS" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="Arial Black" size="11.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="63.0" prefWidth="384.0" styleClass="text" stylesheets="@signUp.css" />
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="63.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css" />
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
                <children>
-                  <PasswordField fx:id="passwordField" onAction="#submitPassword" prefHeight="34.0" prefWidth="281.0" promptText="Password" styleClass="SignUpInput" />
+                  <PasswordField fx:id="passwordField" onAction="#submitPassword" prefHeight="34.0" prefWidth="281.0" promptText="Password" styleClass="Input" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="93.0" prefHeight="65.0" prefWidth="384.0">
                <children>
-                  <TextField fx:id="emailField" onAction="#submitEmail" prefHeight="34.0" prefWidth="282.0" promptText="Email" styleClass="SignUpInput" />
+                  <TextField fx:id="emailField" onAction="#submitEmail" prefHeight="34.0" prefWidth="282.0" promptText="Email" styleClass="Input" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="142.0" layoutY="256.0" prefHeight="65.0" prefWidth="384.0">
                <children>
-                  <TextField fx:id="nicknameField" onAction="#submitNickname" prefHeight="34.0" prefWidth="281.0" promptText="Nickname" styleClass="SignUpInput" />
+                  <TextField fx:id="nicknameField" onAction="#submitNickname" prefHeight="34.0" prefWidth="281.0" promptText="Nickname" styleClass="Input" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
@@ -81,7 +81,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
                <children>
-                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Reset">
+                  <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Reset">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -89,7 +89,7 @@
                         <Font size="13.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="SignUpButton" />
+                        <String fx:value="Button" />
                         <String fx:value="text" />
                      </styleClass>
                   </Button>
@@ -109,7 +109,7 @@
                   <Insets bottom="20.0" />
                </padding>
                <children>
-                  <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Submit changes">
+                  <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Submit changes">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -117,7 +117,7 @@
                         <Font size="13.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="SignUpButton" />
+                        <String fx:value="Button" />
                         <String fx:value="text" />
                      </styleClass>
                   </Button>
@@ -125,7 +125,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="583.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@signUp.css">
+      <VBox layoutX="583.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@settings.css">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0" />
             <HBox alignment="CENTER" prefHeight="131.0" prefWidth="384.0">
@@ -133,14 +133,14 @@
                   <Insets top="15.0" />
                </padding>
                <children>
-                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="UPDATE YOUR PROFILE PICTURE" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Title" text="UPDATE YOUR PROFILE PICTURE" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="Arial Black" size="11.0" />
                      </font>
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="244.0" prefWidth="384.0" styleClass="text" stylesheets="@signUp.css">
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="244.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css">
                <children>
                   <ImageView fx:id="profilePicture" fitHeight="178.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" />
                </children>
@@ -156,7 +156,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
                <children>
-                  <Button fx:id="resetPictureButton" mnemonicParsing="false" onAction="#choosePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Choose a picture">
+                  <Button fx:id="resetPictureButton" mnemonicParsing="false" onAction="#choosePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Choose a picture">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -164,7 +164,7 @@
                         <Font size="13.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="SignUpButton" />
+                        <String fx:value="Button" />
                         <String fx:value="text" />
                      </styleClass>
                   </Button>
@@ -184,7 +184,7 @@
                   <Insets bottom="20.0" />
                </padding>
                <children>
-                  <Button fx:id="signUpButton1" mnemonicParsing="false" onAction="#updatePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Submit Picture">
+                  <Button fx:id="signUpButton1" mnemonicParsing="false" onAction="#updatePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Submit Picture">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -192,7 +192,7 @@
                         <Font size="13.0" />
                      </font>
                      <styleClass>
-                        <String fx:value="SignUpButton" />
+                        <String fx:value="Button" />
                         <String fx:value="text" />
                      </styleClass>
                   </Button>

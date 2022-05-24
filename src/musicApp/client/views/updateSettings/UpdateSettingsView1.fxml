@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="475.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettingsS.UpdateSettingsViewController">
+<AnchorPane prefHeight="475.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettings.UpdateSettingsViewController">
    <children>
       <Label alignment="CENTER_RIGHT" layoutX="139.0" layoutY="150.0" prefHeight="18.0" prefWidth="99.0" text="Change password:" />
       <PasswordField fx:id="passwordField" layoutX="247.0" layoutY="146.0" />

@@ -13,7 +13,7 @@ import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.search.SearchViewModel;
 import musicApp.client.views.signup.SignUpViewModel;
-import musicApp.client.views.updateSettingsS.UpdateSettingsViewModel;
+import musicApp.client.views.updateSettings.UpdateSettingsViewModel;
 
 public class ViewModelFactory {
     private ModelFactory modelFactory;

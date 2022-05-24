@@ -20,10 +20,9 @@
       </Text>
       <TableView fx:id="tableview" layoutY="78.0" prefHeight="370.0" prefWidth="577.0" styleClass="bg">
         <columns>
-          <TableColumn fx:id="IP" prefWidth="158.3999908566475" text="IP" />
-          <TableColumn fx:id="date" prefWidth="82.4000244140625" text="Date" />
-            <TableColumn fx:id="time" prefWidth="76.80000305175781" text="Time" />
-            <TableColumn fx:id="text" prefWidth="256.0" text="Text" />
+          <TableColumn fx:id="date" prefWidth="83.99994200468063" text="Date" />
+            <TableColumn fx:id="time" prefWidth="62.4000244140625" text="Time" />
+            <TableColumn fx:id="text" prefWidth="428.7998504638672" text="Text" />
         </columns>
       </TableView>
    </children>

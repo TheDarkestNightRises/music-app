@@ -201,7 +201,7 @@ public class ViewHandler {
 
     public void openUpdateSettings(User user) {
         try {
-            Parent root = loadFXML("../views/updateSettingsS/UpdateSettingsView.fxml", user);
+            Parent root = loadFXML("../views/updateSettings/UpdateSettingsView.fxml", user);
             Scene settingsScene = new Scene(root);
             stage.setTitle("Update settings");
             stage.setScene(settingsScene);

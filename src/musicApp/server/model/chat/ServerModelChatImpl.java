@@ -28,6 +28,7 @@ public class ServerModelChatImpl implements ServerModelChat {
     {
         return new ArrayList<>(logEntries);
     }
+
     @Override public void sendMessage(Message arg)
     {
         LogEntry logEntry = new LogEntry(arg.getMessage(),arg.getDate(),arg.getTime());
