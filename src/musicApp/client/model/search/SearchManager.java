@@ -9,7 +9,11 @@ import java.util.ArrayList;
 public interface SearchManager extends Subject {
     ArrayList<Song> fetchSortedList();
 
-    void search(String newValue);
+    void searchSong(String newValue);
 
     void onNewSearch(PropertyChangeEvent event);
+
+    void searchAlbum(String search);
+
+    void searchProfile(String search);
 }

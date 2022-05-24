@@ -10,5 +10,9 @@ public interface SearchClient {
 
     ArrayList<Song> fetchSortedList();
 
-    void search(String newValue);
+    void searchSong(String search);
+
+    void searchAlbum(String search);
+
+    void searchProfile(String search);
 }

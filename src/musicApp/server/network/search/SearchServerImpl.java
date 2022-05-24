@@ -22,7 +22,17 @@ public class SearchServerImpl implements SearchServer {
     }
 
     @Override
-    public void search(String newValue) {
-        serverModel.getModelSearch().search(newValue);
+    public void searchSong(String search) {
+        serverModel.getModelSearch().searchSong(search);
+    }
+
+    @Override
+    public void searchAlbum(String search) {
+        serverModel.getModelSearch().searchAlbum(search);
+    }
+
+    @Override
+    public void searchProfile(String search) {
+        serverModel.getModelSearch().searchProfile(search);
     }
 }

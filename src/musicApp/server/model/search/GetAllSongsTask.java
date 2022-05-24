@@ -6,13 +6,14 @@ import musicApp.database.playlist.PlaylistDAOImpl;
 import musicApp.database.profile.ProfileDAO;
 import musicApp.database.song.SongDAO;
 import musicApp.database.song.SongDAOImpl;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class GetAllSongsTask extends Task {
+public class GetAllSongsTask extends Task<ArrayList<Song>> {
     private SongDAO songDAO;
 
     public GetAllSongsTask() {

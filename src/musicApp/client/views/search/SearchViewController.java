@@ -2,25 +2,22 @@ package musicApp.client.views.search;
 
 
 import javafx.application.Platform;
-import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.customControls.LoadingTextControl;
-import musicApp.client.views.customControls.PlaylistTitleControl;
+import musicApp.client.views.customControls.AlbumsHBoxControl;
 import musicApp.client.views.customControls.SinglesHBoxControl;
-import musicApp.client.views.customControls.SongsHBoxControl;
+import musicApp.server.model.domainModel.Album;
+import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.search.SearchResultAlbum;
+import musicApp.server.model.search.SearchResultSong;
 
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
@@ -28,48 +25,59 @@ import java.util.ArrayList;
 public class SearchViewController implements ViewController {
 
     @FXML
-    public VBox searchContainer;
-    @FXML
-    public TextField searchTextField;
-    private SearchViewModel searchViewModel;
-    private ViewHandler viewHandler;
-    @FXML
     public VBox followListSubView;
     @FXML
     public HBox profileCardContainer;
+    @FXML
+    public VBox searchContainer;
+    @FXML
+    public TextField searchTextField;
+    @FXML
+    public ComboBox<SearchComboBoxChoices> comboBox;
+
+    private SearchViewModel searchViewModel;
+    private ViewHandler viewHandler;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
-       this.viewHandler = vh;
-       this.searchViewModel = vmf.getSearchViewModel();
-       searchViewModel.bindSearch(searchTextField.textProperty());
-       searchViewModel.init();
-       searchViewModel.addListener("newSearch",this::showSearchResults);
+        this.viewHandler = vh;
+        this.searchViewModel = vmf.getSearchViewModel();
+        searchViewModel.init();
+        comboBox.setItems(searchViewModel.getComboBoxChoices());
+        searchViewModel.bindSearch(searchTextField.textProperty());
+        searchViewModel.addListener("newSearch", this::showSongSearchResults);
         openFollowList();
         openProfileCard();
     }
 
     private void showSearchResults(PropertyChangeEvent event) {
-        Platform.runLater(()->{
-            LoadingTextControl loadingTextControl = new LoadingTextControl();
-            HBox containerHBox = new HBox();
-            containerHBox.setAlignment(Pos.CENTER_LEFT);
-            containerHBox.setPadding(new Insets(10));
-            containerHBox.setSpacing(10);
-            containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
-            searchContainer.getChildren().add(containerHBox);
-            VBox vBoxContainer = new VBox();
-            searchContainer.getChildren().add(vBoxContainer);
-        });
-        new Thread(()->{
-            System.out.println(event.getNewValue());
+        if (event.getNewValue() instanceof SearchResultAlbum) {
+//            showSongSearchResults();
+        }
+        if (event.getNewValue() instanceof SearchResultSong) {
+//            showAlbumSearchResults();
+        }
+    }
+
+    private void showSongSearchResults(PropertyChangeEvent event) {
+        new Thread(() -> {
             ArrayList<Song> songs = (ArrayList<Song>) event.getNewValue();
-            Platform.runLater(()->{
+            Platform.runLater(() -> {
                 searchContainer.getChildren().clear();
                 SinglesHBoxControl songsHBoxControl = new SinglesHBoxControl(songs, viewHandler, searchContainer);
             });
         }).start();
     }
+
+    private void showAlbumSearchResults(ArrayList<Album> albums) {
+        new Thread(() -> {
+            Platform.runLater(() -> {
+                searchContainer.getChildren().clear();
+                AlbumsHBoxControl albumsHBoxControl = new AlbumsHBoxControl(albums, viewHandler, searchContainer);
+            });
+        }).start();
+    }
+
 
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
@@ -78,7 +86,7 @@ public class SearchViewController implements ViewController {
     }
 
     public void search() {
-        searchViewModel.search(searchTextField.getText());
+        searchViewModel.search(comboBox.getSelectionModel().getSelectedItem());
     }
 
     public void openChat() {
@@ -95,6 +103,11 @@ public class SearchViewController implements ViewController {
         followListSubView.getChildren().add(followListRoot);
     }
 
-    public void openMain() { viewHandler.openMainMenu(); }
-    public void openSettings() { viewHandler.openUpdateSettings(searchViewModel.fetchUser());}
+    public void openMain() {
+        viewHandler.openMainMenu();
+    }
+
+    public void openSettings() {
+        viewHandler.openUpdateSettings(searchViewModel.fetchUser());
+    }
 }
