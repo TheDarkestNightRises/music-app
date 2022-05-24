@@ -22,8 +22,10 @@ import musicApp.client.network.search.RMISearchClient;
 import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
 import musicApp.client.network.updateSettings.UpdateSettingsClient;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 import musicApp.shared.networking.ClientCallBack;
@@ -109,8 +111,18 @@ public class RMIClient implements Client, ClientCallBack {
     }
 
     @Override
-    public void updateSearchResult(ArrayList<Song> songsSearchResult) {
-        support.firePropertyChange("newSearch", null, songsSearchResult);
+    public void updateSongSearchResult(ArrayList<Song> songsSearchResult) {
+        support.firePropertyChange("newSearchSong", null, songsSearchResult);
+    }
+
+    @Override
+    public void updateAlbumSearchResult(ArrayList<Album> albumsSearchResult) throws RemoteException {
+        support.firePropertyChange("newSearchAlbum", null, albumsSearchResult);
+    }
+
+    @Override
+    public void updateProfileSearchResult(ArrayList<User> profileSearchResult) throws RemoteException {
+        support.firePropertyChange("newSearchProfile", null, profileSearchResult);
     }
 
     @Override

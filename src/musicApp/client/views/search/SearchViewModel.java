@@ -28,11 +28,13 @@ public class SearchViewModel implements Subject {
         this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
         this.search = new SimpleStringProperty();
         this.support = new PropertyChangeSupport(this);
-        this.mainModel.getSearchManager().addListener("newSearch", this::updateSearch);
+        this.mainModel.getSearchManager().addListener("newSearchSong", this::updateSearch);
+        this.mainModel.getSearchManager().addListener("newSearchAlbum", this::updateSearch);
+        this.mainModel.getSearchManager().addListener("newSearchProfile", this::updateSearch);
     }
 
     private void updateSearch(PropertyChangeEvent event) {
-        support.firePropertyChange("newSearch", null, event.getNewValue());
+        support.firePropertyChange(event);
     }
 
     public void init() {

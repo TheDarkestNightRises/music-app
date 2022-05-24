@@ -15,7 +15,9 @@ public class SearchManagerImplementation implements SearchManager {
     public SearchManagerImplementation(Client client) {
         this.client = client;
         this.support = new PropertyChangeSupport(this);
-        client.addListener("newSearch", this::onNewSearch);
+        client.addListener("newSearchSong", this::onNewSearch);
+        client.addListener("newSearchAlbum", this::onNewSearch);
+        client.addListener("newSearchProfile", this::onNewSearch);
     }
 
     @Override
@@ -40,7 +42,7 @@ public class SearchManagerImplementation implements SearchManager {
 
     @Override
     public void onNewSearch(PropertyChangeEvent event) {
-        support.firePropertyChange("newSearch", null, event.getNewValue());
+        support.firePropertyChange(event);
     }
 
     @Override

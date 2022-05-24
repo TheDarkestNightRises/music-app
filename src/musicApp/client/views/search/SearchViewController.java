@@ -45,18 +45,15 @@ public class SearchViewController implements ViewController {
         searchViewModel.init();
         comboBox.setItems(searchViewModel.getComboBoxChoices());
         searchViewModel.bindSearch(searchTextField.textProperty());
-        searchViewModel.addListener("newSearch", this::showSongSearchResults);
+        searchViewModel.addListener("newSearchSong", this::showSongSearchResults);
+        searchViewModel.addListener("newSearchAlbum", this::showAlbumSearchResults);
+        searchViewModel.addListener("newSearchProfile", this::showProfileSearchResults);
         openFollowList();
         openProfileCard();
     }
 
-    private void showSearchResults(PropertyChangeEvent event) {
-        if (event.getNewValue() instanceof SearchResultAlbum) {
-//            showSongSearchResults();
-        }
-        if (event.getNewValue() instanceof SearchResultSong) {
-//            showAlbumSearchResults();
-        }
+    private void showProfileSearchResults(PropertyChangeEvent event) {
+
     }
 
     private void showSongSearchResults(PropertyChangeEvent event) {
@@ -69,8 +66,9 @@ public class SearchViewController implements ViewController {
         }).start();
     }
 
-    private void showAlbumSearchResults(ArrayList<Album> albums) {
+    private void showAlbumSearchResults(PropertyChangeEvent event) {
         new Thread(() -> {
+            ArrayList<Album> albums = (ArrayList<Album>) event.getNewValue();
             Platform.runLater(() -> {
                 searchContainer.getChildren().clear();
                 AlbumsHBoxControl albumsHBoxControl = new AlbumsHBoxControl(albums, viewHandler, searchContainer);
