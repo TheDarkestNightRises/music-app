@@ -57,4 +57,9 @@ public class ProfileViewModel implements Subject {
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.removePropertyChangeListener(eventName, listener);
     }
+
+   public boolean isArtist(User user)
+   {
+       return mainModel.getProfileManager().isArtist(user);
+   }
 }

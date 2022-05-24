@@ -72,4 +72,19 @@ public class ServerModelProfileImpl implements ServerModelProfile {
         }
         return null;
     }
+
+    @Override public boolean isArtist(User user)
+    {
+        try
+        {
+            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
+            if(artist != null)
+                return true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

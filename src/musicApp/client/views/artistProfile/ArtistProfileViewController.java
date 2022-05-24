@@ -106,8 +106,8 @@ public class ArtistProfileViewController implements ViewController
       LoadingTextControl loadingTextControl = new LoadingTextControl();
       HBox containerHBox = new HBox();
       containerHBox.setAlignment(Pos.CENTER_LEFT);
-      containerHBox.setPadding(new Insets(10));
-      containerHBox.setSpacing(10);
+      containerHBox.setPadding(new Insets(15));
+      containerHBox.setSpacing(15);
       containerHBox.getChildren().add(loadingTextControl.getTextFromControl());
       profileContainer.getChildren().add(containerHBox);
       VBox vBoxContainer = new VBox();

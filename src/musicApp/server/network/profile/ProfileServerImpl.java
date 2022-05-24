@@ -39,4 +39,9 @@ public class ProfileServerImpl implements ProfileServer {
     {
         return serverModel.getModelProfile().fetchArtistAlbums(user);
     }
+
+    @Override public boolean isArtist(User user) throws RemoteException
+    {
+        return serverModel.getModelProfile().isArtist(user);
+    }
 }

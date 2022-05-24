@@ -17,4 +17,6 @@ public interface ProfileServer extends Remote {
     byte[] fetchProfilePicture(String profile_picture) throws RemoteException;
 
     ArrayList<Album> fetchArtistAlbums(User user) throws RemoteException;
+
+    boolean isArtist(User user) throws RemoteException;
 }

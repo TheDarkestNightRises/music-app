@@ -42,6 +42,11 @@ public class ProfileManagerImplementation implements ProfileManager{
         return client.getProfileClient().fetchArtistAlbums(user);
     }
 
+    @Override public boolean isArtist(User user)
+    {
+        return client.getProfileClient().isArtist(user);
+    }
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName,listener);

@@ -15,4 +15,6 @@ public interface ServerModelProfile {
     byte[] fetchProfilePicture(String profile_picture);
 
     ArrayList<Album> fetchArtistAlbums(User user);
+
+    boolean isArtist(User user);
 }

@@ -57,4 +57,14 @@ public class RMIProfileClient implements ProfileClient{
         }
         return null;
     }
+
+    @Override public boolean isArtist(User user)
+    {
+        try{
+            return rmiServer.getProfileServer().isArtist(user);
+        } catch (RemoteException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
