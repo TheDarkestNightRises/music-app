@@ -1,5 +1,6 @@
 package musicApp.shared.networking;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -14,4 +15,6 @@ public interface ProfileServer extends Remote {
     ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) throws RemoteException;
 
     byte[] fetchProfilePicture(String profile_picture) throws RemoteException;
+
+    ArrayList<Album> fetchArtistAlbums(User user) throws RemoteException;
 }

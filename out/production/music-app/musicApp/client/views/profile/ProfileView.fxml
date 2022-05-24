@@ -140,10 +140,7 @@
             </VBox>
             <VBox prefHeight="143.0" prefWidth="215.0">
                <children>
-                  <Pane prefHeight="206.0" prefWidth="215.0">
-                     <children>
-                        <Button layoutX="44.0" layoutY="53.0" mnemonicParsing="false" onAction="#isArtist" text="isArtist?" />
-                     </children></Pane>
+                  <Pane prefHeight="206.0" prefWidth="215.0" />
                </children>
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">

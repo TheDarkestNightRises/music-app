@@ -122,7 +122,7 @@ public class MusicPlayerController implements ViewController {
 
     public void onBackButton() {
         mediaPlayer.stop();
-        viewHandler.openProfile();
+        viewHandler.openMainMenu();
     }
 
     public void addToPlaylistButtonPressed()

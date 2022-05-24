@@ -1,5 +1,6 @@
 package musicApp.client.model.profile;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -13,4 +14,6 @@ public interface ProfileManager extends Subject {
     ArrayList<Song> fetchSongsForPlaylist(Playlist playlist);
 
     byte[] fetchProfilePicture(String profile_picture);
+
+    ArrayList<Album> fetchArtistAlbums(User user);
 }

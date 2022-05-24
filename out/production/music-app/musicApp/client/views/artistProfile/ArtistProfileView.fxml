@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.artistProfile.ArtistProfileViewController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1366.0" styleClass="primary_color" stylesheets="@../profile/css/style.css">
+         <left>
+            <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@../profile/css/style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="168.0" prefWidth="215.0">
+                     <children>
+                        <ImageView fitHeight="109.0" fitWidth="117.0">
+                           <image>
+                              <Image url="@../signup/recon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="314.0" prefWidth="214.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
+                           <children>
+                              <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/ic_playlist.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Hyperlink>
+                              <Label prefHeight="27.0" prefWidth="132.0" text="Home" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                           <children>
+                              <Hyperlink onAction="#openSearch">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/ic_search.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Hyperlink>
+                              <Label prefHeight="27.0" prefWidth="126.0" text="Search" textFill="#7e7b7b">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                           <children>
+                              <Hyperlink onAction="#openChat">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/ic_devices.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Hyperlink>
+                              <Label prefHeight="27.0" prefWidth="125.0" text="Chat" textFill="#7e7b7b">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                           <children>
+                              <Hyperlink onAction="#openUpdateSettings">
+                                 <graphic>
+                                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/ic_devices.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Hyperlink>
+                              <Label prefHeight="27.0" prefWidth="125.0" text="Update Settings" textFill="#7e7b7b">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                           <children>
+                              <Hyperlink>
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/ic_add.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Hyperlink>
+                              <Label prefHeight="27.0" prefWidth="129.0" text="Create Album" textFill="#7e7b7b">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="143.0" prefWidth="215.0">
+                     <children>
+                        <Pane prefHeight="206.0" prefWidth="215.0" />
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="51.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@../profile/css/style.css">
+                     <children>
+                        <Hyperlink alignment="CENTER" onAction="#openCreatePlaylist">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="125.0" stylesheets="@../profile/css/style.css" text="New Playlist" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="715.0" prefWidth="1045.0" spacing="25.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="52.0" prefWidth="1044.0" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" style="-fx-background-color: transparent;">
+                           <graphic>
+                              <HBox />
+                           </graphic>
+                        </Button>
+                        <Pane prefHeight="52.0" prefWidth="469.0" />
+                        <HBox fx:id="profileCardContainer" alignment="CENTER" prefHeight="52.0" prefWidth="410.0" spacing="15.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="630.0" prefWidth="1039.0" style="-fx-background-color: transparent;" vbarPolicy="NEVER">
+                     <content>
+                        <VBox fx:id="profileContainer" prefHeight="490.0" prefWidth="900.0">
+                           <children>
+                              <HBox prefHeight="181.0" prefWidth="900.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fx:id="profilePicture" fitHeight="196.0" fitWidth="221.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/In_the_Name_of_Love.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <VBox prefHeight="166.0" prefWidth="759.0" spacing="10.0">
+                                       <children>
+                                          <Text fx:id="profileName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile name" textAlignment="RIGHT">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fx:id="profileDescription" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile Description" textAlignment="RIGHT">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </center>
+         <right>
+            <HBox prefHeight="715.0" prefWidth="228.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="followListSubView" prefHeight="715.0" prefWidth="233.0" />
+               </children>
+            </HBox>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>

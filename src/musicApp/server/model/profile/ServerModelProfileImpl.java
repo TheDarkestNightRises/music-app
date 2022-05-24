@@ -1,10 +1,10 @@
 package musicApp.server.model.profile;
 
-import musicApp.server.model.domainModel.Playlist;
-import musicApp.server.model.domainModel.Song;
-import musicApp.server.model.domainModel.User;
+import musicApp.database.artist.ArtistDAOImpl;
+import musicApp.server.model.domainModel.*;
 import musicApp.server.serverData.filemanager.FileManager;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ServerModelProfileImpl implements ServerModelProfile {
@@ -57,5 +57,19 @@ public class ServerModelProfileImpl implements ServerModelProfile {
     public byte[] fetchProfilePicture(String profile_picture) {
         System.out.println(profile_picture);
         return fileManager.fetchPhotoFromProfile(profile_picture);
+    }
+
+    @Override public ArrayList<Album> fetchArtistAlbums(User user)
+    {
+        try
+        {
+            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
+            return ArtistDAOImpl.getInstance().getArtistAlbums(artist);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

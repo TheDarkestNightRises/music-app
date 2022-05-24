@@ -1,5 +1,6 @@
 package musicApp.server.network.profile;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.ServerModel;
 import musicApp.server.model.domainModel.Song;
@@ -32,5 +33,10 @@ public class ProfileServerImpl implements ProfileServer {
     @Override
     public byte[] fetchProfilePicture(String profile_picture) throws RemoteException {
         return serverModel.getModelProfile().fetchProfilePicture(profile_picture);
+    }
+
+    @Override public ArrayList<Album> fetchArtistAlbums(User user) throws RemoteException
+    {
+        return serverModel.getModelProfile().fetchArtistAlbums(user);
     }
 }

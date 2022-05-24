@@ -1,5 +1,6 @@
 package musicApp.client.network.profile;
 
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -42,6 +43,16 @@ public class RMIProfileClient implements ProfileClient{
         try {
             return rmiServer.getProfileServer().fetchProfilePicture(profile_picture);
         } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override public ArrayList<Album> fetchArtistAlbums(User user)
+    {
+        try{
+            return rmiServer.getProfileServer().fetchArtistAlbums(user);
+        } catch (RemoteException e){
             e.printStackTrace();
         }
         return null;

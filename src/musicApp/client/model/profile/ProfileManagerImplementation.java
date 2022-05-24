@@ -1,6 +1,7 @@
 package musicApp.client.model.profile;
 
 import musicApp.client.network.Client;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -34,6 +35,11 @@ public class ProfileManagerImplementation implements ProfileManager{
     @Override
     public byte[] fetchProfilePicture(String profile_picture) {
         return client.getProfileClient().fetchProfilePicture(profile_picture);
+    }
+
+    @Override public ArrayList<Album> fetchArtistAlbums(User user)
+    {
+        return client.getProfileClient().fetchArtistAlbums(user);
     }
 
     @Override

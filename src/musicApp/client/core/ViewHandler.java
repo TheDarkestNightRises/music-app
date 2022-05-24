@@ -95,6 +95,21 @@ public class ViewHandler {
         }
     }
 
+    public void openArtistProfile(User user) {
+        try {
+            Parent root = loadFXML("../views/artistProfile/ArtistProfileView.fxml", user);
+            stage.setTitle("Chat");
+            profileScene = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle("Profile");
+        stage.setScene(profileScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
+    }
+
     public void openSignUp() {
         try {
             Parent root = loadFXML("../views/signup/SignUpView.fxml");
