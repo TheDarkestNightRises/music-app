@@ -37,3 +37,8 @@
             -fx-font-size: 13px;
             -fx-padding: 10 20 10 5;
 }
+
+.LogInButton:hover{
+   -fx-background-color: linear-gradient(#a4508b, #a4508b);
+    -fx-scale-y: 1.1;
+}

@@ -6,6 +6,11 @@
 
 }
 
+.SignUpButton:hover {
+ -fx-background-color: linear-gradient(#a4508b, #a4508b);
+     -fx-scale-y: 1.1;
+}
+
 .SignUpInput {
      -fx-background-color: linear-gradient(#323232, #323232);
             -fx-text-fill: white;

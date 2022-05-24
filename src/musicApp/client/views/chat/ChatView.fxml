@@ -4,18 +4,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="572.0" prefWidth="529.0" styleClass="bg" stylesheets="@chat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.chat.ChatViewController">
+<AnchorPane prefHeight="566.0" prefWidth="525.0" styleClass="bg" stylesheets="@chat.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.chat.ChatViewController">
    <children>
       <ListView fx:id="chatView" layoutX="26.0" layoutY="80.0" prefHeight="356.0" prefWidth="480.0" styleClass="bg" />
       <TextField fx:id="message" layoutX="26.0" layoutY="451.0" prefHeight="26.0" prefWidth="393.0" styleClass="type" />
       <Button layoutX="436.0" layoutY="451.0" mnemonicParsing="false" onAction="#sendButtonPressed" prefHeight="26.0" prefWidth="63.0" styleClass="buttons1" text="Send" textFill="WHITE" />
       <Button layoutX="447.0" layoutY="48.0" mnemonicParsing="false" onAction="#viewLogButtonPressed" styleClass="buttons1" text="Vew log" textFill="WHITE" />
-      <Label fx:id="user" layoutX="33.0" layoutY="38.0" prefHeight="34.0" prefWidth="261.0" textFill="WHITE">
+      <Label fx:id="user" layoutX="58.0" layoutY="43.0" prefHeight="34.0" prefWidth="261.0" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font></Label>
+      <Button layoutX="7.0" layoutY="3.0" mnemonicParsing="false" onAction="#backToHomepage" prefHeight="34.0" prefWidth="38.0" styleClass="backButton">
+         <font>
+            <Font name="Bodoni MT Poster Compressed" size="7.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0">
+               <image>
+                  <Image url="@../signup/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

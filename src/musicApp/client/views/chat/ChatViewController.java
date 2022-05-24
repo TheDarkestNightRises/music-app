@@ -33,6 +33,6 @@ public class ChatViewController implements ViewController {
     {
         viewModel.send();
     }
-    @FXML protected void viewFollowListButtonPressed(){vh.openFollowList();}
+    @FXML protected void backToHomepage(){vh.openMainMenu();}
 
 }

@@ -3,8 +3,22 @@
   -fx-background-color: #242526;
 }
 
+.backButton{
+ -fx-background-color: #242526;
+}
+
+.backButton:hover{
+ -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+    -fx-scale-y: 1.1;
+}
+
 .buttons1{
  -fx-background-color: #a4508b;
+}
+
+.buttons1:hover {
+    -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+    -fx-scale-y: 1.1;
 }
 
 .type{
