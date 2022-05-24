@@ -24,8 +24,18 @@ public class SearchManagerImplementation implements SearchManager {
     }
 
     @Override
-    public void search(String newValue) {
-        client.getSearchClient().search(newValue);
+    public void searchSong(String search) {
+        client.getSearchClient().searchSong(search);
+    }
+
+    @Override
+    public void searchAlbum(String search) {
+        client.getSearchClient().searchAlbum(search);
+    }
+
+    @Override
+    public void searchProfile(String search) {
+        client.getSearchClient().searchProfile(search);
     }
 
     @Override

@@ -25,9 +25,27 @@ public class RMISearchClient implements SearchClient{
     }
 
     @Override
-    public void search(String newValue) {
+    public void searchSong(String search) {
         try {
-            server.getSearchServer().search(newValue);
+            server.getSearchServer().searchSong(search);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void searchAlbum(String search) {
+        try {
+            server.getSearchServer().searchAlbum(search);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void searchProfile(String search) {
+        try {
+            server.getSearchServer().searchProfile(search);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

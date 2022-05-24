@@ -2,6 +2,7 @@ package musicApp.server.model.search;
 
 import musicApp.database.song.SongDAO;
 import musicApp.database.song.SongDAOImpl;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 
 import java.beans.PropertyChangeListener;
@@ -11,20 +12,14 @@ import java.util.ArrayList;
 
 public class ServerModelSearchImpl implements ServerModelSearch {
     private ArrayList<Song> songs;
-    private ArrayList<Song> searchResultsSorted;
-    private SongDAO songDAO;
+    private ArrayList<Album> albums;
+
     private PropertyChangeSupport support;
 
     public ServerModelSearchImpl() {
-        try {
-            this.songDAO = SongDAOImpl.getInstance();
-            this.searchResultsSorted = new ArrayList<>();
-            this.songs = songDAO.getAllSongs();
-            this.support = new PropertyChangeSupport(this);
-            System.out.println(songs);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        this.songs = new ArrayList<>();
+        this.albums = new ArrayList<>();
+        this.support = new PropertyChangeSupport(this);
     }
 
     @Override
@@ -33,7 +28,7 @@ public class ServerModelSearchImpl implements ServerModelSearch {
     }
 
     @Override
-    public void search(String newValue) {
+    public void searchSong(String newValue) {
         if (songs.isEmpty()) {
             GetAllSongsTask getAllSongs = new GetAllSongsTask();
             new Thread(getAllSongs).start();
@@ -43,10 +38,32 @@ public class ServerModelSearchImpl implements ServerModelSearch {
                 e.printStackTrace();
             }
         }
-        searchResultsSorted = (ArrayList<Song>) SongPredicate.filterSongs(songs, SongPredicate.containsSongTitleOrContainsArtist(newValue));
+        ArrayList<Song> searchResultsSorted = SongPredicate.filterSongs(songs, SongPredicate.containsSongTitleOrContainsArtist(newValue));
         System.out.println(searchResultsSorted);
         //Search ready fire property to client.
         support.firePropertyChange("newSearch", null, searchResultsSorted);
+    }
+
+    @Override
+    public void searchAlbum(String search) {
+        if (albums.isEmpty()) {
+            GetAllAlbumsTask getAllAlbums = new GetAllAlbumsTask();
+            new Thread(getAllAlbums).start();
+            try {
+                albums = getAllAlbums.call();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        ArrayList<Album> searchResultsSorted = AlbumPredicate.filterAlbums(albums, AlbumPredicate.containsAlbumTitleOrContainsArtist(search));
+        System.out.println(searchResultsSorted);
+        //Search ready fire property to client.
+        support.firePropertyChange("newSearch", null, searchResultsSorted);
+    }
+
+    @Override
+    public void searchProfile(String search) {
+
     }
 
     @Override

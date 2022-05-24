@@ -5,12 +5,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
-import musicApp.server.model.search.SongPredicate;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeEvent;
@@ -22,6 +19,7 @@ public class SearchViewModel implements Subject {
     private ObservableList<Song> songs;
     private SimpleStringProperty search;
     private PropertyChangeSupport support;
+    private ObservableList<SearchComboBoxChoices> searchComboBoxChoices;
 
     private MainModel mainModel;
 
@@ -38,6 +36,7 @@ public class SearchViewModel implements Subject {
     }
 
     public void init() {
+        loadComboBox();
 //        FilteredList<Song> filteredData = new FilteredList<>(songs);
 //        search.addListener(((observable, oldValue, newValue) -> {
 //            if (newValue.isEmpty() || newValue.isBlank()) return;
@@ -46,6 +45,7 @@ public class SearchViewModel implements Subject {
 //            System.out.println(filteredData);
 //        }));
     }
+
 
     public void bindSearch(StringProperty property) {
         search.bindBidirectional(property);
@@ -65,12 +65,25 @@ public class SearchViewModel implements Subject {
         support.addPropertyChangeListener(eventName, listener);
     }
 
-    public void search(String text) {
-        mainModel.getSearchManager().search(text);
+    public void search(SearchComboBoxChoices selectedItem) {
+        switch (selectedItem) {
+            case Album -> mainModel.getSearchManager().searchAlbum(search.get());
+            case Profile -> mainModel.getSearchManager().searchProfile(search.get());
+            default -> mainModel.getSearchManager().searchSong(search.get());
+        }
     }
 
 
     public User fetchUser() {
         return mainModel.getLogInManager().getUser();
+    }
+
+    private void loadComboBox() {
+        searchComboBoxChoices = FXCollections.observableArrayList(SearchComboBoxChoices.Album, SearchComboBoxChoices.Song, SearchComboBoxChoices.Profile);
+    }
+
+
+    public ObservableList<SearchComboBoxChoices> getComboBoxChoices() {
+        return searchComboBoxChoices;
     }
 }

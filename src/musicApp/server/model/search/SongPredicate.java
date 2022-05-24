@@ -13,8 +13,8 @@ public class SongPredicate {
         return p -> p.getTitle().contains(searchResult) || p.getArtist().getName().contains(searchResult);
     }
 
-    public static List<Song> filterSongs(ArrayList<Song> songs, Predicate<Song> predicate) {
-        return songs.stream()
+    public static ArrayList<Song> filterSongs(ArrayList<Song> songs, Predicate<Song> predicate) {
+        return (ArrayList<Song>) songs.stream()
                 .filter(predicate)
                 .collect(Collectors.<Song>toList());
     }

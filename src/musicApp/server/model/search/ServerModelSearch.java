@@ -8,5 +8,9 @@ import java.util.ArrayList;
 public interface ServerModelSearch extends Subject {
     ArrayList<Song> fetchSortedList();
 
-    void search(String newValue);
+    void searchSong(String newValue);
+
+    void searchAlbum(String search);
+
+    void searchProfile(String search);
 }
