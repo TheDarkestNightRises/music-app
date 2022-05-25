@@ -31,6 +31,8 @@ public class MainMenuViewController implements ViewController {
     public HBox profileCardContainer;
     @FXML
     public VBox followListSubView;
+    @FXML
+    public HBox createAlbum;
 
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
@@ -44,7 +46,12 @@ public class MainMenuViewController implements ViewController {
         initRandomSongs();
         openFollowList();
         openProfileCard();
+        if(isArtist())
+            createAlbum.setVisible(true);
+        else
+            createAlbum.setVisible(false);
     }
+
 
     private void initAlbums() {
         new Thread(() -> {
@@ -75,8 +82,6 @@ public class MainMenuViewController implements ViewController {
     }
 
 
-
-
     @FXML
     public void openChat() {
         viewHandler.openChat();
@@ -101,5 +106,9 @@ public class MainMenuViewController implements ViewController {
         Parent followListRoot = viewHandler.openFollowListSubView();
         followListSubView.getChildren().clear();
         followListSubView.getChildren().add(followListRoot);
+    }
+    private boolean isArtist()
+    {
+         return  viewModelMainMenu.isArtist();
     }
 }

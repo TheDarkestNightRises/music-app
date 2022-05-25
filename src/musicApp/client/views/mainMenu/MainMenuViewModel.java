@@ -1,13 +1,16 @@
 package musicApp.client.views.mainMenu;
 
 import musicApp.client.model.MainModel;
+import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Album;
+import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MainMenuViewModel implements Subject {
@@ -43,5 +46,22 @@ public class MainMenuViewModel implements Subject {
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.removePropertyChangeListener(eventName,listener);
+    }
+
+    public boolean isArtist()
+    {
+
+        try
+        {
+            User user = mainModel.getLogInManager().getUser();
+            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
+            if(artist!=null)
+                return true;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
