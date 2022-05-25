@@ -3,6 +3,7 @@ package musicApp.client.views.addAlbum;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
@@ -17,6 +18,8 @@ public class AddAlbumViewController implements ViewController
   public TextField albumName;
   @FXML
   public ImageView albumPicture;
+  @FXML
+  public HBox createAlbum;
   private ViewHandler viewHandler;
   private AddAlbumViewModel viewModel;
 
@@ -32,6 +35,7 @@ public class AddAlbumViewController implements ViewController
   public void submitButtonPressed()
   {
     viewModel.submit();
+    viewHandler.openMainMenu();
   }
 
 

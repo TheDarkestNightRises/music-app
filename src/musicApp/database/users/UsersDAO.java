@@ -19,6 +19,5 @@ public interface UsersDAO
   void updateUserInfo(String username, String password, String email, String nickname);
   boolean PlaylistExists(User user, String playlistName);
   void uploadPicture(String username, String pictureName);
-
   ArrayList<User> getAllUsers();
 }

@@ -1,5 +1,6 @@
 package musicApp.client.model;
 
+import musicApp.client.model.addAlbum.AddAlbumManager;
 import musicApp.client.model.addToPlaylist.AddToPlaylistManager;
 import musicApp.client.model.createPlaylist.CreatePlaylistManager;
 import musicApp.client.model.chat.ChatManager;
@@ -26,4 +27,5 @@ public interface MainModel
   MainMenuManager getMainMenuManager();
   CreatePlaylistManager getCreatePlaylistManager();
   AddToPlaylistManager getAddToPlaylistManager();
+  AddAlbumManager getAddAlbumManager();
 }

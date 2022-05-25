@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
 import musicApp.database.album.AlbumDAOImpl;
@@ -68,8 +69,7 @@ public class AddAlbumViewModel
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
         User user = mainModel.getLogInManager().getUser();
-        String uploaded = mainModel.getUpdateSettingsManager().uploadImage(user.getUsername(), byteArrayOutputStream.toByteArray());
-
+        String uploaded = mainModel.getAddAlbumManager().uploadAlbumImage(user.getUsername(), byteArrayOutputStream.toByteArray());
         try
         {
           Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
@@ -88,4 +88,5 @@ public class AddAlbumViewModel
 
     }
   }
+
 }

@@ -1,5 +1,7 @@
 package musicApp.server.model;
 
+import musicApp.server.model.addAlbum.ServerModelAddAlbum;
+import musicApp.server.model.addAlbum.ServerModelAddAlbumImpl;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylist;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylistImpl;
 import musicApp.server.model.chat.ServerModelChat;
@@ -39,6 +41,7 @@ public class ServerModelImpl implements ServerModel
   private ServerModelMainMenu serverModelMainMenu;
   private ServerModelCreatePlaylist serverModelCreatePlaylist;
   private ServerModelAddToPlaylist serverModelAddToPlaylist;
+  private ServerModelAddAlbum serverModelAddAlbum;
 
   private PropertyChangeSupport support;
 
@@ -56,6 +59,7 @@ public class ServerModelImpl implements ServerModel
     this.serverModelMainMenu = new ServerModelMainMenuImpl();
     this.serverModelCreatePlaylist = new ServerModelCreatePlaylistImpl();
     this.serverModelAddToPlaylist = new ServerModelAddToPlaylistImpl();
+    this.serverModelAddAlbum = new ServerModelAddAlbumImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -110,5 +114,10 @@ public class ServerModelImpl implements ServerModel
   @Override public ServerModelAddToPlaylist getModelAddToPlaylist()
   {
     return serverModelAddToPlaylist;
+  }
+
+  @Override public ServerModelAddAlbum getModelAddAlbums()
+  {
+    return serverModelAddAlbum;
   }
 }

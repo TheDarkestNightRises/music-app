@@ -1,5 +1,6 @@
 package musicApp.server.model;
 
+import musicApp.server.model.addAlbum.ServerModelAddAlbum;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylist;
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.createPlaylist.ServerModelCreatePlaylist;
@@ -40,4 +41,6 @@ public interface ServerModel
   ServerModelCreatePlaylist getServerModelCreatePlaylist();
 
   ServerModelAddToPlaylist getModelAddToPlaylist();
+
+  ServerModelAddAlbum getModelAddAlbums();
 }
