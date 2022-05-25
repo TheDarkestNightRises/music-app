@@ -1,6 +1,8 @@
 package musicApp.server.network.addAlbum;
 
 import musicApp.server.model.ServerModel;
+import musicApp.server.model.domainModel.Artist;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.AddAlbumServer;
 
 import java.rmi.RemoteException;
@@ -20,5 +22,10 @@ public class AddAlbumServerImpl implements AddAlbumServer
   {
     String path = serverModel.getModelAddAlbums().uploadAlbumPicture(username, toByteArray);
     return path;
+  }
+
+  @Override public Artist getArtist(User user)
+  {
+    return serverModel.getModelAddAlbums().getArtist(user);
   }
 }

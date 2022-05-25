@@ -34,7 +34,8 @@ public class SearchViewController implements ViewController {
     public TextField searchTextField;
     @FXML
     public ComboBox<SearchComboBoxChoices> comboBox;
-
+    @FXML
+    public HBox createAlbum;
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
 
@@ -50,6 +51,15 @@ public class SearchViewController implements ViewController {
         searchViewModel.addListener("newSearchProfile", this::showProfileSearchResults);
         openFollowList();
         openProfileCard();
+        if(isArtist())
+            createAlbum.setVisible(true);
+        else
+            createAlbum.setVisible(false);
+    }
+
+    private boolean isArtist()
+    {
+        return  searchViewModel.isArtist();
     }
 
     private void showProfileSearchResults(PropertyChangeEvent event) {
@@ -93,6 +103,16 @@ public class SearchViewController implements ViewController {
 
     public void openSearch() {
         viewHandler.openSearch();
+    }
+
+    public void openCreatePlaylist()
+    {
+        viewHandler.openCreatePlaylist();
+    }
+
+    public void openAddAlbum()
+    {
+        viewHandler.openAddAlbum();
     }
 
     private void openFollowList() {

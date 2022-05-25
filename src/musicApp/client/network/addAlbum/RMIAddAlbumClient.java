@@ -1,5 +1,7 @@
 package musicApp.client.network.addAlbum;
 
+import musicApp.server.model.domainModel.Artist;
+import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.RMIServer;
 
 import java.rmi.RemoteException;
@@ -18,6 +20,19 @@ public class RMIAddAlbumClient implements AddAlbumClient
     try
     {
       return server.getAddAlbumServer().uploadAlbumImage(username, toByteArray);
+    }
+    catch (RemoteException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override public Artist getArtist(User user)
+  {
+    try
+    {
+      return server.getAddAlbumServer().getArtist(user);
     }
     catch (RemoteException e)
     {

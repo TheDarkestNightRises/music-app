@@ -101,4 +101,10 @@ public class FileManager {
         String path = "src/musicApp/server/serverData/AlbumPictures/"+pictureName;
         writePhoto(toByteArray, path);
     }
+
+    public void uploadAlbumPictureInOut(String pictureName, byte[] toByteArray)
+    {
+        String path = "out/production/music-app/musicApp/server/serverData/AlbumPictures/"+pictureName;
+        writePhoto(toByteArray, path);
+    }
 }

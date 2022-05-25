@@ -30,6 +30,10 @@
  -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
     -fx-scale-y: 1.1;}
 
+    .bg{
+    -fx-background-color: linear-gradient(#191919, #191919)
+    }
+
 
 .signUpTitle{
    -fx-font-size: 30px;

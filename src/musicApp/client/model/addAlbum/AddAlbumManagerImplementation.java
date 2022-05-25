@@ -1,6 +1,8 @@
 package musicApp.client.model.addAlbum;
 
 import musicApp.client.network.Client;
+import musicApp.server.model.domainModel.Artist;
+import musicApp.server.model.domainModel.User;
 
 public class AddAlbumManagerImplementation implements AddAlbumManager
 {
@@ -14,5 +16,10 @@ public class AddAlbumManagerImplementation implements AddAlbumManager
   @Override public String uploadAlbumImage(String username, byte[] toByteArray)
   {
     return client.getAddAlbumClient().uploadAlbumImage(username, toByteArray);
+  }
+
+  @Override public Artist getArtist(User user)
+  {
+    return client.getAddAlbumClient().getArtist(user);
   }
 }

@@ -17,6 +17,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.*;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class AddAlbumViewModel
 {
@@ -69,11 +71,12 @@ public class AddAlbumViewModel
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
         User user = mainModel.getLogInManager().getUser();
+        LocalDate current_date = LocalDate.now();
         String uploaded = mainModel.getAddAlbumManager().uploadAlbumImage(user.getUsername(), byteArrayOutputStream.toByteArray());
         try
         {
-          Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
-          AlbumDAOImpl.getInstance().createAlbum(albumName.getValue(),2022,uploaded,artist);
+          Artist artist = mainModel.getAddAlbumManager().getArtist(user);
+          AlbumDAOImpl.getInstance().createAlbum(albumName.getValue(),current_date.getYear(),uploaded,artist);
         }
         catch (SQLException e)
         {

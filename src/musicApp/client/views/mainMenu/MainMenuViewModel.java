@@ -50,18 +50,7 @@ public class MainMenuViewModel implements Subject {
 
     public boolean isArtist()
     {
-
-        try
-        {
-            User user = mainModel.getLogInManager().getUser();
-            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
-            if(artist!=null)
-                return true;
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        return false;
+        User user = mainModel.getLogInManager().getUser();
+        return mainModel.getProfileManager().isArtist(user);
     }
 }
