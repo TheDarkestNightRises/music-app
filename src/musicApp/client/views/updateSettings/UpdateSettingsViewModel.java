@@ -4,6 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.User;
@@ -98,6 +99,9 @@ public class UpdateSettingsViewModel
   {
     if(tempImgStream != null)
     {
+      Alert alert = new Alert(Alert.AlertType.WARNING);
+      alert.setContentText("Change will take effect after restarting the app!");
+      alert.showAndWait();
       try
       {
         BufferedImage image = ImageIO.read(imgFile);
@@ -106,10 +110,12 @@ public class UpdateSettingsViewModel
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
         String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), byteArrayOutputStream.toByteArray());
         //String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), tempImgStream.readAllBytes());
-        if(uploaded != null)
-        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
-        else 
-        error.set("Could not upload image");
+//        if(uploaded != null)
+//        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
+//        else
+//        error.set("Could not upload image");
+        if(uploaded == null)
+          error.set("Could not upload image");
       }
       catch (IOException e)
       {
