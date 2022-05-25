@@ -13,14 +13,14 @@ public class ConnectionFactory {
 
     // -------------------------------- EMANUEL ------------------------------------------------------------
 
-    private static final String URL = "jdbc:postgresql://localhost/music_app";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "htmlhacker";
+//    private static final String URL = "jdbc:postgresql://localhost/music_app";
+//    private static final String USERNAME = "postgres";
+//    private static final String PASSWORD = "htmlhacker";
 
     // -------------------------------- ANDREI ------------------------------------------------------------
-//    private static final String URL = "jdbc:postgresql://localhost:5432/music";
-//    private static final String USERNAME = "postgres";
-//    private static final String PASSWORD = "pufulet9009";
+    private static final String URL = "jdbc:postgresql://localhost:5432/music";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "pufulet9009";
 
     // -------------------------------- COSMIN ------------------------------------------------------------
 //    private static final String URL = "jdbc:postgresql://localhost:5432/music";

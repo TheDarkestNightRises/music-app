@@ -419,5 +419,20 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+
+  public void openAddAlbum()
+  {
+      try {
+          Parent root = loadFXML("../views/addAlbum/AddAlbumView.fxml");
+          Scene signUp = new Scene(root);
+          stage.setTitle("Add song to playlist playlist");
+          stage.setScene(signUp);
+          stage.show();
+          stage.setResizable(false);
+          stage.centerOnScreen();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
 }
 

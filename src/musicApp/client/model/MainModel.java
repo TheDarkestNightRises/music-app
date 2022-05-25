@@ -13,17 +13,17 @@ import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
 
-public interface MainModel {
-    MusicManager getMusicPlayerManager();
-    LogInManager getLogInManager();
-    ChatManager getChatManager();
-    SignUpManager getSignUpManager();
-    ProfileManager getProfileManager();
-    UpdateSettingsManager getUpdateSettingsManager();
-    SearchManager getSearchManager();
-    FollowListManager getFollowListManager();
-
-    MainMenuManager getMainMenuManager();
+public interface MainModel
+{
+  MusicManager getMusicPlayerManager();
+  LogInManager getLogInManager();
+  ChatManager getChatManager();
+  SignUpManager getSignUpManager();
+  ProfileManager getProfileManager();
+  UpdateSettingsManager getUpdateSettingsManager();
+  SearchManager getSearchManager();
+  FollowListManager getFollowListManager();
+  MainMenuManager getMainMenuManager();
   CreatePlaylistManager getCreatePlaylistManager();
   AddToPlaylistManager getAddToPlaylistManager();
 }

@@ -89,6 +89,7 @@ public class MainMenuViewController implements ViewController {
         viewHandler.openCreatePlaylist();
     }
     public void openSearch() {viewHandler.openSearch();}
+    public void openAddAlbum() {viewHandler.openAddAlbum();}
 
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();

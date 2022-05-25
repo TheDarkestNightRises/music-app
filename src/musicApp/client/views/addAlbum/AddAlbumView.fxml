@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="509.0" prefWidth="384.0" stylesheets="@addAlbum.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addAlbum.AddAlbumViewController">
+   <children>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="589.0" prefWidth="384.0" styleClass="Back">
+         <children>
+            <HBox alignment="CENTER" prefHeight="122.0" prefWidth="384.0">
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
+                     <font>
+                        <Font name="Bodoni MT Poster Compressed" size="7.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="28.0">
+                           <image>
+                              <Image url="@../signup/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="95.0" left="-40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Title" text="UPLOAD ALBUM" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                     <font>
+                        <Font name="Arial Black" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="74.0" prefWidth="384.0">
+               <children>
+                  <Label fx:id="errorLabel1" textFill="#fdfdfd">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="53.0" prefWidth="384.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <TextField fx:id="albumName" prefHeight="34.0" prefWidth="282.0" promptText="Album Name" styleClass="Input" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="86.0" prefWidth="384.0">
+               <children>
+                  <Button fx:id="resetPictureButton" mnemonicParsing="false" onAction="#choosePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Choose a picture">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="Button" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="217.0" prefWidth="384.0" styleClass="text">
+               <children>
+                  <ImageView fx:id="albumPicture" fitHeight="178.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="74.0" prefWidth="384.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#submitButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" text="Upload Album">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="Button" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

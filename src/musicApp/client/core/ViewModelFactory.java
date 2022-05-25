@@ -1,5 +1,6 @@
 package musicApp.client.core;
 
+import musicApp.client.views.addAlbum.AddAlbumViewModel;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
 import musicApp.client.views.artistProfile.ArtistProfileViewModel;
 import musicApp.client.views.artistSignUp.ArtistSignUpViewModel;
@@ -31,6 +32,7 @@ public class ViewModelFactory {
     private CreatePlaylistViewModel createPlaylistViewModel;
     private AddToPlaylistViewModel addToPlaylistViewModel;
     private ArtistProfileViewModel artistProfileViewModel;
+    private AddAlbumViewModel addAlbumViewModel;
 
   public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -130,6 +132,14 @@ public class ViewModelFactory {
       artistProfileViewModel = new ArtistProfileViewModel(modelFactory.getMainModel());
     }
     return artistProfileViewModel;
+  }
+
+  public AddAlbumViewModel getAddAlbumViewModel()
+  {
+    if (addAlbumViewModel == null) {
+      addAlbumViewModel = new AddAlbumViewModel(modelFactory.getMainModel());
+    }
+    return addAlbumViewModel;
   }
 }
 
