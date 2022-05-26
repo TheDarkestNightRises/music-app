@@ -481,5 +481,18 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+    public void openAddSong() {
+        try {
+            Parent root = loadFXML("../views/addSong/UploadSongView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Add a song");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
