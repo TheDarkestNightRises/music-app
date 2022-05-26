@@ -110,7 +110,7 @@ public class SongDAOImpl implements SongDAO
     }
   }
 
-  @Override public void deleteSong(Song song)
+  @Override public void deleteSong(Song song) throws Exception
   {
     try
     {
@@ -123,6 +123,7 @@ public class SongDAOImpl implements SongDAO
     catch (SQLException e)
     {
       e.printStackTrace();
+      throw new Exception("Could not delete song");
     }
   }
 

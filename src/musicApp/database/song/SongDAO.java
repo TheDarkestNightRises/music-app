@@ -10,7 +10,7 @@ public interface SongDAO
 {
   ArrayList<Song> getAllSongs();
   void insertSong(Song song, Album album, Artist artist);
-  void deleteSong(Song song);
+  void deleteSong(Song song) throws Exception;
   void deleteSongById(int id);
   Song getSongById(int id);
   void updateSong(Song song);

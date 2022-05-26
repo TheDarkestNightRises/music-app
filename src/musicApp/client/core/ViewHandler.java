@@ -450,5 +450,18 @@ public class ViewHandler {
           e.printStackTrace();
       }
   }
+    public void openDeleteSong() {
+        try {
+            Parent root = loadFXML("../views/deleteSong/DeleteSongView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Delete songs");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
