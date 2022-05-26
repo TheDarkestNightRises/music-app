@@ -176,17 +176,11 @@
                <children>
                   <HBox prefHeight="52.0" prefWidth="1044.0" spacing="10.0">
                      <children>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="42.0" style="-fx-background-color: transparent;">
-                           <graphic>
-                              <HBox />
-                           </graphic>
-                        </Button>
-                        <Pane prefHeight="52.0" prefWidth="469.0" />
+                        <Pane prefHeight="52.0" prefWidth="469.0">
+                           <children>
+                              <Button fx:id="follow" layoutX="23.0" layoutY="15.0" mnemonicParsing="false" onAction="#follow" styleClass="followButton" text="Follow" />
+                              <Button fx:id="unfollow" layoutX="92.0" layoutY="15.0" mnemonicParsing="false" onAction="#unfollow" styleClass="followButton" text="Unfollow" />
+                           </children></Pane>
                         <HBox fx:id="profileCardContainer" alignment="CENTER" prefHeight="52.0" prefWidth="410.0" spacing="15.0">
                            <HBox.margin>
                               <Insets left="10.0" />

@@ -153,8 +153,8 @@
                <children>
                   <Pane prefHeight="52.0" prefWidth="469.0">
                      <children>
-                        <Button fx:id="follow" layoutX="23.0" layoutY="13.0" mnemonicParsing="false" onAction="#follow" text="Follow" />
-                        <Button fx:id="unfollow" layoutX="92.0" layoutY="13.0" mnemonicParsing="false" onAction="#unfollow" text="Unfollow" />
+                        <Button fx:id="follow" layoutX="23.0" layoutY="13.0" mnemonicParsing="false" onAction="#follow" styleClass="followButton" text="Follow" />
+                        <Button fx:id="unfollow" layoutX="92.0" layoutY="13.0" mnemonicParsing="false" onAction="#unfollow" styleClass="followButton" text="Unfollow" />
                      </children></Pane>
                   <HBox fx:id="profileCardContainer" alignment="CENTER" prefHeight="52.0" prefWidth="410.0" spacing="15.0">
                      <HBox.margin>

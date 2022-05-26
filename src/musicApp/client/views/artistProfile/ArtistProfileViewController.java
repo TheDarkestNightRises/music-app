@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -43,7 +44,11 @@ public class ArtistProfileViewController implements ViewController
   public HBox profileCardContainer;
   @FXML
   public HBox createAlbum;
-
+  @FXML
+  public Button follow;
+  @FXML
+  public Button unfollow;
+  private User user;
   private ViewHandler vh;
   private ArtistProfileViewModel viewModel;
 
@@ -52,7 +57,7 @@ public class ArtistProfileViewController implements ViewController
     this.vh = vh;
     this.viewModel = vmf.getArtistProfileViewModel();
     initArtistAlbums();
-    User user = (User) args[0];
+    user = (User) args[0];
     ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser(user);
     System.out.println(playlists);
     if (playlists == null) return;
@@ -64,6 +69,12 @@ public class ArtistProfileViewController implements ViewController
       createAlbum.setVisible(true);
     else
       createAlbum.setVisible(false);
+    User user1 = viewModel.fetchUser();
+    if(user.getUsername().equals(user1.getUsername()))
+    {
+      follow.setVisible(false);
+      unfollow.setVisible(false);
+    }
     viewModel.addListener("newPlaylist", this::onNewPlaylist);
   }
 
@@ -155,4 +166,6 @@ public class ArtistProfileViewController implements ViewController
   }
   public void openMain(){vh.openMainMenu();}
   public void openCreateAlbum(){vh.openAddAlbum();}
+  public void follow(){viewModel.follow(user);}
+  public void unfollow(){viewModel.unfollow(user);}
 }

@@ -34,3 +34,14 @@
 .bodyBg {
 -fx-background-image: url("Hnet.com-image.jpg");
 }
+
+.followButton {
+    -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+        -fx-text-fill: white;
+        -fx-font-size: 13px;}
+
+
+.followButton:hover{
+   -fx-background-color: linear-gradient(#a4508b, #a4508b);
+    -fx-scale-y: 1.1;
+}

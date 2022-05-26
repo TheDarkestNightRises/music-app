@@ -70,4 +70,16 @@ public class ArtistProfileViewModel implements Subject
     User user = mainModel.getLogInManager().getUser();
     return mainModel.getProfileManager().isArtist(user);
   }
+
+  public void follow(User user)
+  {
+    User user0 = fetchUser();
+    mainModel.getProfileManager().follow(user0,user);
+  }
+
+  public void unfollow(User user)
+  {
+    User user0 = fetchUser();
+    mainModel.getProfileManager().unfollow(user0,user);
+  }
 }
