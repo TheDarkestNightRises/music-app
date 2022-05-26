@@ -1,6 +1,7 @@
 package musicApp.server.model.profile;
 
 import musicApp.database.artist.ArtistDAOImpl;
+import musicApp.database.follow.FollowDAOImpl;
 import musicApp.server.model.domainModel.*;
 import musicApp.server.serverData.filemanager.FileManager;
 
@@ -86,5 +87,29 @@ public class ServerModelProfileImpl implements ServerModelProfile {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override public void follow(User user0, User user)
+    {
+        try
+        {
+            FollowDAOImpl.getInstance().Follow(user0,user);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override public void unfollow(User user0, User user)
+    {
+        try
+        {
+            FollowDAOImpl.getInstance().Unfollow(user0,user);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

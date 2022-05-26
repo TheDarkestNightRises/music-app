@@ -67,4 +67,23 @@ public class RMIProfileClient implements ProfileClient{
         }
         return false;
     }
+
+    @Override public void follow(User user0, User user)
+    {
+        try{
+            rmiServer.getProfileServer().follow(user0,user);
+        } catch (RemoteException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override public void unfollow(User user0, User user)
+    {
+        try{
+            rmiServer.getProfileServer().unfollow(user0,user);
+        } catch (RemoteException e){
+            e.printStackTrace();
+        }
+    }
 }

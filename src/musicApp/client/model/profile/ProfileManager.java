@@ -8,14 +8,19 @@ import musicApp.util.Subject;
 
 import java.util.ArrayList;
 
-public interface ProfileManager extends Subject {
-    ArrayList<Playlist> fetchPlaylistsForUser(User user);
+public interface ProfileManager extends Subject
+{
+  ArrayList<Playlist> fetchPlaylistsForUser(User user);
 
-    ArrayList<Song> fetchSongsForPlaylist(Playlist playlist);
+  ArrayList<Song> fetchSongsForPlaylist(Playlist playlist);
 
-    byte[] fetchProfilePicture(String profile_picture);
+  byte[] fetchProfilePicture(String profile_picture);
 
-    ArrayList<Album> fetchArtistAlbums(User user);
+  ArrayList<Album> fetchArtistAlbums(User user);
 
-    boolean isArtist(User user);
+  boolean isArtist(User user);
+
+  void follow(User user0, User user);
+
+  void unfollow(User user0, User user);
 }

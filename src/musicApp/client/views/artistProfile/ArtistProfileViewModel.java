@@ -65,4 +65,9 @@ public class ArtistProfileViewModel implements Subject
     return mainModel.getProfileManager().fetchArtistAlbums(user);
   }
 
+  public boolean isArtist()
+  {
+    User user = mainModel.getLogInManager().getUser();
+    return mainModel.getProfileManager().isArtist(user);
+  }
 }

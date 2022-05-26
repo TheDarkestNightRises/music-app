@@ -41,6 +41,8 @@ public class ArtistProfileViewController implements ViewController
   public VBox followListSubView;
   @FXML
   public HBox profileCardContainer;
+  @FXML
+  public HBox createAlbum;
 
   private ViewHandler vh;
   private ArtistProfileViewModel viewModel;
@@ -58,7 +60,16 @@ public class ArtistProfileViewController implements ViewController
     initProfileInfo(user);
     openFollowList();
     openProfileCard();
+    if(isArtist())
+      createAlbum.setVisible(true);
+    else
+      createAlbum.setVisible(false);
     viewModel.addListener("newPlaylist", this::onNewPlaylist);
+  }
+
+  private boolean isArtist()
+  {
+    return  viewModel.isArtist();
   }
 
   private void onNewPlaylist(PropertyChangeEvent event) {

@@ -47,6 +47,16 @@ public class ProfileManagerImplementation implements ProfileManager{
         return client.getProfileClient().isArtist(user);
     }
 
+    @Override public void follow(User user0, User user)
+    {
+        client.getProfileClient().follow(user0,user);
+    }
+
+    @Override public void unfollow(User user0, User user)
+    {
+        client.getProfileClient().unfollow(user0,user);
+    }
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName,listener);

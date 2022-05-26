@@ -19,4 +19,8 @@ public interface ProfileServer extends Remote {
     ArrayList<Album> fetchArtistAlbums(User user) throws RemoteException;
 
     boolean isArtist(User user) throws RemoteException;
+
+    void follow(User user0, User user) throws RemoteException;
+
+    void unfollow(User user0, User user) throws RemoteException;
 }

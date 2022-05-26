@@ -44,4 +44,14 @@ public class ProfileServerImpl implements ProfileServer {
     {
         return serverModel.getModelProfile().isArtist(user);
     }
+
+    @Override public void follow(User user0, User user) throws RemoteException
+    {
+        serverModel.getModelProfile().follow(user0,user);
+    }
+
+    @Override public void unfollow(User user0, User user) throws RemoteException
+    {
+        serverModel.getModelProfile().unfollow(user0,user);
+    }
 }

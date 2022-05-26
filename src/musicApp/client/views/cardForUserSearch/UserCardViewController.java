@@ -42,7 +42,7 @@ public class UserCardViewController implements ViewController {
 
     @FXML
     public void openProfile() {
-        if (user instanceof Artist) {
+        if (profileViewModel.isArtist(user)) {
             vh.openArtistProfile(user);
         } else {
             vh.openProfile(user);

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -36,7 +37,11 @@ public class ProfileViewController implements ViewController {
     public VBox followListSubView;
     @FXML
     public HBox profileCardContainer;
-
+    @FXML
+    public Button follow;
+    @FXML
+    public Button unfollow;
+    private User user;
     private ViewHandler vh;
     private ProfileViewModel viewModel;
 
@@ -44,7 +49,7 @@ public class ProfileViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
-        User user = (User) args[0];
+        user = (User) args[0];
         ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser(user);
         System.out.println(playlists);
         if (playlists == null) return;
@@ -53,6 +58,12 @@ public class ProfileViewController implements ViewController {
         openFollowList();
         openProfileCard();
         viewModel.addListener("newPlaylist", this::onNewPlaylist);
+        User user1 = viewModel.fetchUser();
+        if(user.getUsername().equals(user1.getUsername()))
+        {
+            follow.setVisible(false);
+            unfollow.setVisible(false);
+        }
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
@@ -147,4 +158,10 @@ public class ProfileViewController implements ViewController {
         vh.openUpdateSettings(viewModel.fetchUser());
     }
     public void openMain(){vh.openMainMenu();}
+
+    public void follow(){
+        viewModel.follow(user);
+    };
+
+    public void unfollow(){ viewModel.unfollow(user);}
 }
