@@ -38,3 +38,12 @@
 .buttons2{
  -fx-background-color: #2b2b2b;
 }
+
+.text-area {
+    -fx-font-size: 18;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area .content {
+    -fx-background-color: #242526;
+}

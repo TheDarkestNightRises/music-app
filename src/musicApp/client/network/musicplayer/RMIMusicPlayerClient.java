@@ -53,4 +53,14 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public String fetchLyrics(String name, String title) {
+        try {
+            return server.getMusicPlayerServer().fetchLyrics(name,title);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

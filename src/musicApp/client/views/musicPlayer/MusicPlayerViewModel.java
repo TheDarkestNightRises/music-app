@@ -26,6 +26,7 @@ public class MusicPlayerViewModel implements Subject {
     private SimpleDoubleProperty maxProperty;
     private PropertyChangeSupport support;
     private ObjectProperty<Image> albumPicture;
+    private SimpleStringProperty lyrics;
 
     public MusicPlayerViewModel(MainModel mainModel) {
         this.mainModel = mainModel;
@@ -35,6 +36,7 @@ public class MusicPlayerViewModel implements Subject {
         currentSongLabel = new SimpleStringProperty();
         maxProperty = new SimpleDoubleProperty();
         albumPicture = new SimpleObjectProperty<>();
+        lyrics = new SimpleStringProperty();
     }
 
     public void init(Object... args) {
@@ -59,7 +61,7 @@ public class MusicPlayerViewModel implements Subject {
         } else {
             songNumber = 0;
         }
-       return currentSong();
+        return currentSong();
     }
 
     public File currentSong() {
@@ -67,6 +69,8 @@ public class MusicPlayerViewModel implements Subject {
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
         currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
+        String lyricsText = mainModel.getMusicPlayerManager().fetchLyrics(currentSong.getArtist().getNickname(),currentSong.getTitle());
+        lyrics.set(lyricsText);
         return songs.get(songNumber);
     }
 
@@ -102,26 +106,27 @@ public class MusicPlayerViewModel implements Subject {
         albumPicture.bindBidirectional(property);
     }
 
-  public void addToLikedSongs()
-  {
-      User user = mainModel.getLogInManager().getUser();
-      Song song = playlist.getSong(songNumber);
-      mainModel.getMusicPlayerManager().addToLikedSongs(user, song);
-  }
+    public void bindLyrics(StringProperty simpleStringProperty) {
+        lyrics.bindBidirectional(simpleStringProperty);
+    }
 
-  public void removeToLikedSongs()
-  {
-      User user = mainModel.getLogInManager().getUser();
-      Song song = playlist.getSong(songNumber);
-      mainModel.getMusicPlayerManager().removeToLikedSongs(user, song);
-  }
+    public void addToLikedSongs() {
+        User user = mainModel.getLogInManager().getUser();
+        Song song = playlist.getSong(songNumber);
+        mainModel.getMusicPlayerManager().addToLikedSongs(user, song);
+    }
 
-  public User fetchUser()
-  {
-      return mainModel.getLogInManager().getUser();
-  }
-  public Song fetchCurrentSong()
-  {
-      return playlist.getSong(songNumber);
-  }
+    public void removeToLikedSongs() {
+        User user = mainModel.getLogInManager().getUser();
+        Song song = playlist.getSong(songNumber);
+        mainModel.getMusicPlayerManager().removeToLikedSongs(user, song);
+    }
+
+    public User fetchUser() {
+        return mainModel.getLogInManager().getUser();
+    }
+
+    public Song fetchCurrentSong() {
+        return playlist.getSong(songNumber);
+    }
 }

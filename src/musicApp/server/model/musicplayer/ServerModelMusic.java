@@ -16,4 +16,7 @@ public interface ServerModelMusic extends Subject
   byte[] fetchAlbumCover(String picturePath);
   void addToLikedSongs(User user, Song song);
   void removeToLikedSongs(User user, Song song);
+
+    String fetchLyrics(String name, String title);
+
 }

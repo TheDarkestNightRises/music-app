@@ -6,6 +6,7 @@ import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
+import musicApp.server.model.musicplayer.lyricsgatherer.LyricsGatherer;
 import musicApp.server.serverData.filemanager.FileManager;
 
 import java.beans.PropertyChangeListener;
@@ -16,11 +17,13 @@ import java.util.ArrayList;
 
 public class ServerModelMusicImpl implements ServerModelMusic {
     private FileManager fileManager;
+    private LyricsGatherer lyricsGatherer;
     private PropertyChangeSupport support;
 
 
     public ServerModelMusicImpl() {
         this.fileManager = FileManager.getInstance();
+
         this.support = new PropertyChangeSupport(this);
     }
 
@@ -73,6 +76,16 @@ public class ServerModelMusicImpl implements ServerModelMusic {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String fetchLyrics(String name, String title) {
+        try {
+            return LyricsGatherer.getSongLyrics(name,title);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

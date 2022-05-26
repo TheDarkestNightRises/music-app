@@ -1,5 +1,6 @@
 package musicApp.client.views.musicPlayer;
 
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
@@ -18,11 +19,11 @@ import java.io.File;
 
 
 public class MusicPlayerController implements ViewController {
-
-
     private Media media;
     private MediaPlayer mediaPlayer;
 
+    @FXML
+    public TextArea lyricsArea;
     @FXML
     public ImageView albumCover;
     @FXML
@@ -43,7 +44,9 @@ public class MusicPlayerController implements ViewController {
         volumeSlider.valueProperty().addListener(this::changeVolume);
         sliderTime.maxProperty().bind(musicPlayerViewModel.getMaxProperty());
         musicPlayerViewModel.bindImage(albumCover.imageProperty());
+        musicPlayerViewModel.bindLyrics(lyricsArea.textProperty());
         musicPlayerViewModel.init(args);
+        lyricsArea.setEditable(false);
         changeSong(musicPlayerViewModel.currentSong());
     }
 

@@ -18,4 +18,6 @@ public interface MusicPlayerServer extends Remote
   byte[] fetchAlbumCover(String picturePath) throws RemoteException;
   void addToLikedSongs(User user, Song song) throws RemoteException;
   void removeToLikedSongs(User user, Song song) throws RemoteException;
+
+    String fetchLyrics(String name, String title) throws RemoteException;
 }
