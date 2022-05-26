@@ -2,12 +2,16 @@ package musicApp.client.network;
 
 import musicApp.client.network.addAlbum.AddAlbumClient;
 import musicApp.client.network.addAlbum.RMIAddAlbumClient;
+import musicApp.client.network.addSong.AddSongClient;
+import musicApp.client.network.addSong.RMIAddSongClient;
 import musicApp.client.network.addToPlaylist.AddToPlaylistClient;
 import musicApp.client.network.addToPlaylist.RMIAddToPlaylistClient;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.chat.RMIChatClient;
 import musicApp.client.network.createPlaylist.CreatePlaylistClient;
 import musicApp.client.network.createPlaylist.RMICreatePlayListClient;
+import musicApp.client.network.deleteSong.DeleteSongClient;
+import musicApp.client.network.deleteSong.RMIDeleteSongClient;
 import musicApp.client.network.followList.FollowListClient;
 import musicApp.client.network.followList.RMIFollowListClient;
 import musicApp.client.network.login.LoginClient;
@@ -57,6 +61,8 @@ public class RMIClient implements Client, ClientCallBack {
     private CreatePlaylistClient createPlaylistClient;
     private AddToPlaylistClient addToPlaylistClient;
     private AddAlbumClient addAlbumClient;
+    private AddSongClient addSongClient;
+    private DeleteSongClient deleteSongClient;
 
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
@@ -74,6 +80,8 @@ public class RMIClient implements Client, ClientCallBack {
         this.createPlaylistClient = new RMICreatePlayListClient();
         this.addToPlaylistClient = new RMIAddToPlaylistClient();
         this.addAlbumClient = new RMIAddAlbumClient();
+        this.addSongClient = new RMIAddSongClient();
+        this.deleteSongClient = new RMIDeleteSongClient();
     }
 
     @Override
@@ -97,6 +105,8 @@ public class RMIClient implements Client, ClientCallBack {
             this.addToPlaylistClient.setServer(server);
             this.mainMenuClient.setServer(server);
             this.addAlbumClient.setServer(server);
+            this.addSongClient.setServer(server);
+            this.deleteSongClient.setServer(server);
 
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
@@ -210,6 +220,16 @@ public class RMIClient implements Client, ClientCallBack {
     @Override public AddAlbumClient getAddAlbumClient()
     {
         return addAlbumClient;
+    }
+
+    @Override public AddSongClient getAddSongClient()
+    {
+        return addSongClient;
+    }
+
+    @Override public DeleteSongClient getDeleteSongClient()
+    {
+        return deleteSongClient;
     }
 
 }

@@ -35,4 +35,8 @@ public interface RMIServer extends Remote {
   AddToPlaylistServer getAddToPlaylistServer() throws RemoteException;
 
   AddAlbumServer getAddAlbumServer() throws RemoteException;
+
+  AddSongServer getAddSongServer() throws RemoteException;
+
+  DeleteSongServer getDeleteSongServer() throws RemoteException;
 }

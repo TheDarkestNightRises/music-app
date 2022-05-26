@@ -2,12 +2,16 @@ package musicApp.server.model;
 
 import musicApp.server.model.addAlbum.ServerModelAddAlbum;
 import musicApp.server.model.addAlbum.ServerModelAddAlbumImpl;
+import musicApp.server.model.addSong.ServerModelAddSong;
+import musicApp.server.model.addSong.ServerModelAddSongImpl;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylist;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylistImpl;
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.chat.ServerModelChatImpl;
 import musicApp.server.model.createPlaylist.ServerModelCreatePlaylist;
 import musicApp.server.model.createPlaylist.ServerModelCreatePlaylistImpl;
+import musicApp.server.model.deleteSong.ServerModelDeleteSong;
+import musicApp.server.model.deleteSong.ServerModelDeleteSongImpl;
 import musicApp.server.model.followList.ServerModelFollowList;
 import musicApp.server.model.followList.ServerModelFollowListImpl;
 import musicApp.server.model.login.ServerModelLogin;
@@ -44,7 +48,8 @@ public class ServerModelImpl implements ServerModel
   private ServerModelAddAlbum serverModelAddAlbum;
 
   private PropertyChangeSupport support;
-
+  private ServerModelAddSong serverModelAddSong;
+  private ServerModelDeleteSong serverModelDeleteSong;
 
   public ServerModelImpl()
   {
@@ -60,6 +65,8 @@ public class ServerModelImpl implements ServerModel
     this.serverModelCreatePlaylist = new ServerModelCreatePlaylistImpl();
     this.serverModelAddToPlaylist = new ServerModelAddToPlaylistImpl();
     this.serverModelAddAlbum = new ServerModelAddAlbumImpl();
+    this.serverModelAddSong = new ServerModelAddSongImpl();
+    this.serverModelDeleteSong = new ServerModelDeleteSongImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -119,5 +126,15 @@ public class ServerModelImpl implements ServerModel
   @Override public ServerModelAddAlbum getModelAddAlbums()
   {
     return serverModelAddAlbum;
+  }
+
+  @Override public ServerModelAddSong getModelAddSong()
+  {
+    return serverModelAddSong;
+  }
+
+  @Override public ServerModelDeleteSong getModelDeleteSong()
+  {
+    return serverModelDeleteSong;
   }
 }

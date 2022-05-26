@@ -1,0 +1,49 @@
+.SignUpButton {
+    -fx-background-color: linear-gradient(#46B5D1, #46B5D1);
+        -fx-text-fill: white;
+        -fx-font-size: 13px;
+        -fx-padding: 10 20 10 20;
+
+}
+
+.SignUpInput {
+     -fx-background-color: linear-gradient(#323232, #323232);
+            -fx-text-fill: white;
+            -fx-font-size: 13px;
+            -fx-padding: 10 20 10 5;
+}
+
+.SignUpButton:hover {
+-fx-background-color: linear-gradient(#a4508b, #a4508b);
+    -fx-scale-y: 1.1;
+}
+
+.Back{
+-fx-background-color: linear-gradient(#191919, #0F0E0E)
+}
+
+.BackButton{
+-fx-background-color: linear-gradient(#191919, #191919)
+}
+
+
+.signUpTitle{
+   -fx-font-size: 30px;
+   -fx-padding: 10 10 10 10;
+   -fx-text-fill: white;
+}
+
+/*.bodybg {
+-fx-background-image: url("wp4438964-neon-retro-girl-wallpapers.png");
+}*/
+
+@font-face {
+    font-family: 'BebasNeue-Regular';
+    src: url('BebasNeue-Regular.ttf');
+}
+
+.text {
+    -fx-font-family: "BebasNeue-Regular";
+}
+
+

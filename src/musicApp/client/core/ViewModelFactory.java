@@ -1,6 +1,7 @@
 package musicApp.client.core;
 
 import musicApp.client.views.addAlbum.AddAlbumViewModel;
+import musicApp.client.views.addSong.AddSongViewModel;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
 import musicApp.client.views.artistProfile.ArtistProfileViewModel;
 import musicApp.client.views.artistSignUp.ArtistSignUpViewModel;
@@ -10,6 +11,7 @@ import musicApp.client.views.followList.FollowListViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.mainMenu.MainMenuViewModel;
+import musicApp.client.views.deleteSong.DeleteSongViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.search.SearchViewModel;
@@ -33,6 +35,8 @@ public class ViewModelFactory {
     private AddToPlaylistViewModel addToPlaylistViewModel;
     private ArtistProfileViewModel artistProfileViewModel;
     private AddAlbumViewModel addAlbumViewModel;
+    private DeleteSongViewModel deleteSongViewModel;
+    private AddSongViewModel addSongViewModel;
 
   public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -140,6 +144,22 @@ public class ViewModelFactory {
       addAlbumViewModel = new AddAlbumViewModel(modelFactory.getMainModel());
     }
     return addAlbumViewModel;
+  }
+
+  public DeleteSongViewModel getDeleteSongViewModel()
+  {
+    if (deleteSongViewModel == null) {
+      deleteSongViewModel = new DeleteSongViewModel(modelFactory.getMainModel());
+    }
+    return deleteSongViewModel;
+  }
+
+  public AddSongViewModel getAddSongViewModel()
+  {
+    if (addSongViewModel == null) {
+      addSongViewModel = new AddSongViewModel(modelFactory.getMainModel());
+    }
+    return addSongViewModel;
   }
 }
 

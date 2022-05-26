@@ -1,9 +1,11 @@
 package musicApp.server.model;
 
 import musicApp.server.model.addAlbum.ServerModelAddAlbum;
+import musicApp.server.model.addSong.ServerModelAddSong;
 import musicApp.server.model.addToPlaylist.ServerModelAddToPlaylist;
 import musicApp.server.model.chat.ServerModelChat;
 import musicApp.server.model.createPlaylist.ServerModelCreatePlaylist;
+import musicApp.server.model.deleteSong.ServerModelDeleteSong;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.followList.ServerModelFollowList;
 import musicApp.server.model.login.ServerModelLogin;
@@ -43,4 +45,8 @@ public interface ServerModel
   ServerModelAddToPlaylist getModelAddToPlaylist();
 
   ServerModelAddAlbum getModelAddAlbums();
+
+  ServerModelAddSong getModelAddSong();
+
+  ServerModelDeleteSong getModelDeleteSong();
 }
