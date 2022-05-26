@@ -12,10 +12,12 @@ import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.client.views.customControls.AlbumsHBoxControl;
+import musicApp.client.views.customControls.ProfileCardVboxControl;
 import musicApp.client.views.customControls.SinglesHBoxControl;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
+import musicApp.server.model.domainModel.User;
 import musicApp.server.model.search.SearchResultAlbum;
 import musicApp.server.model.search.SearchResultSong;
 
@@ -63,7 +65,13 @@ public class SearchViewController implements ViewController {
     }
 
     private void showProfileSearchResults(PropertyChangeEvent event) {
-        System.out.println("Search Received");
+        new Thread(() -> {
+            ArrayList<User> users = (ArrayList<User>) event.getNewValue();
+            Platform.runLater(() -> {
+                searchContainer.getChildren().clear();
+                ProfileCardVboxControl profileCardVboxControl = new ProfileCardVboxControl(users, viewHandler, searchContainer);
+            });
+        }).start();
     }
 
     private void showSongSearchResults(PropertyChangeEvent event) {

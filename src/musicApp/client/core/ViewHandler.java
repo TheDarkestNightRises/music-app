@@ -15,9 +15,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import musicApp.client.views.cardForUserSearch.UserCardViewController;
 import musicApp.client.views.profile.AlbumViewController;
 import musicApp.client.views.profile.SinglesController;
 import musicApp.client.views.profile.SongController;
+import musicApp.client.views.profileCard.ProfileCardViewController;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -309,6 +311,20 @@ public class ViewHandler {
         albumViewController.init(this, vmf, album);
         albumViewController.setData(album);
         return vBox;
+    }
+
+    public HBox openProfileCardView(User user) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/cardForUserSearch/UserCardView.fxml"));
+        HBox hBox = null;
+        try {
+            hBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        UserCardViewController userCardViewController = fxmlLoader.getController();
+        userCardViewController.init(this, vmf, user);
+        return hBox;
     }
 
     public Parent openProfileCard() {
