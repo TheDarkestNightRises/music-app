@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.deleteSong.DeleteSongViewController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1080.0">
+         <image>
+            <Image url="@anime-girl-retro-5k-zt-1536x864.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="304.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="471.0" styleClass="Back" stylesheets="@signUp.css">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#backToProfile" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
+                     <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Bodoni MT Poster Compressed" size="7.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="28.0">
+                           <image>
+                              <Image url="@back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="74.0" prefWidth="577.0" styleClass="text" stylesheets="@signUp.css">
+               <children>
+                  <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="MANAGE SONGS" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
+                     <font>
+                        <Font name="Arial Black" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="358.0" prefWidth="497.0">
+               <children>
+                  <ListView fx:id="list" prefHeight="318.0" prefWidth="377.0" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
+               <children>
+                  <Label fx:id="errorLabel" textFill="#fdfdfd">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="75.0" prefWidth="577.0" spacing="230.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#deleteButtonPressed" prefHeight="39.0" prefWidth="181.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Delete song">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="SignUpButton" />
+                        <String fx:value="text" />
+                     </styleClass>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

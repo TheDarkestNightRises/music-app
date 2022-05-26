@@ -6,9 +6,11 @@ import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.server.network.addAlbum.AddAlbumServerImpl;
+import musicApp.server.network.addSong.AddSongServerImpl;
 import musicApp.server.network.addToPlaylist.AddToPlaylistServerImpl;
 import musicApp.server.network.chat.ChatServerImpl;
 import musicApp.server.network.createPlaylist.CreatePlaylistServerImpl;
+import musicApp.server.network.deleteSong.DeleteSongServerImpl;
 import musicApp.server.network.followList.FollowListServerImpl;
 import musicApp.server.network.login.LoginServerImpl;
 import musicApp.server.network.mainMenu.MainMenuServerImpl;
@@ -41,6 +43,8 @@ public class RMIServerImpl implements RMIServer {
     private CreatePLayListServer createPLayListServer;
     private MainMenuServer mainMenuServer;
     private AddAlbumServer addAlbumServer;
+    private AddSongServer addSongServer;
+    private DeleteSongServer deleteSongServer;
 
     public RMIServerImpl(ServerModel serverModel) throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
@@ -57,6 +61,8 @@ public class RMIServerImpl implements RMIServer {
         this.createPLayListServer = new CreatePlaylistServerImpl(serverModel);
         this.addToPlaylistServer = new AddToPlaylistServerImpl(serverModel);
         this.addAlbumServer = new AddAlbumServerImpl(serverModel);
+        this.addSongServer = new AddSongServerImpl(serverModel);
+        this.deleteSongServer = new DeleteSongServerImpl(serverModel);
     }
 
     @Override
@@ -173,6 +179,17 @@ public class RMIServerImpl implements RMIServer {
     @Override public AddAlbumServer getAddAlbumServer() throws RemoteException
     {
         return addAlbumServer;
+    }
+
+    @Override public AddSongServer getAddSongServer() throws RemoteException
+    {
+        return addSongServer;
+    }
+
+    @Override public DeleteSongServer getDeleteSongServer()
+        throws RemoteException
+    {
+        return deleteSongServer;
     }
 
 }

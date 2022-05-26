@@ -2,6 +2,8 @@ package musicApp.client.core;
 
 import musicApp.client.model.addAlbum.AddAlbumManager;
 import musicApp.client.model.addAlbum.AddAlbumManagerImplementation;
+import musicApp.client.model.addSong.AddSongManager;
+import musicApp.client.model.addSong.AddSongManagerImpl;
 import musicApp.client.model.addToPlaylist.AddToPlaylistImplementation;
 import musicApp.client.model.addToPlaylist.AddToPlaylistManager;
 import musicApp.client.model.createPlaylist.CreatePlayListManagerImplementation;
@@ -10,6 +12,8 @@ import musicApp.client.model.MainModel;
 import musicApp.client.model.MainModelImplementation;
 import musicApp.client.model.chat.ChatManager;
 import musicApp.client.model.chat.ChatManagerImplementation;
+import musicApp.client.model.deleteSong.DeleteSongManager;
+import musicApp.client.model.deleteSong.DeleteSongManagerImplementation;
 import musicApp.client.model.followList.FollowListManager;
 import musicApp.client.model.followList.FollowListManagerImplementation;
 import musicApp.client.model.login.LogInManager;
@@ -40,6 +44,8 @@ public class ModelFactory {
     private AddToPlaylistManager addToPlaylistManager;
     private MainMenuManager mainMenuManager;
     private AddAlbumManager addAlbumManager;
+    private AddSongManager addSongManager;
+    private DeleteSongManager deleteSongManager;
     private ClientFactory clientFactory;
     private MainModel mainModel;
 
@@ -51,7 +57,7 @@ public class ModelFactory {
     public MainModel getMainModel() {
         if (mainModel == null) {
             mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
-                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager());
+                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager());
         }
         return mainModel;
     }
@@ -127,4 +133,17 @@ public class ModelFactory {
         return addAlbumManager;
     }
 
+    public AddSongManager getAddSongManager()
+    {
+        if (addSongManager == null)
+            addSongManager = new AddSongManagerImpl(clientFactory.getClient());
+        return addSongManager;
+    }
+
+    public DeleteSongManager getDeleteSongManager()
+    {
+        if (deleteSongManager == null)
+            deleteSongManager = new DeleteSongManagerImplementation(clientFactory.getClient());
+        return deleteSongManager;
+    }
 }

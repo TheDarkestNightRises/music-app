@@ -3,9 +3,11 @@ package musicApp.client.network;
 import musicApp.client.model.addAlbum.AddAlbumManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.client.network.addAlbum.AddAlbumClient;
+import musicApp.client.network.addSong.AddSongClient;
 import musicApp.client.network.addToPlaylist.AddToPlaylistClient;
 import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.createPlaylist.CreatePlaylistClient;
+import musicApp.client.network.deleteSong.DeleteSongClient;
 import musicApp.client.network.followList.FollowListClient;
 import musicApp.client.network.login.LoginClient;
 import musicApp.client.network.mainMenu.MainMenuClient;
@@ -44,4 +46,8 @@ public interface Client extends Subject
   AddToPlaylistClient getAddToPlaylistClient();
 
   AddAlbumClient getAddAlbumClient();
+
+  AddSongClient getAddSongClient();
+
+  DeleteSongClient getDeleteSongClient();
 }
