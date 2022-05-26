@@ -115,27 +115,6 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
-                     <children>
-                        <Hyperlink>
-                           <graphic>
-                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/ic_add.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="129.0" text="Create Album" textFill="#7e7b7b">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
             </VBox>
             <VBox prefHeight="143.0" prefWidth="215.0">

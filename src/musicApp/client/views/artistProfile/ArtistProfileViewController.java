@@ -143,4 +143,5 @@ public class ArtistProfileViewController implements ViewController
     vh.openUpdateSettings(viewModel.fetchUser());
   }
   public void openMain(){vh.openMainMenu();}
+  public void openCreateAlbum(){vh.openAddAlbum();}
 }

@@ -121,7 +121,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
                            <children>
-                              <Hyperlink>
+                              <Hyperlink onAction="#openCreateAlbum">
                                  <graphic>
                                     <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
