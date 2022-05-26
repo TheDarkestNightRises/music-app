@@ -19,6 +19,7 @@ public class UpdateSettingsViewModel
   private final MainModel mainModel;
   private final StringProperty password;
   private final StringProperty error;
+  private final StringProperty error1;
   private final StringProperty email;
   private final StringProperty nickaname;
   private ObjectProperty<Image> profilePicture;
@@ -30,6 +31,7 @@ public class UpdateSettingsViewModel
     this.mainModel = mainModel;
     password = new SimpleStringProperty("");
     error = new SimpleStringProperty("");
+    error1 = new SimpleStringProperty("");
     email = new SimpleStringProperty("");
     nickaname = new SimpleStringProperty("");
     profilePicture = new SimpleObjectProperty<Image>();
@@ -86,6 +88,7 @@ public class UpdateSettingsViewModel
   {
     try
     {
+      error1.set("");
       tempImgStream = new FileInputStream(pictureFile);
       profilePicture.setValue(new Image(tempImgStream));
       imgFile = pictureFile;
@@ -99,9 +102,6 @@ public class UpdateSettingsViewModel
   {
     if(tempImgStream != null)
     {
-      Alert alert = new Alert(Alert.AlertType.WARNING);
-      alert.setContentText("Change will take effect after restarting the app!");
-      alert.showAndWait();
       try
       {
         BufferedImage image = ImageIO.read(imgFile);
@@ -110,17 +110,19 @@ public class UpdateSettingsViewModel
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
         String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), byteArrayOutputStream.toByteArray());
         //String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), tempImgStream.readAllBytes());
-//        if(uploaded != null)
-//        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
-//        else
-//        error.set("Could not upload image");
+        if(uploaded != null)
+        {
+        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
+        error1.set("Avatar changed successfully");}
+        else
+        error1.set("Could not upload image");
         if(uploaded == null)
-          error.set("Could not upload image");
+          error1.set("Could not upload image");
       }
       catch (IOException e)
       {
         e.printStackTrace();
-        error.set("Could not upload image");
+        error1.set("Could not upload image");
       }
 
     }
@@ -208,6 +210,12 @@ public class UpdateSettingsViewModel
   {
     error.bindBidirectional(property);
   }
+
+  public void bindError1(StringProperty property)
+  {
+    error1.bindBidirectional(property);
+  }
+
   public void bindEmail(StringProperty property)
   {
     email.bindBidirectional(property);

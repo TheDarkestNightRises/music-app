@@ -40,13 +40,14 @@ public class CreatePlaylistViewController implements ViewController
   }
 
   @FXML
-  public void backToProfile()
+  public void back()
   {
-    viewHandler.openProfile(viewModel.fetchUser());
+    viewHandler.openMainMenu();
   }
 
   @FXML
   protected void createButtonPressed() {
     viewModel.createPlaylist();
+    viewHandler.openMainMenu();
   }
 }

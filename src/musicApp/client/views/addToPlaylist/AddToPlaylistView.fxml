@@ -44,7 +44,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="334.0" prefWidth="463.0">
          <children>
-            <ListView fx:id="list" prefHeight="330.0" prefWidth="366.0" styleClass="Back" />
+            <ListView fx:id="list" prefHeight="330.0" prefWidth="366.0" styleClass="bg" />
          </children>
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

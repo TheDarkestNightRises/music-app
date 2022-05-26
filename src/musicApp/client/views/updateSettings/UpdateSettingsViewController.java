@@ -23,6 +23,8 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public Label errorLabel;
   @FXML
+  public Label errorLabel1;
+  @FXML
   public ImageView profilePicture;
   private ViewHandler viewHandler;
   private UpdateSettingsViewModel viewModel;
@@ -36,6 +38,7 @@ public class UpdateSettingsViewController implements ViewController
     viewModel.bindNickname(nicknameField.textProperty());
     viewModel.bindEmail(emailField.textProperty());
     viewModel.bindError(errorLabel.textProperty());
+    viewModel.bindError1(errorLabel1.textProperty());
     viewModel.bindImage(profilePicture.imageProperty());
     viewModel.reset();
   }
@@ -60,6 +63,7 @@ public class UpdateSettingsViewController implements ViewController
   public void updatePictureButtonPressed()
   {
     viewModel.uploadPicture();
+
   }
   @FXML
   public void resetButtonPressed()
@@ -75,6 +79,6 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public void backButtonPressed()
   {
-    viewHandler.openProfile(viewModel.fetchUser());
+    viewHandler.openMainMenu();
   }
 }

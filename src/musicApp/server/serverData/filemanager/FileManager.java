@@ -107,4 +107,10 @@ public class FileManager {
         String path = "out/production/music-app/musicApp/server/serverData/AlbumPictures/"+pictureName;
         writePhoto(toByteArray, path);
     }
+
+  public void uploadProfilePictureInOut(String pictureName, byte[] bytes)
+  {
+      String path = "out/production/music-app/musicApp/server/serverData/ProfilePictures/"+pictureName;
+      writePhoto(bytes, path);
+  }
 }

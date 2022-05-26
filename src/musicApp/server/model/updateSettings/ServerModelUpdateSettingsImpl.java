@@ -47,6 +47,7 @@ public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
       String pictureName = username + "_" + LocalDateTime.now().format(formatter) + ".png";
       dao.uploadPicture(username, pictureName);
       fileManager.uploadProfilePicture(pictureName, bytes);
+      fileManager.uploadProfilePictureInOut(pictureName, bytes);
       return pictureName;
     }
     catch (Exception e)
@@ -55,5 +56,5 @@ public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
       return null;
     }
   }
-  //dao
+
 }

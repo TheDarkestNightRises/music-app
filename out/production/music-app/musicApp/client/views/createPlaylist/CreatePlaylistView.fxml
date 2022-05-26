@@ -20,7 +20,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#backToProfile" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
+                  <Button mnemonicParsing="false" onAction="#back" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
                      <HBox.margin>
                         <Insets left="10.0" top="5.0" />
                      </HBox.margin>
