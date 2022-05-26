@@ -113,4 +113,30 @@ public class FileManager {
       String path = "out/production/music-app/musicApp/server/serverData/ProfilePictures/"+pictureName;
       writePhoto(bytes, path);
   }
+
+    public void uploadSong(String songName, byte[] songBytes) throws Exception
+    {
+        String path = "src/musicApp/server/serverData/Music/"+songName;
+        String outPath = "out/production/music-app/musicApp/server/serverData/Music/"+songName;
+        writeFile(songBytes, path);
+        writeFile(songBytes, outPath);
+    }
+
+    private void writeFile(byte[] songBytes, String path) throws Exception
+    {
+        try {
+            File file = new File(path);
+            FileOutputStream out=new FileOutputStream(file);
+            byte [] data = songBytes;
+
+            out.write(data);
+            out.flush();
+            out.close();
+
+        } catch (IOException e) {
+
+            e.printStackTrace();
+            throw new Exception("Could not upload song file");
+        }
+    }
 }

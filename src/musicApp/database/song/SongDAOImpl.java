@@ -98,7 +98,8 @@ public class SongDAOImpl implements SongDAO
       PreparedStatement statement = connection.prepareStatement("INSERT INTO song(title,length,file_path,album_id,username)"
           + "VALUES (?, ?, ?, ?,?);", Statement.RETURN_GENERATED_KEYS);
       statement.setString(1,song.getTitle());
-      statement.setString(2,song.getLength());
+      Time time = new Time(0,0,1);
+      statement.setTime(2,time);
       statement.setString(3,song.getFile_path());
       statement.setInt(4,album.getId());
       statement.setString(5, artist.getName());

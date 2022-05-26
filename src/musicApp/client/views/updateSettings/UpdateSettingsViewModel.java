@@ -116,8 +116,8 @@ public class UpdateSettingsViewModel
         error1.set("Avatar changed successfully");}
         else
         error1.set("Could not upload image");
-        if(uploaded == null)
-          error1.set("Could not upload image");
+//        if(uploaded == null)
+//          error1.set("Could not upload image");
       }
       catch (IOException e)
       {

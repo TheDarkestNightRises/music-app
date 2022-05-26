@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="586.0" prefWidth="474.0" styleClass="bodybg" stylesheets="@createPlaylist.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addSong.AddSongViewController">
+<AnchorPane prefHeight="586.0" prefWidth="474.0" styleClass="bodybg" stylesheets="@createPlaylist.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addSong.AddSongViewController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="477.0" styleClass="Back" stylesheets="@createPlaylist.css">
          <children>
@@ -51,10 +51,10 @@
                   <TextField fx:id="title" prefHeight="39.0" prefWidth="282.0" promptText="Title" styleClass="Input" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="79.0" prefWidth="384.0" spacing="70.0">
+            <HBox alignment="CENTER" prefHeight="79.0" prefWidth="384.0" spacing="10.0">
                <children>
-                  <Label text="No file chosen" textFill="WHITE" />
-                  <Button fx:id="createButton1" mnemonicParsing="false" onAction="#createButtonPressed" prefHeight="39.0" prefWidth="111.0" style="-fx-background-radius: 20;" stylesheets="@createPlaylist.css" text="Upload file">
+                  <Label fx:id="fileNameLabel" maxWidth="-Infinity" prefHeight="17.0" prefWidth="214.0" text="No file chosen" textFill="WHITE" />
+                  <Button fx:id="createButton1" mnemonicParsing="false" onAction="#chooseFileButtonPressed" prefHeight="39.0" prefWidth="111.0" style="-fx-background-radius: 20;" stylesheets="@createPlaylist.css" text="Choose file">
                      <font>
                         <Font size="13.0" />
                      </font>
