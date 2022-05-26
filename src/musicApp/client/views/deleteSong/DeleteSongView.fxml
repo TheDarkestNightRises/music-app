@@ -13,14 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.deleteSong.DeleteSongViewController">
+<AnchorPane prefHeight="577.0" prefWidth="459.0" styleClass="bodybg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.deleteSong.DeleteSongViewController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1080.0">
-         <image>
-            <Image url="@anime-girl-retro-5k-zt-1536x864.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutX="304.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="471.0" styleClass="Back" stylesheets="@signUp.css">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="471.0" styleClass="Back" stylesheets="@signUp.css">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
                <children>
@@ -52,7 +47,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="358.0" prefWidth="497.0">
                <children>
-                  <ListView fx:id="list" prefHeight="318.0" prefWidth="377.0" />
+                  <ListView fx:id="list" prefHeight="318.0" prefWidth="377.0" styleClass="Back" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

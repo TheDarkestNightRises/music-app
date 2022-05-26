@@ -14,14 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@createPlaylist.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addSong.AddSongViewController">
+<AnchorPane prefHeight="586.0" prefWidth="474.0" styleClass="bodybg" stylesheets="@createPlaylist.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addSong.AddSongViewController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1086.0" layoutX="-2.0" layoutY="-1.0">
-         <image>
-            <Image url="@anime-girl-retro-5k-zt-1536x864.jpg" />
-         </image>
-      </ImageView>
-      <VBox layoutX="303.0" layoutY="67.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="477.0" styleClass="Back" stylesheets="@createPlaylist.css">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="477.0" styleClass="Back" stylesheets="@createPlaylist.css">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
                <children>
