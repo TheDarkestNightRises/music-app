@@ -283,20 +283,22 @@ public class ViewHandler {
     }
 
     public void openMainMenu() {
-        if (mainMenuScene == null) {
-            try {
-                Parent root = loadFXML("../views/mainMenu/MainMenuView.fxml");
-                mainMenuScene = new Scene(root);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+        try {
+            Parent root = loadFXML("../views/mainMenu/MainMenuView.fxml");
+            stage.setTitle("Main menu");
+            mainMenuScene = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
         stage.setTitle("Main menu");
         stage.setScene(mainMenuScene);
         stage.show();
         stage.setResizable(false);
         stage.centerOnScreen();
     }
+
 
     public VBox openAlbumView(Album album) {
         FXMLLoader fxmlLoader = new FXMLLoader();
