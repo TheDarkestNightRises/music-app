@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="463.0" styleClass="bg" stylesheets="@signUp.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addToPlaylist.AddToPlayListViewController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="463.0" styleClass="bg" stylesheets="@addtoplaylist.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.addToPlaylist.AddToPlayListViewController">
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
          <children>
@@ -33,7 +33,7 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="88.0" prefWidth="384.0" styleClass="text" stylesheets="@signUp.css">
+      <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="88.0" prefWidth="384.0" styleClass="text" stylesheets="@addtoplaylist.css">
          <children>
             <Text fill="#efefef" stroke="BLACK" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="signUpTitle" text="Add song to playlist" textAlignment="CENTER" wrappingWidth="302.5367431640625" HBox.hgrow="SOMETIMES">
                <font>
@@ -61,7 +61,7 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
          <children>
-            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="39.0" prefWidth="165.0" style="-fx-background-radius: 20;" stylesheets="@signUp.css" text="Add">
+            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#addButtonPressed" prefHeight="39.0" prefWidth="165.0" style="-fx-background-radius: 20;" stylesheets="@addtoplaylist.css" text="Add">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

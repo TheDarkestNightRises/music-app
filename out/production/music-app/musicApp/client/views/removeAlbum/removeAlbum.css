@@ -7,10 +7,8 @@
 }
 
 .Button:hover {
-    -fx-background-color: linear-gradient(#242526, #242526);
-        -fx-text-fill: white;
-        -fx-font-size: 13px;
-        -fx-padding: 10 20 10 20;
+    -fx-background-color: linear-gradient(#a4508b, #a4508b);
+        -fx-scale-y: 1.1;
 }
 
 .Input {
@@ -61,5 +59,3 @@
      -fx-background-color: #2b2b2b;
        -fx-text-fill: white;
  }
-
-

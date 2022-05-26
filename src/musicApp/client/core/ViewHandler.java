@@ -145,6 +145,7 @@ public class ViewHandler {
         stage.setScene(mediaPlayerScene);
         stage.show();
         stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
     public void openProfile(User user) {
@@ -291,13 +292,28 @@ public class ViewHandler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        stage.setTitle("Main menu");
         stage.setScene(mainMenuScene);
         stage.show();
         stage.setResizable(false);
         stage.centerOnScreen();
     }
+
+    public void openRemoveAlbum() {
+
+        try {
+            Parent root = loadFXML("../views/removeAlbum/RemoveAlbumView.fxml");
+            stage.setTitle("Remove Album");
+            mainMenuScene = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(mainMenuScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
+    }
+
+
 
 
     public VBox openAlbumView(Album album) {

@@ -33,6 +33,8 @@ public class MainMenuViewController implements ViewController {
     public VBox followListSubView;
     @FXML
     public HBox createAlbum;
+    @FXML
+    public HBox removeAlbum;
 
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
@@ -47,9 +49,15 @@ public class MainMenuViewController implements ViewController {
         openFollowList();
         openProfileCard();
         if(isArtist())
+        {
             createAlbum.setVisible(true);
+            removeAlbum.setVisible(true);
+        }
         else
+        {
             createAlbum.setVisible(false);
+            removeAlbum.setVisible(false);
+        }
     }
 
 
@@ -95,6 +103,7 @@ public class MainMenuViewController implements ViewController {
     }
     public void openSearch() {viewHandler.openSearch();}
     public void openAddAlbum() {viewHandler.openAddAlbum();}
+    public void openRemoveAlbum(){viewHandler.openRemoveAlbum();}
 
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();

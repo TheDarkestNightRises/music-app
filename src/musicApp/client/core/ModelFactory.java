@@ -26,6 +26,8 @@ import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.profile.ProfileManagerImplementation;
 import musicApp.client.model.register.SignUpManager;
 import musicApp.client.model.register.SignUpManagerImplementation;
+import musicApp.client.model.removeAlbum.RemoveAlbumManager;
+import musicApp.client.model.removeAlbum.RemoveAlbumManagerImplementation;
 import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.search.SearchManagerImplementation;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
@@ -48,6 +50,7 @@ public class ModelFactory {
     private DeleteSongManager deleteSongManager;
     private ClientFactory clientFactory;
     private MainModel mainModel;
+    private RemoveAlbumManager removeAlbumManager;
 
 
     public ModelFactory(ClientFactory clientFactory) {
@@ -57,7 +60,7 @@ public class ModelFactory {
     public MainModel getMainModel() {
         if (mainModel == null) {
             mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
-                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager());
+                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager());
         }
         return mainModel;
     }
@@ -145,5 +148,12 @@ public class ModelFactory {
         if (deleteSongManager == null)
             deleteSongManager = new DeleteSongManagerImplementation(clientFactory.getClient());
         return deleteSongManager;
+    }
+
+    public RemoveAlbumManager getRemoveAlbumManager()
+    {
+        if (removeAlbumManager == null)
+            removeAlbumManager = new RemoveAlbumManagerImplementation(clientFactory.getClient());
+        return removeAlbumManager;
     }
 }

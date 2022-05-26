@@ -12,8 +12,10 @@ import musicApp.client.model.mainMenu.MainMenuManager;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.register.SignUpManager;
+import musicApp.client.model.removeAlbum.RemoveAlbumManager;
 import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
+import musicApp.database.album.AlbumDao;
 
 public class MainModelImplementation implements MainModel{
     private MusicManager musicManager;
@@ -30,6 +32,7 @@ public class MainModelImplementation implements MainModel{
     private AddAlbumManager addAlbumManager;
     private AddSongManager addSongManager;
     private DeleteSongManager deleteSongManager;
+    private RemoveAlbumManager removeAlbumManager;
 
 
     public MainModelImplementation(MusicManager musicManager, LogInManager logInManager, ChatManager chatManager,
@@ -37,7 +40,7 @@ public class MainModelImplementation implements MainModel{
         UpdateSettingsManager updateSettingsManager, SearchManager searchManager, FollowListManager followListManager,
         MainMenuManager mainMenuManager,
         CreatePlaylistManager createPlaylistManager, AddToPlaylistManager addToPlaylistManager, AddAlbumManager addAlbumManager,
-        AddSongManager addSongManager, DeleteSongManager deleteSongManager) {
+        AddSongManager addSongManager, DeleteSongManager deleteSongManager,RemoveAlbumManager removeAlbumManager) {
         this.musicManager = musicManager;
         this.logInManager = logInManager;
         this.chatManager = chatManager;
@@ -52,6 +55,7 @@ public class MainModelImplementation implements MainModel{
         this.addAlbumManager = addAlbumManager;
         this.addSongManager = addSongManager;
         this.deleteSongManager = deleteSongManager;
+        this.removeAlbumManager = removeAlbumManager;
     }
 
     public MusicManager getMusicPlayerManager() {
@@ -119,5 +123,10 @@ public class MainModelImplementation implements MainModel{
     @Override public AddSongManager getAddSongManager()
     {
         return addSongManager;
+    }
+
+    @Override public RemoveAlbumManager getRemoveAlbumManager()
+    {
+        return removeAlbumManager;
     }
 }

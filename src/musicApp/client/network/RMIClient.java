@@ -24,6 +24,8 @@ import musicApp.client.network.profile.ProfileClient;
 import musicApp.client.network.profile.RMIProfileClient;
 import musicApp.client.network.register.RMISignUpClient;
 import musicApp.client.network.register.SignUpClient;
+import musicApp.client.network.removeAlbum.RMIRemoveAlbumClient;
+import musicApp.client.network.removeAlbum.RemoveAlbumClient;
 import musicApp.client.network.search.RMISearchClient;
 import musicApp.client.network.search.SearchClient;
 import musicApp.client.network.updateSettings.RMIUpdateSettingsClient;
@@ -63,6 +65,7 @@ public class RMIClient implements Client, ClientCallBack {
     private AddAlbumClient addAlbumClient;
     private AddSongClient addSongClient;
     private DeleteSongClient deleteSongClient;
+    private RemoveAlbumClient removeAlbumClient;
 
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
@@ -82,6 +85,7 @@ public class RMIClient implements Client, ClientCallBack {
         this.addAlbumClient = new RMIAddAlbumClient();
         this.addSongClient = new RMIAddSongClient();
         this.deleteSongClient = new RMIDeleteSongClient();
+        this.removeAlbumClient = new RMIRemoveAlbumClient();
     }
 
     @Override
@@ -107,6 +111,7 @@ public class RMIClient implements Client, ClientCallBack {
             this.addAlbumClient.setServer(server);
             this.addSongClient.setServer(server);
             this.deleteSongClient.setServer(server);
+            this.removeAlbumClient.setServer(server);
 
         } catch (RemoteException | NotBoundException e) {
             e.printStackTrace();
@@ -230,6 +235,11 @@ public class RMIClient implements Client, ClientCallBack {
     @Override public DeleteSongClient getDeleteSongClient()
     {
         return deleteSongClient;
+    }
+
+    @Override public RemoveAlbumClient getRemoveAlbumClient()
+    {
+        return removeAlbumClient;
     }
 
 }

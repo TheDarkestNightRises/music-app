@@ -12,9 +12,11 @@ import musicApp.client.model.mainMenu.MainMenuManager;
 import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.register.SignUpManager;
+import musicApp.client.model.removeAlbum.RemoveAlbumManager;
 import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
+import musicApp.database.album.AlbumDao;
 
 import java.util.ArrayList;
 
@@ -34,4 +36,5 @@ public interface MainModel
   AddAlbumManager getAddAlbumManager();
   DeleteSongManager getDeleteSongManager();
   AddSongManager getAddSongManager();
+  RemoveAlbumManager getRemoveAlbumManager();
 }

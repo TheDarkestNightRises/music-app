@@ -51,19 +51,25 @@ public class AddAlbumViewModel
     }
   }
 
+  public boolean Validate()
+  {
+    return tempImgStream != null && !albumName.getValue().isEmpty();
+  }
+
   public void bindImage(ObjectProperty<Image> property)
   {
     albumPicture.bindBidirectional(property);
   }
 
   public void bindAlbumName(StringProperty property)
+
   {
     albumName.bindBidirectional(property);
   }
 
   public void submit()
   {
-    if(tempImgStream != null)
+    if(tempImgStream != null && !albumName.getValue().isEmpty())
     {
       try
       {

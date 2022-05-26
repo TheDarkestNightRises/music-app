@@ -34,8 +34,11 @@ public class AddAlbumViewController implements ViewController
   @FXML
   public void submitButtonPressed()
   {
-    viewModel.submit();
-    viewHandler.openMainMenu();
+      if(viewModel.Validate())
+      {
+        viewModel.submit();
+        viewHandler.openMainMenu();
+      }
   }
 
 

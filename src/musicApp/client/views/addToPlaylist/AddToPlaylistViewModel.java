@@ -28,6 +28,7 @@ public class AddToPlaylistViewModel
     tempPlaylists = new ArrayList<>();
     error = new SimpleStringProperty("");
   }
+
   public void reset()
   {
     playlistTitles.setAll(getPlaylistTitles());
