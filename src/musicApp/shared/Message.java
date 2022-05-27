@@ -22,6 +22,14 @@ public class Message implements Serializable
     this.time = getCurrentTime();
   }
 
+  public Message(User user1, LocalDate date, LocalTime time, String text)
+  {
+    this.user = user1;
+    this.message = text;
+    this.date = date;
+    this.time = time;
+  }
+
   private LocalTime getCurrentTime()
   {
     return LocalTime.now();
