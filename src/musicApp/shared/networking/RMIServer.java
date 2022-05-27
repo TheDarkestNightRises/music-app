@@ -2,6 +2,7 @@ package musicApp.shared.networking;
 
 import musicApp.client.network.addAlbum.AddAlbumClient;
 import musicApp.client.network.followList.FollowListClient;
+import musicApp.client.network.removePlaylist.RemovePlaylistClient;
 import musicApp.client.views.removeAlbum.RemoveAlbumViewModel;
 
 import java.rmi.AlreadyBoundException;
@@ -42,4 +43,6 @@ public interface RMIServer extends Remote {
   DeleteSongServer getDeleteSongServer() throws RemoteException;
 
   RemoveAlbumServer getRemoveAlbumServer() throws RemoteException;
+
+  RemovePlaylistServer getRemovePlaylistServer() throws RemoteException;
 }

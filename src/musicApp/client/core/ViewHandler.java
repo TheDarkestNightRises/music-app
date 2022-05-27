@@ -313,6 +313,21 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    public void openRemovePlaylist() {
+
+        try {
+            Parent root = loadFXML("../views/removePlaylist/RemovePlaylistView.fxml");
+            stage.setTitle("Remove Playlist");
+            mainMenuScene = new Scene(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(mainMenuScene);
+        stage.show();
+        stage.setResizable(false);
+        stage.centerOnScreen();
+    }
+
 
 
 

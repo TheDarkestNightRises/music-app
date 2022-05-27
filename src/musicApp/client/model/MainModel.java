@@ -13,6 +13,7 @@ import musicApp.client.model.music.MusicManager;
 import musicApp.client.model.profile.ProfileManager;
 import musicApp.client.model.register.SignUpManager;
 import musicApp.client.model.removeAlbum.RemoveAlbumManager;
+import musicApp.client.model.removePlaylist.RemovePlaylistManager;
 import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
@@ -37,4 +38,5 @@ public interface MainModel
   DeleteSongManager getDeleteSongManager();
   AddSongManager getAddSongManager();
   RemoveAlbumManager getRemoveAlbumManager();
+  RemovePlaylistManager getRemovePlaylistManager();
 }

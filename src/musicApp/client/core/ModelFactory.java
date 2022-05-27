@@ -28,6 +28,8 @@ import musicApp.client.model.register.SignUpManager;
 import musicApp.client.model.register.SignUpManagerImplementation;
 import musicApp.client.model.removeAlbum.RemoveAlbumManager;
 import musicApp.client.model.removeAlbum.RemoveAlbumManagerImplementation;
+import musicApp.client.model.removePlaylist.RemovePlaylistManager;
+import musicApp.client.model.removePlaylist.RemovePlaylistManagerImplementation;
 import musicApp.client.model.search.SearchManager;
 import musicApp.client.model.search.SearchManagerImplementation;
 import musicApp.client.model.updateSettings.UpdateSettingsManager;
@@ -51,6 +53,7 @@ public class ModelFactory {
     private ClientFactory clientFactory;
     private MainModel mainModel;
     private RemoveAlbumManager removeAlbumManager;
+    private RemovePlaylistManager removePlaylistManager;
 
 
     public ModelFactory(ClientFactory clientFactory) {
@@ -60,7 +63,7 @@ public class ModelFactory {
     public MainModel getMainModel() {
         if (mainModel == null) {
             mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
-                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager());
+                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager(),getRemovePlaylistManager());
         }
         return mainModel;
     }
@@ -155,5 +158,12 @@ public class ModelFactory {
         if (removeAlbumManager == null)
             removeAlbumManager = new RemoveAlbumManagerImplementation(clientFactory.getClient());
         return removeAlbumManager;
+    }
+
+    public RemovePlaylistManager getRemovePlaylistManager()
+    {
+        if (removePlaylistManager == null)
+            removePlaylistManager = new RemovePlaylistManagerImplementation(clientFactory.getClient());
+        return removePlaylistManager;
     }
 }

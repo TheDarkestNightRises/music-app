@@ -26,6 +26,8 @@ import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.register.ServerModelSignUpImpl;
 import musicApp.server.model.removeAlbum.ServerModelRemoveAlbum;
 import musicApp.server.model.removeAlbum.ServerModelRemoveAlbumImpl;
+import musicApp.server.model.removePlaylist.ServerModelRemovePlaylist;
+import musicApp.server.model.removePlaylist.ServerModelRemovePlaylistImpl;
 import musicApp.server.model.search.ServerModelSearch;
 import musicApp.server.model.search.ServerModelSearchImpl;
 import musicApp.server.model.updateSettings.ServerModelUpdateSettings;
@@ -49,10 +51,10 @@ public class ServerModelImpl implements ServerModel
   private ServerModelAddToPlaylist serverModelAddToPlaylist;
   private ServerModelAddAlbum serverModelAddAlbum;
   private ServerModelRemoveAlbum serverModelRemoveAlbum;
-
   private PropertyChangeSupport support;
   private ServerModelAddSong serverModelAddSong;
   private ServerModelDeleteSong serverModelDeleteSong;
+  private ServerModelRemovePlaylist serverModelRemovePlaylist;
 
   public ServerModelImpl()
   {
@@ -71,6 +73,7 @@ public class ServerModelImpl implements ServerModel
     this.serverModelAddSong = new ServerModelAddSongImpl();
     this.serverModelDeleteSong = new ServerModelDeleteSongImpl();
     this.serverModelRemoveAlbum = new ServerModelRemoveAlbumImpl();
+    this.serverModelRemovePlaylist = new ServerModelRemovePlaylistImpl();
   }
 
   public ServerModelChat getModelChat()
@@ -145,5 +148,10 @@ public class ServerModelImpl implements ServerModel
   @Override public ServerModelRemoveAlbum getModelRemoveAlbum()
   {
     return serverModelRemoveAlbum;
+  }
+
+  @Override public ServerModelRemovePlaylist getModelRemovePlaylist()
+  {
+    return serverModelRemovePlaylist;
   }
 }

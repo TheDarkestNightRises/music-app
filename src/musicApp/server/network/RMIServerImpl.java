@@ -18,6 +18,7 @@ import musicApp.server.network.musicplayer.MusicPlayerServerImpl;
 import musicApp.server.network.profile.ProfileServerImpl;
 import musicApp.server.network.register.SignUpServerImpl;
 import musicApp.server.network.removeAlbum.RemoveAlbumServerImpl;
+import musicApp.server.network.removePlaylist.RemovePlaylistServerImpl;
 import musicApp.server.network.search.SearchServerImpl;
 import musicApp.server.network.updateSettings.UpdateSettingsServerImpl;
 import musicApp.shared.LogEntry;
@@ -47,6 +48,7 @@ public class RMIServerImpl implements RMIServer {
     private AddSongServer addSongServer;
     private DeleteSongServer deleteSongServer;
     private RemoveAlbumServer removeAlbumServer;
+    private RemovePlaylistServer removePlaylistServer;
 
     public RMIServerImpl(ServerModel serverModel) throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
@@ -66,6 +68,7 @@ public class RMIServerImpl implements RMIServer {
         this.addSongServer = new AddSongServerImpl(serverModel);
         this.deleteSongServer = new DeleteSongServerImpl(serverModel);
         this.removeAlbumServer = new RemoveAlbumServerImpl(serverModel);
+        this.removePlaylistServer = new RemovePlaylistServerImpl(serverModel);
     }
 
     @Override
@@ -199,6 +202,11 @@ public class RMIServerImpl implements RMIServer {
         throws RemoteException
     {
         return removeAlbumServer;
+    }
+
+    @Override public RemovePlaylistServer getRemovePlaylistServer() throws RemoteException
+    {
+        return removePlaylistServer;
     }
 
 }

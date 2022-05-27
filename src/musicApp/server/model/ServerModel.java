@@ -14,9 +14,11 @@ import musicApp.server.model.musicplayer.ServerModelMusic;
 import musicApp.server.model.profile.ServerModelProfile;
 import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.server.model.removeAlbum.ServerModelRemoveAlbum;
+import musicApp.server.model.removePlaylist.ServerModelRemovePlaylist;
 import musicApp.server.model.search.ServerModelSearch;
 import musicApp.server.model.updateSettings.ServerModelUpdateSettings;
 import musicApp.shared.networking.ProfileServer;
+import musicApp.shared.networking.RemoveAlbumServer;
 
 import java.util.ArrayList;
 
@@ -52,4 +54,6 @@ public interface ServerModel
   ServerModelDeleteSong getModelDeleteSong();
 
   ServerModelRemoveAlbum getModelRemoveAlbum();
+
+  ServerModelRemovePlaylist getModelRemovePlaylist();
 }
