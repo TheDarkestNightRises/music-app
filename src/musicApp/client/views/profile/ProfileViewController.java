@@ -1,6 +1,7 @@
 package musicApp.client.views.profile;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -38,6 +39,14 @@ public class ProfileViewController implements ViewController {
     @FXML
     public HBox profileCardContainer;
     @FXML
+    public HBox createAlbum;
+    @FXML
+    public HBox removeAlbum;
+    @FXML
+    public HBox createSong;
+    @FXML
+    public HBox removeSong;
+    @FXML
     public Button follow;
     @FXML
     public Button unfollow;
@@ -64,6 +73,26 @@ public class ProfileViewController implements ViewController {
             follow.setVisible(false);
             unfollow.setVisible(false);
         }
+
+        if(isArtist())
+        {
+            createAlbum.setVisible(true);
+            removeAlbum.setVisible(true);
+            createSong.setVisible(true);
+            removeSong.setVisible(true);
+        }
+        else
+        {
+            createAlbum.setVisible(false);
+            removeAlbum.setVisible(false);
+            createSong.setVisible(false);
+            removeSong.setVisible(false);
+        }
+    }
+
+    private boolean isArtist()
+    {
+        return viewModel.isArtist();
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
@@ -146,16 +175,33 @@ public class ProfileViewController implements ViewController {
         return viewModel.fetchProfilePicture(picturePath);
     }
 
-    public void openSearch() {
+    public void openSearch()
+    {
         vh.openSearch();
     }
     public void openCreatePlaylist()
     {
         vh.openCreatePlaylist();
     }
-    public void openUpdateSettings()
+    public void openSettings()
     {
         vh.openUpdateSettings(viewModel.fetchUser());
+    }
+    public void openAddAlbum()
+    {
+        vh.openAddAlbum();
+    }
+    public void openRemoveAlbum()
+    {
+        vh.openRemoveAlbum();
+    }
+    public void openAddSong()
+    {
+        vh.openAddSong();
+    }
+    public void openRemoveSong()
+    {
+        vh.openDeleteSong();
     }
     public void openMain(){vh.openMainMenu();}
 
@@ -164,4 +210,6 @@ public class ProfileViewController implements ViewController {
     };
 
     public void unfollow(){ viewModel.unfollow(user);}
+
+
 }

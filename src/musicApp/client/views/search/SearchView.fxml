@@ -17,7 +17,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.search.SearchViewController">
    <left>
-      <VBox prefHeight="794.0" prefWidth="214.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="168.0" prefWidth="215.0">
                <children>
@@ -28,9 +28,9 @@
                   </ImageView>
                </children>
             </HBox>
-            <VBox prefHeight="314.0" prefWidth="214.0">
+            <VBox prefHeight="394.0" prefWidth="215.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="226.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
                            <graphic>
@@ -41,7 +41,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="120.0" text="Home" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="132.0" text="Home" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -54,7 +54,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openSearch">
                            <graphic>
@@ -65,7 +65,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="122.0" text="Search" textFill="WHITE">
+                        <Label prefHeight="27.0" prefWidth="126.0" text="Search" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -75,7 +75,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openChat">
                            <graphic>
@@ -86,7 +86,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="116.0" text="Chat" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="125.0" text="Chat" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -96,7 +96,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openSettings">
                            <graphic>
@@ -107,7 +107,7 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="121.0" text="Update Settings" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="125.0" text="Update Settings" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -117,7 +117,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../profile/css/style.css">
+                  <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openAddAlbum">
                            <graphic>
@@ -128,7 +128,70 @@
                               </ImageView>
                            </graphic>
                         </Hyperlink>
-                        <Label prefHeight="27.0" prefWidth="118.0" text="Create Album" textFill="#7e7b7b">
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Create Album" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="removeAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <Hyperlink onAction="#openRemoveAlbum">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Remove Album" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="createSong" alignment="CENTER" layoutX="10.0" layoutY="245.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <Hyperlink onAction="#openAddSong">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Create Song" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="removeSong" alignment="CENTER" layoutX="10.0" layoutY="251.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <Hyperlink onAction="#openRemoveSong">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Remove Song" textFill="#7e7b7b">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>
@@ -140,8 +203,12 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="143.0" prefWidth="214.0" />
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="235.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <VBox prefHeight="29.0" prefWidth="215.0">
+               <children>
+                  <Pane prefHeight="49.0" prefWidth="215.0" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="215.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <Hyperlink alignment="CENTER" onAction="#openCreatePlaylist">
                      <graphic>

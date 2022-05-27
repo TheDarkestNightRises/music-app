@@ -74,4 +74,10 @@ public class ProfileViewModel implements Subject {
         User user0 = fetchUser();
         mainModel.getProfileManager().unfollow(user0,user);
     }
+
+  public boolean isArtist()
+  {
+    User user = mainModel.getLogInManager().getUser();
+    return mainModel.getProfileManager().isArtist(user);
+  }
 }

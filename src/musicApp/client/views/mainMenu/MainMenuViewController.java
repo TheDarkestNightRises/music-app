@@ -35,6 +35,10 @@ public class MainMenuViewController implements ViewController {
     public HBox createAlbum;
     @FXML
     public HBox removeAlbum;
+    @FXML
+    public HBox createSong;
+    @FXML
+    public HBox removeSong;
 
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
@@ -52,11 +56,15 @@ public class MainMenuViewController implements ViewController {
         {
             createAlbum.setVisible(true);
             removeAlbum.setVisible(true);
+            createSong.setVisible(true);
+            removeSong.setVisible(true);
         }
         else
         {
             createAlbum.setVisible(false);
             removeAlbum.setVisible(false);
+            createSong.setVisible(false);
+            removeSong.setVisible(false);
         }
     }
 
@@ -104,7 +112,14 @@ public class MainMenuViewController implements ViewController {
     public void openSearch() {viewHandler.openSearch();}
     public void openAddAlbum() {viewHandler.openAddAlbum();}
     public void openRemoveAlbum(){viewHandler.openRemoveAlbum();}
-
+    public void openAddSong()
+    {
+        viewHandler.openAddSong();
+    }
+    public void openRemoveSong()
+    {
+        viewHandler.openDeleteSong();
+    }
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
         profileCardContainer.getChildren().clear();
@@ -120,4 +135,6 @@ public class MainMenuViewController implements ViewController {
     {
          return  viewModelMainMenu.isArtist();
     }
+
+
 }

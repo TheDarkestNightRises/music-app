@@ -38,6 +38,12 @@ public class SearchViewController implements ViewController {
     public ComboBox<SearchComboBoxChoices> comboBox;
     @FXML
     public HBox createAlbum;
+    @FXML
+    public HBox removeAlbum;
+    @FXML
+    public HBox createSong;
+    @FXML
+    public HBox removeSong;
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
 
@@ -54,9 +60,19 @@ public class SearchViewController implements ViewController {
         openFollowList();
         openProfileCard();
         if(isArtist())
+        {
             createAlbum.setVisible(true);
+            removeAlbum.setVisible(true);
+            createSong.setVisible(true);
+            removeSong.setVisible(true);
+        }
         else
+        {
             createAlbum.setVisible(false);
+            removeAlbum.setVisible(false);
+            createSong.setVisible(false);
+            removeSong.setVisible(false);
+        }
     }
 
     private boolean isArtist()
@@ -118,9 +134,15 @@ public class SearchViewController implements ViewController {
         viewHandler.openCreatePlaylist();
     }
 
-    public void openAddAlbum()
+    public void openAddAlbum() {viewHandler.openAddAlbum();}
+    public void openRemoveAlbum(){viewHandler.openRemoveAlbum();}
+    public void openAddSong()
     {
-        viewHandler.openAddAlbum();
+        viewHandler.openAddSong();
+    }
+    public void openRemoveSong()
+    {
+        viewHandler.openDeleteSong();
     }
 
     private void openFollowList() {

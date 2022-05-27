@@ -1,6 +1,7 @@
 package musicApp.client.views.artistProfile;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -160,12 +161,19 @@ public class ArtistProfileViewController implements ViewController
   {
     vh.openCreatePlaylist();
   }
-  public void openUpdateSettings()
+  public void openSettings()
   {
     vh.openUpdateSettings(viewModel.fetchUser());
   }
   public void openMain(){vh.openMainMenu();}
-  public void openCreateAlbum(){vh.openAddAlbum();}
+  public void openAddAlbum(){vh.openAddAlbum();}
+  public void openRemoveAlbum(){vh.openRemoveAlbum();}
+  public void openAddSong() {vh.openAddSong();}
+  public void openRemoveSong(){vh.openDeleteSong();}
   public void follow(){viewModel.follow(user);}
   public void unfollow(){viewModel.unfollow(user);}
+
+
 }
+
+
