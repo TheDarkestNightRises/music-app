@@ -263,13 +263,12 @@ public class ViewHandler {
         }
         SongController songController = fxmlLoader.getController();
         songController.init(this, vmf);
-        songController.setData(song);
         return vBox;
     }
 
     public VBox openSingleView(Song song) {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/single/single.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../views/single/SingleView.fxml"));
         VBox vBox = null;
         try {
             vBox = fxmlLoader.load();
@@ -278,7 +277,6 @@ public class ViewHandler {
         }
         SingleController singlesController = fxmlLoader.getController();
         singlesController.init(this, vmf, song);
-        singlesController.setData(song);
         return vBox;
     }
 
@@ -341,7 +339,6 @@ public class ViewHandler {
         }
         AlbumViewController albumViewController = fxmlLoader.getController();
         albumViewController.init(this, vmf, album);
-        albumViewController.setData(album);
         return vBox;
     }
 
@@ -398,7 +395,6 @@ public class ViewHandler {
                     }
                     SongController songController = fxmlLoader.getController();
                     songController.init(this, vmf);
-                    songController.setData(song);
                     hBox.getChildren().add(vBox);
                     if (counterUntilSpace == 4) {
                         vBoxContainer.getChildren().add(hBox);

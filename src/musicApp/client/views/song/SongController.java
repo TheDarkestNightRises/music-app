@@ -12,31 +12,27 @@ import musicApp.server.model.domainModel.Song;
 
 import java.io.ByteArrayInputStream;
 
-/**
- * Created by Alfacoaie on 02-Feb-21.
- */
+
 public class SongController implements ViewController {
     @FXML
-    private ImageView img;
+    private ImageView albumCover;
 
     @FXML
     private Label songName;
 
     @FXML
     private Label artist;
-    private ViewHandler vh;
-    private MusicPlayerViewModel musicPlayerViewModel;
 
-    public void setData(Song song) {
-        songName.setText(song.getTitle());
-        artist.setText(song.getArtist().getName());
-        Image image = new Image(new ByteArrayInputStream(musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath())));
-        img.setImage(image);
-    }
+    private ViewHandler vh;
+    private SongViewModel songViewModel;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
-        this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
+        this.songViewModel = vmf.getSongViewModel();
+        songViewModel.bindSongName(songName.textProperty());
+        songViewModel.bindArtist(artist.textProperty());
+        songViewModel.bindImage(albumCover.imageProperty());
+        songViewModel.init((Song) args[0]);
     }
 }

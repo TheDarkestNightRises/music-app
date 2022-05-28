@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Hyperlink?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="254.0" prefWidth="200.0" styleClass="primary_color" stylesheets="@../profile/css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.single.SingleController">
    <children>
-      <ImageView fx:id="img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+      <ImageView fx:id="albumCover" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../profile/css/faded.jpg" />
          </image>

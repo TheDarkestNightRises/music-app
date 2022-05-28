@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class SingleController implements ViewController{
     @FXML
-    private ImageView img;
+    private ImageView albumCover;
 
     @FXML
     private Label songName;
@@ -25,28 +25,24 @@ public class SingleController implements ViewController{
     private Label artist;
 
     private ViewHandler viewHandler;
-    private MusicPlayerViewModel musicPlayerViewModel;
+
+    private SingleViewModel singleViewModel;
 
     private Song song;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.viewHandler = vh;
-        this.musicPlayerViewModel = vmf.getMusicPlayerViewModel();
-        this.song = (Song) args[0];
+        this.singleViewModel = vmf.getSingleViewModel();
+        singleViewModel.bindSongName(songName.textProperty());
+        singleViewModel.bindArtist(artist.textProperty());
+        singleViewModel.bindImage(albumCover.imageProperty());
+        singleViewModel.init((Song) args[0]);
     }
 
     public void openSingle() {
         ArrayList<Song> songs = new ArrayList<>();
         songs.add(song);
         viewHandler.openMusicPlayer(new Playlist(songs));
-    }
-
-    public void setData(Song song) {
-        songName.setText(song.getTitle());
-        artist.setText(song.getArtist().getName());
-        System.out.println(song);
-        Image image = new Image(new ByteArrayInputStream(musicPlayerViewModel.fetchAlbumCover(song.getAlbum().getPicturePath())));
-        img.setImage(image);
     }
 }

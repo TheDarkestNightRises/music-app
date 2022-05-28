@@ -3,6 +3,7 @@ package musicApp.client.core;
 import musicApp.client.views.addAlbum.AddAlbumViewModel;
 import musicApp.client.views.addSong.AddSongViewModel;
 import musicApp.client.views.addToPlaylist.AddToPlaylistViewModel;
+import musicApp.client.views.album.AlbumViewModel;
 import musicApp.client.views.artistProfile.ArtistProfileViewModel;
 import musicApp.client.views.artistSignUp.ArtistSignUpViewModel;
 import musicApp.client.views.chat.ChatViewModel;
@@ -15,10 +16,11 @@ import musicApp.client.views.deleteSong.DeleteSongViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.removeAlbum.RemoveAlbumViewModel;
-import musicApp.client.views.removePlaylist.RemovePlaylistViewController;
 import musicApp.client.views.removePlaylist.RemovePlaylistViewModel;
 import musicApp.client.views.search.SearchViewModel;
 import musicApp.client.views.signup.SignUpViewModel;
+import musicApp.client.views.single.SingleViewModel;
+import musicApp.client.views.song.SongViewModel;
 import musicApp.client.views.updateSettings.UpdateSettingsViewModel;
 
 public class ViewModelFactory {
@@ -42,8 +44,11 @@ public class ViewModelFactory {
     private AddSongViewModel addSongViewModel;
     private RemoveAlbumViewModel removeAlbumViewModel;
     private RemovePlaylistViewModel removePlaylistViewModel;
+    private AlbumViewModel albumViewModel;
+    private SongViewModel songViewModel;
+    private SingleViewModel singleViewModel;
 
-  public ViewModelFactory(ModelFactory modelFactory) {
+    public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
     }
 
@@ -65,12 +70,11 @@ public class ViewModelFactory {
         return signUpViewModel;
     }
 
-  public LoginMainViewModel getLoginMainViewModel()
-  {
-      if (loginMainViewModel == null)
-          loginMainViewModel = new LoginMainViewModel(modelFactory.getMainModel());
-      return loginMainViewModel;
-  }
+    public LoginMainViewModel getLoginMainViewModel() {
+        if (loginMainViewModel == null)
+            loginMainViewModel = new LoginMainViewModel(modelFactory.getMainModel());
+        return loginMainViewModel;
+    }
 
     public MusicPlayerViewModel getMusicPlayerViewModel() {
         if (musicPlayerViewModel == null)
@@ -79,27 +83,25 @@ public class ViewModelFactory {
     }
 
     public ProfileViewModel getProfileViewModel() {
-        if ( profileViewModel == null)
+        if (profileViewModel == null)
             profileViewModel = new ProfileViewModel(modelFactory.getMainModel());
         return profileViewModel;
     }
 
-    public FollowListViewModel getFollowListViewModel()
-    {
-      if ( followListViewModel == null)
-        followListViewModel = new FollowListViewModel(modelFactory.getMainModel());
-      return followListViewModel;
+    public FollowListViewModel getFollowListViewModel() {
+        if (followListViewModel == null)
+            followListViewModel = new FollowListViewModel(modelFactory.getMainModel());
+        return followListViewModel;
     }
 
-  public UpdateSettingsViewModel getUpdateSettingsViewModel()
-  {
-    if ( updateSettingsViewModel == null)
-      updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getMainModel());
-    return updateSettingsViewModel;
-  }
+    public UpdateSettingsViewModel getUpdateSettingsViewModel() {
+        if (updateSettingsViewModel == null)
+            updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getMainModel());
+        return updateSettingsViewModel;
+    }
 
     public SearchViewModel getSearchViewModel() {
-        if ( searchViewModel == null)
+        if (searchViewModel == null)
             searchViewModel = new SearchViewModel(modelFactory.getMainModel());
         return searchViewModel;
     }
@@ -111,76 +113,82 @@ public class ViewModelFactory {
         return mainMenuViewModel;
     }
 
-  public ArtistSignUpViewModel getArtistSignUpViewModel()
-  {
-    if (artistSignUpViewModel == null) {
-      artistSignUpViewModel = new ArtistSignUpViewModel(modelFactory.getMainModel());
+    public ArtistSignUpViewModel getArtistSignUpViewModel() {
+        if (artistSignUpViewModel == null) {
+            artistSignUpViewModel = new ArtistSignUpViewModel(modelFactory.getMainModel());
+        }
+        return artistSignUpViewModel;
     }
-    return artistSignUpViewModel;
-  }
 
-  public CreatePlaylistViewModel getCreatePlaylistViewModel()
-  {
-    if(createPlaylistViewModel == null)
-      createPlaylistViewModel = new CreatePlaylistViewModel(
-          modelFactory.getMainModel());
-    return createPlaylistViewModel;
-  }
-
-  public AddToPlaylistViewModel getAddToPlaylistViewModel()
-  {
-    if(addToPlaylistViewModel == null)
-      addToPlaylistViewModel = new AddToPlaylistViewModel(
-          modelFactory.getMainModel());
-    return addToPlaylistViewModel;
-  }
-
-  public ArtistProfileViewModel getArtistProfileViewModel()
-  {
-    if (artistProfileViewModel == null) {
-      artistProfileViewModel = new ArtistProfileViewModel(modelFactory.getMainModel());
+    public CreatePlaylistViewModel getCreatePlaylistViewModel() {
+        if (createPlaylistViewModel == null)
+            createPlaylistViewModel = new CreatePlaylistViewModel(
+                    modelFactory.getMainModel());
+        return createPlaylistViewModel;
     }
-    return artistProfileViewModel;
-  }
 
-  public AddAlbumViewModel getAddAlbumViewModel()
-  {
-    if (addAlbumViewModel == null) {
-      addAlbumViewModel = new AddAlbumViewModel(modelFactory.getMainModel());
+    public AddToPlaylistViewModel getAddToPlaylistViewModel() {
+        if (addToPlaylistViewModel == null)
+            addToPlaylistViewModel = new AddToPlaylistViewModel(
+                    modelFactory.getMainModel());
+        return addToPlaylistViewModel;
     }
-    return addAlbumViewModel;
-  }
 
-  public DeleteSongViewModel getDeleteSongViewModel()
-  {
-    if (deleteSongViewModel == null) {
-      deleteSongViewModel = new DeleteSongViewModel(modelFactory.getMainModel());
+    public ArtistProfileViewModel getArtistProfileViewModel() {
+        if (artistProfileViewModel == null) {
+            artistProfileViewModel = new ArtistProfileViewModel(modelFactory.getMainModel());
+        }
+        return artistProfileViewModel;
     }
-    return deleteSongViewModel;
-  }
 
-  public AddSongViewModel getAddSongViewModel()
-  {
-    if (addSongViewModel == null) {
-      addSongViewModel = new AddSongViewModel(modelFactory.getMainModel());
+    public AddAlbumViewModel getAddAlbumViewModel() {
+        if (addAlbumViewModel == null) {
+            addAlbumViewModel = new AddAlbumViewModel(modelFactory.getMainModel());
+        }
+        return addAlbumViewModel;
     }
-    return addSongViewModel;
-  }
 
-  public RemoveAlbumViewModel getRemoveAlbumViewModel()
-  {
-    if(removeAlbumViewModel == null) {
-      removeAlbumViewModel = new RemoveAlbumViewModel(modelFactory.getMainModel());
+    public DeleteSongViewModel getDeleteSongViewModel() {
+        if (deleteSongViewModel == null) {
+            deleteSongViewModel = new DeleteSongViewModel(modelFactory.getMainModel());
+        }
+        return deleteSongViewModel;
     }
-    return removeAlbumViewModel;
-  }
 
-  public RemovePlaylistViewModel getRemovePlaylistViewModel()
-  {
-    if(removePlaylistViewModel == null) {
-      removePlaylistViewModel = new RemovePlaylistViewModel(modelFactory.getMainModel());
+    public AddSongViewModel getAddSongViewModel() {
+        if (addSongViewModel == null) {
+            addSongViewModel = new AddSongViewModel(modelFactory.getMainModel());
+        }
+        return addSongViewModel;
     }
-    return removePlaylistViewModel;
-  }
+
+    public RemoveAlbumViewModel getRemoveAlbumViewModel() {
+        if (removeAlbumViewModel == null) {
+            removeAlbumViewModel = new RemoveAlbumViewModel(modelFactory.getMainModel());
+        }
+        return removeAlbumViewModel;
+    }
+
+    public RemovePlaylistViewModel getRemovePlaylistViewModel() {
+        if (removePlaylistViewModel == null) {
+            removePlaylistViewModel = new RemovePlaylistViewModel(modelFactory.getMainModel());
+        }
+        return removePlaylistViewModel;
+    }
+
+    public AlbumViewModel getAlbumViewModel() {
+        albumViewModel = new AlbumViewModel(modelFactory.getMainModel());
+        return albumViewModel;
+    }
+
+    public SongViewModel getSongViewModel() {
+        songViewModel = new SongViewModel(modelFactory.getMainModel());
+        return songViewModel;
+    }
+
+    public SingleViewModel getSingleViewModel() {
+        singleViewModel = new SingleViewModel(modelFactory.getMainModel());
+        return singleViewModel;
+    }
 }
 

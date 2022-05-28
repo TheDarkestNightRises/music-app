@@ -14,7 +14,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="img" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+            <ImageView fx:id="albumCover" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
                <image>
                   <Image url="@../profile/css/faded.jpg" />
                </image>
