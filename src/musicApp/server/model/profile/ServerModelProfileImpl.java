@@ -50,7 +50,9 @@ public class ServerModelProfileImpl implements ServerModelProfile {
     {
         try
         {
+            System.out.println("user423234224242333242 : " + user.getUsername());
             Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
+            System.out.println("artist : " + artist.getUsername());
             return ArtistDAOImpl.getInstance().getArtistAlbums(artist);
         }
         catch (SQLException e)
