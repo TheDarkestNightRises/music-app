@@ -8,8 +8,6 @@ import musicApp.client.model.addToPlaylist.AddToPlaylistImplementation;
 import musicApp.client.model.addToPlaylist.AddToPlaylistManager;
 import musicApp.client.model.createPlaylist.CreatePlayListManagerImplementation;
 import musicApp.client.model.createPlaylist.CreatePlaylistManager;
-import musicApp.client.model.MainModel;
-import musicApp.client.model.MainModelImplementation;
 import musicApp.client.model.chat.ChatManager;
 import musicApp.client.model.chat.ChatManagerImplementation;
 import musicApp.client.model.deleteSong.DeleteSongManager;
@@ -63,12 +61,12 @@ public class ModelFactory {
     public MainModel getMainModel() {
         if (mainModel == null) {
             mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
-                getCreatePlaylistManager(), getAddToPLaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager(),getRemovePlaylistManager());
+                getCreatePlaylistManager(), getAddToPlaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager(),getRemovePlaylistManager());
         }
         return mainModel;
     }
 
-    private AddToPlaylistManager getAddToPLaylistManager()
+    public AddToPlaylistManager getAddToPlaylistManager()
     {
         if(addToPlaylistManager == null)
             addToPlaylistManager = new AddToPlaylistImplementation(clientFactory.getClient());

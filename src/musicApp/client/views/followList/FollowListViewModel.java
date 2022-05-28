@@ -1,10 +1,7 @@
 package musicApp.client.views.followList;
 
-import musicApp.client.model.MainModel;
-import musicApp.database.follow.FollowDAOImpl;
 import musicApp.server.model.domainModel.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class FollowListViewModel

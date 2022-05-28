@@ -6,12 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import musicApp.client.model.MainModel;
-import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RemoveAlbumViewModel

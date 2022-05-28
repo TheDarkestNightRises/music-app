@@ -2,7 +2,6 @@ package musicApp.client.views.artistSignUp;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import musicApp.client.model.MainModel;
 
 public class ArtistSignUpViewModel
 {

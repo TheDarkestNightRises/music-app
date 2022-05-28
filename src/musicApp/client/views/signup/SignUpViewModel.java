@@ -1,8 +1,5 @@
 package musicApp.client.views.signup;
 
-import com.sun.tools.javac.Main;
-import musicApp.client.model.MainModel;
-import musicApp.client.model.chat.ChatManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 

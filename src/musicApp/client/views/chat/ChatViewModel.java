@@ -1,6 +1,5 @@
 package musicApp.client.views.chat;
 
-import musicApp.client.model.MainModel;
 import musicApp.shared.Message;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;

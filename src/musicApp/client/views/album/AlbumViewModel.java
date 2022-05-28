@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import musicApp.client.model.MainModel;
+import musicApp.client.model.music.MusicManager;
 import musicApp.server.model.domainModel.Album;
 
 import java.io.ByteArrayInputStream;
@@ -15,19 +15,19 @@ public class AlbumViewModel {
     private StringProperty artistProperty;
     private StringProperty albumProperty;
     private ObjectProperty<Image> albumPictureProperty;
-    private final MainModel mainModel;
+    private final MusicManager musicManager;
 
-    public AlbumViewModel(MainModel mainModel) {
+    public AlbumViewModel(MusicManager musicManager) {
         this.artistProperty = new SimpleStringProperty();
         this.albumProperty = new SimpleStringProperty();
         this.albumPictureProperty = new SimpleObjectProperty<>();
-        this.mainModel = mainModel;
+        this.musicManager = musicManager;
     }
 
     public void init(Album album) {
         albumProperty.set(album.getTitle());
         artistProperty.set(album.getArtist().getName());
-        Image image = new Image(new ByteArrayInputStream(mainModel.getMusicPlayerManager().fetchAlbumCover(album.getPicturePath())));
+        Image image = new Image(new ByteArrayInputStream(musicManager.fetchAlbumCover(album.getPicturePath())));
         albumPictureProperty.set(image);
     }
 

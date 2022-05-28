@@ -1,7 +1,5 @@
 package musicApp.client.views.log;
 
-import musicApp.client.model.MainModel;
-import musicApp.client.model.chat.ChatManager;
 import musicApp.shared.LogEntry;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;

@@ -1,16 +1,12 @@
 package musicApp.client.views.mainMenu;
 
-import musicApp.client.model.MainModel;
-import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Album;
-import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MainMenuViewModel implements Subject {

@@ -4,11 +4,10 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import musicApp.client.model.MainModel;
+import musicApp.client.model.addAlbum.AddAlbumManager;
+import musicApp.client.model.login.LogInManager;
 import musicApp.database.album.AlbumDAOImpl;
-import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
 
@@ -18,21 +17,20 @@ import java.awt.image.RenderedImage;
 import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class AddAlbumViewModel
 {
 
-  private final MainModel mainModel;
   private final StringProperty albumName;
+  private LogInManager logInManager;
+  private AddAlbumManager addAlbumManager;
   private ObjectProperty<Image> albumPicture;
   private FileInputStream tempImgStream;
   private File imgFile;
 
-
-  public AddAlbumViewModel(MainModel mainModel)
-  {
-    this.mainModel = mainModel;
+  public AddAlbumViewModel(AddAlbumManager addAlbumManager, LogInManager loginManager) {
+    this.addAlbumManager = addAlbumManager;
+    this.logInManager = loginManager;
     albumName = new SimpleStringProperty("");
     albumPicture = new SimpleObjectProperty<Image>();
   }
@@ -76,12 +74,12 @@ public class AddAlbumViewModel
         BufferedImage image = ImageIO.read(imgFile);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
-        User user = mainModel.getLogInManager().getUser();
+        User user = logInManager.getUser();
         LocalDate current_date = LocalDate.now();
-        String uploaded = mainModel.getAddAlbumManager().uploadAlbumImage(user.getUsername(), byteArrayOutputStream.toByteArray());
+        String uploaded = addAlbumManager.uploadAlbumImage(user.getUsername(), byteArrayOutputStream.toByteArray());
         try
         {
-          Artist artist = mainModel.getAddAlbumManager().getArtist(user);
+          Artist artist = addAlbumManager.getArtist(user);
           AlbumDAOImpl.getInstance().createAlbum(albumName.getValue(),current_date.getYear(),uploaded,artist);
         }
         catch (SQLException e)
@@ -92,7 +90,6 @@ public class AddAlbumViewModel
       catch (IOException e)
       {
         e.printStackTrace();
-
       }
 
     }

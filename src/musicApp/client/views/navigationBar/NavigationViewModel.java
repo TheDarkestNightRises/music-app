@@ -1,6 +1,5 @@
 package musicApp.client.views.navigationBar;
 
-import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.User;
 
 public class NavigationViewModel {

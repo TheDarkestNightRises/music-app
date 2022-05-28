@@ -4,9 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
-import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.User;
 
 import javax.imageio.ImageIO;

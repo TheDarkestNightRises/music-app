@@ -1,27 +1,27 @@
 package musicApp.client.views.artistProfile;
 
-import musicApp.client.model.MainModel;
-import musicApp.database.artist.ArtistDAOImpl;
+import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.profile.ProfileManager;
 import musicApp.server.model.domainModel.*;
 import musicApp.util.Subject;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ArtistProfileViewModel implements Subject
 {
-  private MainModel mainModel;
   private PropertyChangeSupport support;
+  private ProfileManager profileManager;
+  private LogInManager logInManager;
 
-
-  public ArtistProfileViewModel(MainModel mainModel) {
-    this.mainModel = mainModel;
+  public ArtistProfileViewModel(ProfileManager profileManager, LogInManager loginManager) {
     this.support = new PropertyChangeSupport(this);
-    this.mainModel.getProfileManager().addListener("newSongAddedToPlaylist", this::updatePlaylist);
-    this.mainModel.getProfileManager().addListener("newPlaylist", this::onNewPlaylist);
+    this.logInManager = loginManager;
+    this.profileManager = profileManager;
+    profileManager.addListener("newSongAddedToPlaylist", this::updatePlaylist);
+    profileManager.addListener("newPlaylist", this::onNewPlaylist);
   }
 
   private void onNewPlaylist(PropertyChangeEvent event) {
@@ -34,19 +34,19 @@ public class ArtistProfileViewModel implements Subject
   }
 
   public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-    return mainModel.getProfileManager().fetchPlaylistsForUser(user);
+    return profileManager.fetchPlaylistsForUser(user);
   }
 
   public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-    return mainModel.getProfileManager().fetchSongsForPlaylist(playlist);
+    return profileManager.fetchSongsForPlaylist(playlist);
   }
 
   public byte[] fetchProfilePicture(String profile_picture) {
-    return mainModel.getProfileManager().fetchProfilePicture(profile_picture);
+    return profileManager.fetchProfilePicture(profile_picture);
   }
 
   public User fetchUser() {
-    return mainModel.getLogInManager().getUser();
+    return logInManager.getUser();
   }
 
   @Override
@@ -61,18 +61,18 @@ public class ArtistProfileViewModel implements Subject
 
   public ArrayList<Album> fetchArtistAlbums(User user)
   {
-    return mainModel.getProfileManager().fetchArtistAlbums(user);
+    return profileManager.fetchArtistAlbums(user);
   }
 
   public void follow(User user)
   {
     User user0 = fetchUser();
-    mainModel.getProfileManager().follow(user0,user);
+    profileManager.follow(user0,user);
   }
 
   public void unfollow(User user)
   {
     User user0 = fetchUser();
-    mainModel.getProfileManager().unfollow(user0,user);
+    profileManager.unfollow(user0,user);
   }
 }

@@ -1,6 +1,5 @@
 package musicApp.client.views.login;
 
-import musicApp.client.model.MainModel;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;

@@ -140,20 +140,20 @@ public class ViewModelFactory {
     public AddToPlaylistViewModel getAddToPlaylistViewModel() {
         if (addToPlaylistViewModel == null)
             addToPlaylistViewModel = new AddToPlaylistViewModel(
-                    modelFactory.getMainModel());
+                    modelFactory.getAddToPlaylistManager(), modelFactory.getProfileManager(), modelFactory.getLoginManager());
         return addToPlaylistViewModel;
     }
 
     public ArtistProfileViewModel getArtistProfileViewModel() {
         if (artistProfileViewModel == null) {
-            artistProfileViewModel = new ArtistProfileViewModel(modelFactory.getMainModel());
+            artistProfileViewModel = new ArtistProfileViewModel(modelFactory.getProfileManager(),modelFactory.getLoginManager());
         }
         return artistProfileViewModel;
     }
 
     public AddAlbumViewModel getAddAlbumViewModel() {
         if (addAlbumViewModel == null) {
-            addAlbumViewModel = new AddAlbumViewModel(modelFactory.getMainModel());
+            addAlbumViewModel = new AddAlbumViewModel(modelFactory.getAddAlbumManager(), modelFactory.getLoginManager());
         }
         return addAlbumViewModel;
     }
@@ -167,7 +167,7 @@ public class ViewModelFactory {
 
     public AddSongViewModel getAddSongViewModel() {
         if (addSongViewModel == null) {
-            addSongViewModel = new AddSongViewModel(modelFactory.getMainModel());
+            addSongViewModel = new AddSongViewModel(modelFactory.getLoginManager(), modelFactory.getAddSongManager());
         }
         return addSongViewModel;
     }
@@ -187,7 +187,7 @@ public class ViewModelFactory {
     }
 
     public AlbumViewModel getAlbumViewModel() {
-        albumViewModel = new AlbumViewModel(modelFactory.getMainModel());
+        albumViewModel = new AlbumViewModel(modelFactory.getMusicManager());
         return albumViewModel;
     }
 

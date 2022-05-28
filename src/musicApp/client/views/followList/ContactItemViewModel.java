@@ -5,14 +5,9 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import musicApp.client.model.MainModel;
-import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.model.domainModel.User;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.sql.SQLException;
 
 public class ContactItemViewModel
 {

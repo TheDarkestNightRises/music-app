@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
-import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.User;
 
 import java.io.ByteArrayInputStream;
