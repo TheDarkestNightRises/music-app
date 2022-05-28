@@ -59,9 +59,8 @@ public class ArtistProfileViewModel implements Subject
     support.removePropertyChangeListener(eventName, listener);
   }
 
-  public ArrayList<Album> fetchArtistAlbums()
+  public ArrayList<Album> fetchArtistAlbums(User user)
   {
-    User user = mainModel.getLogInManager().getUser();
     return mainModel.getProfileManager().fetchArtistAlbums(user);
   }
 

@@ -57,8 +57,8 @@ public class ArtistProfileViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
         this.viewModel = vmf.getArtistProfileViewModel();
-        initArtistAlbums();
         user = (User) args[0];
+        initArtistAlbums(user);
         ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser(user);
         System.out.println(playlists);
         if (playlists == null) return;
@@ -102,9 +102,9 @@ public class ArtistProfileViewController implements ViewController {
         profileCardContainer.getChildren().add(profileCardRoot);
     }
 
-    private void initArtistAlbums() {
+    private void initArtistAlbums(User user) {
         new Thread(() -> {
-            ArrayList<Album> albums = viewModel.fetchArtistAlbums();
+            ArrayList<Album> albums = viewModel.fetchArtistAlbums(user);
             Platform.runLater(() -> {
                 AlbumsHBoxControl albumsHBoxControl = new AlbumsHBoxControl(albums, vh, profileContainer);
             });
