@@ -97,6 +97,7 @@ public class ArtistSignUpViewModel
     return createArtistUser();
   }
 
+  //TODO:USER VALIDATOR
   public boolean registerValidation()
   {
     if (UsernameExists())

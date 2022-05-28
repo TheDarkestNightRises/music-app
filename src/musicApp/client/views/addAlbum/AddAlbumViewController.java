@@ -18,8 +18,7 @@ public class AddAlbumViewController implements ViewController
   public TextField albumName;
   @FXML
   public ImageView albumPicture;
-  @FXML
-  public HBox createAlbum;
+
   private ViewHandler viewHandler;
   private AddAlbumViewModel viewModel;
 
@@ -42,6 +41,7 @@ public class AddAlbumViewController implements ViewController
   }
 
 
+  //TODO:the view model should verify if file is null
   @FXML
   public void choosePictureButtonPressed()
   {

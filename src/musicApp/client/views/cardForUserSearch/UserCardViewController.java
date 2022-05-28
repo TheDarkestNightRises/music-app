@@ -22,27 +22,23 @@ public class UserCardViewController implements ViewController {
     public Label description;
 
     private ViewHandler vh;
-    private ProfileViewModel profileViewModel;
+    private UserCardViewModel userCardViewModel;
     private User user;
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
-        this.profileViewModel = vmf.getProfileViewModel();
+        this.userCardViewModel = vmf.getUserCardViewModel();
         this.user = (User) args[0];
-        initCardProfileInfo();
-    }
-
-    private void initCardProfileInfo() {
-        profileName.setText(user.getUsername());
-        Image image = new Image(new ByteArrayInputStream(profileViewModel.fetchProfilePicture(user.getProfile_picture())));
-        profilePicture.setImage(image);
-        description.setText(user.getDescription());
+        userCardViewModel.bindName(profileName.textProperty());
+        userCardViewModel.bindDescription(description.textProperty());
+        userCardViewModel.bindImage(profilePicture.imageProperty());
+        userCardViewModel.init(user);
     }
 
     @FXML
     public void openProfile() {
-        if (profileViewModel.isArtist(user)) {
+        if (userCardViewModel.isArtist(user)) {
             vh.openArtistProfile(user);
         } else {
             vh.openProfile(user);
