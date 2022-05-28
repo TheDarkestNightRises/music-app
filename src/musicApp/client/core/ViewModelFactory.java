@@ -19,6 +19,7 @@ import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
 import musicApp.client.views.navigationBar.NavigationViewModel;
 import musicApp.client.views.notification.NotificationViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
+import musicApp.client.views.profileCard.ProfileCardViewModel;
 import musicApp.client.views.removeAlbum.RemoveAlbumViewModel;
 import musicApp.client.views.removePlaylist.RemovePlaylistViewModel;
 import musicApp.client.views.search.SearchViewModel;
@@ -55,6 +56,7 @@ public class ViewModelFactory {
     private NavigationViewModel navigationViewModel;
     private UserCardViewModel userCardViewModel;
     private ContactItemViewModel contactItemViewModel;
+    private ProfileCardViewModel profileCardViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -214,6 +216,13 @@ public class ViewModelFactory {
     public ContactItemViewModel getContactItemViewModel() {
         contactItemViewModel = new ContactItemViewModel(modelFactory.getMainModel());
         return contactItemViewModel;
+    }
+
+    public ProfileCardViewModel getProfileCardViewModel() {
+        if (profileCardViewModel == null) {
+            profileCardViewModel = new ProfileCardViewModel(modelFactory.getMainModel());
+        }
+        return profileCardViewModel;
     }
 }
 
