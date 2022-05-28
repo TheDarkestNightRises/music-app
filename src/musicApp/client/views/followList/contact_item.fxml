@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -13,17 +14,18 @@
             <Insets left="15.0" />
          </HBox.margin>
       </ImageView>
-      <Label fx:id="nickname" text="Nickname" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="5.0" />
-         </HBox.margin>
-         <padding>
-            <Insets right="5.0" />
-         </padding>
-      </Label>
+      <Hyperlink mnemonicParsing="false" onAction="#openProfile">
+         <graphic>
+            <Label fx:id="nickname" text="Nickname" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </Label>
+         </graphic>
+      </Hyperlink>
    </children>
    <padding>
       <Insets bottom="5.0" top="5.0" />

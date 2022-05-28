@@ -47,21 +47,8 @@ public class FollowListController implements ViewController
   {
     for (User user : list)
     {
-      try
-      {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("contact_item.fxml"));
-        HBox hBox = fxmlLoader.load();
-        ContactItemController c = fxmlLoader.getController();
-        c.setData(user);
-        if(userIsOnline(user))
-          c.setOnline();
-        contactsLayout.getChildren().add(hBox);
-      }
-      catch (IOException e)
-      {
-        e.printStackTrace();
-      }
+      HBox hBox = vh.openContact(user);
+      contactsLayout.getChildren().add(hBox);
     }
   }
 

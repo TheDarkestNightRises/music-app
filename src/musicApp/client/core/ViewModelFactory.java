@@ -9,6 +9,7 @@ import musicApp.client.views.artistSignUp.ArtistSignUpViewModel;
 import musicApp.client.views.cardForUserSearch.UserCardViewModel;
 import musicApp.client.views.chat.ChatViewModel;
 import musicApp.client.views.createPlaylist.CreatePlaylistViewModel;
+import musicApp.client.views.followList.ContactItemViewModel;
 import musicApp.client.views.followList.FollowListViewModel;
 import musicApp.client.views.log.LogViewModel;
 import musicApp.client.views.login.LoginMainViewModel;
@@ -53,6 +54,7 @@ public class ViewModelFactory {
     private NotificationViewModel notificationViewModel;
     private NavigationViewModel navigationViewModel;
     private UserCardViewModel userCardViewModel;
+    private ContactItemViewModel contactItemViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -207,6 +209,11 @@ public class ViewModelFactory {
             navigationViewModel = new NavigationViewModel(modelFactory.getMainModel());
         }
         return navigationViewModel;
+    }
+
+    public ContactItemViewModel getContactItemViewModel() {
+        contactItemViewModel = new ContactItemViewModel(modelFactory.getMainModel());
+        return contactItemViewModel;
     }
 }
 

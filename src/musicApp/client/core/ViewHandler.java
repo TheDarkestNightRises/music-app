@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import musicApp.client.views.cardForUserSearch.UserCardViewController;
 import musicApp.client.views.album.AlbumViewController;
+import musicApp.client.views.followList.ContactItemController;
 import musicApp.client.views.single.SingleController;
 import musicApp.client.views.song.SongController;
 import musicApp.server.model.domainModel.Album;
@@ -516,6 +517,21 @@ public class ViewHandler {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public HBox openContact(User user)
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("../views/followList/contact_item.fxml"));
+        HBox hBox = null;
+        try {
+            hBox = fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ContactItemController contactItemController = fxmlLoader.getController();
+        contactItemController.init(this, vmf, user);
+        return hBox;
     }
 }
 
