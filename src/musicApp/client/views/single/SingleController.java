@@ -37,7 +37,8 @@ public class SingleController implements ViewController{
         singleViewModel.bindSongName(songName.textProperty());
         singleViewModel.bindArtist(artist.textProperty());
         singleViewModel.bindImage(albumCover.imageProperty());
-        singleViewModel.init((Song) args[0]);
+        this.song = (Song) args[0];
+        singleViewModel.init(song);
     }
 
     public void openSingle() {
