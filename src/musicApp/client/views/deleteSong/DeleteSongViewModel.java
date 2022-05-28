@@ -27,10 +27,6 @@ public class DeleteSongViewModel
 
   }
 
-//  public ArrayList<String> getArtistSongsTitles(User user)
-//  {
-//    return mainModel.getDeleteSongManager().;
-//  }
 
   public void reset()
   {

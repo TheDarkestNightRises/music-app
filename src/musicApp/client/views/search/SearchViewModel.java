@@ -63,13 +63,6 @@ public class SearchViewModel implements Subject {
 
     public void init() {
         loadComboBox();
-//        FilteredList<Song> filteredData = new FilteredList<>(songs);
-//        search.addListener(((observable, oldValue, newValue) -> {
-//            if (newValue.isEmpty() || newValue.isBlank()) return;
-//            filteredData.setPredicate(p -> p.getTitle().contains(search.get()));
-//            support.firePropertyChange("newSearch", null, filteredData);
-//            System.out.println(filteredData);
-//        }));
     }
 
 

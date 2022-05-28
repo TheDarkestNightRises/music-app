@@ -48,14 +48,10 @@ public class UpdateSettingsViewModel
     nickaname.set(mainModel.getLogInManager().getUser().getNickname());
     tempImgStream = null;
     imgFile = null;
-    //InputStream stream = null;
+
     try
     {
-//      String imgPath = mainModel.getLogInManager().getUser().getProfile_picture();
-//      if(imgPath == null || imgPath.equals(""))
-//        imgPath = "default_pfp.jpg";
-//      stream = new FileInputStream("src/musicApp/server/serverData/ProfilePictures/" + imgPath);
-//      Image image = new Image(stream);
+
       Image image = new Image(new ByteArrayInputStream(mainModel.getProfileManager().fetchProfilePicture(mainModel.getLogInManager().getUser().getProfile_picture())));
       profilePicture.setValue(image);//TODO: add link
     }
@@ -109,15 +105,12 @@ public class UpdateSettingsViewModel
 
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
         String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), byteArrayOutputStream.toByteArray());
-        //String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), tempImgStream.readAllBytes());
         if(uploaded != null)
         {
         mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
         error1.set("Avatar changed successfully");}
         else
         error1.set("Could not upload image");
-//        if(uploaded == null)
-//          error1.set("Could not upload image");
       }
       catch (IOException e)
       {
@@ -171,9 +164,6 @@ public class UpdateSettingsViewModel
       {
         error.set("Nickname cannot be empty");
       }
-
-
-      //mainModel.getLogInManager().updateUserInfo(password.get(), email.get(), nickaname.get());
       return true;
     }
     catch (Exception e)

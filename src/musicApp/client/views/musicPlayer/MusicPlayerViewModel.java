@@ -19,7 +19,7 @@ public class MusicPlayerViewModel implements Subject {
     private final MainModel mainModel;
     private int songNumber;
     private Media media;
-    private ArrayList<File> songs; //TODO: ARRAYLIST OF SONGS
+    private ArrayList<File> songs;
     private Playlist playlist;
 
     private SimpleStringProperty currentSongLabel;

@@ -29,7 +29,6 @@ public class CreatePlaylistViewController implements ViewController
     viewModel = vmf.getCreatePlaylistViewModel();
     viewModel.bindTitle(title.textProperty());
     viewModel.bindDescription(description.textProperty());
-    //errorLabel.textProperty().bind(viewModel.getErrorProperty());
     viewModel.bindError(errorLabel.textProperty());
     System.out.println("binded");
   }

@@ -47,7 +47,6 @@ public class CreatePlaylistViewModel
 
   public void bindError(StringProperty property)
   {
-    //error.bind(property);
     property.bind(error);
   }
 
