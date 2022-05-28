@@ -11,9 +11,6 @@ public class FollowDAOImpl implements FollowDAO
 {
 
   private static FollowDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
 
   public FollowDAOImpl() throws SQLException
   {
@@ -29,35 +26,33 @@ public class FollowDAOImpl implements FollowDAO
     return instance;
   }
 
-  private Connection getConnection() throws SQLException {
+  private Connection getConnection() throws SQLException
+  {
     Connection conn;
     conn = ConnectionFactory.getInstance().getConnection();
     return conn;
   }
-
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
-//  }
 
   @Override public ArrayList<User> getFollowList(User user)
   {
     try
     {
       PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM followers where follower = ?" );
+      PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM followers where follower = ?");
       statement0.executeUpdate();
-      statement.setString(1,user.getUsername());
+      statement.setString(1, user.getUsername());
       ResultSet resultSet = statement.executeQuery();
       ArrayList<User> list = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         String name = resultSet.getString("followed");
         User user1 = UsersDAOImpl.getInstance().getUserByName(name);
         list.add(user1);
       }
       return list;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -68,14 +63,16 @@ public class FollowDAOImpl implements FollowDAO
     try
     {
       PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = getConnection().prepareStatement("INSERT INTO followers(follower,followed) "
-          + "VALUES (?, ?);");
+      PreparedStatement statement = getConnection().prepareStatement(
+          "INSERT INTO followers(follower,followed) " + "VALUES (?, ?);");
 
-      statement.setString(1,follower.getUsername());
-      statement.setString(2,followed.getUsername());
+      statement.setString(1, follower.getUsername());
+      statement.setString(2, followed.getUsername());
       statement0.executeUpdate();
       statement.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }
@@ -85,12 +82,15 @@ public class FollowDAOImpl implements FollowDAO
     try
     {
       PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = getConnection().prepareStatement("DELETE FROM followers WHERE follower = ? and followed = ?");
-      statement.setString(1,follower.getUsername());
-      statement.setString(2,followed.getUsername());
+      PreparedStatement statement = getConnection().prepareStatement(
+          "DELETE FROM followers WHERE follower = ? and followed = ?");
+      statement.setString(1, follower.getUsername());
+      statement.setString(2, followed.getUsername());
       statement0.executeUpdate();
       statement.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }

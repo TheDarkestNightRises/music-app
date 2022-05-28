@@ -21,15 +21,19 @@ public class SongDAOImpl implements SongDAO
 
   private SongDAOImpl() throws SQLException
   {
-    try {
+    try
+    {
       this.connection = getConnection();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     DriverManager.registerDriver(new org.postgresql.Driver());
   }
 
-  private Connection getConnection() throws SQLException {
+  private Connection getConnection() throws SQLException
+  {
     Connection conn;
     conn = ConnectionFactory.getInstance().getConnection();
     return conn;
@@ -44,7 +48,6 @@ public class SongDAOImpl implements SongDAO
     return instance;
   }
 
-
   @Override public ArrayList<Song> getAllSongs()
   {
     try
@@ -55,7 +58,7 @@ public class SongDAOImpl implements SongDAO
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         int id = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
@@ -67,7 +70,7 @@ public class SongDAOImpl implements SongDAO
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
-        if(resultSet2.next())
+        if (resultSet2.next())
         {
           albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
         }
@@ -75,38 +78,42 @@ public class SongDAOImpl implements SongDAO
         String username = resultSet.getString("username");
         statement3.setString(1, username);
         ResultSet resultSet3 = statement3.executeQuery();
-        if(resultSet3.next())
+        if (resultSet3.next())
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        songs.add(new Song(id,title,picture,length,albumName,artistName));
+        songs.add(new Song(id, title, picture, length, albumName, artistName));
 
       }
       return songs;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
   }
-
 
   @Override public void insertSong(Song song, Album album, Artist artist)
   {
     try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO song(title,length,file_path,album_id,username)"
-          + "VALUES (?, ?, ?, ?,?);", Statement.RETURN_GENERATED_KEYS);
-      statement.setString(1,song.getTitle());
-      Time time = new Time(0,0,1);
-      statement.setTime(2,time);
-      statement.setString(3,song.getFile_path());
-      statement.setInt(4,album.getId());
+      PreparedStatement statement = connection.prepareStatement(
+          "INSERT INTO song(title,length,file_path,album_id,username)" + "VALUES (?, ?, ?, ?,?);",
+          Statement.RETURN_GENERATED_KEYS);
+      statement.setString(1, song.getTitle());
+      Time time = new Time(0, 0, 1);
+      statement.setTime(2, time);
+      statement.setString(3, song.getFile_path());
+      statement.setInt(4, album.getId());
       statement.setString(5, artist.getName());
       statement0.executeUpdate();
       statement.executeUpdate();
       statement.getGeneratedKeys();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }
@@ -154,18 +161,19 @@ public class SongDAOImpl implements SongDAO
       statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
-      if(resultSet.next())
+      if (resultSet.next())
       {
         int id1 = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
         String length = resultSet.getString("length");
         String picture = resultSet.getString("file_path");
-        Album albumName = new Album(0,"",0,"",null);
-        PreparedStatement statement2 = connection.prepareStatement("Select title, picture_path FROM album where album_id = ?");
+        Album albumName = new Album(0, "", 0, "", null);
+        PreparedStatement statement2 = connection.prepareStatement(
+            "Select title, picture_path FROM album where album_id = ?");
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
-        if(resultSet2.next())
+        if (resultSet2.next())
         {
           String album_title = resultSet2.getString("title");
           String album_cover = resultSet2.getString("picture_path");
@@ -175,9 +183,11 @@ public class SongDAOImpl implements SongDAO
         String username = resultSet.getString("username");
         Artist artistName = new Artist();
         artistName.setName(username);
-        return new Song(id1,title,picture,length,albumName,artistName);
+        return new Song(id1, title, picture, length, albumName, artistName);
       }
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -188,8 +198,8 @@ public class SongDAOImpl implements SongDAO
     try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("UPDATE album SET title = ?,  length = ?,"
-          + " file_path = ?, album_id = ?, username = ? where song_id = ?");
+      PreparedStatement statement = connection.prepareStatement(
+          "UPDATE album SET title = ?,  length = ?," + " file_path = ?, album_id = ?, username = ? where song_id = ?");
       statement.setString(1, song.getTitle());
       statement.setString(2, song.getLength());
       statement.setString(3, song.getFile_path());
@@ -216,7 +226,7 @@ public class SongDAOImpl implements SongDAO
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         int id = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
@@ -228,7 +238,7 @@ public class SongDAOImpl implements SongDAO
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
-        if(resultSet2.next())
+        if (resultSet2.next())
         {
           albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
         }
@@ -236,14 +246,16 @@ public class SongDAOImpl implements SongDAO
         String username = resultSet.getString("username");
         statement3.setString(1, username);
         ResultSet resultSet3 = statement3.executeQuery();
-        if(resultSet3.next())
+        if (resultSet3.next())
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        songs.add(new Song(id,title,length,picture,albumName,artistName));
+        songs.add(new Song(id, title, length, picture, albumName, artistName));
       }
       return songs;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -259,7 +271,7 @@ public class SongDAOImpl implements SongDAO
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         int id = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
@@ -271,7 +283,7 @@ public class SongDAOImpl implements SongDAO
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
-        if(resultSet2.next())
+        if (resultSet2.next())
         {
           albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
         }
@@ -279,15 +291,17 @@ public class SongDAOImpl implements SongDAO
         String username = resultSet.getString("username");
         statement3.setString(1, username);
         ResultSet resultSet3 = statement3.executeQuery();
-        if(resultSet3.next())
+        if (resultSet3.next())
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        songs.add(new Song(id,title,picture,length,albumName,artistName));
+        songs.add(new Song(id, title, picture, length, albumName, artistName));
 
       }
       return songs;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -303,7 +317,7 @@ public class SongDAOImpl implements SongDAO
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Song> songs = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         int id = resultSet.getInt("song_id");
         String title = resultSet.getString("title");
@@ -315,7 +329,7 @@ public class SongDAOImpl implements SongDAO
         int album_id = resultSet.getInt("album_id");
         statement2.setInt(1, album_id);
         ResultSet resultSet2 = statement2.executeQuery();
-        if(resultSet2.next())
+        if (resultSet2.next())
         {
           albumName = AlbumDAOImpl.getInstance().getAlbumById(album_id);
         }
@@ -323,15 +337,17 @@ public class SongDAOImpl implements SongDAO
         String username = resultSet.getString("username");
         statement3.setString(1, username);
         ResultSet resultSet3 = statement3.executeQuery();
-        if(resultSet3.next())
+        if (resultSet3.next())
         {
           artistName = ArtistDAOImpl.getInstance().getArtistByName(username);
         }
-        songs.add(new Song(id,title,picture,length,albumName,artistName));
+        songs.add(new Song(id, title, picture, length, albumName, artistName));
 
       }
       return songs;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;

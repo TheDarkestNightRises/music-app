@@ -16,23 +16,26 @@ public class User implements Serializable
   private boolean isLoggedIn;
   private ArrayList<Playlist> playlists;
 
-  public User(String username, String password) {
+  public User(String username, String password)
+  {
     this.username = username;
     this.password = password;
   }
 
-  public User(String username, String password, String email, String nickname, String profile_picture, String description, ArrayList<Playlist> playlists)
+  public User(String username, String password, String email, String nickname, String profile_picture, String description,
+      ArrayList<Playlist> playlists)
   {
     this.username = username;
     this.password = password;
     this.email = email;
     this.nickname = nickname;
-    this.profile_picture=profile_picture;
-    this.description=description;
+    this.profile_picture = profile_picture;
+    this.description = description;
     this.playlists = new ArrayList<>();
   }
 
-  public User(String username, String password, String email, String description, String profile_picture, String nickname) {
+  public User(String username, String password, String email, String description, String profile_picture, String nickname)
+  {
     this.username = username;
     this.password = password;
     this.email = email;
@@ -41,8 +44,11 @@ public class User implements Serializable
     this.nickname = nickname;
   }
 
-  public User(){};
+  public User()
+  {
+  }
 
+  ;
 
   public String getUsername()
   {
@@ -109,12 +115,13 @@ public class User implements Serializable
     return Objects.hash(username, password);
   }
 
-
-  public boolean isLoggedIn() {
+  public boolean isLoggedIn()
+  {
     return isLoggedIn;
   }
 
-  public void setLoggedIn(boolean loggedIn) {
+  public void setLoggedIn(boolean loggedIn)
+  {
     isLoggedIn = loggedIn;
   }
 
@@ -123,34 +130,33 @@ public class User implements Serializable
     return playlists;
   }
 
-  @Override
-  public String toString() {
-    return "User{" +
-            "username='" + username + '\'' +
-            ", password='" + password + '\'' +
-            ", email='" + email + '\'' +
-            ", description='" + description + '\'' +
-            ", profile_picture='" + profile_picture + '\'' +
-            ", nickname='" + nickname + '\'' +
-            ", isLoggedIn=" + isLoggedIn +
-            ", playlists=" + playlists +
-            '}';
+  @Override public String toString()
+  {
+    return "User{" + "username='" + username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\''
+        + ", description='" + description + '\'' + ", profile_picture='" + profile_picture + '\'' + ", nickname='" + nickname
+        + '\'' + ", isLoggedIn=" + isLoggedIn + ", playlists=" + playlists + '}';
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+  @Override public boolean equals(Object o)
+  {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
     User user = (User) o;
-    return isLoggedIn == user.isLoggedIn && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(email, user.email);
+    return isLoggedIn == user.isLoggedIn && Objects.equals(username, user.username) && Objects.equals(password,
+        user.password) && Objects.equals(email, user.email);
   }
 
-  public boolean equalsIgnoreEmail(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+  public boolean equalsIgnoreEmail(Object o)
+  {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
     User user = (User) o;
-    return isLoggedIn == user.isLoggedIn && Objects.equals(username, user.username) && Objects.equals(password, user.password);
+    return isLoggedIn == user.isLoggedIn && Objects.equals(username, user.username) && Objects.equals(password,
+        user.password);
   }
-
 
 }

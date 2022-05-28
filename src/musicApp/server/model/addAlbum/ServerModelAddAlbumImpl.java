@@ -21,11 +21,12 @@ public class ServerModelAddAlbumImpl implements ServerModelAddAlbum
 
   @Override public String uploadAlbumPicture(String username, byte[] toByteArray)
   {
-    try{
+    try
+    {
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddhhmmssSSS");
       String pictureName = username + "_" + LocalDateTime.now().format(formatter) + ".png";
       fileManager.uploadAlbumPicture(pictureName, toByteArray);
-      fileManager.uploadAlbumPictureInOut(pictureName,toByteArray);
+      fileManager.uploadAlbumPictureInOut(pictureName, toByteArray);
       return pictureName;
     }
     catch (Exception e)

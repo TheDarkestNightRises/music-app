@@ -12,9 +12,6 @@ public class ArtistDAOImpl implements ArtistDAO
 {
 
   private static ArtistDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   public ArtistDAOImpl() throws SQLException
@@ -23,7 +20,8 @@ public class ArtistDAOImpl implements ArtistDAO
     connection = getConnection();
   }
 
-  private Connection getConnection() throws SQLException {
+  private Connection getConnection() throws SQLException
+  {
     Connection conn;
     conn = ConnectionFactory.getInstance().getConnection();
     return conn;
@@ -38,11 +36,6 @@ public class ArtistDAOImpl implements ArtistDAO
     return instance;
   }
 
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL,USERNAME,PASSWORD);
-//  }
-
   @Override public ArrayList<Artist> getAllArtists()
   {
     try
@@ -52,7 +45,7 @@ public class ArtistDAOImpl implements ArtistDAO
       statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Artist> list = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         String name = resultSet.getString("username");
         Artist artist = new Artist();
@@ -61,7 +54,9 @@ public class ArtistDAOImpl implements ArtistDAO
         list.add(artist);
       }
       return list;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -72,12 +67,13 @@ public class ArtistDAOImpl implements ArtistDAO
     try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("INSERT INTO artist(username) "
-          + "VALUES (?);");
-      statement.setString(1,username);
+      PreparedStatement statement = connection.prepareStatement("INSERT INTO artist(username) " + "VALUES (?);");
+      statement.setString(1, username);
       statement0.executeUpdate();
       statement.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
 
@@ -92,7 +88,9 @@ public class ArtistDAOImpl implements ArtistDAO
       statement.setString(1, artist.getName());
       statement0.executeUpdate();
       statement.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }
@@ -107,7 +105,7 @@ public class ArtistDAOImpl implements ArtistDAO
       statement0.execute();
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
-      if(resultSet.next())
+      if (resultSet.next())
       {
         String name = resultSet.getString("username");
         Artist artist = new Artist();
@@ -115,7 +113,9 @@ public class ArtistDAOImpl implements ArtistDAO
         artist.setAlbums(getArtistAlbums(artist));
         return artist;
       }
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
     return null;
@@ -131,7 +131,9 @@ public class ArtistDAOImpl implements ArtistDAO
       statement.setString(1, artist.getName());
       statement0.executeUpdate();
       statement.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
 
@@ -148,32 +150,34 @@ public class ArtistDAOImpl implements ArtistDAO
       statement.execute();
       ResultSet resultSet = statement.executeQuery();
       ArrayList<Album> albums = new ArrayList<>();
-      while(resultSet.next())
+      while (resultSet.next())
       {
         int id = resultSet.getInt("album_id");
         String title = resultSet.getString("title");
         int year = resultSet.getInt("publication_year");
         String picture = resultSet.getString("picture_path");
         ArrayList<Song> songs = new ArrayList<>();
-        Album album = new Album(id,title,year,picture,artist,songs);
+        Album album = new Album(id, title, year, picture, artist, songs);
         PreparedStatement statement2 = connection.prepareStatement("Select * FROM song where album_id = ?");
         statement2.setInt(1, id);
         ResultSet resultSet2 = statement2.executeQuery();
-            while(resultSet2.next())
-            {
-              int song_id = resultSet2.getInt("song_id");
-              String song_title = resultSet2.getString("title");
-              String length = resultSet2.getString("length");
-              String file = resultSet2.getString("file_path");
-              Song song = new Song(song_id,song_title,file,length,album,artist);
-              songs.add(song);
-            }
-            albums.add(album);
+        while (resultSet2.next())
+        {
+          int song_id = resultSet2.getInt("song_id");
+          String song_title = resultSet2.getString("title");
+          String length = resultSet2.getString("length");
+          String file = resultSet2.getString("file_path");
+          Song song = new Song(song_id, song_title, file, length, album, artist);
+          songs.add(song);
+        }
+        albums.add(album);
       }
       return albums;
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
-  return null;
+    return null;
   }
 }

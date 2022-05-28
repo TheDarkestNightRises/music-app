@@ -10,6 +10,5 @@ public interface ServerModelAddSong
 {
   ArrayList<Album> getAlbumsOfUser(User user) throws Exception;
   Artist getArtistOfUser(User user);
-  void addSong(String title, byte[] songBytes, Album album, User user)
-      throws Exception;
+  void addSong(String title, byte[] songBytes, Album album, User user) throws Exception;
 }

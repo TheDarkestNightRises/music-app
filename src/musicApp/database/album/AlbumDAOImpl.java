@@ -13,9 +13,6 @@ public class AlbumDAOImpl implements AlbumDao
 {
 
   private static AlbumDAOImpl instance;
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
   private Connection connection;
 
   public AlbumDAOImpl() throws SQLException
@@ -24,7 +21,8 @@ public class AlbumDAOImpl implements AlbumDao
     connection = getConnection();
   }
 
-  private Connection getConnection() throws SQLException {
+  private Connection getConnection() throws SQLException
+  {
     Connection conn;
     conn = ConnectionFactory.getInstance().getConnection();
     return conn;
@@ -38,11 +36,6 @@ public class AlbumDAOImpl implements AlbumDao
     }
     return instance;
   }
-
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//  }
 
   @Override public ArrayList<Album> getAllAlbums()
   {
@@ -191,8 +184,8 @@ public class AlbumDAOImpl implements AlbumDao
     try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("UPDATE album SET  title = ?,  publication_year = ?,"
-          + " picture_path = ?, username = ? where album_id = ?");
+      PreparedStatement statement = connection.prepareStatement(
+          "UPDATE album SET  title = ?,  publication_year = ?," + " picture_path = ?, username = ? where album_id = ?");
       statement.setString(1, album.getTitle());
       statement.setInt(2, album.getPublicationYear());
       statement.setString(3, album.getPicturePath());

@@ -12,29 +12,29 @@ public class SignUpServerImpl implements SignUpServer
 
   private final ServerModel serverModel;
 
-  public SignUpServerImpl(ServerModel serverModel) throws RemoteException {
+  public SignUpServerImpl(ServerModel serverModel) throws RemoteException
+  {
     UnicastRemoteObject.exportObject(this, 0);
     this.serverModel = serverModel;
   }
 
-  @Override
-  public void addUser(User user) {
+  @Override public void addUser(User user)
+  {
     serverModel.getModelSignUp().addUser(user);
   }
 
-  @Override
-  public boolean usernameExists(String username) {
+  @Override public boolean usernameExists(String username)
+  {
     return serverModel.getModelSignUp().usernameExists(username);
   }
 
-
-  @Override
-  public boolean noDigits(String password) throws RemoteException {
+  @Override public boolean noDigits(String password) throws RemoteException
+  {
     return serverModel.getModelSignUp().noDigits(password);
   }
 
-  @Override
-  public boolean noUpper(String password) throws RemoteException {
+  @Override public boolean noUpper(String password) throws RemoteException
+  {
     return serverModel.getModelSignUp().noUpper(password);
   }
 

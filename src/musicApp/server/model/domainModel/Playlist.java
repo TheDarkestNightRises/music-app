@@ -17,8 +17,7 @@ public class Playlist implements Serializable
         + ", picture_name='" + picture_name + '\'' + ", songs=" + songs + '}';
   }
 
-  public Playlist(int playlist_id, String title, String description,
-      String picture_name)
+  public Playlist(int playlist_id, String title, String description, String picture_name)
   {
     this.playlist_id = playlist_id;
     this.title = title;
@@ -27,12 +26,12 @@ public class Playlist implements Serializable
     this.songs = new ArrayList<>();
   }
 
-  public Playlist(ArrayList<Song> songs) {
+  public Playlist(ArrayList<Song> songs)
+  {
     this.songs = songs;
   }
 
-  public Playlist(int playlist_id, String title, String description,
-                  String picture_name, ArrayList<Song> songs)
+  public Playlist(int playlist_id, String title, String description, String picture_name, ArrayList<Song> songs)
   {
     this.playlist_id = playlist_id;
     this.title = title;
@@ -78,7 +77,7 @@ public class Playlist implements Serializable
 
   public Playlist copy()
   {
-    return  new Playlist(playlist_id,title,description,picture_name,songs);
+    return new Playlist(playlist_id, title, description, picture_name, songs);
   }
 
   public ArrayList<Song> getSongs()

@@ -33,10 +33,10 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
   @Override public ArrayList<Song> getSongsOfUser(User user) throws Exception
   {
     Artist artist = getArtistOfUser(user);
-    if(artist != null)
+    if (artist != null)
     {
       ArrayList<Album> albums = artistDAO.getArtistAlbums(artist);
-      if(albums != null)
+      if (albums != null)
       {
         ArrayList<Song> songs = new ArrayList<>();
         for (Album album : albums)
@@ -53,6 +53,7 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
       throw new Exception("This user is not an artist!");
     }
   }
+
   @Override public Artist getArtistOfUser(User user)
   {
     try
@@ -61,13 +62,12 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
     }
     catch (SQLException e)
     {
-      //e.printStackTrace();
       return null;
     }
   }
 
   @Override public void deleteSong(Song song) throws Exception
   {
-      songDAO.deleteSong(song);
+    songDAO.deleteSong(song);
   }
 }

@@ -3,112 +3,109 @@ package musicApp.server.model.domainModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Album implements Serializable {
-    private int id;
-    private String title;
-    private int publicationYear;
-    private String picturePath;
-    private ArrayList<Song> songs;
-    private Artist artist;
+public class Album implements Serializable
+{
+  private int id;
+  private String title;
+  private int publicationYear;
+  private String picturePath;
+  private ArrayList<Song> songs;
+  private Artist artist;
 
-    public Album(){};
+  public Album()
+  {
+  }
 
-    public Album(int id, String title, int publicationYear,
-        String picturePath,
-        Artist artist)
-    {
-        this.id = id;
-        this.title = title;
-        this.publicationYear = publicationYear;
-        this.picturePath = picturePath;
-        this.songs = new ArrayList<>();
-        this.artist = artist;
-    }
+  ;
 
-    public Album(int id, String title, int publicationYear,
-        String picturePath, Artist artist, ArrayList<Song> songs)
-    {
-        this.id = id;
-        this.title = title;
-        this.publicationYear = publicationYear;
-        this.picturePath = picturePath;
-        this.artist = artist;
-        this.songs = songs;
-    }
+  public Album(int id, String title, int publicationYear, String picturePath, Artist artist)
+  {
+    this.id = id;
+    this.title = title;
+    this.publicationYear = publicationYear;
+    this.picturePath = picturePath;
+    this.songs = new ArrayList<>();
+    this.artist = artist;
+  }
 
+  public Album(int id, String title, int publicationYear, String picturePath, Artist artist, ArrayList<Song> songs)
+  {
+    this.id = id;
+    this.title = title;
+    this.publicationYear = publicationYear;
+    this.picturePath = picturePath;
+    this.artist = artist;
+    this.songs = songs;
+  }
 
+  public int getId()
+  {
+    return id;
+  }
 
+  public String getTitle()
+  {
+    return title;
+  }
 
-    public int getId()
-    {
-        return id;
-    }
+  public int getPublicationYear()
+  {
+    return publicationYear;
+  }
 
-    public String getTitle()
-    {
-        return title;
-    }
+  public String getPicturePath()
+  {
+    return picturePath;
+  }
 
-    public int getPublicationYear()
-    {
-        return publicationYear;
-    }
+  public ArrayList<Song> getSongs()
+  {
+    return songs;
+  }
 
-    public String getPicturePath()
-    {
-        return picturePath;
-    }
+  public Artist getArtist()
+  {
+    return artist;
+  }
 
-    public ArrayList<Song> getSongs()
-    {
-        return songs;
-    }
+  public void setId(int id)
+  {
+    this.id = id;
+  }
 
-    public Artist getArtist()
-    {
-        return artist;
-    }
+  public void setTitle(String title)
+  {
+    this.title = title;
+  }
 
-    public void setId(int id)
-    {
-        this.id = id;
-    }
+  public void setPublicationYear(int publicationYear)
+  {
+    this.publicationYear = publicationYear;
+  }
 
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
+  public void setPicturePath(String picturePath)
+  {
+    this.picturePath = picturePath;
+  }
 
-    public void setPublicationYear(int publicationYear)
-    {
-        this.publicationYear = publicationYear;
-    }
+  public void setSongs(ArrayList<Song> songs)
+  {
+    this.songs = songs;
+  }
 
-    public void setPicturePath(String picturePath)
-    {
-        this.picturePath = picturePath;
-    }
+  public void setArtist(Artist artist)
+  {
+    this.artist = artist;
+  }
 
-    public void setSongs(ArrayList<Song> songs)
-    {
-        this.songs = songs;
-    }
+  public Album copy()
+  {
+    return new Album(id, title, publicationYear, picturePath, artist, songs);
+  }
 
-    public void setArtist(Artist artist)
-    {
-        this.artist = artist;
-    }
-
-    public Album copy()
-    {
-           return new Album(id,title,publicationYear,picturePath,artist,songs);
-    }
-
-    @Override public String toString()
-    {
-        return "Album{" + "id=" + id + ", title='" + title + '\''
-            + ", publicationYear=" + publicationYear + ", picturePath='"
-            + picturePath + '\'' + ", songs=" + songs + ", artist=" + artist.getName()
-            + '}';
-    }
+  @Override public String toString()
+  {
+    return "Album{" + "id=" + id + ", title='" + title + '\'' + ", publicationYear=" + publicationYear + ", picturePath='"
+        + picturePath + '\'' + ", songs=" + songs + ", artist=" + artist.getName() + '}';
+  }
 }

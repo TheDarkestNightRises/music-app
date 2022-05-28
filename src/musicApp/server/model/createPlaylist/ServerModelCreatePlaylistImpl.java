@@ -23,10 +23,10 @@ public class ServerModelCreatePlaylistImpl implements ServerModelCreatePlaylist
 
   }
 
-  @Override public void createPlaylist(String title, String description,
-      User user) throws Exception
+  @Override public void createPlaylist(String title, String description, User user) throws Exception
   {
-    try{
+    try
+    {
       playlistDAO.createPlayList(title, description, "", user);
     }
     catch (Exception e)

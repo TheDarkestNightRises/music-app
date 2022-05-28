@@ -38,12 +38,12 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
   @Override public ArrayList<Album> getAlbumsOfUser(User user) throws Exception
   {
     Artist artist = getArtistOfUser(user);
-    if(artist != null)
+    if (artist != null)
     {
       ArrayList<Album> albums = artistDAO.getArtistAlbums(artist);
-      if(albums != null)
+      if (albums != null)
       {
-       return albums;
+        return albums;
       }
       else
       {
@@ -55,6 +55,7 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
       throw new Exception("This user is not an artist!");
     }
   }
+
   @Override public Artist getArtistOfUser(User user)
   {
     try
@@ -63,13 +64,11 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
     }
     catch (SQLException e)
     {
-      //e.printStackTrace();
       return null;
     }
   }
 
-  @Override public void addSong(String title, byte[] songBytes, Album album,
-      User user) throws Exception
+  @Override public void addSong(String title, byte[] songBytes, Album album, User user) throws Exception
   {
     try
     {
@@ -77,7 +76,7 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddhhmmssSSS");
       String songName = user.getUsername() + "_" + LocalDateTime.now().format(formatter) + ".m4a";
       fileManager.uploadSong(songName, songBytes);
-      Song song = new Song(-1, title, songName, "01:00",album, artist);
+      Song song = new Song(-1, title, songName, "01:00", album, artist);
       songDAO.insertSong(song, album, artist);
     }
     catch (Exception e)

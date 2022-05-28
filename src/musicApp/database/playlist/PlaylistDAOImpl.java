@@ -32,12 +32,8 @@ public class PlaylistDAOImpl implements PlaylistDAO
     return instance;
   }
 
-//  private Connection getConnection() throws SQLException
-//  {
-//    return DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//  }
-
-  private Connection getConnection() throws SQLException {
+  private Connection getConnection() throws SQLException
+  {
     Connection conn;
     conn = ConnectionFactory.getInstance().getConnection();
     return conn;
@@ -76,9 +72,11 @@ public class PlaylistDAOImpl implements PlaylistDAO
       statement0.executeUpdate();
       statement.executeUpdate();
       PreparedStatement statement2 = connection.prepareStatement("DELETE FROM playlist_song_pair WHERE playlist_id = ?");
-      statement2.setInt(1,playlist.getPlaylist_id());
+      statement2.setInt(1, playlist.getPlaylist_id());
       statement2.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }
@@ -93,9 +91,11 @@ public class PlaylistDAOImpl implements PlaylistDAO
       statement0.executeUpdate();
       statement.executeUpdate();
       PreparedStatement statement2 = connection.prepareStatement("DELETE FROM playlist_song_pair WHERE playlist_id = ?");
-      statement2.setInt(1,id);
+      statement2.setInt(1, id);
       statement2.executeUpdate();
-    } catch (SQLException e) {
+    }
+    catch (SQLException e)
+    {
       e.printStackTrace();
     }
   }
@@ -121,8 +121,7 @@ public class PlaylistDAOImpl implements PlaylistDAO
     }
   }
 
-  @Override public void insertSongIntoPlaylist(Playlist playlist, Song song)
-      throws Exception
+  @Override public void insertSongIntoPlaylist(Playlist playlist, Song song) throws Exception
   {
     try
     {
@@ -162,7 +161,6 @@ public class PlaylistDAOImpl implements PlaylistDAO
     }
   }
 
-
   //TODO: TOO SLOW
   @Override public ArrayList<Song> getAllSongsFromPlayList(Playlist playlist)
   {
@@ -194,12 +192,13 @@ public class PlaylistDAOImpl implements PlaylistDAO
     try
     {
       PreparedStatement statement0 = connection.prepareStatement("SET SCHEMA 'music_app'");
-      PreparedStatement statement = connection.prepareStatement("SELECT * FROM playlist_song_pair where playlist_id = ? and song_id = ?");
+      PreparedStatement statement = connection.prepareStatement(
+          "SELECT * FROM playlist_song_pair where playlist_id = ? and song_id = ?");
       statement.setInt(1, playlist.getPlaylist_id());
-      statement.setInt(2,song.getSong_id());
+      statement.setInt(2, song.getSong_id());
       statement0.executeUpdate();
       ResultSet resultSet = statement.executeQuery();
-      if(resultSet.next())
+      if (resultSet.next())
       {
         return false;
       }

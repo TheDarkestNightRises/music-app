@@ -24,8 +24,7 @@ public class ServerModelAddToPlaylistImpl implements ServerModelAddToPlaylist
     }
   }
 
-  @Override public void addToPlaylist(User user, Playlist playlist,
-      Song currentSong) throws Exception
+  @Override public void addToPlaylist(User user, Playlist playlist, Song currentSong) throws Exception
   {
     dao.insertSongIntoPlaylist(playlist, currentSong);
   }

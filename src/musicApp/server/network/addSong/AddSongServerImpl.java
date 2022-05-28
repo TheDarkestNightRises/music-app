@@ -25,8 +25,7 @@ public class AddSongServerImpl implements AddSongServer
     return serverModel.getModelAddSong().getAlbumsOfUser(user);
   }
 
-  @Override public void addSong(String title, byte[] songBytes, Album album,
-      User user) throws Exception
+  @Override public void addSong(String title, byte[] songBytes, Album album, User user) throws Exception
   {
     serverModel.getModelAddSong().addSong(title, songBytes, album, user);
   }

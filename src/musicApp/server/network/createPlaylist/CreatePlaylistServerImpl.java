@@ -13,12 +13,11 @@ public class CreatePlaylistServerImpl implements CreatePLayListServer
 
   public CreatePlaylistServerImpl(ServerModel serverModel) throws RemoteException
   {
-    UnicastRemoteObject.exportObject(this,0);
+    UnicastRemoteObject.exportObject(this, 0);
     this.serverModel = serverModel;
   }
 
-  @Override public void createPlaylist(String title, String description,
-      User user) throws Exception
+  @Override public void createPlaylist(String title, String description, User user) throws Exception
   {
     serverModel.getServerModelCreatePlaylist().createPlaylist(title, description, user);
   }

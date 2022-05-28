@@ -15,8 +15,7 @@ public class Song implements Serializable
   {
   }
 
-  public Song(int song_id, String title, String file_path, String length,
-      Album album, Artist artist)
+  public Song(int song_id, String title, String file_path, String length, Album album, Artist artist)
 
   {
     this.song_id = song_id;
@@ -89,8 +88,7 @@ public class Song implements Serializable
 
   @Override public String toString()
   {
-    return "Song{" + "song_id=" + song_id + ", title='" + title + '\''
-        + ", file_path='" + file_path + '\'' + ", length='" + length + '\''
-        + ", album=" + album.getTitle() + ", artist=" + artist.getName() + '}';
+    return "Song{" + "song_id=" + song_id + ", title='" + title + '\'' + ", file_path='" + file_path + '\'' + ", length='"
+        + length + '\'' + ", album=" + album.getTitle() + ", artist=" + artist.getName() + '}';
   }
 }
