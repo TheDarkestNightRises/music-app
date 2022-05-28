@@ -2,17 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< Updated upstream
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
@@ -251,6 +249,9 @@
          </children>
       </VBox>
    </left>
+=======
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
+>>>>>>> Stashed changes
    <center>
       <VBox prefHeight="715.0" prefWidth="1045.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
@@ -310,4 +311,7 @@
          </children>
       </HBox>
    </right>
+   <left>
+      <VBox fx:id="navigationSubView" prefHeight="794.0" prefWidth="215.0" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>

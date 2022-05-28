@@ -32,13 +32,7 @@ public class MainMenuViewController implements ViewController {
     @FXML
     public VBox followListSubView;
     @FXML
-    public HBox createAlbum;
-    @FXML
-    public HBox removeAlbum;
-    @FXML
-    public HBox createSong;
-    @FXML
-    public HBox removeSong;
+    public VBox navigationSubView;
 
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
@@ -52,20 +46,7 @@ public class MainMenuViewController implements ViewController {
         initRandomSongs();
         openFollowList();
         openProfileCard();
-        if(isArtist())
-        {
-            createAlbum.setVisible(true);
-            removeAlbum.setVisible(true);
-            createSong.setVisible(true);
-            removeSong.setVisible(true);
-        }
-        else
-        {
-            createAlbum.setVisible(false);
-            removeAlbum.setVisible(false);
-            createSong.setVisible(false);
-            removeSong.setVisible(false);
-        }
+        openNavigation();
     }
 
 
@@ -97,12 +78,13 @@ public class MainMenuViewController implements ViewController {
         }).start();
     }
 
-
-    @FXML
-    public void openChat() {
-        viewHandler.openChat();
+    private void openFollowList() {
+        Parent followListRoot = viewHandler.openFollowListSubView();
+        followListSubView.getChildren().clear();
+        followListSubView.getChildren().add(followListRoot);
     }
 
+<<<<<<< Updated upstream
     public void openMain() { viewHandler.openMainMenu(); }
     public void openSettings() { viewHandler.openUpdateSettings(viewModelMainMenu.fetchUser());}
     public void openCreatePlaylist()
@@ -121,21 +103,17 @@ public class MainMenuViewController implements ViewController {
         viewHandler.openDeleteSong();
     }
     public void openRemovePlaylist() {viewHandler.openRemovePlaylist();}
+=======
+>>>>>>> Stashed changes
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
         profileCardContainer.getChildren().clear();
         profileCardContainer.getChildren().add(profileCardRoot);
     }
 
-    private void openFollowList() {
-        Parent followListRoot = viewHandler.openFollowListSubView();
-        followListSubView.getChildren().clear();
-        followListSubView.getChildren().add(followListRoot);
+    private void openNavigation() {
+        Parent navigationRoot = viewHandler.openNavigation();
+        navigationSubView.getChildren().clear();
+        navigationSubView.getChildren().add(navigationRoot);
     }
-    private boolean isArtist()
-    {
-         return  viewModelMainMenu.isArtist();
-    }
-
-
 }

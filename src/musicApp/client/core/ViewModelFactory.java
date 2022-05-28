@@ -14,6 +14,8 @@ import musicApp.client.views.login.LoginMainViewModel;
 import musicApp.client.views.mainMenu.MainMenuViewModel;
 import musicApp.client.views.deleteSong.DeleteSongViewModel;
 import musicApp.client.views.musicPlayer.MusicPlayerViewModel;
+import musicApp.client.views.navigationBar.NavigationViewModel;
+import musicApp.client.views.notification.NotificationViewModel;
 import musicApp.client.views.profile.ProfileViewModel;
 import musicApp.client.views.removeAlbum.RemoveAlbumViewModel;
 import musicApp.client.views.removePlaylist.RemovePlaylistViewModel;
@@ -47,6 +49,8 @@ public class ViewModelFactory {
     private AlbumViewModel albumViewModel;
     private SongViewModel songViewModel;
     private SingleViewModel singleViewModel;
+    private NotificationViewModel notificationViewModel;
+    private NavigationViewModel navigationViewModel;
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -190,5 +194,13 @@ public class ViewModelFactory {
         singleViewModel = new SingleViewModel(modelFactory.getMainModel());
         return singleViewModel;
     }
+
+    public NavigationViewModel getNavigationViewModel() {
+        if (navigationViewModel == null) {
+            navigationViewModel = new NavigationViewModel(modelFactory.getMainModel());
+        }
+        return navigationViewModel;
+    }
+
 }
 

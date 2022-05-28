@@ -504,5 +504,20 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+
+    public Parent openNavigation() {
+        try {
+            Parent root = loadFXML("../views/navigationBar/NavigationView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            return root;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 

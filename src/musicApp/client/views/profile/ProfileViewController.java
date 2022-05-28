@@ -175,36 +175,6 @@ public class ProfileViewController implements ViewController {
         return viewModel.fetchProfilePicture(picturePath);
     }
 
-    public void openSearch()
-    {
-        vh.openSearch();
-    }
-    public void openCreatePlaylist()
-    {
-        vh.openCreatePlaylist();
-    }
-    public void openSettings()
-    {
-        vh.openUpdateSettings(viewModel.fetchUser());
-    }
-    public void openAddAlbum()
-    {
-        vh.openAddAlbum();
-    }
-    public void openRemoveAlbum()
-    {
-        vh.openRemoveAlbum();
-    }
-    public void openAddSong()
-    {
-        vh.openAddSong();
-    }
-    public void openRemoveSong()
-    {
-        vh.openDeleteSong();
-    }
-    public void openMain(){vh.openMainMenu();}
-
     public void follow(){
         viewModel.follow(user);
     };
