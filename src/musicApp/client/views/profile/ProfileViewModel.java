@@ -1,5 +1,10 @@
 package musicApp.client.views.profile;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 import musicApp.client.model.MainModel;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -9,9 +14,14 @@ import musicApp.util.Subject;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ProfileViewModel implements Subject {
+    private StringProperty nameProperty;
+    private StringProperty descriptionProperty;
+    private ObjectProperty<Image> profilePicture;
+
     private MainModel mainModel;
     private PropertyChangeSupport support;
 
@@ -19,8 +29,19 @@ public class ProfileViewModel implements Subject {
     public ProfileViewModel(MainModel mainModel) {
         this.mainModel = mainModel;
         this.support = new PropertyChangeSupport(this);
+        this.nameProperty = new SimpleStringProperty();
+        this.descriptionProperty = new SimpleStringProperty();
+        this.profilePicture = new SimpleObjectProperty<>();
         this.mainModel.getProfileManager().addListener("newSongAddedToPlaylist", this::updatePlaylist);
         this.mainModel.getProfileManager().addListener("newPlaylist", this::onNewPlaylist);
+    }
+
+    public void init(User user) {
+        nameProperty.set(user.getUsername());
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fetchProfilePicture(user.getProfile_picture()));
+        Image image = new Image(byteArrayInputStream);
+        profilePicture.set(image);
+        descriptionProperty.set(user.getDescription());
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
@@ -71,4 +92,18 @@ public class ProfileViewModel implements Subject {
         User user0 = fetchUser();
         mainModel.getProfileManager().unfollow(user0, user);
     }
+
+    public void bindName(StringProperty textProperty) {
+        nameProperty.bindBidirectional(textProperty);
+    }
+
+    public void bindDescription(StringProperty textProperty) {
+        descriptionProperty.bindBidirectional(textProperty);
+    }
+
+    public void bindImage(ObjectProperty<Image> imageProperty) {
+        profilePicture.bindBidirectional(imageProperty);
+    }
+
+
 }

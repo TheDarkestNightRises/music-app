@@ -53,34 +53,24 @@ public class ProfileViewController implements ViewController {
         this.vh = vh;
         this.viewModel = vmf.getProfileViewModel();
         user = (User) args[0];
+        viewModel.bindDescription(profileDescription.textProperty());
+        viewModel.bindImage(profilePicture.imageProperty());
+        viewModel.bindName(profileName.textProperty());
         ArrayList<Playlist> playlists = viewModel.fetchPlaylistsForUser(user);
-        System.out.println(playlists);
         if (playlists == null) return;
         initPlaylistsView(playlists);
-        initProfileInfo(user);
+        viewModel.init(user);
         openFollowList();
         openProfileCard();
         openNavigation();
+        checkFollowButtonVisibility();
         viewModel.addListener("newPlaylist", this::onNewPlaylist);
-        User currentUser = viewModel.fetchUser();
-        if(user.getUsername().equals(currentUser.getUsername()))
-        {
-            follow.setVisible(false);
-            unfollow.setVisible(false);
-        }
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
         ArrayList<Playlist> playlists = new ArrayList<>();
         playlists.add((Playlist) event.getNewValue());
         initPlaylistsView(playlists);
-    }
-
-    private void initProfileInfo(User user) {
-        profileName.setText(user.getUsername());
-        Image image = new Image(new ByteArrayInputStream(fetchProfilePicture(user.getProfile_picture())));
-        profilePicture.setImage(image);
-        profileDescription.setText(user.getDescription());
     }
 
     private void openFollowList() {
@@ -137,6 +127,15 @@ public class ProfileViewController implements ViewController {
     };
 
     public void unfollow(){ viewModel.unfollow(user);}
+
+    private void checkFollowButtonVisibility() {
+        User currentUser = viewModel.fetchUser();
+        if(user.getUsername().equals(currentUser.getUsername()))
+        {
+            follow.setVisible(false);
+            unfollow.setVisible(false);
+        }
+    }
 
 
 }
