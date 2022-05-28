@@ -14,64 +14,42 @@ import musicApp.server.model.domainModel.User;
 import java.io.File;
 import java.sql.SQLException;
 
-public class ContactItemController implements ViewController
-{
+public class ContactItemController implements ViewController {
 
-  @FXML private Label nickname;
-  @FXML private ImageView status;
-  private ContactItemViewModel contactItemViewModel;
-  private ViewHandler viewHandler;
-  private User user;
+    @FXML
+    private Label nickname;
+    @FXML
+    private ImageView status;
 
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf, Object... args)
-  {
-   this.viewHandler = vh;
-   this.user = (User) args[0];
-   this.contactItemViewModel = vmf.getContactItemViewModel();
-   setData(user);
-  }
-  public void setData(User user)
-  {
-    nickname.setText(user.getUsername());
-    Image image = new Image(new File("src/musicApp/client/views/followList/offline.png").toURI().toString());
-    status.setImage(image);
-    if(userIsOnline(user))
-      setOnline();
-  }
+    private ContactItemViewModel contactItemViewModel;
+    private ViewHandler viewHandler;
+    private User user;
 
-  private boolean userIsOnline(User user)
-  {
-   return contactItemViewModel.isOnline(user);
-  }
-
-  public void setOnline()
-  {
-    Image image = new Image(new File("src/musicApp/client/views/followList/online.png").toURI().toString());
-    status.setImage(image);
-  }
-
-
-
-  public void openProfile()
-  {
-    try
-    {
-      User user = UsersDAOImpl.getInstance().getUserByName(nickname.getText());
-      if(isArtist(user))
-        viewHandler.openArtistProfile(user);
-           else
-             viewHandler.openProfile(user);
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
+        this.viewHandler = vh;
+        this.user = (User) args[0];
+        this.contactItemViewModel = vmf.getContactItemViewModel();
+        contactItemViewModel.bindNickname(nickname.textProperty());
+        contactItemViewModel.bindImage(status.imageProperty());
+        contactItemViewModel.init(user);
     }
 
+    public void openProfile() {
+        try {
+            User user = UsersDAOImpl.getInstance().getUserByName(nickname.getText());
+            if (isArtist(user))
+                viewHandler.openArtistProfile(user);
+            else
+                viewHandler.openProfile(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-  }
 
-  public boolean isArtist(User user)
-  {
-    return contactItemViewModel.isArtist(user);
-  }
+    }
+
+    public boolean isArtist(User user) {
+        return contactItemViewModel.isArtist(user);
+    }
 }
