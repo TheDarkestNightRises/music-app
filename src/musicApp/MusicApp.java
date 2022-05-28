@@ -26,18 +26,13 @@ public class MusicApp extends Application {
 
     @Override
     public void init() throws Exception {
-        //Heavy calculation connecting to database whatever.
+
         connectionFactory = ConnectionFactory.getInstance();
         Connection connection = connectionFactory.getConnection();
         ClientFactory clientFactory = new ClientFactory();
         this.modelFactory = new ModelFactory(clientFactory);
         ViewModelFactory vmf = new ViewModelFactory(modelFactory);
         this.vh = new ViewHandler(vmf);
-//        double limit = 10000;
-//        for (int i = 0; i < limit; i++) {
-//            double progress = (100 * i) / limit;
-//            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
-//        }
     }
 
     @Override

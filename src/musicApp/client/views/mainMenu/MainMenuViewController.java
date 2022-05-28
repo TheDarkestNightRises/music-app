@@ -120,6 +120,7 @@ public class MainMenuViewController implements ViewController {
     {
         viewHandler.openDeleteSong();
     }
+    public void openRemovePlaylist() {viewHandler.openRemovePlaylist();}
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
         profileCardContainer.getChildren().clear();

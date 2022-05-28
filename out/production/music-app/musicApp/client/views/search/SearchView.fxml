@@ -30,7 +30,7 @@
             </HBox>
             <VBox prefHeight="394.0" prefWidth="215.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" styleClass="selected" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
                            <graphic>
@@ -54,7 +54,7 @@
                         <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openSearch">
                            <graphic>
@@ -75,7 +75,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openChat">
                            <graphic>
@@ -96,7 +96,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openSettings">
                            <graphic>
@@ -117,7 +117,28 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox fx:id="removePlaylist" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
+                     <children>
+                        <Hyperlink onAction="#openRemovePlaylist">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Remove Playlist" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openAddAlbum">
                            <graphic>
@@ -138,7 +159,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="removeAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox fx:id="removeAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openRemoveAlbum">
                            <graphic>
@@ -159,7 +180,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="createSong" alignment="CENTER" layoutX="10.0" layoutY="245.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox fx:id="createSong" alignment="CENTER" layoutX="10.0" layoutY="245.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openAddSong">
                            <graphic>
@@ -180,7 +201,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox fx:id="removeSong" alignment="CENTER" layoutX="10.0" layoutY="251.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                  <HBox fx:id="removeSong" alignment="CENTER" layoutX="10.0" layoutY="251.0" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                      <children>
                         <Hyperlink onAction="#openRemoveSong">
                            <graphic>
@@ -203,12 +224,12 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="29.0" prefWidth="215.0">
+            <VBox prefHeight="32.0" prefWidth="215.0">
                <children>
-                  <Pane prefHeight="49.0" prefWidth="215.0" />
+                  <Pane prefHeight="52.0" prefWidth="215.0" />
                </children>
             </VBox>
-            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="215.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
+            <HBox alignment="CENTER" prefHeight="57.0" prefWidth="215.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">
                <children>
                   <Hyperlink alignment="CENTER" onAction="#openCreatePlaylist">
                      <graphic>

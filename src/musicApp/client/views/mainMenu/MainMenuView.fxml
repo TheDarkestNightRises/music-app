@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="1356.0" styleClass="primary_color" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.mainMenu.MainMenuViewController">
    <left>
       <VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -115,6 +115,27 @@
                         </Label>
                      </children>
                   </HBox>
+                  <HBox fx:id="removePlaylist" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
+                     <children>
+                        <Hyperlink onAction="#openRemovePlaylist">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/ic_add.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Hyperlink>
+                        <Label prefHeight="27.0" prefWidth="129.0" text="Remove Playlist" textFill="#7e7b7b">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                   <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@css/style.css">
                      <children>
                         <Hyperlink onAction="#openAddAlbum">
@@ -201,9 +222,9 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="29.0" prefWidth="215.0">
+            <VBox prefHeight="36.0" prefWidth="215.0">
                <children>
-                  <Pane prefHeight="49.0" prefWidth="215.0" />
+                  <Pane prefHeight="44.0" prefWidth="215.0" />
                </children>
             </VBox>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="215.0" spacing="20.0" styleClass="top-border" stylesheets="@css/style.css">

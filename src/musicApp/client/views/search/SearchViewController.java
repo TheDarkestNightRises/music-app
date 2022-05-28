@@ -144,6 +144,9 @@ public class SearchViewController implements ViewController {
     {
         viewHandler.openDeleteSong();
     }
+    public void openRemovePlaylist(){viewHandler.openRemovePlaylist();}
+
+
 
     private void openFollowList() {
         Parent followListRoot = viewHandler.openFollowListSubView();
