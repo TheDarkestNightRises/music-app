@@ -1,11 +1,13 @@
 package musicApp.client.views.search;
 
+import javafx.application.Platform;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import musicApp.client.model.MainModel;
+import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class SearchViewModel implements Subject {
     private ObservableList<Song> songs;
     private SimpleStringProperty search;
+    private SimpleStringProperty searchStatus;
     private PropertyChangeSupport support;
     private ObservableList<SearchComboBoxChoices> searchComboBoxChoices;
 
@@ -27,13 +30,34 @@ public class SearchViewModel implements Subject {
         this.mainModel = mainModel;
         this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
         this.search = new SimpleStringProperty();
+        this.searchStatus = new SimpleStringProperty();
         this.support = new PropertyChangeSupport(this);
-        this.mainModel.getSearchManager().addListener("newSearchSong", this::updateSearch);
-        this.mainModel.getSearchManager().addListener("newSearchAlbum", this::updateSearch);
-        this.mainModel.getSearchManager().addListener("newSearchProfile", this::updateSearch);
+        this.mainModel.getSearchManager().addListener("newSearchSong", this::updateSearchSong);
+        this.mainModel.getSearchManager().addListener("newSearchAlbum", this::updateSearchAlbum);
+        this.mainModel.getSearchManager().addListener("newSearchProfile", this::updateSearchProfile);
     }
 
-    private void updateSearch(PropertyChangeEvent event) {
+    private void updateSearchSong(PropertyChangeEvent event) {
+        ArrayList<Song> songs = (ArrayList<Song>) event.getNewValue();
+        Platform.runLater(()->{
+            if (songs.isEmpty()) searchStatus.set("No songs found");
+        });
+        support.firePropertyChange(event);
+    }
+
+    private void updateSearchAlbum(PropertyChangeEvent event) {
+        ArrayList<Album> albums = (ArrayList<Album>) event.getNewValue();
+        Platform.runLater(()->{
+            if (albums.isEmpty()) searchStatus.set("No albums found");
+        });
+        support.firePropertyChange(event);
+    }
+
+    private void updateSearchProfile(PropertyChangeEvent event) {
+        ArrayList<User> users = (ArrayList<User>) event.getNewValue();
+        Platform.runLater(()->{
+            if (users.isEmpty()) searchStatus.set("No users found");
+        });
         support.firePropertyChange(event);
     }
 
@@ -53,6 +77,10 @@ public class SearchViewModel implements Subject {
         search.bindBidirectional(property);
     }
 
+    public void bindSearchText(StringProperty textProperty) {
+        searchStatus.bindBidirectional(textProperty);
+    }
+
     public ArrayList<Song> fetchSortedList() {
         return mainModel.getSearchManager().fetchSortedList();
     }
@@ -68,11 +96,27 @@ public class SearchViewModel implements Subject {
     }
 
     public void search(SearchComboBoxChoices selectedItem) {
-        switch (selectedItem) {
-            case Album -> mainModel.getSearchManager().searchAlbum(search.get());
-            case Profile -> mainModel.getSearchManager().searchProfile(search.get());
-            default -> mainModel.getSearchManager().searchSong(search.get());
+        if (inputIsCorrect(selectedItem)) {
+            switch (selectedItem) {
+                case Album -> mainModel.getSearchManager().searchAlbum(search.get());
+                case Profile -> mainModel.getSearchManager().searchProfile(search.get());
+                default -> mainModel.getSearchManager().searchSong(search.get());
+            }
         }
+    }
+
+    public boolean inputIsCorrect(SearchComboBoxChoices selectedItem) {
+        searchStatus.set("Search");
+        if (selectedItem == null) {
+            searchStatus.set("Select a category");
+            return false;
+        }
+        String searchInput = search.get();
+        if (searchInput == null || "".equals(searchInput)) {
+            searchStatus.set("Input a value");
+            return false;
+        }
+        return true;
     }
 
 
@@ -89,9 +133,10 @@ public class SearchViewModel implements Subject {
         return searchComboBoxChoices;
     }
 
-  public boolean isArtist()
-  {
-      User user = mainModel.getLogInManager().getUser();
-      return mainModel.getProfileManager().isArtist(user);
-  }
+    public boolean isArtist() {
+        User user = mainModel.getLogInManager().getUser();
+        return mainModel.getProfileManager().isArtist(user);
+    }
+
+
 }

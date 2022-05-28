@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -15,11 +16,8 @@ import musicApp.client.views.customControls.AlbumsHBoxControl;
 import musicApp.client.views.customControls.ProfileCardVboxControl;
 import musicApp.client.views.customControls.SinglesHBoxControl;
 import musicApp.server.model.domainModel.Album;
-import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
-import musicApp.server.model.search.SearchResultAlbum;
-import musicApp.server.model.search.SearchResultSong;
 
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
@@ -44,6 +42,9 @@ public class SearchViewController implements ViewController {
     public HBox createSong;
     @FXML
     public HBox removeSong;
+    @FXML
+    public Label searchLabel;
+
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
 
@@ -54,20 +55,18 @@ public class SearchViewController implements ViewController {
         searchViewModel.init();
         comboBox.setItems(searchViewModel.getComboBoxChoices());
         searchViewModel.bindSearch(searchTextField.textProperty());
+        searchViewModel.bindSearchText(searchLabel.textProperty());
         searchViewModel.addListener("newSearchSong", this::showSongSearchResults);
         searchViewModel.addListener("newSearchAlbum", this::showAlbumSearchResults);
         searchViewModel.addListener("newSearchProfile", this::showProfileSearchResults);
         openFollowList();
         openProfileCard();
-        if(isArtist())
-        {
+        if (isArtist()) {
             createAlbum.setVisible(true);
             removeAlbum.setVisible(true);
             createSong.setVisible(true);
             removeSong.setVisible(true);
-        }
-        else
-        {
+        } else {
             createAlbum.setVisible(false);
             removeAlbum.setVisible(false);
             createSong.setVisible(false);
@@ -75,9 +74,8 @@ public class SearchViewController implements ViewController {
         }
     }
 
-    private boolean isArtist()
-    {
-        return  searchViewModel.isArtist();
+    private boolean isArtist() {
+        return searchViewModel.isArtist();
     }
 
     private void showProfileSearchResults(PropertyChangeEvent event) {
@@ -129,19 +127,23 @@ public class SearchViewController implements ViewController {
         viewHandler.openSearch();
     }
 
-    public void openCreatePlaylist()
-    {
+    public void openCreatePlaylist() {
         viewHandler.openCreatePlaylist();
     }
 
-    public void openAddAlbum() {viewHandler.openAddAlbum();}
-    public void openRemoveAlbum(){viewHandler.openRemoveAlbum();}
-    public void openAddSong()
-    {
+    public void openAddAlbum() {
+        viewHandler.openAddAlbum();
+    }
+
+    public void openRemoveAlbum() {
+        viewHandler.openRemoveAlbum();
+    }
+
+    public void openAddSong() {
         viewHandler.openAddSong();
     }
-    public void openRemoveSong()
-    {
+
+    public void openRemoveSong() {
         viewHandler.openDeleteSong();
     }
     public void openRemovePlaylist(){viewHandler.openRemovePlaylist();}
