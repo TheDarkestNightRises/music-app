@@ -1,4 +1,4 @@
-package musicApp.client.views.profile;
+package musicApp.client.views.album;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

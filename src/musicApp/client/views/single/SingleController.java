@@ -1,4 +1,4 @@
-package musicApp.client.views.profile;
+package musicApp.client.views.single;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,7 +14,7 @@ import musicApp.server.model.domainModel.Song;
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
-public class SinglesController  implements ViewController{
+public class SingleController implements ViewController{
     @FXML
     private ImageView img;
 

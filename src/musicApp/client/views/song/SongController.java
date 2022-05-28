@@ -1,4 +1,4 @@
-package musicApp.client.views.profile;
+package musicApp.client.views.song;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

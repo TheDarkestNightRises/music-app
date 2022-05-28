@@ -16,10 +16,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import musicApp.client.views.cardForUserSearch.UserCardViewController;
-import musicApp.client.views.profile.AlbumViewController;
-import musicApp.client.views.profile.SinglesController;
-import musicApp.client.views.profile.SongController;
-import musicApp.client.views.profileCard.ProfileCardViewController;
+import musicApp.client.views.album.AlbumViewController;
+import musicApp.client.views.single.SingleController;
+import musicApp.client.views.song.SongController;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -255,7 +254,7 @@ public class ViewHandler {
 
     public VBox openSongView(Song song) {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../views/song/SongView.fxml"));
         VBox vBox = null;
         try {
             vBox = fxmlLoader.load();
@@ -270,14 +269,14 @@ public class ViewHandler {
 
     public VBox openSingleView(Song song) {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/single.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../views/single/single.fxml"));
         VBox vBox = null;
         try {
             vBox = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        SinglesController singlesController = fxmlLoader.getController();
+        SingleController singlesController = fxmlLoader.getController();
         singlesController.init(this, vmf, song);
         singlesController.setData(song);
         return vBox;
@@ -333,7 +332,7 @@ public class ViewHandler {
 
     public VBox openAlbumView(Album album) {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("../views/profile/AlbumView.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("../views/album/AlbumView.fxml"));
         VBox vBox = null;
         try {
             vBox = fxmlLoader.load();
@@ -390,7 +389,7 @@ public class ViewHandler {
                 for (Song song : songs) {
                     counterUntilSpace++;
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../views/profile/song.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("../views/profile/SongView.fxml"));
                     VBox vBox = null;
                     try {
                         vBox = fxmlLoader.load();
