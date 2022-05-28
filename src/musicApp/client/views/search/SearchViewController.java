@@ -35,15 +35,9 @@ public class SearchViewController implements ViewController {
     @FXML
     public ComboBox<SearchComboBoxChoices> comboBox;
     @FXML
-    public HBox createAlbum;
-    @FXML
-    public HBox removeAlbum;
-    @FXML
-    public HBox createSong;
-    @FXML
-    public HBox removeSong;
-    @FXML
     public Label searchLabel;
+    @FXML
+    public VBox navigationSubView;
 
     private SearchViewModel searchViewModel;
     private ViewHandler viewHandler;
@@ -61,22 +55,9 @@ public class SearchViewController implements ViewController {
         searchViewModel.addListener("newSearchProfile", this::showProfileSearchResults);
         openFollowList();
         openProfileCard();
-        if (isArtist()) {
-            createAlbum.setVisible(true);
-            removeAlbum.setVisible(true);
-            createSong.setVisible(true);
-            removeSong.setVisible(true);
-        } else {
-            createAlbum.setVisible(false);
-            removeAlbum.setVisible(false);
-            createSong.setVisible(false);
-            removeSong.setVisible(false);
-        }
+        openNavigation();
     }
 
-    private boolean isArtist() {
-        return searchViewModel.isArtist();
-    }
 
     private void showProfileSearchResults(PropertyChangeEvent event) {
         new Thread(() -> {
@@ -119,36 +100,6 @@ public class SearchViewController implements ViewController {
         searchViewModel.search(comboBox.getSelectionModel().getSelectedItem());
     }
 
-    public void openChat() {
-        viewHandler.openChat();
-    }
-
-    public void openSearch() {
-        viewHandler.openSearch();
-    }
-
-    public void openCreatePlaylist() {
-        viewHandler.openCreatePlaylist();
-    }
-
-    public void openAddAlbum() {
-        viewHandler.openAddAlbum();
-    }
-
-    public void openRemoveAlbum() {
-        viewHandler.openRemoveAlbum();
-    }
-
-    public void openAddSong() {
-        viewHandler.openAddSong();
-    }
-
-    public void openRemoveSong() {
-        viewHandler.openDeleteSong();
-    }
-    public void openRemovePlaylist(){viewHandler.openRemovePlaylist();}
-
-
 
     private void openFollowList() {
         Parent followListRoot = viewHandler.openFollowListSubView();
@@ -156,11 +107,9 @@ public class SearchViewController implements ViewController {
         followListSubView.getChildren().add(followListRoot);
     }
 
-    public void openMain() {
-        viewHandler.openMainMenu();
-    }
-
-    public void openSettings() {
-        viewHandler.openUpdateSettings(searchViewModel.fetchUser());
+    private void openNavigation() {
+        Parent navigationRoot = viewHandler.openNavigation();
+        navigationSubView.getChildren().clear();
+        navigationSubView.getChildren().add(navigationRoot);
     }
 }

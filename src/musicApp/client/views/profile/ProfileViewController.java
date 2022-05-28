@@ -39,17 +39,11 @@ public class ProfileViewController implements ViewController {
     @FXML
     public HBox profileCardContainer;
     @FXML
-    public HBox createAlbum;
-    @FXML
-    public HBox removeAlbum;
-    @FXML
-    public HBox createSong;
-    @FXML
-    public HBox removeSong;
-    @FXML
     public Button follow;
     @FXML
     public Button unfollow;
+    @FXML
+    public VBox navigationSubView;
     private User user;
     private ViewHandler vh;
     private ProfileViewModel viewModel;
@@ -66,33 +60,14 @@ public class ProfileViewController implements ViewController {
         initProfileInfo(user);
         openFollowList();
         openProfileCard();
+        openNavigation();
         viewModel.addListener("newPlaylist", this::onNewPlaylist);
-        User user1 = viewModel.fetchUser();
-        if(user.getUsername().equals(user1.getUsername()))
+        User currentUser = viewModel.fetchUser();
+        if(user.getUsername().equals(currentUser.getUsername()))
         {
             follow.setVisible(false);
             unfollow.setVisible(false);
         }
-
-        if(isArtist())
-        {
-            createAlbum.setVisible(true);
-            removeAlbum.setVisible(true);
-            createSong.setVisible(true);
-            removeSong.setVisible(true);
-        }
-        else
-        {
-            createAlbum.setVisible(false);
-            removeAlbum.setVisible(false);
-            createSong.setVisible(false);
-            removeSong.setVisible(false);
-        }
-    }
-
-    private boolean isArtist()
-    {
-        return viewModel.isArtist();
     }
 
     private void onNewPlaylist(PropertyChangeEvent event) {
@@ -120,32 +95,14 @@ public class ProfileViewController implements ViewController {
         profileCardContainer.getChildren().add(profileCardRoot);
     }
 
-    @FXML
-    public void openChat() {
-        vh.openChat();
+    private void openNavigation() {
+        Parent navigationRoot = vh.openNavigation();
+        navigationSubView.getChildren().clear();
+        navigationSubView.getChildren().add(navigationRoot);
     }
 
     public void initPlaylistsView(ArrayList<Playlist> playlists) {
         for (Playlist playlist : playlists) {
-//            Text playlistTitleText = vh.generateLoadingText();
-//            HBox containerHBox = new HBox();
-//            containerHBox.setAlignment(Pos.CENTER_LEFT);
-//            containerHBox.setPadding(new Insets(10));
-//            containerHBox.setSpacing(10);
-//            containerHBox.getChildren().add(playlistTitleText);
-//            profileContainer.getChildren().add(containerHBox);
-//            VBox vBoxContainer = new VBox();
-//            profileContainer.getChildren().add(vBoxContainer);
-//            new Thread(() -> {
-//                ArrayList<Song> songs = viewModel.fetchSongsForPlaylist(playlist);
-//                System.out.println(songs);
-//                Platform.runLater(() -> {
-//                    vBoxContainer.getChildren().add(vh.generateView(songs));
-//                    playlistTitleText.setText(playlist.getTitle());
-//                    containerHBox.getChildren().add(vh.generateTitleHBox(songs));
-//                });
-//            }).start();
-
             LoadingTextControl loadingTextControl = new LoadingTextControl();
             HBox containerHBox = new HBox();
             containerHBox.setAlignment(Pos.CENTER_LEFT);

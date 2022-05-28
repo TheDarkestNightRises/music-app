@@ -262,7 +262,7 @@ public class ViewHandler {
             e.printStackTrace();
         }
         SongController songController = fxmlLoader.getController();
-        songController.init(this, vmf);
+        songController.init(this, vmf, song);
         return vBox;
     }
 
@@ -324,8 +324,6 @@ public class ViewHandler {
         stage.setResizable(false);
         stage.centerOnScreen();
     }
-
-
 
 
     public VBox openAlbumView(Album album) {
@@ -449,8 +447,7 @@ public class ViewHandler {
         }
     }
 
-    public void openAddToPlaylist(Song song)
-    {
+    public void openAddToPlaylist(Song song) {
         try {
             Parent root = loadFXML("../views/addToPlaylist/AddToPlaylistView.fxml", song);
             Scene signUp = new Scene(root);
@@ -464,20 +461,20 @@ public class ViewHandler {
         }
     }
 
-  public void openAddAlbum()
-  {
-      try {
-          Parent root = loadFXML("../views/addAlbum/AddAlbumView.fxml");
-          Scene signUp = new Scene(root);
-          stage.setTitle("Add song to playlist playlist");
-          stage.setScene(signUp);
-          stage.show();
-          stage.setResizable(false);
-          stage.centerOnScreen();
-      } catch (IOException e) {
-          e.printStackTrace();
-      }
-  }
+    public void openAddAlbum() {
+        try {
+            Parent root = loadFXML("../views/addAlbum/AddAlbumView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Add song to playlist playlist");
+            stage.setScene(signUp);
+            stage.show();
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void openDeleteSong() {
         try {
             Parent root = loadFXML("../views/deleteSong/DeleteSongView.fxml");
@@ -491,6 +488,7 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+
     public void openAddSong() {
         try {
             Parent root = loadFXML("../views/addSong/UploadSongView.fxml");

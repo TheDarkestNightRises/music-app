@@ -84,27 +84,6 @@ public class MainMenuViewController implements ViewController {
         followListSubView.getChildren().add(followListRoot);
     }
 
-<<<<<<< Updated upstream
-    public void openMain() { viewHandler.openMainMenu(); }
-    public void openSettings() { viewHandler.openUpdateSettings(viewModelMainMenu.fetchUser());}
-    public void openCreatePlaylist()
-    {
-        viewHandler.openCreatePlaylist();
-    }
-    public void openSearch() {viewHandler.openSearch();}
-    public void openAddAlbum() {viewHandler.openAddAlbum();}
-    public void openRemoveAlbum(){viewHandler.openRemoveAlbum();}
-    public void openAddSong()
-    {
-        viewHandler.openAddSong();
-    }
-    public void openRemoveSong()
-    {
-        viewHandler.openDeleteSong();
-    }
-    public void openRemovePlaylist() {viewHandler.openRemovePlaylist();}
-=======
->>>>>>> Stashed changes
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
         profileCardContainer.getChildren().clear();

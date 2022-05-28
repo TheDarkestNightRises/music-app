@@ -132,11 +132,4 @@ public class SearchViewModel implements Subject {
     public ObservableList<SearchComboBoxChoices> getComboBoxChoices() {
         return searchComboBoxChoices;
     }
-
-    public boolean isArtist() {
-        User user = mainModel.getLogInManager().getUser();
-        return mainModel.getProfileManager().isArtist(user);
-    }
-
-
 }
