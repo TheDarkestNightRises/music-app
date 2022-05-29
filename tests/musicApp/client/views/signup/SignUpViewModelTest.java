@@ -20,11 +20,11 @@ class SignUpViewModelTest {
     @BeforeEach
     public void setUp() {
         viewModel = new SignUpViewModel(new FakeSignUpModel());
-        username = new SimpleStringProperty();
-        password = new SimpleStringProperty();
-        error = new SimpleStringProperty();
-        email = new SimpleStringProperty();
-        repeatPassword = new SimpleStringProperty();
+        username = new SimpleStringProperty("");
+        password = new SimpleStringProperty("");
+        error = new SimpleStringProperty("");
+        email = new SimpleStringProperty("");
+        repeatPassword = new SimpleStringProperty("");
         viewModel.bindUsername(username);
         viewModel.bindPassword(password);
         viewModel.bindError(error);
@@ -34,39 +34,136 @@ class SignUpViewModelTest {
 
     @Test
     public void newViewModelIsEmpty() {
-        assertNull(username.get());
-        assertNull(password.get());
-        assertNull(error.get());
-        assertNull(email.get());
-        assertNull(repeatPassword.get());
+        assertEquals("", username.get());
+        assertEquals("", error.get());
+        assertEquals("", repeatPassword.get());
+        assertEquals("", password.get());
     }
 
     @Test
     public void canBeReset() {
         viewModel.reset();
-        assertEquals("",username.get());
-        assertEquals("",password.get());
-        assertEquals("",email.get());
-        assertEquals("",error.get());
-        assertEquals("",repeatPassword.get());
+        assertEquals("", username.get());
+        assertEquals("", password.get());
+        assertEquals("", email.get());
+        assertEquals("", error.get());
+        assertEquals("", repeatPassword.get());
     }
 
     @Test
-    public void assignValuesToUsernamePasswordEmailDoesntChangeError(){
+    public void assignValuesToUsernamePasswordEmailDoesntChangeError() {
         username.set("emanuel");
         password.set("wdadxsada");
         repeatPassword.set("dasdaasd");
         email.set("lol@yahoo.com");
-        assertNull(error.get());
+        assertEquals("", error.get());
+    }
+
+    @Test
+    public void userNameExistsIsTrue() {
+        username.set("emanuel");
+        assertTrue(viewModel.UsernameExists());
     }
 
     @Test
     public void userNameExistsChangesError() {
         username.set("emanuel");
-        viewModel.registerValidation();
-        assertEquals("",error.get());
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Username already exists!", error.get());
+    }
+
+    @Test
+    public void noDataInsertedChangesError() {
+        assertFalse(viewModel.registerValidation());
+        assertEquals("No data inserted!", error.get());
+    }
+
+    @Test
+    public void userNameNullChangesError() {
+        password.set("re1231245");
+        repeatPassword.set("re1231245");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Username should not be null!", error.get());
+    }
+
+    @Test
+    public void passwordNullChangesError() {
+        username.set("lol1234");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Password should not be null!", error.get());
+    }
+
+    @Test
+    public void emailNullChangesError() {
+        username.set("lolwhatever");
+        password.set("re2124");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Email should not be null!", error.get());
+    }
+
+    @Test
+    public void passwordWithout8CharactersChangesError() {
+        username.set("lolwhatever");
+        password.set("re212");
+        email.set("lol@yahoo.com");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Password must contain at least 8 characters!", error.get());
     }
 
 
+    @Test
+    public void passwordWithout1DigitChangesError() {
+        username.set("lolwhatever");
+        password.set("resdasdadasda");
+        email.set("lol@yahoo.com");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Password must contain at least one digit!", error.get());
+    }
 
+    @Test
+    public void passwordWithoutUppercaseChangesError() {
+        username.set("lolwhatever");
+        password.set("resdasdadasda1");
+        email.set("lol@yahoo.com");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Password must contain at least one uppercase!", error.get());
+    }
+
+    @Test
+    public void emailNotValidChangesError() {
+        username.set("lolwhatever");
+        password.set("Resdasdadasda1");
+        email.set("lolm");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Email is not valid!", error.get());
+    }
+
+    @Test
+    public void differentPasswordChangesError() {
+        username.set("lolwhatever");
+        password.set("Resdasdadasda1");
+        email.set("lol@yahoo.com");
+        assertFalse(viewModel.registerValidation());
+        assertEquals("Password does not match!", error.get());
+    }
+
+    @Test
+    public void goodValidationWorks() {
+        username.set("lolwhatever");
+        password.set("Resdasdadasda1");
+        repeatPassword.set("Resdasdadasda1");
+        email.set("lol@yahoo.com");
+        assertTrue(viewModel.registerValidation());
+        assertEquals("", error.get());
+    }
+
+    @Test
+    public void createGoodUserWorks(){
+        username.set("lolwhatever");
+        password.set("Resdasdadasda1");
+        repeatPassword.set("Resdasdadasda1");
+        email.set("lol@yahoo.com");
+        assertTrue(viewModel.createUser());
+        assertEquals("", error.get());
+    }
 }
