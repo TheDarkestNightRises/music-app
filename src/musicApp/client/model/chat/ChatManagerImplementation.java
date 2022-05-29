@@ -19,7 +19,6 @@ public class ChatManagerImplementation implements ChatManager
   public ChatManagerImplementation(Client client)
   {
     this.client = client;
-    client.startClient();
     client.addListener("NewLogEntry", this::onNewLogEntry);
     client.addListener("MessageAdded", this::onNewMessage);
   }

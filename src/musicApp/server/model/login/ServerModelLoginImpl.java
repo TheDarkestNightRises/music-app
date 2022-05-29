@@ -44,6 +44,7 @@ public class ServerModelLoginImpl implements ServerModelLogin {
 
     @Override
     public synchronized void disconnect(User user) {
+        if (user == null) return;
         for (User currentUser : userList) {
             if (currentUser.getUsername().equals(user.getUsername()))
             {

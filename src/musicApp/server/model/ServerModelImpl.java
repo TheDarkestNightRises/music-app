@@ -51,7 +51,6 @@ public class ServerModelImpl implements ServerModel
   private ServerModelAddToPlaylist serverModelAddToPlaylist;
   private ServerModelAddAlbum serverModelAddAlbum;
   private ServerModelRemoveAlbum serverModelRemoveAlbum;
-  private PropertyChangeSupport support;
   private ServerModelAddSong serverModelAddSong;
   private ServerModelDeleteSong serverModelDeleteSong;
   private ServerModelRemovePlaylist serverModelRemovePlaylist;
