@@ -1,5 +1,6 @@
 package musicApp.client.views.log;
 
+import musicApp.client.model.chat.ChatManager;
 import musicApp.shared.LogEntry;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -14,17 +15,17 @@ public class LogViewModel
 {
 
   private ObservableList<LogEntry> logItems;
-  private MainModel mainModel;
+  private ChatManager chatManager;
   private StringProperty date;
   private StringProperty time;
   private StringProperty text;
 
-  public LogViewModel(MainModel mainModel)
+  public LogViewModel(ChatManager chatManager)
   {
 
     this.logItems = new SimpleListProperty<>(FXCollections.observableArrayList());
-    this.mainModel = mainModel;
-    mainModel.getChatManager().addListener("NewLogEntry", this::onNewLogEntry);
+    this.chatManager = chatManager;
+    chatManager.addListener("NewLogEntry", this::onNewLogEntry);
     this.date = new SimpleStringProperty("");
     this.time = new SimpleStringProperty("");
     this.text = new SimpleStringProperty("");
@@ -35,7 +36,7 @@ public class LogViewModel
   }
 
   void loadLogs() {
-    List<LogEntry> logList = mainModel.getChatManager().getLog();
+    List<LogEntry> logList = chatManager.getLog();
     logItems = FXCollections.observableArrayList(logList);
   }
 

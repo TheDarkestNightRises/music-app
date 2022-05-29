@@ -1,27 +1,27 @@
 package musicApp.client.views.followList;
 
+import musicApp.client.model.followList.FollowListManager;
+import musicApp.client.model.login.LogInManager;
 import musicApp.server.model.domainModel.User;
 
 import java.util.List;
 
-public class FollowListViewModel
-{
+public class FollowListViewModel {
 
-  private MainModel model;
+    private LogInManager loginManager;
+    private FollowListManager followListManager;
 
-  public FollowListViewModel(MainModel model)
-  {
-    this.model = model;
-  }
+    public FollowListViewModel(LogInManager loginManager, FollowListManager followListManager) {
+        this.loginManager = loginManager;
+        this.followListManager = followListManager;
+    }
 
-  public List<User> getFollowList()
-  {
-    User user = model.getLogInManager().getUser();
-    return model.getFollowListManager().getFollowList(user);
-  }
+    public List<User> getFollowList() {
+        User user = loginManager.getUser();
+        return followListManager.getFollowList(user);
+    }
 
-  public boolean isOnline(User user)
-  {
-    return model.getFollowListManager().isOnline(user);
-  }
+    public boolean isOnline(User user) {
+        return followListManager.isOnline(user);
+    }
 }

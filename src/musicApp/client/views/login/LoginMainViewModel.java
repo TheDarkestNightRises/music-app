@@ -1,5 +1,6 @@
 package musicApp.client.views.login;
 
+import musicApp.client.model.login.LogInManager;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
@@ -10,13 +11,13 @@ import java.sql.SQLException;
 
 public class LoginMainViewModel {
 
-    private MainModel model;
+    private LogInManager logInManager;
     private StringProperty username;
     private StringProperty password;
     private StringProperty error;
 
-    public LoginMainViewModel(MainModel model) {
-        this.model = model;
+    public LoginMainViewModel(LogInManager logInManager) {
+        this.logInManager = logInManager;
         this.username = new SimpleStringProperty("");
         this.password = new SimpleStringProperty("");
         this.error = new SimpleStringProperty("");
@@ -28,7 +29,7 @@ public class LoginMainViewModel {
 
     private boolean accountDoesNotExist()
     {
-        return model.getLogInManager().accountDoesNotExist(username.get(), password.get());
+        return logInManager.accountDoesNotExist(username.get(), password.get());
     }
 
     public StringProperty usernameProperty() {
@@ -50,7 +51,7 @@ public class LoginMainViewModel {
     }
 
     public User getUser() {
-        return model.getLogInManager().getUser();
+        return logInManager.getUser();
     }
 
     public boolean loginValidation()
@@ -69,7 +70,7 @@ public class LoginMainViewModel {
             error.set("The password is wrong");
             return false;
         }
-        if(model.getLogInManager().signIn(username.get(), password.get()))
+        if(logInManager.signIn(username.get(), password.get()))
             return true;
         else
         {

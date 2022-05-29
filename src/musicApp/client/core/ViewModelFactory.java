@@ -70,7 +70,7 @@ public class ViewModelFactory {
 
     public LogViewModel getLogViewModel() {
         if (logViewModel == null)
-            logViewModel = new LogViewModel(modelFactory.getMainModel());
+            logViewModel = new LogViewModel(modelFactory.getChatManager());
         return logViewModel;
     }
 
@@ -82,7 +82,7 @@ public class ViewModelFactory {
 
     public LoginMainViewModel getLoginMainViewModel() {
         if (loginMainViewModel == null)
-            loginMainViewModel = new LoginMainViewModel(modelFactory.getMainModel());
+            loginMainViewModel = new LoginMainViewModel(modelFactory.getLoginManager());
         return loginMainViewModel;
     }
 
@@ -100,7 +100,7 @@ public class ViewModelFactory {
 
     public FollowListViewModel getFollowListViewModel() {
         if (followListViewModel == null)
-            followListViewModel = new FollowListViewModel(modelFactory.getMainModel());
+            followListViewModel = new FollowListViewModel(modelFactory.getLoginManager(),modelFactory.getFollowListManager());
         return followListViewModel;
     }
 
@@ -118,7 +118,7 @@ public class ViewModelFactory {
 
     public MainMenuViewModel getMainMenuViewModel() {
         if (mainMenuViewModel == null) {
-            mainMenuViewModel = new MainMenuViewModel(modelFactory.getMainModel());
+            mainMenuViewModel = new MainMenuViewModel(modelFactory.getMainMenuManager(),modelFactory.getLoginManager());
         }
         return mainMenuViewModel;
     }
@@ -214,7 +214,7 @@ public class ViewModelFactory {
     }
 
     public ContactItemViewModel getContactItemViewModel() {
-        contactItemViewModel = new ContactItemViewModel(modelFactory.getMainModel());
+        contactItemViewModel = new ContactItemViewModel(modelFactory.getProfileManager(),modelFactory.getFollowListManager());
         return contactItemViewModel;
     }
 

@@ -5,32 +5,35 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import musicApp.client.model.followList.FollowListManager;
+import musicApp.client.model.profile.ProfileManager;
 import musicApp.server.model.domainModel.User;
 
 import java.io.File;
 
 public class ContactItemViewModel
 {
+  private final ProfileManager profileManager;
+  private final FollowListManager folowListManager;
   private SimpleStringProperty nicknameProperty;
   private SimpleObjectProperty<Image> statusProperty;
 
-  private MainModel model;
 
-  public ContactItemViewModel(MainModel model)
-  {
-    this.model = model;
+  public ContactItemViewModel(ProfileManager profileManager, FollowListManager followListManager) {
+    this.profileManager = profileManager;
+    this.folowListManager = followListManager;
     this.nicknameProperty = new SimpleStringProperty();
     this.statusProperty = new SimpleObjectProperty<>();
   }
 
   public boolean isArtist(User user)
   {
-      return model.getProfileManager().isArtist(user);
+      return profileManager.isArtist(user);
   }
 
   public boolean isOnline(User user)
   {
-    return model.getFollowListManager().isOnline(user);
+    return folowListManager.isOnline(user);
   }
 
   public void bindNickname(StringProperty textProperty) {
