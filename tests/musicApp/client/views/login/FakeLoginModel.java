@@ -1,6 +1,7 @@
 package musicApp.client.views.login;
 
 import musicApp.client.model.login.LogInManager;
+import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
 
 import java.beans.PropertyChangeListener;

@@ -26,7 +26,6 @@ public class MusicApp extends Application {
 
     @Override
     public void init() throws Exception {
-
         connectionFactory = ConnectionFactory.getInstance();
         Connection connection = connectionFactory.getConnection();
         ClientFactory clientFactory = new ClientFactory();

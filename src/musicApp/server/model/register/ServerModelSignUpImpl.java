@@ -69,7 +69,7 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
   {
     try
     {
-      this.userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+      UsersDAOImpl.getInstance().createUser(user.getUsername(), user.getPassword(), user.getEmail());
     }
     catch (SQLException e)
     {
@@ -82,7 +82,7 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     try
     {
       artistDAO = new ArtistDAOImpl();
-      userDAO.createUser(user.getUsername(), user.getPassword(), user.getEmail());
+      UsersDAOImpl.getInstance().createUser(user.getUsername(), user.getPassword(), user.getEmail());
       artistDAO.insertArtist(user.getUsername());
     }
     catch (SQLException e)
