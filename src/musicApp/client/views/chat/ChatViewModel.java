@@ -1,5 +1,7 @@
 package musicApp.client.views.chat;
 
+import musicApp.client.model.chat.ChatManager;
+import musicApp.client.model.login.LogInManager;
 import musicApp.shared.Message;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
@@ -14,21 +16,23 @@ import java.beans.PropertyChangeEvent;
 
 public class ChatViewModel
 {
-  private MainModel mainModel;
+  private LogInManager loginManager;
+  private ChatManager chatManager;
   private SimpleListProperty<String> chat;
   private StringProperty messageBody;
   private StringProperty user;
   private StringProperty onlineUsers;
 
-  public ChatViewModel(MainModel mainModel)
-  {
-    this.mainModel = mainModel;
+
+  public ChatViewModel(LogInManager loginManager, ChatManager chatManager) {
+    this.loginManager = loginManager;
+    this.chatManager = chatManager;
     this.chat = new SimpleListProperty<>(FXCollections.observableArrayList());
     this.messageBody = new SimpleStringProperty("");
-    this.user = new SimpleStringProperty(this.mainModel.getLogInManager().getUserName());
+    this.user = new SimpleStringProperty(loginManager.getUserName());
     this.onlineUsers = new SimpleStringProperty("");
-    this.mainModel.getChatManager().addListener("MessageAdded", this::updateChat);
-    this.mainModel.getLogInManager().addListener("OnNewUserEntry", this::onNewUserEntry);
+    chatManager.addListener("MessageAdded", this::updateChat);
+    loginManager.addListener("OnNewUserEntry", this::onNewUserEntry);
   }
 
   /**
@@ -53,7 +57,7 @@ public class ChatViewModel
 
   public void send()
   {
-    mainModel.getChatManager().sendMessage(mainModel.getLogInManager().getUser(),messageBody.get());
+    chatManager.sendMessage(loginManager.getUser(),messageBody.get());
     messageBody.set("");
   }
 
@@ -75,6 +79,6 @@ public class ChatViewModel
 
   public void fetchNumberOfOnlineUsers()
   {
-    onlineUsers.set("Online users: " + mainModel.getChatManager().getNumberOfUsers());
+    onlineUsers.set("Online users: " + chatManager.getNumberOfUsers());
   }
 }

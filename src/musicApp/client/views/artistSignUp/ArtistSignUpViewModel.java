@@ -2,19 +2,21 @@ package musicApp.client.views.artistSignUp;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import musicApp.client.model.register.SignUpManager;
 
 public class ArtistSignUpViewModel
 {
-  private final MainModel mainModel;
+
   private final StringProperty username;
   private final StringProperty password;
   private final StringProperty error;
   private final StringProperty email;
   private final StringProperty repeatPassword;
+  private final SignUpManager signUpManager;
 
-  public ArtistSignUpViewModel(MainModel model)
+  public ArtistSignUpViewModel(SignUpManager signUpManager)
   {
-    this.mainModel = model;
+    this.signUpManager = signUpManager;
     this.username = new SimpleStringProperty("");
     this.password = new SimpleStringProperty("");
     this.error = new SimpleStringProperty("");
@@ -27,7 +29,7 @@ public class ArtistSignUpViewModel
   {
     try
     {
-      mainModel.getSignUpManager().addArtist(username.get(), password.get(), email.get());
+      signUpManager.addArtist(username.get(), password.get(), email.get());
       reset();
       return true;
     }
@@ -39,22 +41,22 @@ public class ArtistSignUpViewModel
 
   private boolean emailNotValid()
   {
-    return mainModel.getSignUpManager().emailNotValid(email.get());
+    return signUpManager.emailNotValid(email.get());
   }
 
   public boolean UsernameExists()
   {
-    return mainModel.getSignUpManager().usernameExists(username.get());
+    return signUpManager.usernameExists(username.get());
   }
 
   public boolean noDigits()
   {
-    return mainModel.getSignUpManager().noDigits(password.get());
+    return signUpManager.noDigits(password.get());
   }
 
   public boolean noUpper()
   {
-    return mainModel.getSignUpManager().noUpper(password.get());
+    return signUpManager.noUpper(password.get());
   }
 
   public void bindUsername(StringProperty property)

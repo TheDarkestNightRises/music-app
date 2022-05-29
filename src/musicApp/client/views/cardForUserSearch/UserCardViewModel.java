@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import musicApp.client.model.profile.ProfileManager;
 import musicApp.server.model.domainModel.User;
 
 import java.io.ByteArrayInputStream;
@@ -13,18 +14,18 @@ public class UserCardViewModel {
     private StringProperty nameProperty;
     private StringProperty descriptionProperty;
     private ObjectProperty<Image> profilePicture;
-    private final MainModel mainModel;
+    private final ProfileManager profileManager;
 
-    public UserCardViewModel(MainModel mainModel) {
+    public UserCardViewModel(ProfileManager profileManager) {
         this.nameProperty = new SimpleStringProperty();
         this.descriptionProperty = new SimpleStringProperty();
         this.profilePicture = new SimpleObjectProperty<>();
-        this.mainModel = mainModel;
+        this.profileManager = profileManager;
     }
 
     public void init(User user) {
         nameProperty.set(user.getUsername());
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(mainModel.getProfileManager().fetchProfilePicture(user.getProfile_picture()));
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(profileManager.fetchProfilePicture(user.getProfile_picture()));
         Image image = new Image(byteArrayInputStream);
         profilePicture.set(image);
         descriptionProperty.set(user.getDescription());
@@ -43,6 +44,6 @@ public class UserCardViewModel {
     }
 
     public boolean isArtist(User user) {
-        return mainModel.getProfileManager().isArtist(user);
+        return profileManager.isArtist(user);
     }
 }

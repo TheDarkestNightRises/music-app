@@ -64,7 +64,7 @@ public class ViewModelFactory {
 
     public ChatViewModel getChatViewModel() {
         if (chatViewModel == null)
-            chatViewModel = new ChatViewModel(modelFactory.getMainModel());
+            chatViewModel = new ChatViewModel(modelFactory.getLoginManager(),modelFactory.getChatManager());
         return chatViewModel;
     }
 
@@ -125,7 +125,7 @@ public class ViewModelFactory {
 
     public ArtistSignUpViewModel getArtistSignUpViewModel() {
         if (artistSignUpViewModel == null) {
-            artistSignUpViewModel = new ArtistSignUpViewModel(modelFactory.getMainModel());
+            artistSignUpViewModel = new ArtistSignUpViewModel(modelFactory.getSignUpManager());
         }
         return artistSignUpViewModel;
     }
@@ -133,7 +133,7 @@ public class ViewModelFactory {
     public CreatePlaylistViewModel getCreatePlaylistViewModel() {
         if (createPlaylistViewModel == null)
             createPlaylistViewModel = new CreatePlaylistViewModel(
-                    modelFactory.getMainModel());
+                    modelFactory.getLoginManager(),modelFactory.getCreatePlaylistManager());
         return createPlaylistViewModel;
     }
 
@@ -160,7 +160,7 @@ public class ViewModelFactory {
 
     public DeleteSongViewModel getDeleteSongViewModel() {
         if (deleteSongViewModel == null) {
-            deleteSongViewModel = new DeleteSongViewModel(modelFactory.getMainModel());
+            deleteSongViewModel = new DeleteSongViewModel(modelFactory.getLoginManager(),modelFactory.getDeleteSongManager());
         }
         return deleteSongViewModel;
     }
@@ -202,7 +202,7 @@ public class ViewModelFactory {
     }
 
     public UserCardViewModel getUserCardViewModel() {
-        userCardViewModel = new UserCardViewModel(modelFactory.getMainModel());
+        userCardViewModel = new UserCardViewModel(modelFactory.getProfileManager());
         return userCardViewModel;
     }
 
