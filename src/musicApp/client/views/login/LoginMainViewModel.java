@@ -75,7 +75,7 @@ public class LoginMainViewModel {
             return false;
         }
         if (accountDoesNotExist()) {
-            error.set("The password is wrong");
+            error.set("Incorrect username or password");
             return false;
         }
         if (logInManager.signIn(username.get(), password.get()))

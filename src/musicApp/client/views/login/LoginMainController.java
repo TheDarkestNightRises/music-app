@@ -9,48 +9,44 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import musicApp.server.model.domainModel.User;
 
-public class LoginMainController implements ViewController
-{
-  @FXML
-  public TextField username;
-  @FXML
-  public PasswordField password;
-  public Label errorLabel;
-  private ViewHandler viewHandler;
-  private LoginMainViewModel viewModel;
+public class LoginMainController implements ViewController {
+    @FXML
+    public TextField username;
+    @FXML
+    public PasswordField password;
+    public Label errorLabel;
+    private ViewHandler viewHandler;
+    private LoginMainViewModel viewModel;
 
 
-  @Override 
-  public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
-  {
-    this.viewHandler = vh;
-    this.viewModel = vmf.getLoginMainViewModel();
-    viewModel.bindError(errorLabel.textProperty());
-    viewModel.bindUsername(viewModel.usernameProperty());
-    viewModel.bindPassword(viewModel.passwordProperty());
-  }
-
-
-
-  public void signInButtonPressed()
-  {
-    boolean canSignedIn = viewModel.signIn();
-    if (canSignedIn) {
-     viewHandler.openMainMenu();
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
+        this.viewHandler = vh;
+        this.viewModel = vmf.getLoginMainViewModel();
+        viewModel.bindError(errorLabel.textProperty());
+        viewModel.bindUsername(viewModel.usernameProperty());
+        viewModel.bindPassword(viewModel.passwordProperty());
     }
-  }
 
-  private boolean isArtist(User user)
-  {
-    return viewModel.isArtist(user);
-  }
 
-  public void signUpButtonPressed()
-  {
-    viewHandler.openSignUp();
-  }
+    public void signInButtonPressed() {
+        boolean canSignedIn = viewModel.signIn();
+        if (canSignedIn) {
+            viewHandler.openMainMenu();
+        }
+    }
 
-  public void artistSignUpButtonPressed(){viewHandler.openArtistSignUp();}
+    private boolean isArtist(User user) {
+        return viewModel.isArtist(user);
+    }
+
+    public void signUpButtonPressed() {
+        viewHandler.openSignUp();
+    }
+
+    public void artistSignUpButtonPressed() {
+        viewHandler.openArtistSignUp();
+    }
 
 
 }
