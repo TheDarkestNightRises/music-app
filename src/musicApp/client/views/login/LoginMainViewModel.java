@@ -85,18 +85,5 @@ public class LoginMainViewModel {
             return false;
         }
     }
-
-    public boolean isArtist(User user) {
-        try {
-            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
-            ;
-            if (artist != null)
-                return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-
+    
 }

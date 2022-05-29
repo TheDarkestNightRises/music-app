@@ -70,6 +70,7 @@ public class FakeLoginModel implements LogInManager {
         return true;
     }
 
+
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
 

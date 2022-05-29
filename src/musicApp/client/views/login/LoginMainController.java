@@ -36,10 +36,6 @@ public class LoginMainController implements ViewController {
         }
     }
 
-    private boolean isArtist(User user) {
-        return viewModel.isArtist(user);
-    }
-
     public void signUpButtonPressed() {
         viewHandler.openSignUp();
     }
