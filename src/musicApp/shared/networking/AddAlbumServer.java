@@ -10,4 +10,5 @@ public interface AddAlbumServer extends Remote
 {
   String uploadAlbumImage(String username, byte[] toByteArray) throws RemoteException;
   Artist getArtist(User user) throws RemoteException;
+  void createAlbum(String title, int year, String uploaded, Artist artist) throws RemoteException;
 }

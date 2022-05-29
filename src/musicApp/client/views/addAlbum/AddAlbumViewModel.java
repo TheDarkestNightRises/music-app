@@ -77,15 +77,9 @@ public class AddAlbumViewModel
         User user = logInManager.getUser();
         LocalDate current_date = LocalDate.now();
         String uploaded = addAlbumManager.uploadAlbumImage(user.getUsername(), byteArrayOutputStream.toByteArray());
-        try
-        {
-          Artist artist = addAlbumManager.getArtist(user);
-          AlbumDAOImpl.getInstance().createAlbum(albumName.getValue(),current_date.getYear(),uploaded,artist);
-        }
-        catch (SQLException e)
-        {
-          e.printStackTrace();
-        }
+        Artist artist = addAlbumManager.getArtist(user);
+
+        addAlbumManager.createAlbum(albumName.getValue(),current_date.getYear(),uploaded,artist);
       }
       catch (IOException e)
       {

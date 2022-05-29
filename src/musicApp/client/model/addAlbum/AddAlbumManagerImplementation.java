@@ -22,4 +22,9 @@ public class AddAlbumManagerImplementation implements AddAlbumManager
   {
     return client.getAddAlbumClient().getArtist(user);
   }
+
+  @Override public void createAlbum(String title, int year, String uploaded, Artist artist)
+  {
+     client.getAddAlbumClient().createAlbum(title,year,uploaded,artist);
+  }
 }

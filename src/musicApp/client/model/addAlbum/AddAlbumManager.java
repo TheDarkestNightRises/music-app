@@ -7,4 +7,5 @@ public interface AddAlbumManager
 {
   String uploadAlbumImage(String username, byte[] toByteArray);
   Artist getArtist(User user);
+  void createAlbum(String title, int year, String uploaded, Artist artist);
 }

@@ -1,5 +1,6 @@
 package musicApp.server.model.addAlbum;
 
+import musicApp.database.album.AlbumDAOImpl;
 import musicApp.database.artist.ArtistDAOImpl;
 import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
@@ -47,5 +48,17 @@ public class ServerModelAddAlbumImpl implements ServerModelAddAlbum
       e.printStackTrace();
     }
     return null;
+  }
+
+  @Override public void createAlbum(String title, int year, String uploaded, Artist artist)
+  {
+    try
+    {
+      AlbumDAOImpl.getInstance().createAlbum(title,year,uploaded,artist);
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
   }
 }

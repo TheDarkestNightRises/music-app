@@ -29,4 +29,9 @@ public class AddAlbumServerImpl implements AddAlbumServer {
     public Artist getArtist(User user) {
         return serverModelAddAlbum.getArtist(user);
     }
+
+    @Override public void createAlbum(String title, int year, String uploaded, Artist artist) throws RemoteException
+    {
+        serverModelAddAlbum.createAlbum(title,year,uploaded,artist);
+    }
 }

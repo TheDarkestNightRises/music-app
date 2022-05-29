@@ -32,4 +32,14 @@ public class RMIAddAlbumClient implements AddAlbumClient {
             return null;
         }
     }
+
+    @Override public void createAlbum(String title, int year, String uploaded, Artist artist)
+    {
+        try {
+           server.getAddAlbumServer().createAlbum(title,year,uploaded,artist);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+
+        }
+    }
 }
