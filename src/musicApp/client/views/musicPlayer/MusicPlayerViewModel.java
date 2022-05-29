@@ -27,7 +27,7 @@ public class MusicPlayerViewModel implements Subject {
     private SimpleDoubleProperty maxProperty;
     private PropertyChangeSupport support;
     private ObjectProperty<Image> albumPicture;
-    private SimpleStringProperty lyrics;
+
 
 
 
@@ -40,7 +40,7 @@ public class MusicPlayerViewModel implements Subject {
         currentSongLabel = new SimpleStringProperty();
         maxProperty = new SimpleDoubleProperty();
         albumPicture = new SimpleObjectProperty<>();
-        lyrics = new SimpleStringProperty();
+
     }
 
     public void init(Object... args) {
@@ -73,8 +73,6 @@ public class MusicPlayerViewModel implements Subject {
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
         currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
-        String lyricsText = musicManager.fetchLyrics(currentSong.getArtist().getNickname(),currentSong.getTitle());
-        lyrics.set(lyricsText);
         return songs.get(songNumber);
     }
 
@@ -108,10 +106,6 @@ public class MusicPlayerViewModel implements Subject {
 
     public void bindImage(ObjectProperty<Image> property) {
         albumPicture.bindBidirectional(property);
-    }
-
-    public void bindLyrics(StringProperty simpleStringProperty) {
-        lyrics.bindBidirectional(simpleStringProperty);
     }
 
     public void addToLikedSongs() {

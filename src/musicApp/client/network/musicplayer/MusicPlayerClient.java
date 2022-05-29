@@ -8,14 +8,13 @@ import musicApp.shared.networking.RMIServer;
 import java.io.File;
 import java.util.ArrayList;
 
-public interface MusicPlayerClient
-{
-  //----------MUSIC-------------
-  ArrayList<File> getCurrentPlaylistFiles(Playlist playlist);
+public interface MusicPlayerClient {
+    //----------MUSIC-------------
+    ArrayList<File> getCurrentPlaylistFiles(Playlist playlist);
 
-  byte[] fetchAlbumCover(String picturePath);
-  void addToLikedSongs(User user, Song song);
-  void removeToLikedSongs(User user, Song song);
+    byte[] fetchAlbumCover(String picturePath);
 
-    String fetchLyrics(String name, String title);
+    void addToLikedSongs(User user, Song song);
+
+    void removeToLikedSongs(User user, Song song);
 }

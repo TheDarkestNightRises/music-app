@@ -41,9 +41,4 @@ public class MusicPlayerServerImpl implements MusicPlayerServer
   {
     serverModelMusic.removeToLikedSongs(user, song);
   }
-
-  @Override public String fetchLyrics(String name, String title) throws RemoteException
-  {
-    return serverModelMusic.fetchLyrics(name, title);
-  }
 }

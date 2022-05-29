@@ -23,8 +23,6 @@ public class MusicPlayerController implements ViewController {
     private MediaPlayer mediaPlayer;
 
     @FXML
-    public TextArea lyricsArea;
-    @FXML
     public ImageView albumCover;
     @FXML
     private Slider sliderTime;
@@ -44,9 +42,7 @@ public class MusicPlayerController implements ViewController {
         volumeSlider.valueProperty().addListener(this::changeVolume);
         sliderTime.maxProperty().bind(musicPlayerViewModel.getMaxProperty());
         musicPlayerViewModel.bindImage(albumCover.imageProperty());
-        musicPlayerViewModel.bindLyrics(lyricsArea.textProperty());
         musicPlayerViewModel.init(args);
-        lyricsArea.setEditable(false);
         changeSong(musicPlayerViewModel.currentSong());
     }
 

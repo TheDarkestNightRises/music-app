@@ -8,14 +8,13 @@ import musicApp.util.Subject;
 import java.io.File;
 import java.util.ArrayList;
 
-public interface ServerModelMusic extends Subject
-{
-  //-------MusicPlayer--------
-  ArrayList<File> getCurrentPlaylistFiles(Playlist playlist);
+public interface ServerModelMusic extends Subject {
+    //-------MusicPlayer--------
+    ArrayList<File> getCurrentPlaylistFiles(Playlist playlist);
 
-  byte[] fetchAlbumCover(String picturePath);
-  void addToLikedSongs(User user, Song song);
-  void removeToLikedSongs(User user, Song song);
-  String fetchLyrics(String name, String title);
+    byte[] fetchAlbumCover(String picturePath);
 
+    void addToLikedSongs(User user, Song song);
+
+    void removeToLikedSongs(User user, Song song);
 }

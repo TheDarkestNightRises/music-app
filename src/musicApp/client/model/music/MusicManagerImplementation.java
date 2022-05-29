@@ -34,9 +34,4 @@ public class MusicManagerImplementation implements MusicManager {
     {
         client.getMusicPlayerClient().removeToLikedSongs(user, song);
     }
-
-    @Override
-    public String fetchLyrics(String name, String title) {
-        return client.getMusicPlayerClient().fetchLyrics(name,title);
-    }
 }

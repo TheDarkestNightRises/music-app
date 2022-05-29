@@ -10,14 +10,14 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface MusicPlayerServer extends Remote
-{
-  //-----------MusicPlayer-------------
-  ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) throws RemoteException;
+public interface MusicPlayerServer extends Remote {
+    //-----------MusicPlayer-------------
+    ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) throws RemoteException;
 
-  byte[] fetchAlbumCover(String picturePath) throws RemoteException;
-  void addToLikedSongs(User user, Song song) throws RemoteException;
-  void removeToLikedSongs(User user, Song song) throws RemoteException;
+    byte[] fetchAlbumCover(String picturePath) throws RemoteException;
 
-    String fetchLyrics(String name, String title) throws RemoteException;
+    void addToLikedSongs(User user, Song song) throws RemoteException;
+
+    void removeToLikedSongs(User user, Song song) throws RemoteException;
+
 }
