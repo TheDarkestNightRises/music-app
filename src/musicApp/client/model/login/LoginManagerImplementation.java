@@ -1,5 +1,6 @@
 package musicApp.client.model.login;
 
+import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
 import musicApp.client.network.Client;
 
@@ -56,6 +57,11 @@ public class LoginManagerImplementation implements LogInManager {
         String password)
     {
        return  client.getLoginClient().accountDoesNotExist(username, password);
+    }
+
+    @Override public Artist getArtist(String username)
+    {
+        return null;
     }
 
     @Override

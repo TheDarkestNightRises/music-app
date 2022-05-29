@@ -40,10 +40,6 @@ public class LoginMainViewModel {
         return password;
     }
 
-//    public void setUser() {
-//        model.getLogInManager().setUser(new User(username.get(), password.get()));
-//    }//go to database and take user by its username
-//
 
     public void bindError(StringProperty property) {
         error.bindBidirectional(property);
@@ -87,14 +83,9 @@ public class LoginMainViewModel {
     }
 
     public boolean isArtist(User user) {
-        try {
-            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
-            ;
-            if (artist != null)
-                return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        Artist artist = logInManager.getArtist(user.getUsername());
+        if(artist != null)
+            return true;
         return false;
     }
 
