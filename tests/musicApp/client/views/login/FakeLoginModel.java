@@ -17,17 +17,21 @@ public class FakeLoginModel implements LogInManager {
     private void populateUsers() {
         User user = new User("emanuel", "scrumMast3r");
         User user2 = new User("cosmin", "Qwerty1234");
+        user2.setLoggedIn(true);
         users.add(user);
         users.add(user2);
     }
 
     @Override
     public boolean signIn(String username, String password) {
+        return checkIfUserIsOnline(username);
+    }
+
+    private boolean checkIfUserIsOnline(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                if (user.getPassword().equals(password)) {
-                    return true;
-                }
+                if (!user.isLoggedIn()) return true;
+                break;
             }
         }
         return false;
@@ -58,11 +62,11 @@ public class FakeLoginModel implements LogInManager {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 if (user.getPassword().equals(password)) {
-                    return true;
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 
     @Override

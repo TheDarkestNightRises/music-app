@@ -48,11 +48,25 @@ class LoginMainViewModelTest {
     public void incorectCombinationChangesError() {
         username.set("emanuel");
         password.set("reea");
-        viewModel.signIn();
         assertFalse(viewModel.signIn());
-        assertEquals("Password should not be null!", error.get());
+        assertEquals("Incorrect username or password", error.get());
     }
 
+    @Test
+    public void correctCombinationDoesntChangeError() {
+        username.set("emanuel");
+        password.set("scrumMast3r");
+        assertTrue(viewModel.signIn());
+        assertEquals("", error.get());
+    }
+
+    @Test
+    public void userLoggedInChangesError(){
+        username.set("cosmin");
+        password.set("Qwerty1234");
+        assertFalse(viewModel.signIn());
+        assertEquals("Account already logged in", error.get());
+    }
 
 
 
