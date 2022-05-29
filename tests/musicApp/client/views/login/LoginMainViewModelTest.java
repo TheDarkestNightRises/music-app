@@ -3,6 +3,7 @@ package musicApp.client.views.login;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +14,7 @@ class LoginMainViewModelTest {
     private StringProperty error;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         viewModel = new LoginMainViewModel(new FakeLoginModel());
         username = new SimpleStringProperty();
         password = new SimpleStringProperty();
@@ -22,4 +23,12 @@ class LoginMainViewModelTest {
         viewModel.bindPassword(password);
         viewModel.bindError(error);
     }
+
+    @Test
+    public void newViewModelIsEmpty() {
+        assertNull(username.get());
+        assertNull(password.get());
+        assertNull(error.get());
+    }
+
 }

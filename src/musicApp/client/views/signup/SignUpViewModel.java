@@ -81,27 +81,28 @@ public class SignUpViewModel {
     }
 
     public boolean registerValidation() {
+        if ("".equals(password.get()) && "".equals(username.get()) && "".equals(email.get()) && "".equals(repeatPassword.get())) {
+            error.set("No data inserted!");
+            return false;
+        }
+
         if (UsernameExists()) {
             error.set("Username already exists!");
             return false;
         }
 
-        if (password.get().equals("") && username.get().equals("") && email.get().equals("") && repeatPassword.get().equals("")) {
-            error.set("No data inserted!");
-            return false;
-        }
 
-        if (username.get().equals("")) {
+        if ("".equals(username.get())) {
             error.set("Username should not be null!");
             return false;
         }
 
-        if (password.get().equals("")) {
+        if ("".equals(password.get())) {
             error.set("Password should not be null!");
             return false;
         }
 
-        if (email.get().equals("")) {
+        if ("".equals(email.get())) {
             error.set("Email should not be null!");
             return false;
         }
