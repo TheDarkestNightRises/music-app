@@ -1,23 +1,19 @@
 package musicApp.client.model.login;
 
-import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 
-public interface LogInManager extends Subject
-{
+public interface LogInManager extends Subject {
 
-  boolean signIn(String username, String password);
+    boolean signIn(String username, String password);
 
-  void setUser(User user);
+    void setUser(User user);
 
-  void disconnect();
+    void disconnect();
 
-  String getUserName();
+    String getUserName();
 
-  User getUser();
+    User getUser();
 
-  boolean accountDoesNotExist(String username, String password);
-
-  Artist getArtist(String username);
+    boolean accountDoesNotExist(String username, String password);
 }
