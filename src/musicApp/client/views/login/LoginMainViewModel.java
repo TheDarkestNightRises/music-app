@@ -82,5 +82,12 @@ public class LoginMainViewModel {
         }
     }
 
+    public boolean isArtist(User user) {
+        Artist artist = logInManager.getArtist(user.getUsername());
+        if(artist != null)
+            return true;
+        return false;
+    }
+
 
 }

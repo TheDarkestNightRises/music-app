@@ -19,5 +19,5 @@ public interface LogInManager extends Subject
 
   boolean accountDoesNotExist(String username, String password);
 
-
+  Artist getArtist(String username);
 }
