@@ -7,7 +7,7 @@ import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 public interface SearchManager extends Subject {
-    ArrayList<Song> fetchSortedList();
+
 
     void searchSong(String newValue);
 

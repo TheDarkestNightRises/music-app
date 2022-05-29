@@ -6,9 +6,6 @@ import musicApp.shared.networking.RMIServer;
 import java.util.ArrayList;
 
 public interface SearchClient {
-    void setServer(RMIServer server);
-
-    ArrayList<Song> fetchSortedList();
 
     void searchSong(String search);
 

@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.search.SearchManager;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -16,24 +18,23 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class SearchViewModel implements Subject {
-    private ObservableList<Song> songs;
+public class   SearchViewModel implements Subject {
+    private final SearchManager searchManager;
     private SimpleStringProperty search;
     private SimpleStringProperty searchStatus;
     private PropertyChangeSupport support;
     private ObservableList<SearchComboBoxChoices> searchComboBoxChoices;
 
-    private MainModel mainModel;
 
-    public SearchViewModel(MainModel mainModel) {
-        this.mainModel = mainModel;
-        this.songs = new SimpleListProperty<>(FXCollections.observableArrayList(fetchSortedList()));
+
+    public SearchViewModel(SearchManager searchManager) {
+        this.searchManager = searchManager;
         this.search = new SimpleStringProperty();
         this.searchStatus = new SimpleStringProperty();
         this.support = new PropertyChangeSupport(this);
-        this.mainModel.getSearchManager().addListener("newSearchSong", this::updateSearchSong);
-        this.mainModel.getSearchManager().addListener("newSearchAlbum", this::updateSearchAlbum);
-        this.mainModel.getSearchManager().addListener("newSearchProfile", this::updateSearchProfile);
+        searchManager.addListener("newSearchSong", this::updateSearchSong);
+        searchManager.addListener("newSearchAlbum", this::updateSearchAlbum);
+        searchManager.addListener("newSearchProfile", this::updateSearchProfile);
     }
 
     private void updateSearchSong(PropertyChangeEvent event) {
@@ -73,10 +74,6 @@ public class SearchViewModel implements Subject {
         searchStatus.bindBidirectional(textProperty);
     }
 
-    public ArrayList<Song> fetchSortedList() {
-        return mainModel.getSearchManager().fetchSortedList();
-    }
-
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName, listener);
@@ -90,9 +87,9 @@ public class SearchViewModel implements Subject {
     public void search(SearchComboBoxChoices selectedItem) {
         if (inputIsCorrect(selectedItem)) {
             switch (selectedItem) {
-                case Album -> mainModel.getSearchManager().searchAlbum(search.get());
-                case Profile -> mainModel.getSearchManager().searchProfile(search.get());
-                default -> mainModel.getSearchManager().searchSong(search.get());
+                case Album -> searchManager.searchAlbum(search.get());
+                case Profile -> searchManager.searchProfile(search.get());
+                default -> searchManager.searchSong(search.get());
             }
         }
     }
@@ -111,10 +108,6 @@ public class SearchViewModel implements Subject {
         return true;
     }
 
-
-    public User fetchUser() {
-        return mainModel.getLogInManager().getUser();
-    }
 
     private void loadComboBox() {
         searchComboBoxChoices = FXCollections.observableArrayList(SearchComboBoxChoices.Album, SearchComboBoxChoices.Song, SearchComboBoxChoices.Profile);

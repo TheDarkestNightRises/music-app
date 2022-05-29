@@ -12,7 +12,6 @@ public interface MusicPlayerClient
 {
   //----------MUSIC-------------
   ArrayList<File> getCurrentPlaylistFiles(Playlist playlist);
-  void setServer(RMIServer server);
 
   byte[] fetchAlbumCover(String picturePath);
   void addToLikedSongs(User user, Song song);

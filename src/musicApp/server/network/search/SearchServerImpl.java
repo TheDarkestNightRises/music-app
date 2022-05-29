@@ -16,10 +16,6 @@ public class SearchServerImpl implements SearchServer {
         this.serverModel = serverModel;
     }
 
-    @Override
-    public ArrayList<Song> fetchSortedList() {
-        return serverModel.getModelSearch().fetchSortedList();
-    }
 
     @Override
     public void searchSong(String search) {

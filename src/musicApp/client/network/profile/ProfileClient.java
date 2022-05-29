@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public interface ProfileClient
 {
-  void setServer(RMIServer server);
 
   ArrayList<Playlist> fetchPlaylistsForUser(User user);
 

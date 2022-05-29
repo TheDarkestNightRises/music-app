@@ -12,6 +12,10 @@ import java.util.ArrayList;
 public class RMIMusicPlayerClient implements MusicPlayerClient {
     private RMIServer server;
 
+    public RMIMusicPlayerClient(RMIServer server) {
+        this.server = server;
+    }
+
     @Override
     public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
         try {
@@ -20,10 +24,6 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
             e.printStackTrace(); //Todo: Throw Runtime Exception catch in viewModel set error
             return null;
         }
-    }
-
-    public void setServer(RMIServer server) {
-        this.server = server;
     }
 
     @Override
@@ -36,17 +36,17 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
         return null;
     }
 
-    @Override public void addToLikedSongs(User user, Song song)
-    {
+    @Override
+    public void addToLikedSongs(User user, Song song) {
         try {
-             server.getMusicPlayerServer().addToLikedSongs(user, song);
+            server.getMusicPlayerServer().addToLikedSongs(user, song);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
-    @Override public void removeToLikedSongs(User user, Song song)
-    {
+    @Override
+    public void removeToLikedSongs(User user, Song song) {
         try {
             server.getMusicPlayerServer().removeToLikedSongs(user, song);
         } catch (RemoteException e) {
@@ -57,7 +57,7 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
     @Override
     public String fetchLyrics(String name, String title) {
         try {
-            return server.getMusicPlayerServer().fetchLyrics(name,title);
+            return server.getMusicPlayerServer().fetchLyrics(name, title);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

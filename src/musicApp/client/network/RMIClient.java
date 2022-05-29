@@ -73,52 +73,39 @@ public class RMIClient implements Client, ClientCallBack {
     //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
     public RMIClient() {
-        support = new PropertyChangeSupport(this);
-        this.chatClient = new RMIChatClient();
-        this.loginClient = new RMILoginClient();
-        this.musicPlayerClient = new RMIMusicPlayerClient();
-        this.signUpClient = new RMISignUpClient();
-        this.profileClient = new RMIProfileClient();
-        this.updateSettingsClient = new RMIUpdateSettingsClient();
-        this.searchClient = new RMISearchClient();
-        this.followListClient = new RMIFollowListClient();
-        this.mainMenuClient = new RMIMainMenu();
-        this.createPlaylistClient = new RMICreatePlayListClient();
-        this.addToPlaylistClient = new RMIAddToPlaylistClient();
-        this.addAlbumClient = new RMIAddAlbumClient();
-        this.addSongClient = new RMIAddSongClient();
-        this.deleteSongClient = new RMIDeleteSongClient();
-        this.removeAlbumClient = new RMIRemoveAlbumClient();
-        this.removePlaylistClient = new RMIRemovePlaylistClient();
+        try {
+            UnicastRemoteObject.exportObject(this, 0);
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            server = (RMIServer) registry.lookup("Server");
+            support = new PropertyChangeSupport(this);
+            this.chatClient = new RMIChatClient(server);
+            this.loginClient = new RMILoginClient(server);
+            this.musicPlayerClient = new RMIMusicPlayerClient(server);
+            this.signUpClient = new RMISignUpClient(server);
+            this.profileClient = new RMIProfileClient(server);
+            this.updateSettingsClient = new RMIUpdateSettingsClient(server);
+            this.searchClient = new RMISearchClient(server);
+            this.followListClient = new RMIFollowListClient(server);
+            this.mainMenuClient = new RMIMainMenu(server);
+            this.createPlaylistClient = new RMICreatePlayListClient(server);
+            this.addToPlaylistClient = new RMIAddToPlaylistClient(server);
+            this.addAlbumClient = new RMIAddAlbumClient(server);
+            this.addSongClient = new RMIAddSongClient(server);
+            this.deleteSongClient = new RMIDeleteSongClient(server);
+            this.removeAlbumClient = new RMIRemoveAlbumClient(server);
+            this.removePlaylistClient = new RMIRemovePlaylistClient(server);
+            startClient();
+        } catch (RemoteException | NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void startClient() {
         try {
-            UnicastRemoteObject.exportObject(this, 0);
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
-            server = (RMIServer) registry.lookup("Server");
             server.registerClient(this);
             server.getChatServer().registerClientToBroadcast(this);
-            this.chatClient.setServer(server);
-            this.loginClient.setServer(server);
-            this.musicPlayerClient.setServer(server);
-            this.signUpClient.setServer(server);
-            this.profileClient.setServer(server);
-            this.updateSettingsClient.setServer(server);
-            this.searchClient.setServer(server);
-            this.followListClient.setServer(server);
-            this.updateSettingsClient.setServer(server);
-            this.createPlaylistClient.setServer(server);
-            this.addToPlaylistClient.setServer(server);
-            this.mainMenuClient.setServer(server);
-            this.addAlbumClient.setServer(server);
-            this.addSongClient.setServer(server);
-            this.deleteSongClient.setServer(server);
-            this.removeAlbumClient.setServer(server);
-            this.removePlaylistClient.setServer(server);
-
-        } catch (RemoteException | NotBoundException e) {
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
     }

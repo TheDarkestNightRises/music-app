@@ -5,6 +5,5 @@ import musicApp.shared.networking.RMIServer;
 
 public interface RemovePlaylistClient
 {
-  void setServer(RMIServer server);
   void removePlaylist(Playlist playlist);
 }

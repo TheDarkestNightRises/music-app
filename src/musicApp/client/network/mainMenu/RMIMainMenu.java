@@ -7,8 +7,12 @@ import musicApp.shared.networking.RMIServer;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class RMIMainMenu implements MainMenuClient{
+public class RMIMainMenu implements MainMenuClient {
     private RMIServer server;
+
+    public RMIMainMenu(RMIServer server) {
+        this.server = server;
+    }
 
     @Override
     public ArrayList<Song> fetchRandomSongs() {
@@ -18,11 +22,6 @@ public class RMIMainMenu implements MainMenuClient{
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public void setServer(RMIServer server) {
-        this.server = server;
     }
 
     @Override

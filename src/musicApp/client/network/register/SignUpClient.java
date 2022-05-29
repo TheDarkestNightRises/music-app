@@ -14,7 +14,5 @@ public interface SignUpClient
 
   boolean emailNotValid(String email);
 
-  void setServer(RMIServer server);
-
   void addArtist(String username, String password, String email);
 }

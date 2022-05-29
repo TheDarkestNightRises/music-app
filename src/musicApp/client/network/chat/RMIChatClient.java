@@ -10,6 +10,10 @@ import java.util.List;
 public class RMIChatClient implements ChatClient{
     private RMIServer server;
 
+    public RMIChatClient(RMIServer server) {
+        this.server = server;
+    }
+
     @Override
     public List<LogEntry> getLog() {
         try {
@@ -29,7 +33,4 @@ public class RMIChatClient implements ChatClient{
         }
     }
 
-    public void setServer(RMIServer server) {
-        this.server = server;
-    }
 }

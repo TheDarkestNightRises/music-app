@@ -2,6 +2,8 @@ package musicApp.client.views.musicPlayer;
 
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
+import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.music.MusicManager;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -15,9 +17,9 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class MusicPlayerViewModel implements Subject {
-    private final MainModel mainModel;
+    private final LogInManager loginManager;
+    private final MusicManager musicManager;
     private int songNumber;
-    private Media media;
     private ArrayList<File> songs;
     private Playlist playlist;
 
@@ -27,8 +29,11 @@ public class MusicPlayerViewModel implements Subject {
     private ObjectProperty<Image> albumPicture;
     private SimpleStringProperty lyrics;
 
-    public MusicPlayerViewModel(MainModel mainModel) {
-        this.mainModel = mainModel;
+
+
+    public MusicPlayerViewModel(LogInManager loginManager, MusicManager musicManager) {
+        this.loginManager = loginManager;
+        this.musicManager = musicManager;
         songs = new ArrayList<>();
         songNumber = 0;
         support = new PropertyChangeSupport(this);
@@ -40,7 +45,7 @@ public class MusicPlayerViewModel implements Subject {
 
     public void init(Object... args) {
         playlist = (Playlist) args[0];
-        songs = mainModel.getMusicPlayerManager().getCurrentPlaylistFiles(playlist);
+        songs = musicManager.getCurrentPlaylistFiles(playlist);
         songNumber = 0;
         currentSong();
     }
@@ -68,7 +73,7 @@ public class MusicPlayerViewModel implements Subject {
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
         albumPicture.set(image);
         currentSongLabel.set(currentSong.getArtist().getName() + " - " + currentSong.getTitle());
-        String lyricsText = mainModel.getMusicPlayerManager().fetchLyrics(currentSong.getArtist().getNickname(),currentSong.getTitle());
+        String lyricsText = musicManager.fetchLyrics(currentSong.getArtist().getNickname(),currentSong.getTitle());
         lyrics.set(lyricsText);
         return songs.get(songNumber);
     }
@@ -98,7 +103,7 @@ public class MusicPlayerViewModel implements Subject {
     }
 
     public byte[] fetchAlbumCover(String picturePath) {
-        return mainModel.getMusicPlayerManager().fetchAlbumCover(picturePath);
+        return musicManager.fetchAlbumCover(picturePath);
     }
 
     public void bindImage(ObjectProperty<Image> property) {
@@ -110,19 +115,15 @@ public class MusicPlayerViewModel implements Subject {
     }
 
     public void addToLikedSongs() {
-        User user = mainModel.getLogInManager().getUser();
+        User user = loginManager.getUser();
         Song song = playlist.getSong(songNumber);
-        mainModel.getMusicPlayerManager().addToLikedSongs(user, song);
+       musicManager.addToLikedSongs(user, song);
     }
 
     public void removeToLikedSongs() {
-        User user = mainModel.getLogInManager().getUser();
+        User user = loginManager.getUser();
         Song song = playlist.getSong(songNumber);
-        mainModel.getMusicPlayerManager().removeToLikedSongs(user, song);
-    }
-
-    public User fetchUser() {
-        return mainModel.getLogInManager().getUser();
+        musicManager.removeToLikedSongs(user, song);
     }
 
     public Song fetchCurrentSong() {

@@ -5,12 +5,16 @@ import musicApp.shared.networking.RMIServer;
 
 import java.rmi.RemoteException;
 
-public class RMILoginClient implements LoginClient{
+public class RMILoginClient implements LoginClient {
     private RMIServer server;
+
+    public RMILoginClient(RMIServer server) {
+        this.server = server;
+    }
 
 
     @Override
-    public User signIn(String username, String password)  {
+    public User signIn(String username, String password) {
         //User user = new User(username,password,"","","","",null);
         try {
             return server.getLoginServer().signIn(username, password);
@@ -21,7 +25,7 @@ public class RMILoginClient implements LoginClient{
     }
 
     @Override
-    public int getNumberOfUsers()  {
+    public int getNumberOfUsers() {
         try {
             return server.getChatServer().getNumberOfUsers();
         } catch (RemoteException e) {
@@ -39,14 +43,11 @@ public class RMILoginClient implements LoginClient{
         }
     }
 
-    public void setServer(RMIServer server) {
-        this.server = server;
-    }
 
-    @Override public boolean accountDoesNotExist(String username,
-        String password)
-    {
-        User user = new User(username,password,"","","","",null);
+    @Override
+    public boolean accountDoesNotExist(String username,
+                                       String password) {
+        User user = new User(username, password, "", "", "", "", null);
         try {
             return server.getLoginServer().accountDoesNotExist(user);
         } catch (RemoteException e) {

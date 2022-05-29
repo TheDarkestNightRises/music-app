@@ -5,24 +5,21 @@ import musicApp.shared.networking.RMIServer;
 
 import java.rmi.RemoteException;
 
-public class RMIRemoveAlbumClient implements RemoveAlbumClient
-{
-  private RMIServer server;
+public class RMIRemoveAlbumClient implements RemoveAlbumClient {
+    private RMIServer server;
 
-  public void setServer(RMIServer server) {
-    this.server = server;
-  }
-
-  @Override public void deleteAlbum(Album album)
-  {
-    try
-    {
-       server.getRemoveAlbumServer().removeAlbum(album);
+    public RMIRemoveAlbumClient(RMIServer server) {
+        this.server = server;
     }
-    catch (RemoteException e)
-    {
-      e.printStackTrace();
 
+
+    @Override
+    public void deleteAlbum(Album album) {
+        try {
+            server.getRemoveAlbumServer().removeAlbum(album);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+
+        }
     }
-  }
 }

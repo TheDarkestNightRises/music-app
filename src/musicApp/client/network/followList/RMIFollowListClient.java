@@ -6,31 +6,31 @@ import musicApp.shared.networking.RMIServer;
 import java.rmi.RemoteException;
 import java.util.List;
 
-public class RMIFollowListClient implements FollowListClient
-{
-  private RMIServer server;
+public class RMIFollowListClient implements FollowListClient {
+    private RMIServer server;
 
-  @Override public List<User> getFollowList(User user)
-  {
-    try {
-      return server.getFollowListServer().getFollowList(user);
-    } catch (RemoteException e) {
-      e.printStackTrace();
-      throw new RuntimeException("Cant connect to server");
+    public RMIFollowListClient(RMIServer server) {
+        this.server = server;
     }
-  }
 
-  @Override public boolean isOnline(User user)
-  {
-    try {
-      return server.getFollowListServer().isOnline(user);
-    } catch (RemoteException e) {
-      e.printStackTrace();
-      throw new RuntimeException("Cant connect to server");
+    @Override
+    public List<User> getFollowList(User user) {
+        try {
+            return server.getFollowListServer().getFollowList(user);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Cant connect to server");
+        }
     }
-  }
 
-  public void setServer(RMIServer server) {
-    this.server = server;
-  }
+    @Override
+    public boolean isOnline(User user) {
+        try {
+            return server.getFollowListServer().isOnline(user);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Cant connect to server");
+        }
+    }
+
 }

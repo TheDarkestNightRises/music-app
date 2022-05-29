@@ -76,7 +76,7 @@ public class ViewModelFactory {
 
     public SignUpViewModel getSignUpViewModel() {
         if (signUpViewModel == null)
-            signUpViewModel = new SignUpViewModel(modelFactory.getMainModel());
+            signUpViewModel = new SignUpViewModel(modelFactory.getSignUpManager());
         return signUpViewModel;
     }
 
@@ -88,13 +88,13 @@ public class ViewModelFactory {
 
     public MusicPlayerViewModel getMusicPlayerViewModel() {
         if (musicPlayerViewModel == null)
-            musicPlayerViewModel = new MusicPlayerViewModel(modelFactory.getMainModel());
+            musicPlayerViewModel = new MusicPlayerViewModel(modelFactory.getLoginManager(),modelFactory.getMusicManager());
         return musicPlayerViewModel;
     }
 
     public ProfileViewModel getProfileViewModel() {
         if (profileViewModel == null)
-            profileViewModel = new ProfileViewModel(modelFactory.getMainModel());
+            profileViewModel = new ProfileViewModel(modelFactory.getLoginManager(),modelFactory.getProfileManager());
         return profileViewModel;
     }
 
@@ -106,13 +106,13 @@ public class ViewModelFactory {
 
     public UpdateSettingsViewModel getUpdateSettingsViewModel() {
         if (updateSettingsViewModel == null)
-            updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getMainModel());
+            updateSettingsViewModel = new UpdateSettingsViewModel(modelFactory.getLoginManager(),modelFactory.getProfileManager(),modelFactory.getUpdateSettingsManager(),modelFactory.getSignUpManager());
         return updateSettingsViewModel;
     }
 
     public SearchViewModel getSearchViewModel() {
         if (searchViewModel == null)
-            searchViewModel = new SearchViewModel(modelFactory.getMainModel());
+            searchViewModel = new SearchViewModel(modelFactory.getSearchManager());
         return searchViewModel;
     }
 
@@ -174,14 +174,14 @@ public class ViewModelFactory {
 
     public RemoveAlbumViewModel getRemoveAlbumViewModel() {
         if (removeAlbumViewModel == null) {
-            removeAlbumViewModel = new RemoveAlbumViewModel(modelFactory.getMainModel());
+            removeAlbumViewModel = new RemoveAlbumViewModel(modelFactory.getProfileManager(),modelFactory.getLoginManager(),modelFactory.getRemoveAlbumManager());
         }
         return removeAlbumViewModel;
     }
 
     public RemovePlaylistViewModel getRemovePlaylistViewModel() {
         if (removePlaylistViewModel == null) {
-            removePlaylistViewModel = new RemovePlaylistViewModel(modelFactory.getMainModel());
+            removePlaylistViewModel = new RemovePlaylistViewModel(modelFactory.getProfileManager(),modelFactory.getRemovePlaylistManager(),modelFactory.getLoginManager());
         }
         return removePlaylistViewModel;
     }
@@ -192,12 +192,12 @@ public class ViewModelFactory {
     }
 
     public SongViewModel getSongViewModel() {
-        songViewModel = new SongViewModel(modelFactory.getMainModel());
+        songViewModel = new SongViewModel(modelFactory.getMusicManager());
         return songViewModel;
     }
 
     public SingleViewModel getSingleViewModel() {
-        singleViewModel = new SingleViewModel(modelFactory.getMainModel());
+        singleViewModel = new SingleViewModel(modelFactory.getMusicManager());
         return singleViewModel;
     }
 
@@ -208,7 +208,7 @@ public class ViewModelFactory {
 
     public NavigationViewModel getNavigationViewModel() {
         if (navigationViewModel == null) {
-            navigationViewModel = new NavigationViewModel(modelFactory.getMainModel());
+            navigationViewModel = new NavigationViewModel(modelFactory.getLoginManager(),modelFactory.getProfileManager());
         }
         return navigationViewModel;
     }
@@ -220,7 +220,7 @@ public class ViewModelFactory {
 
     public ProfileCardViewModel getProfileCardViewModel() {
         if (profileCardViewModel == null) {
-            profileCardViewModel = new ProfileCardViewModel(modelFactory.getMainModel());
+            profileCardViewModel = new ProfileCardViewModel(modelFactory.getProfileManager(),modelFactory.getLoginManager());
         }
         return profileCardViewModel;
     }

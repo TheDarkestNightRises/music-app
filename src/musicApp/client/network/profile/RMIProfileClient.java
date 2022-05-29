@@ -9,14 +9,13 @@ import musicApp.shared.networking.RMIServer;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class RMIProfileClient implements ProfileClient{
+public class RMIProfileClient implements ProfileClient {
     private RMIServer rmiServer;
 
-
-    @Override
-    public void setServer(RMIServer rmiServer) {
-        this.rmiServer = rmiServer;
+    public RMIProfileClient(RMIServer server) {
+        this.rmiServer = server;
     }
+
 
     @Override
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
@@ -48,41 +47,41 @@ public class RMIProfileClient implements ProfileClient{
         return null;
     }
 
-    @Override public ArrayList<Album> fetchArtistAlbums(User user)
-    {
-        try{
+    @Override
+    public ArrayList<Album> fetchArtistAlbums(User user) {
+        try {
             return rmiServer.getProfileServer().fetchArtistAlbums(user);
-        } catch (RemoteException e){
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @Override public boolean isArtist(User user)
-    {
-        try{
+    @Override
+    public boolean isArtist(User user) {
+        try {
             return rmiServer.getProfileServer().isArtist(user);
-        } catch (RemoteException e){
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    @Override public void follow(User user0, User user)
-    {
-        try{
-            rmiServer.getProfileServer().follow(user0,user);
-        } catch (RemoteException e){
+    @Override
+    public void follow(User user0, User user) {
+        try {
+            rmiServer.getProfileServer().follow(user0, user);
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
 
     }
 
-    @Override public void unfollow(User user0, User user)
-    {
-        try{
-            rmiServer.getProfileServer().unfollow(user0,user);
-        } catch (RemoteException e){
+    @Override
+    public void unfollow(User user0, User user) {
+        try {
+            rmiServer.getProfileServer().unfollow(user0, user);
+        } catch (RemoteException e) {
             e.printStackTrace();
         }
     }

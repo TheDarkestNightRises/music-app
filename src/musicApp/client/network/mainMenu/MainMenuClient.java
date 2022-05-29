@@ -9,8 +9,6 @@ import java.util.ArrayList;
 public interface MainMenuClient {
     ArrayList<Song> fetchRandomSongs();
 
-    void setServer(RMIServer server);
-
     ArrayList<Song> fetchLastSongs();
 
     ArrayList<Album> fetchRandomAlbums();

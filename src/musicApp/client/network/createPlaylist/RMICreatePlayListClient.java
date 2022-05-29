@@ -5,23 +5,21 @@ import musicApp.shared.networking.RMIServer;
 
 import java.rmi.RemoteException;
 
-public class RMICreatePlayListClient implements CreatePlaylistClient
-{
-  private RMIServer server;
-  public void setServer(RMIServer server) {
-    this.server = server;
-  }
+public class RMICreatePlayListClient implements CreatePlaylistClient {
+    private RMIServer server;
 
-  @Override public void createPlaylist(String title, String description,
-      User user) throws Exception
-  {
-    try{
-      server.getCreatePlaylistServer().createPlaylist(title, description, user);
+    public RMICreatePlayListClient(RMIServer server) {
+        this.server = server;
     }
-    catch (RemoteException e)
-    {
-      throw new Exception("Could not connect to server");
+
+    @Override
+    public void createPlaylist(String title, String description,
+                               User user) throws Exception {
+        try {
+            server.getCreatePlaylistServer().createPlaylist(title, description, user);
+        } catch (RemoteException e) {
+            throw new Exception("Could not connect to server");
+        }
     }
-  }
 }
 

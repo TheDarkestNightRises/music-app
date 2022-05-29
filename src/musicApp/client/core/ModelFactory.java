@@ -49,7 +49,6 @@ public class ModelFactory {
     private AddSongManager addSongManager;
     private DeleteSongManager deleteSongManager;
     private ClientFactory clientFactory;
-    private MainModel mainModel;
     private RemoveAlbumManager removeAlbumManager;
     private RemovePlaylistManager removePlaylistManager;
 
@@ -58,73 +57,66 @@ public class ModelFactory {
         this.clientFactory = clientFactory;
     }
 
-    public MainModel getMainModel() {
-        if (mainModel == null) {
-            mainModel = new MainModelImplementation(getMusicManager(),getLoginManager(), getChatManager(), getSignUpManager(),getProfileManager(),getUpdateSettingsManager(),getSearchManager(),getFollowListManager(),getMainMenuManager(),
-                getCreatePlaylistManager(), getAddToPlaylistManager(),getAddAlbumManager(),getAddSongManager(), getDeleteSongManager(),getRemoveAlbumManager(),getRemovePlaylistManager());
-        }
-        return mainModel;
-    }
-
-    public AddToPlaylistManager getAddToPlaylistManager()
-    {
-        if(addToPlaylistManager == null)
+    public AddToPlaylistManager getAddToPlaylistManager() {
+        if (addToPlaylistManager == null)
             addToPlaylistManager = new AddToPlaylistImplementation(clientFactory.getClient());
         return addToPlaylistManager;
     }
 
     public ChatManager getChatManager() {
-        if(chatManager == null)
+        if (chatManager == null)
             chatManager = new ChatManagerImplementation(clientFactory.getClient());
         return chatManager;
     }
 
     public FollowListManager getFollowListManager() {
-        if(followListManager == null)
+        if (followListManager == null)
             followListManager = new FollowListManagerImplementation(clientFactory.getClient());
         return followListManager;
     }
 
     public LogInManager getLoginManager() {
-        if(logInManager == null)
+        if (logInManager == null)
             logInManager = new LoginManagerImplementation(clientFactory.getClient());
         return logInManager;
     }
 
     public MusicManager getMusicManager() {
-        if(musicManager == null)
+        if (musicManager == null)
             musicManager = new MusicManagerImplementation(clientFactory.getClient());
         return musicManager;
     }
 
     public SignUpManager getSignUpManager() {
-        if(signUpManager == null)
+        if (signUpManager == null)
             signUpManager = new SignUpManagerImplementation(clientFactory.getClient());
         return signUpManager;
     }
 
     public ProfileManager getProfileManager() {
-        if(profileManager == null)
+        if (profileManager == null)
             profileManager = new ProfileManagerImplementation(clientFactory.getClient());
         return profileManager;
     }
 
     public UpdateSettingsManager getUpdateSettingsManager() {
-        if(updateSettingsManager == null)
+        if (updateSettingsManager == null)
             updateSettingsManager = new UpdateSettingsManagerImplementation(clientFactory.getClient());
         return updateSettingsManager;
     }
 
     public SearchManager getSearchManager() {
-        if(searchManager == null)
+        if (searchManager == null)
             searchManager = new SearchManagerImplementation(clientFactory.getClient());
         return searchManager;
     }
+
     public CreatePlaylistManager getCreatePlaylistManager() {
-        if(createPlaylistManager == null)
+        if (createPlaylistManager == null)
             createPlaylistManager = new CreatePlayListManagerImplementation(clientFactory.getClient());
         return createPlaylistManager;
     }
+
     public MainMenuManager getMainMenuManager() {
         if (mainMenuManager == null)
             mainMenuManager = new MainMenuManagerImplementation(clientFactory.getClient());
@@ -137,29 +129,25 @@ public class ModelFactory {
         return addAlbumManager;
     }
 
-    public AddSongManager getAddSongManager()
-    {
+    public AddSongManager getAddSongManager() {
         if (addSongManager == null)
             addSongManager = new AddSongManagerImpl(clientFactory.getClient());
         return addSongManager;
     }
 
-    public DeleteSongManager getDeleteSongManager()
-    {
+    public DeleteSongManager getDeleteSongManager() {
         if (deleteSongManager == null)
             deleteSongManager = new DeleteSongManagerImplementation(clientFactory.getClient());
         return deleteSongManager;
     }
 
-    public RemoveAlbumManager getRemoveAlbumManager()
-    {
+    public RemoveAlbumManager getRemoveAlbumManager() {
         if (removeAlbumManager == null)
             removeAlbumManager = new RemoveAlbumManagerImplementation(clientFactory.getClient());
         return removeAlbumManager;
     }
 
-    public RemovePlaylistManager getRemovePlaylistManager()
-    {
+    public RemovePlaylistManager getRemovePlaylistManager() {
         if (removePlaylistManager == null)
             removePlaylistManager = new RemovePlaylistManagerImplementation(clientFactory.getClient());
         return removePlaylistManager;

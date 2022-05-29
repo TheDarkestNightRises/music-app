@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface SearchServer extends Remote {
-    ArrayList<Song> fetchSortedList() throws RemoteException;
 
     void searchSong(String newValue) throws RemoteException;
 

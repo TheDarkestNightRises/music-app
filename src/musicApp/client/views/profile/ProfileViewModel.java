@@ -5,6 +5,8 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.profile.ProfileManager;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
@@ -17,22 +19,23 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class ProfileViewModel implements Subject {
+    private final LogInManager loginManger;
+    private final ProfileManager profileManager;
     private StringProperty nameProperty;
     private StringProperty descriptionProperty;
     private ObjectProperty<Image> profilePicture;
 
-    private MainModel mainModel;
     private PropertyChangeSupport support;
 
-
-    public ProfileViewModel(MainModel mainModel) {
-        this.mainModel = mainModel;
+    public ProfileViewModel(LogInManager loginManager, ProfileManager profileManager) {
+        this.loginManger = loginManager;
+        this.profileManager = profileManager;
         this.support = new PropertyChangeSupport(this);
         this.nameProperty = new SimpleStringProperty();
         this.descriptionProperty = new SimpleStringProperty();
         this.profilePicture = new SimpleObjectProperty<>();
-        this.mainModel.getProfileManager().addListener("newSongAddedToPlaylist", this::updatePlaylist);
-        this.mainModel.getProfileManager().addListener("newPlaylist", this::onNewPlaylist);
+        profileManager.addListener("newSongAddedToPlaylist", this::updatePlaylist);
+        profileManager.addListener("newPlaylist", this::onNewPlaylist);
     }
 
     public void init(User user) {
@@ -53,19 +56,19 @@ public class ProfileViewModel implements Subject {
     }
 
     public ArrayList<Playlist> fetchPlaylistsForUser(User user) {
-        return mainModel.getProfileManager().fetchPlaylistsForUser(user);
+        return profileManager.fetchPlaylistsForUser(user);
     }
 
     public ArrayList<Song> fetchSongsForPlaylist(Playlist playlist) {
-        return mainModel.getProfileManager().fetchSongsForPlaylist(playlist);
+        return profileManager.fetchSongsForPlaylist(playlist);
     }
 
     public byte[] fetchProfilePicture(String profile_picture) {
-        return mainModel.getProfileManager().fetchProfilePicture(profile_picture);
+        return profileManager.fetchProfilePicture(profile_picture);
     }
 
     public User fetchUser() {
-        return mainModel.getLogInManager().getUser();
+        return loginManger.getUser();
     }
 
     @Override
@@ -79,17 +82,17 @@ public class ProfileViewModel implements Subject {
     }
 
     public boolean isArtist(User user) {
-        return mainModel.getProfileManager().isArtist(user);
+        return profileManager.isArtist(user);
     }
 
     public void follow(User user) {
         User user0 = fetchUser();
-        mainModel.getProfileManager().follow(user0, user);
+        profileManager.follow(user0, user);
     }
 
     public void unfollow(User user) {
         User user0 = fetchUser();
-        mainModel.getProfileManager().unfollow(user0, user);
+        profileManager.unfollow(user0, user);
     }
 
     public void bindName(StringProperty textProperty) {

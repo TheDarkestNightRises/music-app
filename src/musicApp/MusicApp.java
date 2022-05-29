@@ -38,7 +38,7 @@ public class MusicApp extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
-        modelFactory.getMainModel().getLogInManager().disconnect(); //TODO: BREAK LAW OF DEMETER
+        modelFactory.getLoginManager().disconnect(); //TODO: BREAK LAW OF DEMETER
         connectionFactory.close();
         Platform.exit();
         System.exit(0);

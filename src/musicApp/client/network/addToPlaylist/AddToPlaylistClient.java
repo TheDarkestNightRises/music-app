@@ -7,7 +7,6 @@ import musicApp.shared.networking.RMIServer;
 
 public interface AddToPlaylistClient
 {
-  void setServer(RMIServer server);
   void addToPlaylist(User user, Playlist playlist, Song currentSong)
       throws Exception;
 }

@@ -8,7 +8,11 @@ public class RMIUpdateSettingsClient implements UpdateSettingsClient
 {
   private RMIServer server;
 
-  @Override public void setServer(RMIServer server)
+    public RMIUpdateSettingsClient(RMIServer server) {
+      this.server = server;
+    }
+
+    @Override public void setServer(RMIServer server)
   {
     this.server = server;
   }

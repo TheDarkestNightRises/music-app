@@ -5,6 +5,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.image.Image;
+import musicApp.client.model.login.LogInManager;
+import musicApp.client.model.profile.ProfileManager;
+import musicApp.client.model.register.SignUpManager;
+import musicApp.client.model.updateSettings.UpdateSettingsManager;
 import musicApp.server.model.domainModel.User;
 
 import javax.imageio.ImageIO;
@@ -14,19 +18,26 @@ import java.io.*;
 
 public class UpdateSettingsViewModel
 {
-  private final MainModel mainModel;
   private final StringProperty password;
   private final StringProperty error;
   private final StringProperty error1;
   private final StringProperty email;
   private final StringProperty nickaname;
+  private final ProfileManager profileManager;
+  private final LogInManager logInManager;
+  private final UpdateSettingsManager updateSettingsManager;
+  private final SignUpManager signUpManager;
   private ObjectProperty<Image> profilePicture;
   private FileInputStream tempImgStream;
   private File imgFile;
 
-  public UpdateSettingsViewModel(MainModel mainModel)
+  public UpdateSettingsViewModel(LogInManager logInManager, ProfileManager profileManager,
+                                 UpdateSettingsManager updateSettingsManager, SignUpManager signUpManager)
   {
-    this.mainModel = mainModel;
+    this.profileManager = profileManager;
+    this.logInManager = logInManager;
+    this.updateSettingsManager = updateSettingsManager;
+    this.signUpManager = signUpManager;
     password = new SimpleStringProperty("");
     error = new SimpleStringProperty("");
     error1 = new SimpleStringProperty("");
@@ -40,17 +51,17 @@ public class UpdateSettingsViewModel
 
   public void reset()
   {
-    password.set(mainModel.getLogInManager().getUser().getPassword());
+    password.set(logInManager.getUser().getPassword());
     error.set("");
-    email.set(mainModel.getLogInManager().getUser().getEmail());
-    nickaname.set(mainModel.getLogInManager().getUser().getNickname());
+    email.set(logInManager.getUser().getEmail());
+    nickaname.set(logInManager.getUser().getNickname());
     tempImgStream = null;
     imgFile = null;
 
     try
     {
 
-      Image image = new Image(new ByteArrayInputStream(mainModel.getProfileManager().fetchProfilePicture(mainModel.getLogInManager().getUser().getProfile_picture())));
+      Image image = new Image(new ByteArrayInputStream(profileManager.fetchProfilePicture(logInManager.getUser().getProfile_picture())));
       profilePicture.setValue(image);//TODO: add link
     }
     catch (Exception e)
@@ -64,12 +75,12 @@ public class UpdateSettingsViewModel
     {
       try
       {
-        mainModel.getUpdateSettingsManager()
-            .updateUserInfo(mainModel.getLogInManager().getUser().getUsername(), password.get(), email.get(),
+        updateSettingsManager
+            .updateUserInfo(logInManager.getUser().getUsername(), password.get(), email.get(),
                 nickaname.get());
-        mainModel.getLogInManager().getUser().setPassword(password.get());
-        mainModel.getLogInManager().getUser().setEmail(email.get());
-        mainModel.getLogInManager().getUser().setNickname(nickaname.get());
+        logInManager.getUser().setPassword(password.get());
+        logInManager.getUser().setEmail(email.get());
+        logInManager.getUser().setNickname(nickaname.get());
         error.set("Settings changed successfully");
       }
       catch (Exception e)
@@ -102,10 +113,10 @@ public class UpdateSettingsViewModel
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
         ImageIO.write((RenderedImage) image, "png", byteArrayOutputStream);
-        String uploaded = mainModel.getUpdateSettingsManager().uploadImage(mainModel.getLogInManager().getUser().getUsername(), byteArrayOutputStream.toByteArray());
+        String uploaded = updateSettingsManager.uploadImage(logInManager.getUser().getUsername(), byteArrayOutputStream.toByteArray());
         if(uploaded != null)
         {
-        mainModel.getLogInManager().getUser().setProfile_picture(uploaded);
+        logInManager.getUser().setProfile_picture(uploaded);
         error1.set("Avatar changed successfully");}
         else
         error1.set("Could not upload image");
@@ -172,22 +183,22 @@ public class UpdateSettingsViewModel
 
   private boolean nicknameNotValid()
   {
-    return mainModel.getUpdateSettingsManager().nicknameNotValid(nickaname.get());
+    return updateSettingsManager.nicknameNotValid(nickaname.get());
   }
 
   private boolean emailNotValid()
   {
-    return mainModel.getSignUpManager().emailNotValid(email.get());
+    return signUpManager.emailNotValid(email.get());
   }
 
   public boolean noDigits()
   {
-    return mainModel.getSignUpManager().noDigits(password.get());
+    return signUpManager.noDigits(password.get());
   }
 
   public boolean noUpper()
   {
-    return mainModel.getSignUpManager().noUpper(password.get());
+    return signUpManager.noUpper(password.get());
   }
   public void bindPassword(StringProperty property)
   {
@@ -219,8 +230,4 @@ public class UpdateSettingsViewModel
     profilePicture.bindBidirectional(property);
   }
 
-  public User fetchUser()
-  {
-    return mainModel.getLogInManager().getUser();
-  }
 }

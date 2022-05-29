@@ -25,10 +25,7 @@ public class ServerModelSearchImpl implements ServerModelSearch {
         this.support = new PropertyChangeSupport(this);
     }
 
-    @Override
-    public ArrayList<Song> fetchSortedList() {
-        return songs;
-    }
+
 
     @Override
     public void searchSong(String newValue) {

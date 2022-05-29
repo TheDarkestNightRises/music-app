@@ -10,5 +10,4 @@ public interface ChatClient {
     void sendMessage(Message message);
 
     List<LogEntry> getLog();
-    void setServer(RMIServer server);
 }

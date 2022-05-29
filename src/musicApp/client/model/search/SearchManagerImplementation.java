@@ -21,11 +21,6 @@ public class SearchManagerImplementation implements SearchManager {
     }
 
     @Override
-    public ArrayList<Song> fetchSortedList() {
-        return client.getSearchClient().fetchSortedList();
-    }
-
-    @Override
     public void searchSong(String search) {
         client.getSearchClient().searchSong(search);
     }

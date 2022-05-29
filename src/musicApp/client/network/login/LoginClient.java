@@ -12,8 +12,6 @@ public interface LoginClient {
 
     void disconnect(User user);
 
-    void setServer(RMIServer server);
-
     boolean accountDoesNotExist(String username, String password);
 
 }
