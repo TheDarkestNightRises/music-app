@@ -58,12 +58,7 @@ public class LoginManagerImplementation implements LogInManager {
     {
        return  client.getLoginClient().accountDoesNotExist(username, password);
     }
-
-    @Override public Artist getArtist(String username)
-    {
-        return null;
-    }
-
+    
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
         support.addPropertyChangeListener(eventName,listener);
