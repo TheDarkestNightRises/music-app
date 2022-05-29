@@ -1,6 +1,7 @@
 package musicApp.server.network.deleteSong;
 
-import musicApp.server.model.ServerModel;
+import musicApp.server.model.ServerModelFactory;
+import musicApp.server.model.deleteSong.ServerModelDeleteSong;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.DeleteSongServer;
@@ -9,23 +10,22 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
-public class DeleteSongServerImpl implements DeleteSongServer
-{
-  private ServerModel serverModel;
+public class DeleteSongServerImpl implements DeleteSongServer {
 
-  public DeleteSongServerImpl(ServerModel serverModel) throws RemoteException
-  {
-    UnicastRemoteObject.exportObject(this,0);
-    this.serverModel = serverModel;
-  }
+    private final ServerModelDeleteSong serverModelDeleteSong;
 
-  @Override public ArrayList<Song> getSongsOfUser(User user) throws Exception
-  {
-    return serverModel.getModelDeleteSong().getSongsOfUser(user);
-  }
+    public DeleteSongServerImpl(ServerModelFactory serverModelFactory) throws RemoteException {
+        UnicastRemoteObject.exportObject(this, 0);
+        this.serverModelDeleteSong = serverModelFactory.getModelDeleteSong();
+    }
 
-  @Override public void deleteSong(Song song) throws Exception
-  {
-    serverModel.getModelDeleteSong().deleteSong(song);
-  }
+    @Override
+    public ArrayList<Song> getSongsOfUser(User user) throws Exception {
+        return serverModelDeleteSong.getSongsOfUser(user);
+    }
+
+    @Override
+    public void deleteSong(Song song) throws Exception {
+        serverModelDeleteSong.deleteSong(song);
+    }
 }

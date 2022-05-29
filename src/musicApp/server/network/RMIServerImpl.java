@@ -1,6 +1,6 @@
 package musicApp.server.network;
 
-import musicApp.server.model.ServerModel;
+import musicApp.server.model.ServerModelFactory;
 import musicApp.server.model.domainModel.Album;
 import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
 
 public class RMIServerImpl implements RMIServer {
     private AddToPlaylistServer addToPlaylistServer;
-    private ServerModel serverModel;
+    private ServerModelFactory serverModelFactory;
     private ChatServer chatServer;
     private LoginServer loginServer;
     private MusicPlayerServer musicPlayerServer;
@@ -50,25 +50,25 @@ public class RMIServerImpl implements RMIServer {
     private RemoveAlbumServer removeAlbumServer;
     private RemovePlaylistServer removePlaylistServer;
 
-    public RMIServerImpl(ServerModel serverModel) throws RemoteException {
+    public RMIServerImpl(ServerModelFactory serverModelFactory) throws RemoteException {
         UnicastRemoteObject.exportObject(this, 0);
-        this.serverModel = serverModel;
-        this.chatServer = new ChatServerImpl(serverModel);
-        this.loginServer = new LoginServerImpl(serverModel);
-        this.musicPlayerServer = new MusicPlayerServerImpl(serverModel);
-        this.signUpServer = new SignUpServerImpl(serverModel);
-        this.profileServer = new ProfileServerImpl(serverModel);
-        this.searchServer = new SearchServerImpl(serverModel);
-        this.followListServer = new FollowListServerImpl(serverModel);
-        this.updateSettingsServer = new UpdateSettingsServerImpl(serverModel);
-        this.mainMenuServer = new MainMenuServerImpl(serverModel);
-        this.createPLayListServer = new CreatePlaylistServerImpl(serverModel);
-        this.addToPlaylistServer = new AddToPlaylistServerImpl(serverModel);
-        this.addAlbumServer = new AddAlbumServerImpl(serverModel);
-        this.addSongServer = new AddSongServerImpl(serverModel);
-        this.deleteSongServer = new DeleteSongServerImpl(serverModel);
-        this.removeAlbumServer = new RemoveAlbumServerImpl(serverModel);
-        this.removePlaylistServer = new RemovePlaylistServerImpl(serverModel);
+        this.serverModelFactory = serverModelFactory;
+        this.chatServer = new ChatServerImpl(serverModelFactory);
+        this.loginServer = new LoginServerImpl(serverModelFactory);
+        this.musicPlayerServer = new MusicPlayerServerImpl(serverModelFactory);
+        this.signUpServer = new SignUpServerImpl(serverModelFactory);
+        this.profileServer = new ProfileServerImpl(serverModelFactory);
+        this.searchServer = new SearchServerImpl(serverModelFactory);
+        this.followListServer = new FollowListServerImpl(serverModelFactory);
+        this.updateSettingsServer = new UpdateSettingsServerImpl(serverModelFactory);
+        this.mainMenuServer = new MainMenuServerImpl(serverModelFactory);
+        this.createPLayListServer = new CreatePlaylistServerImpl(serverModelFactory);
+        this.addToPlaylistServer = new AddToPlaylistServerImpl(serverModelFactory);
+        this.addAlbumServer = new AddAlbumServerImpl(serverModelFactory);
+        this.addSongServer = new AddSongServerImpl(serverModelFactory);
+        this.deleteSongServer = new DeleteSongServerImpl(serverModelFactory);
+        this.removeAlbumServer = new RemoveAlbumServerImpl(serverModelFactory);
+        this.removePlaylistServer = new RemovePlaylistServerImpl(serverModelFactory);
     }
 
     @Override
@@ -79,49 +79,49 @@ public class RMIServerImpl implements RMIServer {
 
 
     public void registerClient(ClientCallBack client) {
-        serverModel.getModelChat().addListener("NewLogEntry", evt -> {
+        serverModelFactory.getModelChat().addListener("NewLogEntry", evt -> {
             try {
                 client.updateLog((LogEntry) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelLogin().addListener("OnNewUserEntry", evt -> {
+        serverModelFactory.getModelLogin().addListener("OnNewUserEntry", evt -> {
             try {
                 client.updateUserNumber((int) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelSearch().addListener("newSearchSong", evt -> {
+        serverModelFactory.getModelSearch().addListener("newSearchSong", evt -> {
             try {
                 client.updateSongSearchResult((ArrayList<Song>) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelSearch().addListener("newSearchAlbum", evt -> {
+        serverModelFactory.getModelSearch().addListener("newSearchAlbum", evt -> {
             try {
                 client.updateAlbumSearchResult((ArrayList<Album>) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelSearch().addListener("newSearchProfile", evt -> {
+        serverModelFactory.getModelSearch().addListener("newSearchProfile", evt -> {
             try {
                 client.updateProfileSearchResult((ArrayList<User>) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelMusic().addListener("newPlaylist",evt -> {
+        serverModelFactory.getModelMusic().addListener("newPlaylist", evt -> {
             try {
                 client.updatePlaylists((Playlist) evt.getNewValue());
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         });
-        serverModel.getModelMusic().addListener("newSongAddedToPlaylist",evt -> {
+        serverModelFactory.getModelMusic().addListener("newSongAddedToPlaylist", evt -> {
             try {
                 client.updateSongsFromPlaylist((Playlist) evt.getNewValue());
             } catch (RemoteException e) {
@@ -138,12 +138,11 @@ public class RMIServerImpl implements RMIServer {
         return loginServer;
     }
 
-    public MusicPlayerServer getMusicPlayerServer() throws RemoteException{
+    public MusicPlayerServer getMusicPlayerServer() throws RemoteException {
         return musicPlayerServer;
     }
 
-     public SignUpServer getSignUpServer() throws RemoteException
-    {
+    public SignUpServer getSignUpServer() throws RemoteException {
         return signUpServer;
     }
 
@@ -157,18 +156,15 @@ public class RMIServerImpl implements RMIServer {
         return searchServer;
     }
 
-    public FollowListServer getFollowListServer() throws RemoteException
-    {
+    public FollowListServer getFollowListServer() throws RemoteException {
         return followListServer;
     }
 
-    public UpdateSettingsServer getUpdateSettingsServer() throws RemoteException
-    {
+    public UpdateSettingsServer getUpdateSettingsServer() throws RemoteException {
         return updateSettingsServer;
     }
 
-    public CreatePLayListServer getCreatePlaylistServer()
-    {
+    public CreatePLayListServer getCreatePlaylistServer() {
         return createPLayListServer;
     }
 
@@ -177,35 +173,35 @@ public class RMIServerImpl implements RMIServer {
         return mainMenuServer;
     }
 
-    @Override public AddToPlaylistServer getAddToPlaylistServer() throws RemoteException
-    {
+    @Override
+    public AddToPlaylistServer getAddToPlaylistServer() throws RemoteException {
         return addToPlaylistServer;
     }
 
-    @Override public AddAlbumServer getAddAlbumServer() throws RemoteException
-    {
+    @Override
+    public AddAlbumServer getAddAlbumServer() throws RemoteException {
         return addAlbumServer;
     }
 
-    @Override public AddSongServer getAddSongServer() throws RemoteException
-    {
+    @Override
+    public AddSongServer getAddSongServer() throws RemoteException {
         return addSongServer;
     }
 
-    @Override public DeleteSongServer getDeleteSongServer()
-        throws RemoteException
-    {
+    @Override
+    public DeleteSongServer getDeleteSongServer()
+            throws RemoteException {
         return deleteSongServer;
     }
 
-    @Override public RemoveAlbumServer getRemoveAlbumServer()
-        throws RemoteException
-    {
+    @Override
+    public RemoveAlbumServer getRemoveAlbumServer()
+            throws RemoteException {
         return removeAlbumServer;
     }
 
-    @Override public RemovePlaylistServer getRemovePlaylistServer() throws RemoteException
-    {
+    @Override
+    public RemovePlaylistServer getRemovePlaylistServer() throws RemoteException {
         return removePlaylistServer;
     }
 

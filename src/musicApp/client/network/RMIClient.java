@@ -70,7 +70,6 @@ public class RMIClient implements Client, ClientCallBack {
     private RemoveAlbumClient removeAlbumClient;
     private RemovePlaylistClient removePlaylistClient;
 
-    //TODO: RMI is early instantiation and Model is lazy even though lazy doesn't make much sense? this is a jojo ref
 
     public RMIClient() {
         try {

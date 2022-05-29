@@ -1,12 +1,9 @@
 package musicApp.server.model.chat;
 
-import musicApp.server.model.ServerModel;
-import musicApp.server.model.ServerModelImpl;
 import musicApp.server.model.chat.log.DefaultLog;
 import musicApp.shared.LogEntry;
 import musicApp.shared.Message;
 
-import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.IOException;

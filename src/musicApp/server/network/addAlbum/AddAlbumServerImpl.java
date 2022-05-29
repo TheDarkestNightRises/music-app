@@ -1,6 +1,7 @@
 package musicApp.server.network.addAlbum;
 
-import musicApp.server.model.ServerModel;
+import musicApp.server.model.ServerModelFactory;
+import musicApp.server.model.addAlbum.ServerModelAddAlbum;
 import musicApp.server.model.domainModel.Artist;
 import musicApp.server.model.domainModel.User;
 import musicApp.shared.networking.AddAlbumServer;
@@ -8,24 +9,24 @@ import musicApp.shared.networking.AddAlbumServer;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class AddAlbumServerImpl implements AddAlbumServer
-{
-  private final ServerModel serverModel;
+public class AddAlbumServerImpl implements AddAlbumServer {
 
-  public AddAlbumServerImpl(ServerModel serverModel) throws RemoteException
-  {
-    UnicastRemoteObject.exportObject(this, 0);
-    this.serverModel = serverModel;
-  }
 
-  @Override public String uploadAlbumImage(String username, byte[] toByteArray)
-  {
-    String path = serverModel.getModelAddAlbums().uploadAlbumPicture(username, toByteArray);
-    return path;
-  }
+    private final ServerModelAddAlbum serverModelAddAlbum;
 
-  @Override public Artist getArtist(User user)
-  {
-    return serverModel.getModelAddAlbums().getArtist(user);
-  }
+    public AddAlbumServerImpl(ServerModelFactory serverModelFactory) throws RemoteException {
+        UnicastRemoteObject.exportObject(this, 0);
+        this.serverModelAddAlbum = serverModelFactory.getModelAddAlbums();
+    }
+
+    @Override
+    public String uploadAlbumImage(String username, byte[] toByteArray) {
+        String path = serverModelAddAlbum.uploadAlbumPicture(username, toByteArray);
+        return path;
+    }
+
+    @Override
+    public Artist getArtist(User user) {
+        return serverModelAddAlbum.getArtist(user);
+    }
 }

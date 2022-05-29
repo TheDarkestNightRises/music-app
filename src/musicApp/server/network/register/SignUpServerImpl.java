@@ -1,50 +1,50 @@
 package musicApp.server.network.register;
 
+import musicApp.server.model.ServerModelFactory;
 import musicApp.server.model.domainModel.User;
-import musicApp.server.model.ServerModel;
+import musicApp.server.model.register.ServerModelSignUp;
 import musicApp.shared.networking.SignUpServer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class SignUpServerImpl implements SignUpServer
-{
+public class SignUpServerImpl implements SignUpServer {
 
-  private final ServerModel serverModel;
 
-  public SignUpServerImpl(ServerModel serverModel) throws RemoteException
-  {
-    UnicastRemoteObject.exportObject(this, 0);
-    this.serverModel = serverModel;
-  }
+    private final ServerModelSignUp serverModelSignUp;
 
-  @Override public void addUser(User user)
-  {
-    serverModel.getModelSignUp().addUser(user);
-  }
+    public SignUpServerImpl(ServerModelFactory serverModelFactory) throws RemoteException {
+        UnicastRemoteObject.exportObject(this, 0);
+        this.serverModelSignUp = serverModelFactory.getModelSignUp();
+    }
 
-  @Override public boolean usernameExists(String username)
-  {
-    return serverModel.getModelSignUp().usernameExists(username);
-  }
+    @Override
+    public void addUser(User user) {
+        serverModelSignUp.addUser(user);
+    }
 
-  @Override public boolean noDigits(String password) throws RemoteException
-  {
-    return serverModel.getModelSignUp().noDigits(password);
-  }
+    @Override
+    public boolean usernameExists(String username) {
+        return serverModelSignUp.usernameExists(username);
+    }
 
-  @Override public boolean noUpper(String password) throws RemoteException
-  {
-    return serverModel.getModelSignUp().noUpper(password);
-  }
+    @Override
+    public boolean noDigits(String password) throws RemoteException {
+        return serverModelSignUp.noDigits(password);
+    }
 
-  @Override public boolean emailNotValid(String email) throws RemoteException
-  {
-    return serverModel.getModelSignUp().emailNotValid(email);
-  }
+    @Override
+    public boolean noUpper(String password) throws RemoteException {
+        return serverModelSignUp.noUpper(password);
+    }
 
-  @Override public void addArtist(User user) throws RemoteException
-  {
-    serverModel.getModelSignUp().addArtist(user);
-  }
+    @Override
+    public boolean emailNotValid(String email) throws RemoteException {
+        return serverModelSignUp.emailNotValid(email);
+    }
+
+    @Override
+    public void addArtist(User user) throws RemoteException {
+        serverModelSignUp.addArtist(user);
+    }
 }
