@@ -24,11 +24,10 @@ public class LoginMainViewModel {
     }
 
     public boolean signIn() {
-      return  loginValidation();
+        return loginValidation();
     }
 
-    private boolean accountDoesNotExist()
-    {
+    private boolean accountDoesNotExist() {
         return logInManager.accountDoesNotExist(username.get(), password.get());
     }
 
@@ -50,47 +49,54 @@ public class LoginMainViewModel {
         error.bindBidirectional(property);
     }
 
+    public void bindUsername(StringProperty usernameProperty) {
+        username.bindBidirectional(usernameProperty);
+    }
+
+    public void bindPassword(StringProperty passwordProperty) {
+        password.bind(passwordProperty);
+    }
+
     public User getUser() {
         return logInManager.getUser();
     }
 
-    public boolean loginValidation()
-    {
+    public boolean loginValidation() {
         if (password.get().equals("") && username.get().equals("")) {
             error.set("No data inserted");
-            return false; }
+            return false;
+        }
         if (username.get().equals("")) {
             error.set("Username should not be null!");
-            return false; }
+            return false;
+        }
         if (password.get().equals("")) {
             error.set("Password should not be null!");
-            return false; }
-        if(accountDoesNotExist())
-        {
+            return false;
+        }
+        if (accountDoesNotExist()) {
             error.set("The password is wrong");
             return false;
         }
-        if(logInManager.signIn(username.get(), password.get()))
+        if (logInManager.signIn(username.get(), password.get()))
             return true;
-        else
-        {
+        else {
             error.set("Account already logged in");
             return false;
         }
     }
 
-  public boolean isArtist(User user)
-  {
-      try
-      {
-          Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());;
-          if(artist != null)
-              return true;
-      }
-      catch (SQLException e)
-      {
-          e.printStackTrace();
-      }
-      return false;
-  }
+    public boolean isArtist(User user) {
+        try {
+            Artist artist = ArtistDAOImpl.getInstance().getArtistByName(user.getUsername());
+            ;
+            if (artist != null)
+                return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

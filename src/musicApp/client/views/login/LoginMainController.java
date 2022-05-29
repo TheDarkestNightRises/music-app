@@ -25,9 +25,9 @@ public class LoginMainController implements ViewController
   {
     this.viewHandler = vh;
     this.viewModel = vmf.getLoginMainViewModel();
-    username.textProperty().bindBidirectional(viewModel.usernameProperty());
-    password.textProperty().bindBidirectional(viewModel.passwordProperty());
     viewModel.bindError(errorLabel.textProperty());
+    viewModel.bindUsername(viewModel.usernameProperty());
+    viewModel.bindPassword(viewModel.passwordProperty());
   }
 
 
