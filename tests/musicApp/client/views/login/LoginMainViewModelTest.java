@@ -38,6 +38,13 @@ class LoginMainViewModelTest {
     }
 
     @Test
+    public void usernameNullChangesError() {
+        password.set("reea");
+        assertFalse(viewModel.signIn());
+        assertEquals("Username should not be null!", error.get());
+    }
+
+    @Test
     public void passwordNullChangesError() {
         username.set("emanuel");
         assertFalse(viewModel.signIn());

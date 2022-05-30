@@ -41,7 +41,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    public void canBeReset() {
+    public void canBeReset() { //TODO:DONE
         viewModel.reset();
         assertEquals("", username.get());
         assertEquals("", password.get());
@@ -81,7 +81,6 @@ class SignUpViewModelTest {
     @Test
     public void userNameNullChangesError() {
         password.set("re1231245");
-        repeatPassword.set("re1231245");
         assertFalse(viewModel.registerValidation());
         assertEquals("Username should not be null!", error.get());
     }
@@ -102,7 +101,7 @@ class SignUpViewModelTest {
     }
 
     @Test
-    public void passwordWithout8CharactersChangesError() {
+    public void passwordShorterThan8CharactersChangesError() {
         username.set("lolwhatever");
         password.set("re212");
         email.set("lol@yahoo.com");
