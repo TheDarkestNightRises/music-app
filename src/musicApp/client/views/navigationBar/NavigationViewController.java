@@ -79,4 +79,6 @@ public class NavigationViewController implements ViewController {
     private boolean isArtist() {
         return navigationViewModel.isArtist();
     }
+
+    public void openRemovePlaylist(){viewHandler.openRemovePlaylist();}
 }

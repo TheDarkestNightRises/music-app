@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@../mainMenu/css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.navigationBar.NavigationViewController">
+<VBox prefHeight="794.0" prefWidth="215.0" spacing="25.0" styleClass="secondary-color" stylesheets="@../mainMenu/css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.navigationBar.NavigationViewController">
    <children>
       <HBox alignment="CENTER" prefHeight="168.0" prefWidth="215.0">
          <children>
@@ -27,9 +27,9 @@
                <children>
                   <Hyperlink onAction="#openMain" prefHeight="38.0" prefWidth="31.0">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_playlist.png" />
+                              <Image url="@home-4-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -51,9 +51,9 @@
                <children>
                   <Hyperlink onAction="#openSearch">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_search.png" />
+                              <Image url="@search-3-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -72,9 +72,9 @@
                <children>
                   <Hyperlink onAction="#openChat">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_devices.png" />
+                              <Image url="@chat-4-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -93,9 +93,9 @@
                <children>
                   <Hyperlink onAction="#openSettings">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_devices.png" />
+                              <Image url="@settings-5-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -110,13 +110,34 @@
                   </Label>
                </children>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
+               <children>
+                  <Hyperlink onAction="#openRemovePlaylist">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
+                           <image>
+                              <Image url="@x-mark-4-xxl.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Hyperlink>
+                  <Label prefHeight="27.0" prefWidth="125.0" text="Remove Playlist" textFill="#7e7b7b">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
             <HBox fx:id="createAlbum" alignment="CENTER" prefHeight="61.0" prefWidth="235.0" spacing="20.0" stylesheets="@../mainMenu/css/style.css">
                <children>
                   <Hyperlink onAction="#openAddAlbum">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_add.png" />
+                              <Image url="@add-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -135,9 +156,9 @@
                <children>
                   <Hyperlink onAction="#openRemoveAlbum">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_add.png" />
+                              <Image url="@x-mark-4-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -156,9 +177,9 @@
                <children>
                   <Hyperlink onAction="#openAddSong">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_add.png" />
+                              <Image url="@add-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -177,9 +198,9 @@
                <children>
                   <Hyperlink onAction="#openRemoveSong">
                      <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="30.0">
                            <image>
-                              <Image url="@../img/ic_add.png" />
+                              <Image url="@x-mark-4-xxl.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -205,12 +226,15 @@
          <children>
             <Hyperlink alignment="CENTER" onAction="#openCreatePlaylist">
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
                      <image>
-                        <Image url="@../img/ic_add.png" />
+                        <Image url="@add-xxl.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
             </Hyperlink>
             <Label prefHeight="27.0" prefWidth="158.0" stylesheets="@../mainMenu/css/style.css" text="New Playlist" textFill="#7e7b7b">
                <font>
