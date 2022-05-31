@@ -20,7 +20,6 @@ public class SignUpManagerImplementation implements SignUpManager
     support.firePropertyChange(event);
   }
 
-  //TODO: add user needs to be synchronized not thread safe.
   @Override public void addUser(String username, String password, String email)
   {
     client.getSignUpClient().addUser(username, password, email);
