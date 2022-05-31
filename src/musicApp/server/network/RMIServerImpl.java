@@ -79,13 +79,6 @@ public class RMIServerImpl implements RMIServer {
 
 
     public void registerClient(ClientCallBack client) {
-        serverModelFactory.getModelChat().addListener("NewLogEntry", evt -> {
-            try {
-                client.updateLog((LogEntry) evt.getNewValue());
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        });
         serverModelFactory.getModelLogin().addListener("OnNewUserEntry", evt -> {
             try {
                 client.updateUserNumber((int) evt.getNewValue());

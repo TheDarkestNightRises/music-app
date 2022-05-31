@@ -19,11 +19,6 @@ public class SignUpServerImpl implements SignUpServer {
     }
 
     @Override
-    public void addUser(User user) {
-        serverModelSignUp.addUser(user);
-    }
-
-    @Override
     public boolean usernameExists(String username) {
         return serverModelSignUp.usernameExists(username);
     }
@@ -46,5 +41,10 @@ public class SignUpServerImpl implements SignUpServer {
     @Override
     public void addArtist(User user) throws RemoteException {
         serverModelSignUp.addArtist(user);
+    }
+
+    @Override
+    public void addUser(String username, String password, String email) throws RemoteException {
+        serverModelSignUp.addUser(username,password,email);
     }
 }

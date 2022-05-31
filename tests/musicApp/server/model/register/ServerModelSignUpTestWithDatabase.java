@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ServerModelSignUpTest {
+class ServerModelSignUpTestWithDatabase {
     private ServerModelSignUp serverModelSignUp;
 
     @BeforeEach
@@ -57,8 +57,7 @@ class ServerModelSignUpTest {
 
     @Test
     public void userExistsAfterIsAddedInDatabase() {
-        User user = new User("duckTheGoose", "Abcd1234", "lol@yahoo.com", "I like sunny weather", "pfp_1.jpg", "duckie");
-        serverModelSignUp.addUser(user);
+        serverModelSignUp.addUser("duckTheGoose5","Abcd1234","lo2l@yahoo.com");
         assertTrue(serverModelSignUp.usernameExists("duckTheGoose"));
     }
 }

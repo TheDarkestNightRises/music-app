@@ -65,17 +65,6 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return false;
   }
 
-  @Override public void addUser(User user)
-  {
-    try
-    {
-      UsersDAOImpl.getInstance().createUser(user.getUsername(), user.getPassword(), user.getEmail());
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-  }
 
   @Override public void addArtist(User user)
   {
@@ -84,6 +73,18 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
       artistDAO = new ArtistDAOImpl();
       UsersDAOImpl.getInstance().createUser(user.getUsername(), user.getPassword(), user.getEmail());
       artistDAO.insertArtist(user.getUsername());
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  @Override
+  public void addUser(String username, String password, String email) {
+    try
+    {
+      UsersDAOImpl.getInstance().createUser(username, password, email);
     }
     catch (SQLException e)
     {

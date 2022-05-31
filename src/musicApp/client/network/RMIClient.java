@@ -77,10 +77,10 @@ public class RMIClient implements Client, ClientCallBack {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             server = (RMIServer) registry.lookup("Server");
             support = new PropertyChangeSupport(this);
+            this.signUpClient = new RMISignUpClient(server);
             this.chatClient = new RMIChatClient(server);
             this.loginClient = new RMILoginClient(server);
             this.musicPlayerClient = new RMIMusicPlayerClient(server);
-            this.signUpClient = new RMISignUpClient(server);
             this.profileClient = new RMIProfileClient(server);
             this.updateSettingsClient = new RMIUpdateSettingsClient(server);
             this.searchClient = new RMISearchClient(server);
