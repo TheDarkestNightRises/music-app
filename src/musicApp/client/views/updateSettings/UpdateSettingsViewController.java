@@ -3,6 +3,7 @@ package musicApp.client.views.updateSettings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -23,6 +24,8 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public Label errorLabel;
   @FXML
+  public TextArea descriptionField;
+  @FXML
   public Label errorLabel1;
   @FXML
   public ImageView profilePicture;
@@ -37,6 +40,7 @@ public class UpdateSettingsViewController implements ViewController
     viewModel.bindPassword(passwordField.textProperty());
     viewModel.bindNickname(nicknameField.textProperty());
     viewModel.bindEmail(emailField.textProperty());
+    viewModel.bindDescription(descriptionField.textProperty());
     viewModel.bindError(errorLabel.textProperty());
     viewModel.bindError1(errorLabel1.textProperty());
     viewModel.bindImage(profilePicture.imageProperty());

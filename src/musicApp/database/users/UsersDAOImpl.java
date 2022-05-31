@@ -244,17 +244,19 @@ public class UsersDAOImpl implements UsersDAO
     return null;
   }
 
-  @Override public void updateUserInfo(String username, String password, String email, String nickname)
+  @Override public void updateUserInfo(String username, String password, String email, String nickname,
+      String description)
   {
     try
     {
       PreparedStatement statement0 = getConnection().prepareStatement("SET SCHEMA 'music_app'");
       PreparedStatement statement = getConnection().prepareStatement(
-          "UPDATE user_ SET password_ = ?, email = ?, nickname = ? WHERE username = ?");
+          "UPDATE user_ SET password_ = ?, email = ?, nickname = ?, description  = ? WHERE username = ?");
       statement.setString(1, password);
       statement.setString(2, email);
       statement.setString(3, nickname);
-      statement.setString(4, username);
+      statement.setString(4, description);
+      statement.setString(5, username);
       statement0.executeUpdate();
       statement.executeUpdate();
 

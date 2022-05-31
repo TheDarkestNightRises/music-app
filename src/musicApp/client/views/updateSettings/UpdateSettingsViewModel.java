@@ -1,5 +1,6 @@
 package musicApp.client.views.updateSettings;
 
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -23,6 +24,7 @@ public class UpdateSettingsViewModel
   private final StringProperty error1;
   private final StringProperty email;
   private final StringProperty nickaname;
+  private StringProperty description;
   private final ProfileManager profileManager;
   private final LogInManager logInManager;
   private final UpdateSettingsManager updateSettingsManager;
@@ -30,6 +32,7 @@ public class UpdateSettingsViewModel
   private ObjectProperty<Image> profilePicture;
   private FileInputStream tempImgStream;
   private File imgFile;
+
 
   public UpdateSettingsViewModel(LogInManager logInManager, ProfileManager profileManager,
                                  UpdateSettingsManager updateSettingsManager, SignUpManager signUpManager)
@@ -43,6 +46,7 @@ public class UpdateSettingsViewModel
     error1 = new SimpleStringProperty("");
     email = new SimpleStringProperty("");
     nickaname = new SimpleStringProperty("");
+    description = new SimpleStringProperty("");
     profilePicture = new SimpleObjectProperty<Image>();
     tempImgStream = null;
     imgFile = null;
@@ -55,6 +59,7 @@ public class UpdateSettingsViewModel
     error.set("");
     email.set(logInManager.getUser().getEmail());
     nickaname.set(logInManager.getUser().getNickname());
+    description.set(logInManager.getUser().getDescription());
     tempImgStream = null;
     imgFile = null;
 
@@ -77,10 +82,11 @@ public class UpdateSettingsViewModel
       {
         updateSettingsManager
             .updateUserInfo(logInManager.getUser().getUsername(), password.get(), email.get(),
-                nickaname.get());
+                nickaname.get(), description.get());
         logInManager.getUser().setPassword(password.get());
         logInManager.getUser().setEmail(email.get());
         logInManager.getUser().setNickname(nickaname.get());
+        logInManager.getUser().setDescription(description.get());
         error.set("Settings changed successfully");
       }
       catch (Exception e)
@@ -230,4 +236,8 @@ public class UpdateSettingsViewModel
     profilePicture.bindBidirectional(property);
   }
 
+  public void bindDescription(StringProperty property)
+  {
+    description.bindBidirectional(property);
+  }
 }

@@ -13,7 +13,8 @@ public interface ServerModelLogin extends Subject {
 
     boolean accountDoesNotExist(User user);
 
-    void updateUserInfoInList(String username, String password, String email, String nickname);
+    void updateUserInfoInList(String username, String password, String email,
+        String nickname, String description);
 
     boolean isOnline(User user);
 

@@ -21,11 +21,11 @@ public class UpdateSettingsServerImpl implements UpdateSettingsServer {
     }
 
     @Override
-    public void updateUserInfo(String username, String password,
-                               String email, String nickname) {
+    public void updateUserInfo(String username, String password, String email,
+        String nickname, String description) {
         try {
-            serverModelUpdateSettings.updateUserInfo(username, password, email, nickname);
-            serverModelLogin.updateUserInfoInList(username, password, email, nickname);
+            serverModelUpdateSettings.updateUserInfo(username, password, email, nickname, description);
+            serverModelLogin.updateUserInfoInList(username, password, email, nickname, description);
         } catch (Exception e) {
             throw e;
         }

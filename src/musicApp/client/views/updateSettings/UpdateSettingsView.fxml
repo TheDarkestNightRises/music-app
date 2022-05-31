@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@settings.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettings.UpdateSettingsViewController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" styleClass="bodybg" stylesheets="@settings.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="musicApp.client.views.updateSettings.UpdateSettingsViewController">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1086.0" layoutX="-2.0" layoutY="-1.0">
          <image>
@@ -23,7 +24,7 @@
       </ImageView>
       <VBox layoutX="99.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@settings.css">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="384.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="34.0" prefWidth="38.0" styleClass="BackButton">
                      <HBox.margin>
@@ -42,7 +43,7 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="113.0" prefWidth="384.0">
                <padding>
                   <Insets top="15.0" />
                </padding>
@@ -54,21 +55,28 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="63.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css" />
-            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="384.0">
                <children>
                   <PasswordField fx:id="passwordField" onAction="#submitPassword" prefHeight="34.0" prefWidth="281.0" promptText="Password" styleClass="Input" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="144.0" layoutY="93.0" prefHeight="65.0" prefWidth="384.0">
+            <HBox alignment="CENTER" layoutX="144.0" layoutY="93.0" prefHeight="58.0" prefWidth="384.0">
                <children>
                   <TextField fx:id="emailField" onAction="#submitEmail" prefHeight="34.0" prefWidth="282.0" promptText="Email" styleClass="Input" />
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="142.0" layoutY="256.0" prefHeight="65.0" prefWidth="384.0">
+            <HBox alignment="CENTER" layoutX="142.0" layoutY="256.0" prefHeight="54.0" prefWidth="384.0">
                <children>
                   <TextField fx:id="nicknameField" onAction="#submitNickname" prefHeight="34.0" prefWidth="281.0" promptText="Nickname" styleClass="Input" />
                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="91.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css">
+               <children>
+                  <TextArea fx:id="descriptionField" prefHeight="85.0" prefWidth="281.0" promptText="Description" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
                <children>
@@ -79,7 +87,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="50.0" prefWidth="384.0">
                <children>
                   <Button fx:id="resetButton" mnemonicParsing="false" onAction="#resetButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Reset">
                      <HBox.margin>
@@ -127,8 +135,8 @@
       </VBox>
       <VBox layoutX="583.0" layoutY="82.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.97" prefHeight="586.0" prefWidth="384.0" styleClass="Back" stylesheets="@settings.css">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="384.0" />
-            <HBox alignment="CENTER" prefHeight="131.0" prefWidth="384.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="384.0" />
+            <HBox alignment="CENTER" prefHeight="98.0" prefWidth="384.0">
                <padding>
                   <Insets top="15.0" />
                </padding>
@@ -140,7 +148,7 @@
                   </Text>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="244.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css">
+            <HBox alignment="CENTER" layoutX="200.0" layoutY="14.0" prefHeight="268.0" prefWidth="384.0" styleClass="text" stylesheets="@settings.css">
                <children>
                   <ImageView fx:id="profilePicture" fitHeight="178.0" fitWidth="229.0" pickOnBounds="true" preserveRatio="true" />
                </children>
@@ -154,7 +162,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="90.0" prefWidth="384.0">
+            <HBox alignment="CENTER" layoutX="232.0" layoutY="329.0" prefHeight="61.0" prefWidth="384.0">
                <children>
                   <Button fx:id="resetPictureButton" mnemonicParsing="false" onAction="#choosePictureButtonPressed" prefHeight="39.0" prefWidth="200.0" style="-fx-background-radius: 20;" stylesheets="@settings.css" text="Choose a picture">
                      <HBox.margin>
@@ -176,7 +184,7 @@
                   <Insets bottom="20.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="90.0" prefWidth="384.0">
+            <HBox alignment="CENTER" prefHeight="97.0" prefWidth="384.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

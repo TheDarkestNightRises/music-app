@@ -2,8 +2,6 @@ package musicApp.client.model.updateSettings;
 
 import musicApp.client.network.Client;
 
-import java.io.FileInputStream;
-
 public class UpdateSettingsManagerImplementation implements UpdateSettingsManager
 {
   private Client client;
@@ -18,10 +16,10 @@ public class UpdateSettingsManagerImplementation implements UpdateSettingsManage
   }
 
   @Override public void updateUserInfo(String username, String password,
-      String email, String nickname) throws Exception
+      String email, String nickname, String description) throws Exception
   {
     try{
-      client.getUpdateSettingsclient().updateUserInfo(username, password, email, nickname);
+      client.getUpdateSettingsclient().updateUserInfo(username, password, email, nickname, description);
     }
     catch (Exception e)
     {

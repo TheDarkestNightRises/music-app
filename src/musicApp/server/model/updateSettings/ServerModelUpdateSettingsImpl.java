@@ -5,7 +5,6 @@ import musicApp.database.users.UsersDAOImpl;
 import musicApp.server.serverData.filemanager.FileManager;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -27,10 +26,10 @@ public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
   }
 
   @Override public void updateUserInfo(String username, String password,
-      String email, String nickname)
+      String email, String nickname, String description)
   {
     try {
-      dao.updateUserInfo(username, password, email, nickname);
+      dao.updateUserInfo(username, password, email, nickname, description);
     }
     catch (Exception e)
     {

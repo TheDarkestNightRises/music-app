@@ -18,11 +18,11 @@ public class RMIUpdateSettingsClient implements UpdateSettingsClient
   }
 
   @Override public void updateUserInfo(String username, String password,
-      String email, String nickname)
+      String email, String nickname, String description)
   {
     try
     {
-      server.getUpdateSettingsServer().updateUserInfo(username, password, email, nickname);
+      server.getUpdateSettingsServer().updateUserInfo(username, password, email, nickname, description);
     }
     catch (RemoteException e)
     {

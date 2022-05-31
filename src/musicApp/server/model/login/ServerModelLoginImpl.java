@@ -73,7 +73,7 @@ public class ServerModelLoginImpl implements ServerModelLogin {
     }
 
     @Override public void updateUserInfoInList(String username, String password,
-        String email, String nickname)
+        String email, String nickname, String description)
     {
         for (User currentUser : userList)
             if (currentUser.getUsername().equals(username))
@@ -81,6 +81,7 @@ public class ServerModelLoginImpl implements ServerModelLogin {
                 currentUser.setPassword(password);
                 currentUser.setEmail(email);
                 currentUser.setNickname(nickname);
+                currentUser.setDescription(description);
                 break;
             }
 
