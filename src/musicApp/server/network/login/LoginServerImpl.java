@@ -22,7 +22,7 @@ public class LoginServerImpl implements LoginServer
 
   @Override public User signIn(String username, String password)
   {
-    return serverModelLogin.SignIn(username, password);
+    return serverModelLogin.signIn(username, password);
   }
 
   @Override public void disconnect(User user) throws RemoteException

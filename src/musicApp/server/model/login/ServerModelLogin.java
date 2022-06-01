@@ -3,9 +3,12 @@ package musicApp.server.model.login;
 import musicApp.server.model.domainModel.User;
 import musicApp.util.Subject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface ServerModelLogin extends Subject {
     //---------Login--------
-    User SignIn(String username, String password);
+    User signIn(String username, String password);
 
     void disconnect(User user);
 
@@ -19,4 +22,6 @@ public interface ServerModelLogin extends Subject {
     boolean isOnline(User user);
 
     void updatePicturePathForUser(String username, String path);
+
+    List<User> getUserList();
 }

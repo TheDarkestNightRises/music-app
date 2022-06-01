@@ -22,14 +22,14 @@ public class ServerModelLoginImpl implements ServerModelLogin {
     }
 
     @Override
-    public User SignIn(String username, String password) {
+    public User signIn(String username, String password) {
         try {
             for (User currentUser : userList)
                 if (currentUser.isLoggedIn() && currentUser.getUsername()
                         .equals(username))
                     return null;
-            if (this.userDAO.accountExists(username, password)) {
-                User userLogged = userDAO.getUserByName(username);
+            if (UsersDAOImpl.getInstance().accountExists(username, password)) {
+                User userLogged = UsersDAOImpl.getInstance().getUserByName(username);
                 userLogged.setLoggedIn(true);
                 //System.out.println(userLogged);
                 userList.add(userLogged);
@@ -113,5 +113,9 @@ public class ServerModelLoginImpl implements ServerModelLogin {
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
         support.removePropertyChangeListener(eventName, listener);
+    }
+
+    public List<User> getUserList() {
+        return userList;
     }
 }

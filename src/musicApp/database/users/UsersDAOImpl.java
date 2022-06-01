@@ -12,10 +12,6 @@ import java.util.ArrayList;
 public class UsersDAOImpl implements UsersDAO
 {
   private static UsersDAOImpl instance;
-
-  public static String USERNAME = "viinvdnw";
-  public static String PASSWORD = "RYTBFOCvnjTJFnAoOA-XeuvHE7sdLyV-";
-  public static String URL = "jdbc:postgresql://abul.db.elephantsql.com:5432/viinvdnw";
   private Connection connection;
 
   public UsersDAOImpl() throws SQLException
@@ -61,8 +57,8 @@ public class UsersDAOImpl implements UsersDAO
     catch (SQLException e)
     {
       e.printStackTrace();
+      throw new RuntimeException("Sql error " + e);
     }
-    return null;
   }
 
   @Override public boolean accountExists(String username, String password) throws SQLException
