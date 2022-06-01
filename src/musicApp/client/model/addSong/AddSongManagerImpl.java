@@ -44,25 +44,14 @@ public class AddSongManagerImpl implements AddSongManager
     FileInputStream in;
     try {
       in = new FileInputStream(songFile);
-      try {
-        in.read(songBytes, 0, songBytes.length);
-      } catch (IOException e) {
-
-        e.printStackTrace();
-      }
-      try {
-        in.close();
-      } catch (IOException e) {
-
-        e.printStackTrace();
-        throw new Exception("Could not convert file");
-      }
+      in.read(songBytes, 0, songBytes.length);
+      in.close();
       client.getAddSongClient().addSong(title, songBytes, tempAlbums.get(index), user);
 
-    } catch (FileNotFoundException e) {
+    } catch (IOException e) {
 
       e.printStackTrace();
-      throw new Exception("file was not found");
+      throw new Exception("file cannot be processed");
     }
 
   }

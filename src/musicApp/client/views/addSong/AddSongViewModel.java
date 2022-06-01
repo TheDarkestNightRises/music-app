@@ -69,7 +69,7 @@ public class AddSongViewModel {
         } else {
             try {
                 addSongManager.addSong(title.get(), songFile, index, loginManager.getUser());
-                error.set("SOng uploaded successfully");
+                error.set("Song uploaded successfully");
             } catch (Exception ex) {
                 error.set(ex.getMessage());
             }
