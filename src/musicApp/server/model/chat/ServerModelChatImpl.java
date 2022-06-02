@@ -10,12 +10,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Chat model
+ */
 public class ServerModelChatImpl implements ServerModelChat
 {
   private List<LogEntry> logEntries;
   private DefaultLog defaultLog;
   private PropertyChangeSupport support;
 
+  /**
+   * This is the server model constructor. It initializes the log entry and remembers what the user
+   * messaged.
+   */
   public ServerModelChatImpl()
   {
     support = new PropertyChangeSupport(this);
@@ -28,9 +35,14 @@ public class ServerModelChatImpl implements ServerModelChat
     return new ArrayList<>(logEntries);
   }
 
-  @Override public void sendMessage(Message arg)
+  /**
+   * This will send the message to all the users make a log of it in a file, and remebering it for the
+   * log tabel. This method is
+   * @param message containing text,date,tiime
+   */
+  @Override public void sendMessage(Message message)
   {
-    LogEntry logEntry = new LogEntry(arg.getMessage(), arg.getDate(), arg.getTime());
+    LogEntry logEntry = new LogEntry(message.getMessage(), message.getDate(), message.getTime());
     try
     {
       defaultLog.log(logEntry.toString());

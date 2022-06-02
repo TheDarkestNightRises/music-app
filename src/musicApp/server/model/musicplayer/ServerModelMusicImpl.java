@@ -14,6 +14,9 @@ import java.io.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * This is the server responsible for music
+ */
 public class ServerModelMusicImpl implements ServerModelMusic {
     private FileManager fileManager;
     private PropertyChangeSupport support;
@@ -24,16 +27,32 @@ public class ServerModelMusicImpl implements ServerModelMusic {
         this.support = new PropertyChangeSupport(this);
     }
 
+    /**
+     * This gets all the current playlist using the file manager
+     * @param playlist to identify which one
+     * @return songs
+     */
     @Override
     public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist) {
         return fileManager.getCurrentPlaylistFiles(playlist);
     }
 
+    /**
+     * This calls the file manager to fetch a photo
+     * @param picturePath path to it
+     * @return byte[] to picture
+     */
     @Override
     public byte[] fetchAlbumCover(String picturePath) {
         return fileManager.fetchPhotoFromAlbum(picturePath);
     }
 
+    /**
+     * This method adds a song to the playlist liked songs. If the liked songs is not created then this
+     * method will create the playlist. Delegates to dao to do the database interaction
+     * @param user to add playlist
+     * @param song to add
+     */
     @Override
     public void addToLikedSongs(User user, Song song) {
         try {
@@ -60,6 +79,11 @@ public class ServerModelMusicImpl implements ServerModelMusic {
         }
     }
 
+    /**
+     * This method will remove a song from the liked songs playlist
+     * @param user who called
+     * @param song to remove
+     */
     @Override
     public void removeToLikedSongs(User user, Song song) {
         try {
