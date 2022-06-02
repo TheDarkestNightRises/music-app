@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * The ViewHandler is responsible for loading all the views in the application.Some views can be
+ * cached in this class for better performance. The stage remains the same while scenes are being swapped.
+ */
 public class ViewHandler {
 
     private Scene profileScene;
@@ -37,14 +41,26 @@ public class ViewHandler {
     private Stage stage;
     private ViewModelFactory vmf;
 
+    /**
+     * The constructor for the ViewHandler class.
+     * @param vmf each view has a reference to it's viewModel that's why the viewHandler needs this factory
+     */
     public ViewHandler(ViewModelFactory vmf) {
         this.vmf = vmf;
     }
 
+    /**
+     * This is the start method. The start method will initialize the stage and open the first window(login)
+     */
     public void start() {
         stage = new Stage();
         openLogin();
     }
+
+    /**
+     * This method returns the current stage
+     * @return stage
+     */
 
     public Stage getStage() {
         return stage;
@@ -54,6 +70,10 @@ public class ViewHandler {
         this.stage = stage;
     }
 
+    /**
+     * This method will load the fxml for the ChatView. After loading it and initializing the controller
+     * this will open the chat view
+     */
     public void openChat() {
         try {
             Parent root = loadFXML("../views/chat/ChatView.fxml");
@@ -69,6 +89,11 @@ public class ViewHandler {
         }
     }
 
+
+    /**
+     * This method will load the fxml for the LogView. After loading it and initializing the controller
+     * this will open the log view.
+     */
     public void openLog() {
         try {
             Parent root = loadFXML("../views/log/LogView.fxml");
@@ -83,6 +108,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the LoginMain. After loading it and initializing the controller
+     * this will open the login view.
+     */
     public void openLogin() {
         try {
             Parent root = loadFXML("../views/login/LoginMain.fxml");
@@ -97,6 +126,11 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the ArtistProfileView. After loading it and initializing the controller
+     * this will open the artist profile view.It takes a user as a parameter because to open this view
+     * you need the user's info, playlists,albums etc.
+     */
     public void openArtistProfile(User user) {
         try {
             Parent root = loadFXML("../views/artistProfile/ArtistProfileView.fxml", user);
@@ -112,6 +146,10 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method will load the fxml for the SignUpView. After loading it and initializing the controller
+     * this will open the signup view.
+     */
     public void openSignUp() {
         try {
             Parent root = loadFXML("../views/signup/SignUpView.fxml");
@@ -126,6 +164,11 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the MusicPlayer. After loading it and initializing the controller
+     * this will open the artist music player view. It takes a playlist to open a music player because
+     * the window needs to play playlist
+     */
     public void openMusicPlayer(Playlist playlist) {
         try {
             Parent root = loadFXML("../views/musicPlayer/MusicPlayer.fxml", playlist);
@@ -140,6 +183,11 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the music player scene cached in the viewHandler.
+     * Must be used only when you want to go back to this window.
+     * this will open the artist music player view.
+     */
     public void openMusicPlayer() {
         stage.setTitle("Music Player");
         stage.setScene(mediaPlayerScene);
@@ -148,6 +196,11 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method will load the fxml for the ProfileView. After loading it and initializing the controller
+     * this will open the users profile view.It takes a user as a parameter because to open this view
+     * you need the user's info, playlists etc.
+     */
     public void openProfile(User user) {
         try {
             Parent root = loadFXML("../views/profile/ProfileView.fxml", user);
@@ -163,6 +216,11 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method will load the profile scene cached in the viewHandler.
+     * Must be used only when you want to go back to this window.
+     * This will open the profile view.
+     */
     public void openProfile() {
         //This method is used after profile has been generated.
         stage.setTitle("Profile");
@@ -185,7 +243,10 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
-
+    /**
+     * This method will load the fxml for the FollowList. After loading it and initializing the controller
+     * this will open the follow list.
+     */
     public Parent openFollowListSubView() {
         try {
             Parent root = loadFXML("../views/followList/FollowList.fxml");
@@ -201,7 +262,12 @@ public class ViewHandler {
         }
         return null;
     }
-
+    /**
+     * This method will load the fxml for the UpdateSettingsView. After loading it
+     * and initializing the controller this will open the update settings view.
+     * It takes a user as a parameter because to open this view
+     * you need the user's info, profile picture,description etc.
+     */
     public void openUpdateSettings(User user) {
         try {
             Parent root = loadFXML("../views/updateSettings/UpdateSettingsView.fxml", user);
@@ -216,6 +282,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the SearchView. After loading it and initializing the controller
+     * this will open the search view.
+     */
     public void openSearch() {
         try {
             Parent root = loadFXML("../views/search/SearchView.fxml");
@@ -230,6 +300,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the ArtistSignUpView. After loading it and initializing the controller
+     * this will open the artist signup.
+     */
     public void openArtistSignUp() {
         try {
             Parent root = loadFXML("../views/artistSignUp/ArtistSignUpView.fxml");
@@ -244,6 +318,13 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will read and initialize the fxml that is given to it.
+     * @param path of the fxml file
+     * @param args to pass objects if the view needs objects to be initialized.
+     * @return Parent to set the new Scene
+     * @throws IOException because it's loading the fxml from a file
+     */
     private Parent loadFXML(String path, Object... args) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(path));
@@ -253,6 +334,11 @@ public class ViewHandler {
         return root;
     }
 
+    /**
+     * This method will load the fxml for the SongView into a vbox to be used as a component.
+     * After loading it and initializing the controller this will open the song view.
+     * @param song to init the song details
+     */
     public VBox openSongView(Song song) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../views/song/SongView.fxml"));
@@ -267,6 +353,12 @@ public class ViewHandler {
         return vBox;
     }
 
+
+    /**
+     * This method will load the fxml for the SingleView into a vbox to be used as a component.
+     * After loading it and initializing the controller this will open the single view.
+     * @param song to init the single details
+     */
     public VBox openSingleView(Song song) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../views/single/SingleView.fxml"));
@@ -281,6 +373,10 @@ public class ViewHandler {
         return vBox;
     }
 
+    /**
+     * This method will load the fxml for the MainMenuView. After loading it and initializing the controller
+     * this will open the artist main menu.
+     */
     public void openMainMenu() {
 
         try {
@@ -296,6 +392,10 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method will load the fxml for the RemoveAlbumView. After loading it and initializing the controller
+     * this will open the remove album view.
+     */
     public void openRemoveAlbum() {
 
         try {
@@ -311,6 +411,10 @@ public class ViewHandler {
         stage.centerOnScreen();
     }
 
+    /**
+     * This method will load the fxml for the RemoveAlbumView. After loading it and initializing the controller
+     * this will open the remove playlist view.
+     */
     public void openRemovePlaylist() {
 
         try {
@@ -327,6 +431,11 @@ public class ViewHandler {
     }
 
 
+    /**
+     * This method will load the fxml for the AlbumView into a vbox to be used as a component.
+     * After loading it and initializing the controller this will open the album view.
+     * @param album to init the album details
+     */
     public VBox openAlbumView(Album album) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../views/album/AlbumView.fxml"));
@@ -341,6 +450,11 @@ public class ViewHandler {
         return vBox;
     }
 
+    /**
+     * This method will load the fxml for the AlbumView into a HBox to be used as a subView.
+     * After loading it and initializing the controller this will open the album view.
+     * @param user to init the user's details
+     */
     public HBox openProfileCardView(User user) {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("../views/cardForUserSearch/UserCardView.fxml"));
@@ -355,6 +469,10 @@ public class ViewHandler {
         return hBox;
     }
 
+    /**
+     * This method will load the fxml for the ProfileCardView.
+     * After loading it and initializing the controller this will open the album view.
+     */
     public Parent openProfileCard() {
         try {
             Parent root = loadFXML("../views/profileCard/ProfileCardView.fxml");
@@ -371,69 +489,10 @@ public class ViewHandler {
         return null;
     }
 
-    // -------------------- THIS CODE WAS USED FOR GENERATION DON'T DELETE , ITS FOR REFERENCE---------------
-    public VBox generateView(ArrayList<Song> songs) {
-        VBox vBoxContainer = new VBox();
-        vBoxContainer.setSpacing(10);
-        vBoxContainer.setPadding(new Insets(10));
-        Platform.runLater(() -> {
-            if (songs.size() > 0) {
-                vBoxContainer.getChildren().add(generatePlayButton(songs));
-                HBox hBox = new HBox();
-                hBox.setSpacing(10);
-                int counterUntilSpace = 0;
-                for (Song song : songs) {
-                    counterUntilSpace++;
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("../views/profile/SongView.fxml"));
-                    VBox vBox = null;
-                    try {
-                        vBox = fxmlLoader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    SongController songController = fxmlLoader.getController();
-                    songController.init(this, vmf);
-                    hBox.getChildren().add(vBox);
-                    if (counterUntilSpace == 4) {
-                        vBoxContainer.getChildren().add(hBox);
-                        hBox = new HBox();
-                        hBox.setSpacing(10);
-                    }
-                }
-                vBoxContainer.getChildren().add(hBox);
-            }
-        });
-        return vBoxContainer;
-    }
-
-    public Text generateLoadingText() {
-        Text text = new Text("Loading...");
-        text.setFont(Font.font("System", FontWeight.BOLD, 18));
-        text.setFill(Color.WHITE);
-        return text;
-    }
-
-    public Hyperlink generatePlayButton(ArrayList<Song> songs) {
-        Hyperlink button = new Hyperlink();
-        URL url = getClass().getResource("../views/img/ic_play.png");
-        Image image = new Image(String.valueOf(url));
-        ImageView imageView = new ImageView(image);
-        button.setGraphic(imageView);
-        button.setOnAction(event -> this.openMusicPlayer(new Playlist(songs)));
-        return button;
-    }
-
-    public HBox generateTitleHBox(ArrayList<Song> songs) {
-        HBox titleHBox = new HBox();
-        titleHBox.setSpacing(10);
-        if (songs.size() > 0) {
-            Hyperlink button = this.generatePlayButton(songs);
-            titleHBox.getChildren().add(button);
-        }
-        return titleHBox;
-    }
-
+    /**
+     * This method will load the fxml for the CreatePlaylistView.
+     * After loading it and initializing the controller this will open the create playlist view.
+     */
     public void openCreatePlaylist() {
         try {
             Parent root = loadFXML("../views/createPlaylist/CreatePlaylistView.fxml");
@@ -448,6 +507,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the AddToPlaylistView.
+     * After loading it and initializing the controller this will open the add to playlist view.
+     */
     public void openAddToPlaylist(Song song) {
         try {
             Parent root = loadFXML("../views/addToPlaylist/AddToPlaylistView.fxml", song);
@@ -462,6 +525,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the AddAlbumView.
+     * After loading it and initializing the controller this will open the add to album view.
+     */
     public void openAddAlbum() {
         try {
             Parent root = loadFXML("../views/addAlbum/AddAlbumView.fxml");
@@ -476,6 +543,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the DeleteSongView.
+     * After loading it and initializing the controller this will open the delete song view.
+     */
     public void openDeleteSong() {
         try {
             Parent root = loadFXML("../views/deleteSong/DeleteSongView.fxml");
@@ -490,6 +561,11 @@ public class ViewHandler {
         }
     }
 
+
+    /**
+     * This method will load the fxml for the UploadSongView.
+     * After loading it and initializing the controller this will open upload song view.
+     */
     public void openAddSong() {
         try {
             Parent root = loadFXML("../views/addSong/UploadSongView.fxml");
@@ -504,6 +580,10 @@ public class ViewHandler {
         }
     }
 
+    /**
+     * This method will load the fxml for the NavigationView.
+     * After loading it and initializing the controller this will open navigation view.
+     */
     public Parent openNavigation() {
         try {
             Parent root = loadFXML("../views/navigationBar/NavigationView.fxml");
@@ -518,6 +598,12 @@ public class ViewHandler {
         }
         return null;
     }
+
+    /**
+     * This method will load the fxml for the contact_item into a HBox to be used as a component.
+     * After loading it and initializing the controller this will open the album view.
+     * @param user to init the user's details
+     */
 
     public HBox openContact(User user)
     {

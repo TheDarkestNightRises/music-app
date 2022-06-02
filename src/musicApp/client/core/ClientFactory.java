@@ -6,12 +6,16 @@ import musicApp.client.network.chat.ChatClient;
 import musicApp.client.network.login.LoginClient;
 import musicApp.client.network.musicplayer.MusicPlayerClient;
 
+/**
+ * The client factory is responsible for creating the client. It uses the factory design pattern
+ */
 public class ClientFactory {
     private Client client;
-    private LoginClient loginClient;
-    private MusicPlayerClient musicPlayerClient;
-    private ChatClient chatClient;
 
+    /**
+     * The getClient() method is made with lazy instantiation
+     * @return the client facade
+     */
     public Client getClient() {
         if (client == null) {
             this.client = new RMIClient();
