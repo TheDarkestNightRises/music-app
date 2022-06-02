@@ -6,14 +6,13 @@ import javafx.scene.control.ListView;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.removeAlbum.RemoveAlbumViewModel;
 
 public class RemovePlaylistViewController implements ViewController
 {
   @FXML
   private ListView<String> list;
   @FXML
-  private Label errorLabel;
+  private Label error;
   private ViewHandler viewHandler;
   private RemovePlaylistViewModel viewModel;
 
@@ -22,7 +21,7 @@ public class RemovePlaylistViewController implements ViewController
     viewHandler = vh;
     viewModel = vmf.getRemovePlaylistViewModel();
     viewModel.bindList(list.itemsProperty());
-    viewModel.bindError(errorLabel.textProperty());
+    viewModel.bindError(error.textProperty());
     viewModel.reset();
   }
 

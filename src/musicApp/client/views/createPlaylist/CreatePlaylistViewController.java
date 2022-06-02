@@ -2,13 +2,11 @@ package musicApp.client.views.createPlaylist;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.signup.SignUpViewModel;
 
 public class CreatePlaylistViewController implements ViewController
 {
@@ -16,7 +14,7 @@ public class CreatePlaylistViewController implements ViewController
   @FXML
   private TextField title;
   @FXML
-  private Label errorLabel;
+  private Label error;
   @FXML
   private TextArea description;
   private ViewHandler viewHandler;
@@ -29,7 +27,7 @@ public class CreatePlaylistViewController implements ViewController
     viewModel = vmf.getCreatePlaylistViewModel();
     viewModel.bindTitle(title.textProperty());
     viewModel.bindDescription(description.textProperty());
-    viewModel.bindError(errorLabel.textProperty());
+    viewModel.bindError(error.textProperty());
     System.out.println("binded");
   }
 

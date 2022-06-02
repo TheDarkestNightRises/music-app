@@ -18,7 +18,7 @@ public class RemoveAlbumViewModel
   private final SimpleListProperty<String> albumTitles;
   private final ProfileManager profileManager;
   private final LogInManager loginManager;
-  private final RemoveAlbumManager removAlbumManager;
+  private final RemoveAlbumManager removeAlbumManager;
   private ArrayList<Album> tempAlbums;
   private StringProperty error;
 
@@ -26,7 +26,7 @@ public class RemoveAlbumViewModel
                               RemoveAlbumManager removeAlbumManager) {
     this.profileManager = profileManager;
     this.loginManager = loginManager;
-    this.removAlbumManager = removeAlbumManager;
+    this.removeAlbumManager = removeAlbumManager;
     albumTitles = new SimpleListProperty<>(FXCollections.observableArrayList());
     tempAlbums = new ArrayList<>();
     error = new SimpleStringProperty("");
@@ -56,7 +56,7 @@ public class RemoveAlbumViewModel
       try
       {
         Album album = tempAlbums.get(selectedIndex);
-        removAlbumManager.deleteAlbum(album);
+        removeAlbumManager.deleteAlbum(album);
         error.set("The album has been removed!");
         albumTitles.remove(selectedIndex);
       }

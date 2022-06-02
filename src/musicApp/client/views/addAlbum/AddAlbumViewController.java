@@ -12,54 +12,49 @@ import musicApp.client.views.updateSettings.UpdateSettingsViewModel;
 
 import java.io.File;
 
-public class AddAlbumViewController implements ViewController
-{
-  @FXML
-  public TextField albumName;
-  @FXML
-  public ImageView albumPicture;
+public class AddAlbumViewController implements ViewController {
+    @FXML
+    public TextField albumName;
+    @FXML
+    public ImageView albumPicture;
 
-  private ViewHandler viewHandler;
-  private AddAlbumViewModel viewModel;
+    private ViewHandler viewHandler;
+    private AddAlbumViewModel viewModel;
 
-  @Override public void init(ViewHandler vh, ViewModelFactory vmf, Object... args)
-  {
-    this.viewHandler = vh;
-    viewModel = vmf.getAddAlbumViewModel();
-    viewModel.bindAlbumName(albumName.textProperty());
-    viewModel.bindImage(albumPicture.imageProperty());
-  }
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
+        this.viewHandler = vh;
+        viewModel = vmf.getAddAlbumViewModel();
+        viewModel.bindAlbumName(albumName.textProperty());
+        viewModel.bindImage(albumPicture.imageProperty());
+    }
 
-  @FXML
-  public void submitButtonPressed()
-  {
-      if(viewModel.Validate())
-      {
-        viewModel.submit();
+    @FXML
+    public void submitButtonPressed() {
+        if (viewModel.Validate()) {
+            viewModel.submit();
+            viewHandler.openMainMenu();
+        }
+    }
+
+
+    //TODO:the view model should verify if file is null
+    @FXML
+    public void choosePictureButtonPressed() {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+        File file = chooser.showOpenDialog(viewHandler.getStage());
+        if (file != null)
+            viewModel.choosePicture(file);
+    }
+
+    @FXML
+    public void backButtonPressed() {
         viewHandler.openMainMenu();
-      }
-  }
-
-
-  //TODO:the view model should verify if file is null
-  @FXML
-  public void choosePictureButtonPressed()
-  {
-    FileChooser chooser = new FileChooser();
-    chooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-        new FileChooser.ExtensionFilter("PNG", "*.png")
-    );
-    File file = chooser.showOpenDialog(viewHandler.getStage());
-    if(file != null)
-      viewModel.choosePicture(file);
-  }
-
-  @FXML
-  public void backButtonPressed()
-  {
-    viewHandler.openMainMenu();
-  }
+    }
 
 
 }

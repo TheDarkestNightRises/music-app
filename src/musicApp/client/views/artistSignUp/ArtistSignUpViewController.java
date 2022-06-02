@@ -7,7 +7,6 @@ import javafx.scene.control.TextField;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.signup.SignUpViewModel;
 
 public class ArtistSignUpViewController implements ViewController
 {
@@ -16,7 +15,7 @@ public class ArtistSignUpViewController implements ViewController
   @FXML
   private TextField username;
   @FXML
-  private Label errorLabel;
+  private Label error;
   @FXML
   private PasswordField repeatPassword;
   @FXML
@@ -31,7 +30,7 @@ public class ArtistSignUpViewController implements ViewController
     viewModel = vmf.getArtistSignUpViewModel();
     viewModel.bindPassword(password.textProperty());
     viewModel.bindUsername(username.textProperty());
-    viewModel.bindError(errorLabel.textProperty());
+    viewModel.bindError(error.textProperty());
     viewModel.bindRepeatPassword(repeatPassword.textProperty());
     viewModel.bindEmail(email.textProperty());
   }

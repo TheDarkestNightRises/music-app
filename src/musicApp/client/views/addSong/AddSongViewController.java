@@ -8,8 +8,6 @@ import javafx.stage.FileChooser;
 import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
-import musicApp.client.views.deleteSong.DeleteSongViewModel;
-import musicApp.server.model.domainModel.User;
 
 import java.io.File;
 
@@ -19,9 +17,10 @@ public class AddSongViewController implements ViewController {
     @FXML
     private TextField title;
     @FXML
-    private Label errorLabel;
+    private Label error;
     @FXML
-    private Label fileNameLabel;
+    private Label fileName;
+    
     private ViewHandler viewHandler;
     private AddSongViewModel viewModel;
 
@@ -30,10 +29,10 @@ public class AddSongViewController implements ViewController {
                      Object... args) {
         viewHandler = vh;
         viewModel = vmf.getAddSongViewModel();
-        viewModel.bindError(errorLabel.textProperty());
+        viewModel.bindError(error.textProperty());
         viewModel.bindList(list.itemsProperty());
         viewModel.bindTitle(title.textProperty());
-        viewModel.bindFileName(fileNameLabel.textProperty());
+        viewModel.bindFileName(fileName.textProperty());
         viewModel.reset();
     }
 

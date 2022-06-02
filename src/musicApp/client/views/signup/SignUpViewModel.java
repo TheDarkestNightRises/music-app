@@ -6,11 +6,12 @@ import musicApp.client.model.register.SignUpManager;
 
 public class SignUpViewModel {
     private final SignUpManager signUpManager;
+    private final StringProperty email;
     private final StringProperty username;
     private final StringProperty password;
-    private final StringProperty error;
-    private final StringProperty email;
     private final StringProperty repeatPassword;
+    private final StringProperty error;
+
 
     public SignUpViewModel(SignUpManager signUpManager) {
         this.signUpManager = signUpManager;

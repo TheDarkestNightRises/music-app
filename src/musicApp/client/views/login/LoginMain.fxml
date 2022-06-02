@@ -56,7 +56,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="37.0" prefWidth="384.0" styleClass="error">
                <children>
-                  <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="311.0" textFill="WHITE" />
+                  <Label fx:id="error" alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="311.0" textFill="WHITE" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="53.0" prefWidth="384.0">

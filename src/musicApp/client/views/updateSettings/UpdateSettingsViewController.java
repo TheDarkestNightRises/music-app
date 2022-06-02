@@ -22,11 +22,11 @@ public class UpdateSettingsViewController implements ViewController
   @FXML
   public TextField emailField;
   @FXML
-  public Label errorLabel;
+  public Label error;
   @FXML
   public TextArea descriptionField;
   @FXML
-  public Label errorLabel1;
+  public Label error1;
   @FXML
   public ImageView profilePicture;
   private ViewHandler viewHandler;
@@ -41,8 +41,8 @@ public class UpdateSettingsViewController implements ViewController
     viewModel.bindNickname(nicknameField.textProperty());
     viewModel.bindEmail(emailField.textProperty());
     viewModel.bindDescription(descriptionField.textProperty());
-    viewModel.bindError(errorLabel.textProperty());
-    viewModel.bindError1(errorLabel1.textProperty());
+    viewModel.bindError(error.textProperty());
+    viewModel.bindError1(error1.textProperty());
     viewModel.bindImage(profilePicture.imageProperty());
     viewModel.reset();
   }

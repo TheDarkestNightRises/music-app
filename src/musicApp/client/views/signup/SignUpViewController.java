@@ -7,38 +7,38 @@ import musicApp.client.core.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
-
-import javax.swing.*;
 
 public class SignUpViewController implements ViewController {
     @FXML
-    private PasswordField password;
+    private TextField email;
     @FXML
     private TextField username;
     @FXML
-    private Label errorLabel;
+    private PasswordField password;
     @FXML
     private PasswordField repeatPassword;
     @FXML
-    private TextField email;
+    private Label error;
+
     private ViewHandler viewHandler;
     private SignUpViewModel viewModel;
 
 
     @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
+    public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         viewHandler = vh;
         viewModel = vmf.getSignUpViewModel();
         viewModel.bindPassword(password.textProperty());
         viewModel.bindUsername(username.textProperty());
-        viewModel.bindError(errorLabel.textProperty());
+        viewModel.bindError(error.textProperty());
         viewModel.bindRepeatPassword(repeatPassword.textProperty());
         viewModel.bindEmail(email.textProperty());
     }
 
     @FXML
-    public void submitEmail(){ username.requestFocus();}
+    public void submitEmail() {
+        username.requestFocus();
+    }
 
     @FXML
     public void submitUsername() {
@@ -52,24 +52,21 @@ public class SignUpViewController implements ViewController {
     }
 
     @FXML
-    public void submitRepeatPassword()
-    {
+    public void submitRepeatPassword() {
         signUpButtonPressed();
     }
 
-   @FXML
-    public void backToLogin()
-   {
-       viewHandler.openLogin();
-   }
+    @FXML
+    public void backToLogin() {
+        viewHandler.openLogin();
+    }
 
     @FXML
     protected void signUpButtonPressed() {
-       if(viewModel.registerValidation())
-       {
-           viewModel.createUser();
-           viewHandler.openLogin();
-       }
+        if (viewModel.registerValidation()) {
+            viewModel.createUser();
+            viewHandler.openLogin();
+        }
     }
 
 }

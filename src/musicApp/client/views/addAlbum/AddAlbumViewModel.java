@@ -21,10 +21,11 @@ import java.time.LocalDate;
 public class AddAlbumViewModel
 {
 
+  private ObjectProperty<Image> albumPicture;
   private final StringProperty albumName;
   private LogInManager logInManager;
   private AddAlbumManager addAlbumManager;
-  private ObjectProperty<Image> albumPicture;
+
   private FileInputStream tempImgStream;
   private File imgFile;
 

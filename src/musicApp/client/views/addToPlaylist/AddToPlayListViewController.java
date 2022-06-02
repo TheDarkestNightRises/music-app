@@ -12,7 +12,7 @@ public class AddToPlayListViewController implements ViewController {
     @FXML
     private ListView<String> list;
     @FXML
-    private Label errorLabel;
+    private Label error;
     private ViewHandler viewHandler;
     private AddToPlaylistViewModel viewModel;
     
@@ -22,7 +22,7 @@ public class AddToPlayListViewController implements ViewController {
         viewHandler = vh;
         viewModel = vmf.getAddToPlaylistViewModel();
         viewModel.bindList(list.itemsProperty());
-        viewModel.bindError(errorLabel.textProperty());
+        viewModel.bindError(error.textProperty());
         Song song  = (Song) args[0];
         viewModel.reset();
         viewModel.setSong(song);

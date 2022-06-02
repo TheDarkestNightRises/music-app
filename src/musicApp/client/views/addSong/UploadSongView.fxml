@@ -53,7 +53,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="384.0" spacing="10.0">
                <children>
-                  <Label fx:id="fileNameLabel" maxWidth="-Infinity" prefHeight="17.0" prefWidth="214.0" text="No file chosen" textFill="WHITE" />
+                  <Label fx:id="fileName" maxWidth="-Infinity" prefHeight="17.0" prefWidth="214.0" text="No file chosen" textFill="WHITE" />
                   <Button fx:id="createButton1" mnemonicParsing="false" onAction="#chooseFileButtonPressed" prefHeight="39.0" prefWidth="111.0" style="-fx-background-radius: 20;" stylesheets="@createPlaylist.css" text="Choose file">
                      <font>
                         <Font size="13.0" />
@@ -75,7 +75,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="33.0" prefWidth="384.0">
                <children>
-                  <Label fx:id="errorLabel" textFill="#fdfdfd">
+                  <Label fx:id="error" textFill="#fdfdfd">
                      <font>
                         <Font name="Arial Black" size="15.0" />
                      </font>

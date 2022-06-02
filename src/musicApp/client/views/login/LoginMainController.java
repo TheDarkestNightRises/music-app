@@ -7,14 +7,14 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import musicApp.server.model.domainModel.User;
 
 public class LoginMainController implements ViewController {
     @FXML
     public TextField username;
     @FXML
     public PasswordField password;
-    public Label errorLabel;
+    @FXML
+    public Label error;
     private ViewHandler viewHandler;
     private LoginMainViewModel viewModel;
 
@@ -23,7 +23,7 @@ public class LoginMainController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.viewHandler = vh;
         this.viewModel = vmf.getLoginMainViewModel();
-        viewModel.bindError(errorLabel.textProperty());
+        viewModel.bindError(error.textProperty());
         viewModel.bindUsername(username.textProperty());
         viewModel.bindPassword(password.textProperty());
     }
