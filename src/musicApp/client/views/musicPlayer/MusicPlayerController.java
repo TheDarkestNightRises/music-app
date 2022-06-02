@@ -39,7 +39,7 @@ public class MusicPlayerController implements ViewController {
     private MusicPlayerViewModel musicPlayerViewModel;
 
     /**
-     * The constructor of this controller. It calls the view model do bindings
+     * The constructor of this controller. It calls the view model to do bindings
      * @param vh to open views
      * @param vmf to initialize the view Model
      * @param args to initialize the playlist when opened

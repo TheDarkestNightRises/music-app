@@ -7,6 +7,11 @@ import java.sql.SQLException;
 
 public class ServerModelRemoveAlbumImpl implements ServerModelRemoveAlbum
 {
+
+  /**
+   * This method deletes an album
+   * @param album the album that should be deleted
+   */
   @Override public void removeAlbum(Album album)
   {
     try

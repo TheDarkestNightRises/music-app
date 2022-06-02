@@ -21,7 +21,7 @@ public class RMIMusicPlayerClient implements MusicPlayerClient {
         try {
             return server.getMusicPlayerServer().getCurrentPlaylistFiles(playlist);
         } catch (RemoteException e) {
-            e.printStackTrace(); //Todo: Throw Runtime Exception catch in viewModel set error
+            e.printStackTrace();
             return null;
         }
     }

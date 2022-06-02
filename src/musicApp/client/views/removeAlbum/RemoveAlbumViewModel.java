@@ -13,6 +13,10 @@ import musicApp.server.model.domainModel.*;
 
 import java.util.ArrayList;
 
+
+/**
+ * Remove album view model responsible for removing an album from the system
+ */
 public class RemoveAlbumViewModel
 {
   private final SimpleListProperty<String> albumTitles;
@@ -22,6 +26,12 @@ public class RemoveAlbumViewModel
   private ArrayList<Album> tempAlbums;
   private StringProperty error;
 
+  /**
+   * This is the constructor of the RemoveAlbumViewModel
+   * @param profileManager to fetch the artist albums
+   * @param loginManager to get the current user
+   * @param removeAlbumManager to delete the album
+   */
   public RemoveAlbumViewModel(ProfileManager profileManager, LogInManager loginManager,
                               RemoveAlbumManager removeAlbumManager) {
     this.profileManager = profileManager;
@@ -32,12 +42,19 @@ public class RemoveAlbumViewModel
     error = new SimpleStringProperty("");
   }
 
+  /**
+   * This is used to reinitialize the albums once a change is made
+   */
   public void reset()
   {
     albumTitles.setAll(getAlbumsTitles());
     error.set("");
   }
 
+  /**
+   * This method is used to create a list with all the albums titles
+   * @return the titles of all albums from the current artist
+   */
   public ArrayList<String> getAlbumsTitles()
   {
     User user = loginManager.getUser();
@@ -51,6 +68,10 @@ public class RemoveAlbumViewModel
     return titles;
   }
 
+  /**
+   * This method is used to remove an album by selecting one
+   * @param selectedIndex is the index of the selected album
+   */
     public void removeAlbum(int selectedIndex)
     {
       try
