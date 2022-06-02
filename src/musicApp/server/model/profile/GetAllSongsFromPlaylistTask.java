@@ -9,6 +9,9 @@ import musicApp.server.model.domainModel.Song;
 
 import java.util.ArrayList;
 
+/**
+ * Task that gets all the songs from the playlist. It runs on a separate thread
+ */
 public class GetAllSongsFromPlaylistTask extends Task {
     private ProfileDAO profileDAO;
     private Playlist playlist;

@@ -15,10 +15,17 @@ public class NavigationViewModel {
         this.profileManager = profileManager;
     }
 
+    /**
+     * This method will fetch the cached user
+     */
     public User fetchUser() {
         return loginManager.getUser();
     }
 
+    /**
+     * This method will check if the user is an artist
+     * @return true if artist, false if not
+     */
     public boolean isArtist() {
         User user = loginManager.getUser();
         return profileManager.isArtist(user);

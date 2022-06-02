@@ -16,6 +16,10 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.ArrayList;
 
+/**
+ * Music player view model responsible for managing the internal songs list and keeping track of
+ * the current song number.
+ */
 public class MusicPlayerViewModel implements Subject {
     private final LogInManager loginManager;
     private final MusicManager musicManager;
@@ -29,8 +33,11 @@ public class MusicPlayerViewModel implements Subject {
     private ObjectProperty<Image> albumPicture;
 
 
-
-
+    /**
+     * This is the constructor of the MusicPlayerViewModel
+     * @param loginManager to get the current user
+     * @param musicManager to fetch data from the server model(delegates)
+     */
     public MusicPlayerViewModel(LogInManager loginManager, MusicManager musicManager) {
         this.loginManager = loginManager;
         this.musicManager = musicManager;
@@ -43,6 +50,10 @@ public class MusicPlayerViewModel implements Subject {
 
     }
 
+    /**
+     * Initialize view model with playlist and changes to the current song
+     * @param args
+     */
     public void init(Object... args) {
         playlist = (Playlist) args[0];
         songs = musicManager.getCurrentPlaylistFiles(playlist);
@@ -50,6 +61,10 @@ public class MusicPlayerViewModel implements Subject {
         currentSong();
     }
 
+    /**
+     * This method will fetch the previous song for the media player
+      * @return the previous song file
+     */
     public File previousMedia() {
         if (songNumber > 0) {
             songNumber--;
@@ -59,6 +74,10 @@ public class MusicPlayerViewModel implements Subject {
         return currentSong();
     }
 
+    /**
+     * This method will fetch the next song for the media player
+     * @return the next song file
+     */
     public File nextMedia() {
         if (songNumber < songs.size() - 1) {
             songNumber++;
@@ -68,6 +87,11 @@ public class MusicPlayerViewModel implements Subject {
         return currentSong();
     }
 
+    /**
+     * This method will change the appearance of the media player by changing the bindings here
+     * and return the current song.
+     * @return current song
+     */
     public File currentSong() {
         Song currentSong = playlist.getSong(songNumber);
         Image image = new Image(new ByteArrayInputStream(fetchAlbumCover(currentSong.getAlbum().getPicturePath())));
@@ -100,6 +124,11 @@ public class MusicPlayerViewModel implements Subject {
         maxProperty.set(v);
     }
 
+    /**
+     * This method will fetch the album cover for the current song
+     * @param picturePath file path
+     * @return byte array of the photo
+     */
     public byte[] fetchAlbumCover(String picturePath) {
         return musicManager.fetchAlbumCover(picturePath);
     }
@@ -108,18 +137,28 @@ public class MusicPlayerViewModel implements Subject {
         albumPicture.bindBidirectional(property);
     }
 
+    /**
+     * This method delegate responsibility to add a song from the liked playlist
+     */
     public void addToLikedSongs() {
         User user = loginManager.getUser();
         Song song = playlist.getSong(songNumber);
        musicManager.addToLikedSongs(user, song);
     }
 
+    /**
+     * This method delegate responsibility to remove a song from the liked playlist
+     */
     public void removeToLikedSongs() {
         User user = loginManager.getUser();
         Song song = playlist.getSong(songNumber);
         musicManager.removeToLikedSongs(user, song);
     }
 
+    /**
+     * This method will fetch the current song
+     * @return Song
+     */
     public Song fetchCurrentSong() {
         return playlist.getSong(songNumber);
     }

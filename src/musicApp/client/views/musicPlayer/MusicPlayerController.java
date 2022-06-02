@@ -17,7 +17,11 @@ import javafx.util.Duration;
 
 import java.io.File;
 
-
+/**
+ * The music player controller is responsible for controlling the media player and showing
+ * information about the current song. note: this class breaks S from solid because it has too
+ * much responsibility. Also, it doesn't have bindings for everything.
+ */
 public class MusicPlayerController implements ViewController {
     private Media media;
     private MediaPlayer mediaPlayer;
@@ -34,6 +38,12 @@ public class MusicPlayerController implements ViewController {
     private ViewHandler viewHandler;
     private MusicPlayerViewModel musicPlayerViewModel;
 
+    /**
+     * The constructor of this controller. It calls the view model do bindings
+     * @param vh to open views
+     * @param vmf to initialize the view Model
+     * @param args to initialize the playlist when opened
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         this.viewHandler = vh;
@@ -46,10 +56,19 @@ public class MusicPlayerController implements ViewController {
         changeSong(musicPlayerViewModel.currentSong());
     }
 
+    /**
+     * This method will change the volume of the media player when the
+     * slider changes its value
+     * @param observable slider new value
+     */
     private void changeVolume(Observable observable) {
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
     }
 
+    /**
+     * This method will change the curent song and play it
+     * @param file song file
+     */
     private void changeSong(File file)  {
         if (mediaPlayer != null) mediaPlayer.stop();
         media = new Media(file.toURI().toString());
@@ -60,33 +79,56 @@ public class MusicPlayerController implements ViewController {
         mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
     }
 
+    /**
+     * This method will play the media inside the player
+     */
     public void playMedia() {
         mediaPlayer.play();
     }
 
+    /**
+     * This method will pause the media inside the player
+     */
     public void pauseMedia() {
         mediaPlayer.pause();
     }
 
+    /**
+     * This method will reset the current song to the start
+     */
     public void resetMedia() {
         mediaPlayer.seek(Duration.seconds(0));
     }
 
+    /**
+     * This method will call for the view model to fetch the previous song from the list and change
+     * the media player
+     */
     public void previousMedia() {
         changeSong(musicPlayerViewModel.previousMedia());
     }
 
+    /**
+     * This method will call for the view model to fetch the next song from the list and change
+     * the media player
+     */
     public void nextMedia() {
         changeSong(musicPlayerViewModel.nextMedia());
     }
 
+    /**
+     * Time slider listeners .
+     * It listens to the totalDuration of the media player
+     * so the slider can have different values depending on the song
+     * It listens to the currentTime , it can show how much the media player spend playing
+     * It listens to the
+     */
     private void setTimeSliderListeners() {
         //Change the volume slider max value
 
         mediaPlayer.totalDurationProperty().addListener(new ChangeListener<Duration>() {
             @Override
             public void changed(ObservableValue<? extends Duration> observableValue, Duration oldValue, Duration newValue) {
-//todo call method on vm to set max time on property PROPERTIES ARE READ ONLY
                 System.out.println(newValue);
 //                sliderTime.setMax(newValue.toSeconds() - 1);
                 musicPlayerViewModel.setMaximumDuration(newValue.toSeconds() - 1);
@@ -111,19 +153,33 @@ public class MusicPlayerController implements ViewController {
         });
     }
 
+    /**
+     * This method is linked to the like button. On action it will add the current song from the
+     * liked songs playlist. It delegates responsability to view model
+     */
     @FXML public void addToLikedSongs(){
     musicPlayerViewModel.addToLikedSongs();
     }
 
+    /**
+     * This method is linked to the dislike button. On action it will remove the current song from the
+     * liked songs playlist. It delegates responsability to view model
+     */
     @FXML public void removeFromLikedSongs(){
         musicPlayerViewModel.removeToLikedSongs();
     }
 
+    /**
+     * This method opens the main menu and closes the media player
+     */
     public void onBackButton() {
         mediaPlayer.stop();
         viewHandler.openMainMenu();
     }
 
+    /**
+     * This method opens the add to playlist window (the song will still play)
+     */
     public void addToPlaylistButtonPressed()
     {
         viewHandler.openAddToPlaylist(musicPlayerViewModel.fetchCurrentSong());

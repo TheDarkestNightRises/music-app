@@ -10,14 +10,24 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * This is the file manager responsible for reading and writing files to folders.
+ */
 public class FileManager
 {
   public static FileManager instance;
 
+  /**
+   * The file manager is a singleton
+   */
   private FileManager()
   {
   }
 
+  /**
+   * Static method that returns the instance of the file manager
+   * @return instance
+   */
   public synchronized static FileManager getInstance()
   {
     if (instance == null)
@@ -27,6 +37,11 @@ public class FileManager
     return instance;
   }
 
+  /**
+   * Method used to fetch all the files for a playlist
+   * @param playlist chosen playlist
+   * @return files containing songs
+   */
   public ArrayList<File> getCurrentPlaylistFiles(Playlist playlist)
   {
     ArrayList<File> songsFiles = new ArrayList<>();
@@ -42,6 +57,11 @@ public class FileManager
     return songsFiles;
   }
 
+  /**
+   * This method will fetch a photo from the profile folder
+   * @param picturePath used to locate the photo
+   * @return the bytecode for photo found
+   */
   public byte[] fetchPhotoFromProfile(String picturePath)
   {
     if (picturePath == null || picturePath.equals(""))
@@ -51,6 +71,11 @@ public class FileManager
     return extractPhoto(path);
   }
 
+  /**
+   * This method will fetch a photo from the album folder
+   * @param picturePath used to locate the photo
+   * @return the bytecode for photo found
+   */
   public byte[] fetchPhotoFromAlbum(String picturePath)
   {
     if (picturePath == null || picturePath.equals(""))
@@ -60,6 +85,11 @@ public class FileManager
     return extractPhoto(path);
   }
 
+  /**
+   * This can extracth a photo given a path
+   * @param picturePath used to locate the photo
+   * @return the bytecode for photo found
+   */
   public byte[] extractPhoto(String picturePath)
   {
     System.out.println(picturePath);
@@ -78,6 +108,11 @@ public class FileManager
     return byteArrayOutputStream.toByteArray();
   }
 
+  /**
+   * This method will write
+   * @param bytes
+   * @param path
+   */
   public void writePhoto(byte[] bytes, String path)
   {
 
@@ -93,6 +128,7 @@ public class FileManager
       throw new RuntimeException("Could not write file");
     }
   }
+
 
   public void uploadProfilePicture(String pictureName, byte[] bytes)
   {

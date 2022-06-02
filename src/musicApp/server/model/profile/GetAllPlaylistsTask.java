@@ -8,6 +8,9 @@ import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 
+/**
+ * Task that gets all the playlists from the model . It runs in a separate thread
+ */
 public class GetAllPlaylistsTask extends Task {
     private ProfileDAO profileDAO;
     private User user;

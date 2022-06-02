@@ -48,6 +48,12 @@ public class ProfileViewController implements ViewController {
     private ViewHandler vh;
     private ProfileViewModel viewModel;
 
+    /**
+     * This is the constructor for this controller
+     * @param vh to open windows
+     * @param vmf to init view model
+     * @param args to init the user for the profile
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.vh = vh;
@@ -67,30 +73,48 @@ public class ProfileViewController implements ViewController {
         viewModel.addListener("newPlaylist", this::onNewPlaylist);
     }
 
+    /**
+     *
+     * @param event
+     */
     private void onNewPlaylist(PropertyChangeEvent event) {
         ArrayList<Playlist> playlists = new ArrayList<>();
         playlists.add((Playlist) event.getNewValue());
         initPlaylistsView(playlists);
     }
 
+    /**
+     * followlist subview
+     */
     private void openFollowList() {
         Parent followListRoot = vh.openFollowListSubView();
         followListSubView.getChildren().clear();
         followListSubView.getChildren().add(followListRoot);
     }
 
+    /**
+     * profilecard subview
+     */
     private void openProfileCard() {
         Parent profileCardRoot = vh.openProfileCard();
         profileCardContainer.getChildren().clear();
         profileCardContainer.getChildren().add(profileCardRoot);
     }
 
+    /**
+     * navigation subview.
+     */
     private void openNavigation() {
         Parent navigationRoot = vh.openNavigation();
         navigationSubView.getChildren().clear();
         navigationSubView.getChildren().add(navigationRoot);
     }
 
+    /**
+     * A way of generating and displaying playlists for users using custom controls.
+     * DISCLAIMER : no bindings tight coupling, threads for optimization
+     * @param playlists that the user has
+     */
     public void initPlaylistsView(ArrayList<Playlist> playlists) {
         for (Playlist playlist : playlists) {
             LoadingTextControl loadingTextControl = new LoadingTextControl();
@@ -118,6 +142,11 @@ public class ProfileViewController implements ViewController {
         }
     }
 
+    /**
+     * Fetch profile picture from server data
+     * @param picturePath path to it
+     * @return byte to the photo
+     */
     public byte[] fetchProfilePicture(String picturePath) {
         return viewModel.fetchProfilePicture(picturePath);
     }

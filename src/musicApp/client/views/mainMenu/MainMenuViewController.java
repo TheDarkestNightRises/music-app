@@ -20,6 +20,9 @@ import musicApp.server.model.domainModel.Song;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
+/**
+ * This is the main menu controller. It's responsible for initializing the menu UI
+ */
 public class MainMenuViewController implements ViewController {
     @FXML
     public VBox mainMenuContainer;
@@ -37,6 +40,12 @@ public class MainMenuViewController implements ViewController {
     private ViewHandler viewHandler;
     private MainMenuViewModel viewModelMainMenu;
 
+    /**
+     * This is the constructor of the view model
+     * @param vh to open windows
+     * @param vmf to initialize viewModel
+     * @param args -
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.viewHandler = vh;
@@ -49,7 +58,10 @@ public class MainMenuViewController implements ViewController {
         openNavigation();
     }
 
-
+    /**
+     * Method that gets random albums from server model and then puts them in an albumsHBox
+     * custom control. It uses threads because the interface loading is quite heavy.Should use bindings
+     */
     private void initAlbums() {
         new Thread(() -> {
             ArrayList<Album> albums = viewModelMainMenu.fetchRandomAlbums();
@@ -59,6 +71,10 @@ public class MainMenuViewController implements ViewController {
         }).start();
     }
 
+    /**
+     * Method that gets random songs from server model and then puts them in an albumsHBox
+     * custom control. It uses threads because the interface loading is quite heavy.Should use bindings
+     */
     private void initRandomSongs() {
         new Thread(() -> {
             ArrayList<Song> songs = viewModelMainMenu.fetchRandomSongs();
@@ -68,6 +84,10 @@ public class MainMenuViewController implements ViewController {
         }).start();
     }
 
+    /**
+     * Method that gets the latest songs from server model and then puts them in an albumsHBox
+     * custom control. It uses threads because the interface loading is quite heavy.Should use bindings
+     */
     private void initLastSongs() {
         new Thread(() -> {
             ArrayList<Song> songs = viewModelMainMenu.fetchLastSongs();
@@ -78,18 +98,27 @@ public class MainMenuViewController implements ViewController {
         }).start();
     }
 
+    /***
+     * Followlist subview
+     */
     private void openFollowList() {
         Parent followListRoot = viewHandler.openFollowListSubView();
         followListSubView.getChildren().clear();
         followListSubView.getChildren().add(followListRoot);
     }
 
+    /***
+     * ProfileCard subview
+     */
     private void openProfileCard() {
         Parent profileCardRoot = viewHandler.openProfileCard();
         profileCardContainer.getChildren().clear();
         profileCardContainer.getChildren().add(profileCardRoot);
     }
 
+    /***
+     * Navigation subview
+     */
     private void openNavigation() {
         Parent navigationRoot = viewHandler.openNavigation();
         navigationSubView.getChildren().clear();

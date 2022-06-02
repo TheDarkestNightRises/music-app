@@ -13,7 +13,9 @@ import javafx.collections.ObservableList;
 
 import java.beans.PropertyChangeEvent;
 
-
+/**
+ * This is the chat view model responsible for all the UI logic
+ */
 public class ChatViewModel
 {
   private LogInManager loginManager;
@@ -23,7 +25,12 @@ public class ChatViewModel
   private StringProperty user;
   private StringProperty onlineUsers;
 
-
+  /**
+   * This is the constructors for the view model. The view model will listen to 2 changes,if a new
+   * message was sent
+    * @param loginManager to get the current user
+   * @param chatManager to use the models method
+   */
   public ChatViewModel(LogInManager loginManager, ChatManager chatManager) {
     this.loginManager = loginManager;
     this.chatManager = chatManager;
@@ -36,8 +43,8 @@ public class ChatViewModel
   }
 
   /**
-   *
-   * @param propertyChangeEvent Once a user enters the chat it updates the number of online users
+   * Once a user enters the chat it updates the number of online users
+   * @param propertyChangeEvent int number of users
    */
   private void onNewUserEntry(PropertyChangeEvent propertyChangeEvent)
   {
@@ -46,8 +53,8 @@ public class ChatViewModel
   }
 
   /**
-   *
-   * @param propertyChangeEvent The chat it's updated automatically after a user sends a message
+   * The chat it's updated automatically after a user sends a message
+   * @param propertyChangeEvent message
    */
   private void updateChat(PropertyChangeEvent propertyChangeEvent)
   {
@@ -55,28 +62,45 @@ public class ChatViewModel
     Platform.runLater(() -> chat.add(String.valueOf(message)));
   }
 
+  /**
+   * This method will get the user input and send the message delegating to the model
+   */
   public void send()
   {
     chatManager.sendMessage(loginManager.getUser(),messageBody.get());
     messageBody.set("");
   }
 
+  /**
+   * This will bind the chat UI to this property
+   * @param property
+   */
   public void bindChat(ObjectProperty<ObservableList<String>> property)
   {
     property.bind(chat);
   }
 
+  /**
+   * Bindings necessary for MVVM
+   * @param property
+   */
   public void bindMessage(StringProperty property)
   {
     property.bindBidirectional(messageBody);
   }
 
+  /**
+   * Bindings necessary for MVVM
+   * @param property
+   */
   public void bindUser(StringProperty property)
   {
     property.bind(user);
   }
 
-
+  /**
+   * This will fetch the number of user online
+   */
   public void fetchNumberOfOnlineUsers()
   {
     onlineUsers.set("Online users: " + chatManager.getNumberOfUsers());

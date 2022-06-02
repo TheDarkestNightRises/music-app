@@ -22,14 +22,28 @@ public class MainMenuViewModel implements Subject {
         this.support = new PropertyChangeSupport(this);
     }
 
+    /**
+     * This method delegates to the model to fetch random songs
+     * @return random songs
+     */
     public ArrayList<Song> fetchRandomSongs() {
         return mainMenuManager.fetchRandomSongs();
     }
 
+
+    /**
+     * This method delegates to the model to fetch last songs
+     * @return last songs
+     */
     public ArrayList<Song> fetchLastSongs() {
         return mainMenuManager.fetchLastSongs();
     }
 
+
+    /**
+     * This method delegates to the model to random albums
+     * @return random albums
+     */
     public ArrayList<Album> fetchRandomAlbums() {
         return mainMenuManager.fetchRandomAlbums();
     }
