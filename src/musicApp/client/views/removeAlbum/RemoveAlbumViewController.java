@@ -8,7 +8,7 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 
 /**
- * This is the controller for removing an album
+ * This is the controller for removing an album view
  */
 
 public class RemoveAlbumViewController implements ViewController

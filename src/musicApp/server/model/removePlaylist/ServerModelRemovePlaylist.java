@@ -4,5 +4,5 @@ import musicApp.server.model.domainModel.Playlist;
 
 public interface ServerModelRemovePlaylist
 {
-  void removeAlbum(Playlist playlist);
+  void removePlaylist(Playlist playlist);
 }

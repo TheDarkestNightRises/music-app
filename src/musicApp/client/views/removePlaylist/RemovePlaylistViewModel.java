@@ -14,6 +14,9 @@ import musicApp.server.model.domainModel.User;
 
 import java.util.ArrayList;
 
+/**
+ * Remove album view model responsible for removing a playlist from the system
+ */
 public class RemovePlaylistViewModel {
 
     private final SimpleListProperty<String> playlistTitles;
@@ -24,7 +27,12 @@ public class RemovePlaylistViewModel {
     private StringProperty error;
 
 
-
+    /**
+     * This is the constructor of the RemoveAlbumViewModel
+     * @param profileManager to fetch the artist albums
+     * @param loginManager to get the current user
+     * @param removePlaylistManager to delete the album
+     */
     public RemovePlaylistViewModel(ProfileManager profileManager, RemovePlaylistManager removePlaylistManager,
                                    LogInManager loginManager) {
         this.removePlaylistManager = removePlaylistManager;
@@ -35,11 +43,21 @@ public class RemovePlaylistViewModel {
         error = new SimpleStringProperty("");
     }
 
+
+
+    /**
+     * This is used to reinitialize a playlist once a change is made
+     */
     public void reset() {
         playlistTitles.setAll(getPlaylistTitles());
         error.set("");
     }
 
+
+    /**
+     * This method is used to create a list with all the playlist titles
+     * @return the titles of all playlist from the current artist
+     */
     public ArrayList<String> getPlaylistTitles() {
         User user = loginManager.getUser();
         tempPlaylist = profileManager.fetchPlaylistsForUser(user);
@@ -51,6 +69,10 @@ public class RemovePlaylistViewModel {
         return titles;
     }
 
+    /**
+     * This method is used to remove an playlist by selecting one
+     * @param selectedIndex is the index of the selected playlist
+     */
     public void removePlaylist(int selectedIndex) {
         try {
             Playlist playlist = tempPlaylist.get(selectedIndex);

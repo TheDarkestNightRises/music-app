@@ -20,6 +20,6 @@ public class RemovePlaylistServerImpl implements RemovePlaylistServer {
 
     @Override
     public void removePlaylist(Playlist playlist) {
-        serverModelRemovePlaylist.removeAlbum(playlist);
+        serverModelRemovePlaylist.removePlaylist(playlist);
     }
 }

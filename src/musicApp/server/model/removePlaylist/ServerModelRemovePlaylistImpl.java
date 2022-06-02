@@ -8,8 +8,11 @@ import java.sql.SQLException;
 
 public class ServerModelRemovePlaylistImpl implements ServerModelRemovePlaylist
 {
-
-  @Override public void removeAlbum(Playlist playlist)
+  /**
+   * This method deletes a playlist
+   * @param playlist the playlist that will be deleted
+   */
+  @Override public void removePlaylist(Playlist playlist)
   {
     try
     {
