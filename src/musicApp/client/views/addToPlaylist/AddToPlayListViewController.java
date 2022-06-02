@@ -8,6 +8,9 @@ import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 import musicApp.server.model.domainModel.Song;
 
+/**
+ * Controller for Add to playlist
+ */
 public class AddToPlayListViewController implements ViewController {
     @FXML
     private ListView<String> list;
@@ -15,8 +18,13 @@ public class AddToPlayListViewController implements ViewController {
     private Label error;
     private ViewHandler viewHandler;
     private AddToPlaylistViewModel viewModel;
-    
 
+    /**
+     * initialises the view handler, the view model, the song to be added in a playlist, binds the controls
+     * @param vh
+     * @param vmf
+     * @param args
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
         viewHandler = vh;
@@ -28,11 +36,17 @@ public class AddToPlayListViewController implements ViewController {
         viewModel.setSong(song);
     }
 
+    /**
+     * This method is linked to a button that on action will open the music player
+     */
     @FXML
     public void backToMusicPlayer()
     {
         viewHandler.openMusicPlayer();
     }
+    /**
+     * This method is linked to a button that on action will delegate to the view model adding the playlist at the specified index
+     */
     @FXML
     public void addButtonPressed()
     {

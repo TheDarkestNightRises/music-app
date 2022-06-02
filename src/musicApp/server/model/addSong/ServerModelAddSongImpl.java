@@ -15,12 +15,18 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+/**
+ * Model for Add song
+ */
 public class ServerModelAddSongImpl implements ServerModelAddSong
 {
   private ArtistDAO artistDAO;
   private FileManager fileManager;
   private SongDAO songDAO;
 
+  /**
+   * Constructor that initialises artistDAO, songDAO, fileManager
+   */
   public ServerModelAddSongImpl()
   {
     try
@@ -35,6 +41,12 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
     fileManager = FileManager.getInstance();
   }
 
+  /**
+   * returns the albums created by the user if the user is an artist
+   * @param user
+   * @return ArrayList<Album>
+   * @throws Exception if the user is not an artist or if it cannot retrieve the albums from artistDAO
+   */
   @Override public ArrayList<Album> getAlbumsOfUser(User user) throws Exception
   {
     Artist artist = getArtistOfUser(user);
@@ -56,6 +68,12 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
     }
   }
 
+  /**
+   * returns the Artist object of a user, if the user is an artist
+   * otherwise returns null
+   * @param user
+   * @return
+   */
   @Override public Artist getArtistOfUser(User user)
   {
     try
@@ -68,6 +86,16 @@ public class ServerModelAddSongImpl implements ServerModelAddSong
     }
   }
 
+  /**
+   * generates a name for the file of the song, delegates to songDAO to add the song into the database
+   * and delegates to fileManager to convert the byte array to an .m4a file and store it in the apropiate
+   * location
+   * @param title
+   * @param songBytes
+   * @param album
+   * @param user
+   * @throws Exception
+   */
   @Override public void addSong(String title, byte[] songBytes, Album album, User user) throws Exception
   {
     try

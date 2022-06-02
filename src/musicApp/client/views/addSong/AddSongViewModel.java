@@ -8,6 +8,9 @@ import musicApp.client.model.login.LogInManager;
 
 import java.io.File;
 
+/**
+ * This is the Add Song View Model
+ */
 public class AddSongViewModel {
     private final StringProperty error;
     private final SimpleListProperty<String> albumTitles;
@@ -17,6 +20,12 @@ public class AddSongViewModel {
     private StringProperty fileName;
     private File songFile;
 
+    /**
+     * Constructor for AddSongVIewModel
+     * initialises managers and properties
+     * @param loginManager
+     * @param addSongManager
+     */
     public AddSongViewModel(LogInManager loginManager, AddSongManager addSongManager) {
         this.loginManager = loginManager;
         this.addSongManager = addSongManager;
@@ -26,6 +35,10 @@ public class AddSongViewModel {
         albumTitles = new SimpleListProperty<>(FXCollections.observableArrayList());
     }
 
+    /**
+     * sets songFile to file and fileName String to the name so that the name of the file can be displayed
+     * @param file
+     */
     public void chooseFile(File file) {
         try {
             songFile = file;
@@ -35,6 +48,9 @@ public class AddSongViewModel {
         }
     }
 
+    /**
+     * resets the view model to the initial state
+     */
     public void reset() {
         error.set("");
         title.set("");
@@ -47,18 +63,34 @@ public class AddSongViewModel {
 
     }
 
+    /**
+     * bidirectional binding for error
+     * @param property
+     */
     public void bindError(StringProperty property) {
         error.bindBidirectional(property);
     }
 
+    /**
+     * binding for albumTitles list
+     * @param property
+     */
     public void bindList(ObjectProperty<ObservableList<String>> property) {
         property.bind(albumTitles);
     }
 
+    /**
+     * bidirectional binding for title
+     * @param property
+     */
     public void bindTitle(StringProperty property) {
         property.bindBidirectional(title);
     }
 
+    /**
+     * This method validates the title, the file, and if an album has been selected
+     * @param index
+     */
     public void addSong(int index) {
         if (title.get().equals("")) {
             error.set("Title cannot be empty");
@@ -77,6 +109,10 @@ public class AddSongViewModel {
 
     }
 
+    /**
+     * binding for fileNme
+     * @param property
+     */
     public void bindFileName(StringProperty property) {
         fileName.bindBidirectional(property);
     }

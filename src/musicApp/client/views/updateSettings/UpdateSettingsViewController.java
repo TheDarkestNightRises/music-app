@@ -32,6 +32,12 @@ public class UpdateSettingsViewController implements ViewController
   private ViewHandler viewHandler;
   private UpdateSettingsViewModel viewModel;
 
+  /**
+   * initialises the viewhandler, the view model and binds the controls
+   * @param vh
+   * @param vmf
+   * @param args
+   */
   @Override public void init(ViewHandler vh, ViewModelFactory vmf,Object... args)
   {
     this.viewHandler = vh;
@@ -46,11 +52,19 @@ public class UpdateSettingsViewController implements ViewController
     viewModel.bindImage(profilePicture.imageProperty());
     viewModel.reset();
   }
+
+  /**
+   * delegates submission of new information to the view model
+   */
   @FXML
   public void submitButtonPressed()
   {
     viewModel.submit();
   }
+
+  /**
+   * opens file chooser and lets the user choose a file of extention .jpg or .png, then sends the file to the view model
+   */
   @FXML
   public void choosePictureButtonPressed()
   {
@@ -63,23 +77,36 @@ public class UpdateSettingsViewController implements ViewController
     if(file != null)
       viewModel.choosePicture(file);
   }
+
+  /**
+   * delegates upload of picture to the view model
+   */
   @FXML
   public void updatePictureButtonPressed()
   {
     viewModel.uploadPicture();
 
   }
+
+  /**
+   * resets the view
+   */
   @FXML
   public void resetButtonPressed()
   {
     viewModel.reset();
   }
+
+
   @FXML
   public void submitPassword(){ emailField.requestFocus();}
   @FXML
   public void submitEmail(){ nicknameField.requestFocus();}
   @FXML
   public void submitNickname(){ submitButtonPressed();}
+  /**
+   * onAction method of a button that opens the Main Menu
+   */
   @FXML
   public void backButtonPressed()
   {

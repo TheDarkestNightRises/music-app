@@ -10,6 +10,9 @@ public class ServerModelCreatePlaylistImpl implements ServerModelCreatePlaylist
 {
   PlaylistDAO playlistDAO;
 
+  /**
+   * constructor that initialises the playlistDAO
+   */
   public ServerModelCreatePlaylistImpl()
   {
     try
@@ -23,6 +26,13 @@ public class ServerModelCreatePlaylistImpl implements ServerModelCreatePlaylist
 
   }
 
+  /**
+   * delegates creation of playlist in the database to the playlistDAO
+   * @param title
+   * @param description
+   * @param user
+   * @throws Exception if the dao could not update the database
+   */
   @Override public void createPlaylist(String title, String description, User user) throws Exception
   {
     try

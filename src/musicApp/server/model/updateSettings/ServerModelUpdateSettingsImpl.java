@@ -10,9 +10,16 @@ import java.time.format.DateTimeFormatter;
 
 public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
 {
+  /**
+   * Model for Update Settings
+   */
   private UsersDAO dao;
   private FileManager fileManager;
 
+  /**
+   * initialises the dao and fileManager
+   * @throws RuntimeException
+   */
   public ServerModelUpdateSettingsImpl() throws RuntimeException
   {
     try {
@@ -25,6 +32,15 @@ public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
     }
   }
 
+  /**
+   * delegates creating the user to the dao
+   * @param username
+   * @param password
+   * @param email
+   * @param nickname
+   * @param description
+   * throws RuntimeException if data cannot be updated
+   */
   @Override public void updateUserInfo(String username, String password,
       String email, String nickname, String description)
   {
@@ -38,6 +54,12 @@ public class ServerModelUpdateSettingsImpl implements ServerModelUpdateSettings
     }
   }
 
+  /**
+   * generates file name for picture, delegates updating picture path to the dao, delegates creating of image file to the fileManager
+   * @param username
+   * @param bytes
+   * @return picture file path if it created successfully, null otherwise
+   */
   @Override public String uploadPicture(String username, byte[] bytes)
   {
     try{

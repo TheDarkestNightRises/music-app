@@ -13,6 +13,9 @@ import musicApp.client.model.login.LogInManager;
 
 import java.util.Optional;
 
+/**
+ * View model for Delete Song
+ */
 public class DeleteSongViewModel {
 
     private final StringProperty error;
@@ -20,7 +23,11 @@ public class DeleteSongViewModel {
     private final LogInManager loginManager;
     private final DeleteSongManager deleteSongManager;
 
-
+    /**
+     * constructor that initialises the view handler, the view model, the managers and the properties
+     * @param loginManager
+     * @param deleteSongManager
+     */
     public DeleteSongViewModel(LogInManager loginManager, DeleteSongManager deleteSongManager) {
         this.loginManager = loginManager;
         this.deleteSongManager = deleteSongManager;
@@ -28,7 +35,9 @@ public class DeleteSongViewModel {
         songTitles = new SimpleListProperty<>(FXCollections.observableArrayList());
     }
 
-
+    /**
+     * resets the view to its initial state, displaying a list with the songs of the currently logged in artist
+     */
     public void reset() {
         error.set("");
         try {
@@ -47,6 +56,11 @@ public class DeleteSongViewModel {
         property.bind(songTitles);
     }
 
+    /**
+     * asks for confirmation on deletion of song  and delegates deletion of song to the DeleteSongManager
+     * @param selectedIndex
+     * @return
+     */
     public boolean deleteSong(int selectedIndex) {
 
         if (selectedIndex < 0) {

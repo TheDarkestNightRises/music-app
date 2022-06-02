@@ -8,6 +8,9 @@ import musicApp.client.core.ViewController;
 import musicApp.client.core.ViewHandler;
 import musicApp.client.core.ViewModelFactory;
 
+/**
+ * Controller for Create Playlist
+ */
 public class CreatePlaylistViewController implements ViewController
 {
 
@@ -20,7 +23,12 @@ public class CreatePlaylistViewController implements ViewController
   private ViewHandler viewHandler;
   private CreatePlaylistViewModel viewModel;
 
-
+  /**
+   * initialises the viewhandler, teh view model, and binds the controls
+   * @param vh
+   * @param vmf
+   * @param args
+   */
   @Override
   public void init(ViewHandler vh, ViewModelFactory vmf,Object... args) {
     viewHandler = vh;
@@ -31,17 +39,26 @@ public class CreatePlaylistViewController implements ViewController
     System.out.println("binded");
   }
 
+  /**
+   * onActionMethod of a field that focuses the description
+   */
   @FXML
   public void submitTitle() {
     description.requestFocus();
   }
 
+  /**
+   * onAction method of a button that opens the Main Menu
+   */
   @FXML
   public void back()
   {
     viewHandler.openMainMenu();
   }
 
+  /**
+   * onAction method of a button thatdelegates creation of playlist to the view model and returns to main menu
+   */
   @FXML
   protected void createButtonPressed() {
     viewModel.createPlaylist();

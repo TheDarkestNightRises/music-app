@@ -24,6 +24,13 @@ public class AddSongViewController implements ViewController {
     private ViewHandler viewHandler;
     private AddSongViewModel viewModel;
 
+    /**
+     * The init function is the constructor of this. It calls the bindings from the viewModel
+     * and initialize the viewModel and viewHandler.
+     * @param vh
+     * @param vmf
+     * @param args
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf,
                      Object... args) {
@@ -36,11 +43,18 @@ public class AddSongViewController implements ViewController {
         viewModel.reset();
     }
 
+    /**
+     * This method is linked to a button that on action will open the main menu
+     */
     @FXML
     public void backToProfile() {
         viewHandler.openMainMenu();
     }
 
+    /**
+     * This method is linked to a button that on action will open the File Chooser and make the user choose an .m4a file
+     * and pass to the view model
+     */
     @FXML
     public void chooseFileButtonPressed() {
         FileChooser chooser = new FileChooser();
@@ -51,7 +65,9 @@ public class AddSongViewController implements ViewController {
         if (file != null)
             viewModel.chooseFile(file);
     }
-
+    /**
+     * This method is linked to a button that on action will send the selected index of the list to the view model in order to create a song
+     */
     @FXML
     protected void createButtonPressed() {
         viewModel.addSong(list.getSelectionModel().getSelectedIndex());

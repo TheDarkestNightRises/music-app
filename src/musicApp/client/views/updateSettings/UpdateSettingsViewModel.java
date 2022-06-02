@@ -33,7 +33,13 @@ public class UpdateSettingsViewModel
   private FileInputStream tempImgStream;
   private File imgFile;
 
-
+  /**
+   * constructor that initialises the view handler, the view model, the managers and the properties
+   * @param logInManager
+   * @param profileManager
+   * @param updateSettingsManager
+   * @param signUpManager
+   */
   public UpdateSettingsViewModel(LogInManager logInManager, ProfileManager profileManager,
                                  UpdateSettingsManager updateSettingsManager, SignUpManager signUpManager)
   {
@@ -52,6 +58,9 @@ public class UpdateSettingsViewModel
     imgFile = null;
   }
 
+  /**
+   * resets the view with current user info and profile picture
+   */
 
   public void reset()
   {
@@ -74,6 +83,10 @@ public class UpdateSettingsViewModel
       e.printStackTrace();
     }
   }
+
+  /**
+   * validates user info, updates cached logged in user , delegates updating user in server to Update Settings Manager
+   */
   public void submit()
   {
     if(validateUserData())
@@ -95,6 +108,11 @@ public class UpdateSettingsViewModel
       }
     }
   }
+
+  /**
+   * sets the image property of profile picture to the picture from the picture file, and sets imgFile to pictureFile
+   * @param pictureFile
+   */
   public void choosePicture(File pictureFile)
   {
     try
@@ -109,6 +127,11 @@ public class UpdateSettingsViewModel
       e.printStackTrace();
     }
   }
+
+  /**
+   * converts the image to byte array and delegates updating the profile picture to UpdateSettingsManager
+   * sets appropriate error if the image cannot be updated
+   */
   public void uploadPicture()
   {
     if(tempImgStream != null)
@@ -135,6 +158,12 @@ public class UpdateSettingsViewModel
 
     }
   }
+
+  /**
+   * validates user data
+   * sets appropriate error if data is no valid
+   * @return true if password, email, nickaname are valid, false otherwise
+   */
   public boolean validateUserData()
   {
     try

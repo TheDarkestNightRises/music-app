@@ -8,10 +8,16 @@ import musicApp.server.model.domainModel.User;
 
 import java.sql.SQLException;
 
+/**
+ * Model for Add to Playlist
+ */
 public class ServerModelAddToPlaylistImpl implements ServerModelAddToPlaylist
 {
   private PlaylistDAO dao;
 
+  /**
+   * constructor that initialises the playlistDAO
+   */
   public ServerModelAddToPlaylistImpl()
   {
     try
@@ -24,6 +30,13 @@ public class ServerModelAddToPlaylistImpl implements ServerModelAddToPlaylist
     }
   }
 
+  /**
+   * delegates the dao to add the playlist in the database
+   * @param user
+   * @param playlist
+   * @param currentSong
+   * @throws Exception
+   */
   @Override public void addToPlaylist(User user, Playlist playlist, Song currentSong) throws Exception
   {
     dao.insertSongIntoPlaylist(playlist, currentSong);

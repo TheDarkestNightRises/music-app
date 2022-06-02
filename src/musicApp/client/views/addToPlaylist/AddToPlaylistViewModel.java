@@ -14,6 +14,9 @@ import musicApp.server.model.domainModel.Song;
 
 import java.util.ArrayList;
 
+/**
+ * viewModel for Add to playlist
+ */
 public class AddToPlaylistViewModel {
     private SimpleListProperty<String> playlistTitles;
     private AddToPlaylistManager addToPlaylistManager;
@@ -23,6 +26,12 @@ public class AddToPlaylistViewModel {
     private Song currentSong;
     private StringProperty error;
 
+    /**
+     * constructor that initialises managers, properties and temporary playlists(of the logged in user)
+     * @param addToPlaylistManager
+     * @param profileManager
+     * @param loginManager
+     */
     public AddToPlaylistViewModel(AddToPlaylistManager addToPlaylistManager, ProfileManager profileManager,
                                   LogInManager loginManager) {
         this.addToPlaylistManager = addToPlaylistManager;
@@ -33,11 +42,18 @@ public class AddToPlaylistViewModel {
         error = new SimpleStringProperty("");
     }
 
+    /**
+     * resets the view to the initial state
+     */
     public void reset() {
         playlistTitles.setAll(getPlaylistTitles());
         error.set("");
     }
 
+    /**
+     * returns the titles of the Arraylist of playlists created by the logged in user
+     * @return titles
+     */
     public ArrayList<String> getPlaylistTitles() {
         tempPlaylists = profileManager.fetchPlaylistsForUser(loginManager.getUser());
         ArrayList<String> titles = new ArrayList<>();
@@ -48,10 +64,19 @@ public class AddToPlaylistViewModel {
         return titles;
     }
 
+    /**
+     * binding for playlistTitles
+     * @param property
+     */
     public void bindList(ObjectProperty<ObservableList<String>> property) {
         property.bind(playlistTitles);
     }
 
+    /**
+     * delegates the method of adding the song to playlist in the position selectedIndex, to AddToPlaylistManager
+     * catches exception if te song could not be added
+     * @param selectedIndex
+     */
     public void addToPlaylist(int selectedIndex) {
         try {
             addToPlaylistManager.addToPlaylist(loginManager.getUser(), tempPlaylists.get(selectedIndex), currentSong);
@@ -61,10 +86,18 @@ public class AddToPlaylistViewModel {
         }
     }
 
+    /**
+     * setter for the song to be added in the playlist
+     * @param song
+     */
     public void setSong(Song song) {
         this.currentSong = song;
     }
 
+    /**
+     * binding for error
+     * @param property
+     */
     public void bindError(StringProperty property) {
         property.bind(error);
     }

@@ -17,6 +17,9 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
   private ArtistDAO artistDAO;
   private SongDAO songDAO;
 
+  /**
+   * constructor that initialises artistDAO and SongDAO
+   */
   public ServerModelDeleteSongImpl()
   {
     try
@@ -30,6 +33,12 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
     }
   }
 
+  /**
+   * retrieves albums from artistDAO and puts all songs from all albums of the artist in the same arraylist of songs
+   * @param user
+   * @return
+   * @throws Exception if songs cannot be retrieved from artistDAO or if user is not an artist
+   */
   @Override public ArrayList<Song> getSongsOfUser(User user) throws Exception
   {
     Artist artist = getArtistOfUser(user);
@@ -54,6 +63,10 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
     }
   }
 
+  /**
+   * @param user
+   * @return the Artist object of the user if the user is an artist
+   */
   @Override public Artist getArtistOfUser(User user)
   {
     try
@@ -66,6 +79,11 @@ public class ServerModelDeleteSongImpl implements ServerModelDeleteSong
     }
   }
 
+  /**
+   * delegates deletion of song to song dao
+   * @param song
+   * @throws Exception
+   */
   @Override public void deleteSong(Song song) throws Exception
   {
     songDAO.deleteSong(song);
