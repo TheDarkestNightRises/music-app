@@ -7,6 +7,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The interface for the AddAlbumManager,model in the client.It's used to add songs
+ */
 public interface AddSongManager
 {
   ArrayList<String> getAlbumTitles(User user) throws Exception;

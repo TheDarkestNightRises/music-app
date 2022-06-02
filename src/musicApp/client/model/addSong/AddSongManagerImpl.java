@@ -11,6 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This is the AddSongManagerImpl. This class is a proxy to make sure that the client model
+ * implements the same interface as the server model. This class should be responsible to add albums
+ */
 public class AddSongManagerImpl implements AddSongManager
 {
   private Client client;
