@@ -4,6 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import musicApp.client.model.register.SignUpManager;
 
+
+/**
+ * sign up view model responsible for creating an user account
+ */
 public class SignUpViewModel {
     private final SignUpManager signUpManager;
     private final StringProperty email;
@@ -13,6 +17,12 @@ public class SignUpViewModel {
     private final StringProperty error;
 
 
+
+    /**
+     * This is the constructor of the SignUpViewModel
+     * @param signUpManager to create the user
+     *
+     */
     public SignUpViewModel(SignUpManager signUpManager) {
         this.signUpManager = signUpManager;
         this.username = new SimpleStringProperty("");
@@ -23,6 +33,10 @@ public class SignUpViewModel {
 
     }
 
+    /**
+     * This method is used to create the user
+     * @return true if the user was successfully created
+     */
     public boolean createUser() {
         try {
             signUpManager.addUser(username.get(), password.get(), email.get());
@@ -33,18 +47,34 @@ public class SignUpViewModel {
         }
     }
 
+    /**
+     * This method is used to check if the email is valid
+     * @return true if the email is not valid and false if it is
+     */
     private boolean emailNotValid() {
         return signUpManager.emailNotValid(email.get());
     }
 
+    /**
+     * This method check if the username already exists among the accounts
+     * @return true if the username already exists or false if it does not exist
+     */
     public boolean UsernameExists() {
         return signUpManager.usernameExists(username.get());
     }
 
+    /**
+     * This method check is the password has any digits
+     * @return true if it does not have and false if it has
+     */
     public boolean noDigits() {
         return signUpManager.noDigits(password.get());
     }
 
+    /**
+     * This method checks if the password has at least one upper character
+     * @return true if it does not and false if it does
+     */
     public boolean noUpper() {
         return signUpManager.noUpper(password.get());
     }
@@ -61,6 +91,9 @@ public class SignUpViewModel {
         error.bindBidirectional(property);
     }
 
+    /**
+     * This is used to reinitialize every field to null
+     */
     public void reset() {
         username.set("");
         password.set("");
@@ -81,6 +114,10 @@ public class SignUpViewModel {
         return createUser();
     }
 
+    /**
+     * This method creates the user if all the input is valid
+     * @return true if the user can be created
+     */
     public boolean registerValidation() {
         if ("".equals(password.get()) && "".equals(username.get()) && "".equals(email.get())
                 && "".equals(repeatPassword.get())) {

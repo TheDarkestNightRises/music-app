@@ -20,6 +20,12 @@ public class ServerModelAddAlbumImpl implements ServerModelAddAlbum
     this.fileManager = FileManager.getInstance();
   }
 
+  /**
+   * This methos is used to import an image from computer and rename it after the user and some random numbers
+   * @param username this is used to rename the image
+   * @param toByteArray ?
+   * @return
+   */
   @Override public String uploadAlbumPicture(String username, byte[] toByteArray)
   {
     try
@@ -37,6 +43,11 @@ public class ServerModelAddAlbumImpl implements ServerModelAddAlbum
     }
   }
 
+  /**
+   * this method is used to get the artist in order to create an album
+   * @param user this is the artist since artist extends user
+   * @return an artist
+   */
   @Override public Artist getArtist(User user)
   {
     try
@@ -50,6 +61,13 @@ public class ServerModelAddAlbumImpl implements ServerModelAddAlbum
     return null;
   }
 
+  /**
+   * this methods create an album
+   * @param title this is the title of the album
+   * @param year this is the year of publishing the album
+   * @param uploaded this is the file path of the album cover
+   * @param artist this is the artist that created the album
+   */
   @Override public void createAlbum(String title, int year, String uploaded, Artist artist)
   {
     try

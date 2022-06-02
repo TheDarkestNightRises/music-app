@@ -23,6 +23,11 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     this.support = new PropertyChangeSupport(this);
   }
 
+  /**
+   * this method checks if the password has any digits in it
+   * @param password this is the password that is checked
+   * @return true if the password has no digits and false if it does
+   */
   @Override public boolean noDigits(String password)
   {
     for (int i = 0; i < password.length(); i++)
@@ -31,6 +36,11 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return true;
   }
 
+  /**
+   * this method checks if the password has no upper character in it
+   * @param password this is the password that is checked
+   * @return true if the password has no upper and false if it does
+   */
   @Override public boolean noUpper(String password)
   {
 
@@ -40,6 +50,11 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return true;
   }
 
+  /**
+   * This method checks if the email is invalid
+   * @param email this is the email that is checked
+   * @return true if is not and false it is matching
+   */
   @Override public boolean emailNotValid(String email)
   {
     String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
@@ -51,6 +66,11 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return true;
   }
 
+  /**
+   * this methods checks if the username already exsits
+   * @param username the usernames that needs to be checked
+   * @return true if the username exists and false if it does not
+   */
   @Override public boolean usernameExists(String username)
   {
     try
@@ -65,7 +85,10 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     return false;
   }
 
-
+  /**
+   * this method is used to create an artist type account
+   * @param user this is used in the creation of an artist account since the artist is a user too
+   */
   @Override public void addArtist(User user)
   {
     try
@@ -80,6 +103,12 @@ public class ServerModelSignUpImpl implements ServerModelSignUp
     }
   }
 
+  /**
+   * This method is used to create a user account
+   * @param username this is the username that the users will have
+   * @param password this is the password that user will have
+   * @param email this is the email that the user will have
+   */
   @Override
   public void addUser(String username, String password, String email) {
     try

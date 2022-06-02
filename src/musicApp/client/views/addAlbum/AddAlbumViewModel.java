@@ -18,6 +18,9 @@ import java.io.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+/**
+ * add album view model responsible for creating an album
+ */
 public class AddAlbumViewModel
 {
 
@@ -29,6 +32,11 @@ public class AddAlbumViewModel
   private FileInputStream tempImgStream;
   private File imgFile;
 
+  /**
+   * This is the constructor of the AddAlbumViewModel
+   * @param addAlbumManager this is used to create an album
+   * @param loginManager this is used to get the current user
+   */
   public AddAlbumViewModel(AddAlbumManager addAlbumManager, LogInManager loginManager) {
     this.addAlbumManager = addAlbumManager;
     this.logInManager = loginManager;
@@ -36,6 +44,10 @@ public class AddAlbumViewModel
     albumPicture = new SimpleObjectProperty<Image>();
   }
 
+  /**
+   * this method is used to import a file from your computer
+   * @param pictureFile
+   */
   public void choosePicture(File pictureFile)
   {
     try
@@ -50,6 +62,10 @@ public class AddAlbumViewModel
     }
   }
 
+  /**
+   * this method is used to check if the album name or the file path is null
+   * @return true if they are not and false if they are
+   */
   public boolean Validate()
   {
     return tempImgStream != null && !albumName.getValue().isEmpty();
@@ -66,6 +82,9 @@ public class AddAlbumViewModel
     albumName.bindBidirectional(property);
   }
 
+  /**
+   * this method is used to create an album
+   */
   public void submit()
   {
     if(tempImgStream != null && !albumName.getValue().isEmpty())

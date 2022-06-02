@@ -36,6 +36,10 @@ public class AddAlbumViewController implements ViewController {
         viewModel.bindImage(albumPicture.imageProperty());
     }
 
+    /**
+     *This methods check if the input is valid and if it is valid, it will create an album
+     * and right after that the main menu will open
+     */
     @FXML
     public void submitButtonPressed() {
         if (viewModel.Validate()) {
@@ -44,8 +48,9 @@ public class AddAlbumViewController implements ViewController {
         }
     }
 
-
-    //TODO:the view model should verify if file is null
+    /**
+     * This method is used to import a picture from the computer
+     */
     @FXML
     public void choosePictureButtonPressed() {
         FileChooser chooser = new FileChooser();
