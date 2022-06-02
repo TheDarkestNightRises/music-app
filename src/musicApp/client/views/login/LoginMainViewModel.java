@@ -16,6 +16,10 @@ public class LoginMainViewModel {
     private StringProperty password;
     private StringProperty error;
 
+    /**
+     * This view model has a reference to the loginManager.
+     * @param logInManager to make operations for the user
+     */
     public LoginMainViewModel(LogInManager logInManager) {
         this.logInManager = logInManager;
         this.username = new SimpleStringProperty("");
@@ -23,10 +27,18 @@ public class LoginMainViewModel {
         this.error = new SimpleStringProperty("");
     }
 
+    /**
+     * This checks if the user can sign in
+     * @return if the user can sign in or not
+     */
     public boolean signIn() {
         return loginValidation();
     }
 
+    /**
+     *
+     * @return true if accounts does not exist, false if it exists
+     */
     private boolean accountDoesNotExist() {
         return logInManager.accountDoesNotExist(username.get(), password.get());
     }
@@ -60,6 +72,12 @@ public class LoginMainViewModel {
     public User getUser() {
         return logInManager.getUser();
     }
+
+    /**
+     * This method verifies if the data inside the bindings is correct.If there is
+     * an error the label will be updated
+     * @return true if validation is right, false if it isnt.
+     */
 
     public boolean loginValidation() {
         if (password.get().equals("") && username.get().equals("")) {

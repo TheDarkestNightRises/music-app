@@ -10,17 +10,31 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Server model login.This server keeps track of the active online users and delegates everything else
+ * to userDao
+ */
 public class ServerModelLoginImpl implements ServerModelLogin {
 
     private List<User> userList;
     private PropertyChangeSupport support;
     private UsersDAO userDAO;
 
+    /**
+     * The user list starts empty at first but then is filled with users as they sign in
+     */
     public ServerModelLoginImpl() {
         this.userList = new ArrayList<>();
         this.support = new PropertyChangeSupport(this);
     }
 
+    /**
+     * This method will sign in the method by adding the user to the list and setting his
+     * online status to true
+     * @param username to look for user in database
+     * @param password to look for user in database
+     * @return signed in user
+     */
     @Override
     public User signIn(String username, String password) {
         try {
@@ -42,12 +56,15 @@ public class ServerModelLoginImpl implements ServerModelLogin {
         return null;
     }
 
+    /**
+     * This method will disconnect the user when the user closes the app
+     * @param user to know which one
+     */
     @Override
     public synchronized void disconnect(User user) {
         if (user == null) return;
         for (User currentUser : userList) {
-            if (currentUser.getUsername().equals(user.getUsername()))
-            {
+            if (currentUser.getUsername().equals(user.getUsername())) {
                 currentUser.setLoggedIn(false);
                 userList.remove(currentUser);
                 break;
@@ -55,11 +72,20 @@ public class ServerModelLoginImpl implements ServerModelLogin {
         }
     }
 
+    /**
+     * This will return the number of users
+     * @return int number of users
+     */
     @Override
     public int getNumberOfUsers() {
         return userList.size();
     }
 
+    /**
+     * This method will check if the account does not exist in database
+     * @param user
+     * @return true if account doesNotExit,false either
+     */
     @Override
     public boolean accountDoesNotExist(User user) {
         try {
@@ -72,12 +98,19 @@ public class ServerModelLoginImpl implements ServerModelLogin {
         return false;
     }
 
-    @Override public void updateUserInfoInList(String username, String password,
-        String email, String nickname, String description)
-    {
+    /**
+     * This method updates the user cached in the user list once a change has been made
+     * @param username
+     * @param password
+     * @param email
+     * @param nickname
+     * @param description
+     */
+    @Override
+    public void updateUserInfoInList(String username, String password,
+                                     String email, String nickname, String description) {
         for (User currentUser : userList)
-            if (currentUser.getUsername().equals(username))
-            {
+            if (currentUser.getUsername().equals(username)) {
                 currentUser.setPassword(password);
                 currentUser.setEmail(email);
                 currentUser.setNickname(nickname);
@@ -87,19 +120,29 @@ public class ServerModelLoginImpl implements ServerModelLogin {
 
     }
 
-    @Override public boolean isOnline(User user)
-    {
-        for(User value: userList)
-            if(value.getUsername().equals(user.getUsername()))
-             return true;
+    /**
+     * This method checks if the user is online
+     * @param user to see which user
+     * @return true if user is online , false if user is offline
+     */
+    @Override
+    public boolean isOnline(User user) {
+        for (User value : userList)
+            if (value.getUsername().equals(user.getUsername()))
+                return true;
         return false;
     }
 
-    @Override public void updatePicturePathForUser(String username, String path)
-    {
+    /**
+     * This method will update the picture path cache in the user list
+     * @param username
+     * @param path
+     */
+
+    @Override
+    public void updatePicturePathForUser(String username, String path) {
         for (User currentUser : userList)
-            if (currentUser.getUsername().equals(username))
-            {
+            if (currentUser.getUsername().equals(username)) {
                 currentUser.setProfile_picture(path);
                 break;
             }
