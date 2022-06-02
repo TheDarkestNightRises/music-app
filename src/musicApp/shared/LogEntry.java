@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * LogEntry keeps track of the user's messages.It implements serializable because its send across RMI
+ */
 public class LogEntry implements Serializable
 {
   private String text;

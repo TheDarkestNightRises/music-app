@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * The message class is used in the chat for the users to interact with each other.
+ */
 public class Message implements Serializable
 {
   private String message;
@@ -13,7 +16,11 @@ public class Message implements Serializable
   private LocalTime time;
   private User user;
 
-
+  /**
+   * To create a message you need at least a user that will act as the owner of the message
+   * @param user owner
+   * @param message body of the message
+   */
   public Message(User user, String message)
   {
     this.user = user;

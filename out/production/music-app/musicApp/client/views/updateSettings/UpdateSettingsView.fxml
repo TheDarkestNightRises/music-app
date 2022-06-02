@@ -80,7 +80,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
                <children>
-                  <Label fx:id="errorLabel" textFill="#fdfdfd">
+                  <Label fx:id="error" textFill="#fdfdfd">
                      <font>
                         <Font name="Arial Black" size="15.0" />
                      </font>
@@ -155,7 +155,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="26.0" prefWidth="384.0">
                <children>
-                  <Label fx:id="errorLabel1" textFill="#fdfdfd">
+                  <Label fx:id="error1" textFill="#fdfdfd">
                      <font>
                         <Font name="Arial Black" size="15.0" />
                      </font>

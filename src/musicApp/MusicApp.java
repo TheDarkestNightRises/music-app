@@ -19,11 +19,20 @@ public class MusicApp extends Application {
     private ViewHandler vh;
     ConnectionFactory connectionFactory;
 
+    /**
+     * This method starts the viewHandler and opens the first scene
+     * @param stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         vh.start();
     }
 
+    /**
+     * This will initialize all the factories and connect to the database until the scene is built
+     * @throws Exception
+     */
     @Override
     public void init() throws Exception {
         connectionFactory = ConnectionFactory.getInstance();
@@ -34,10 +43,14 @@ public class MusicApp extends Application {
         this.vh = new ViewHandler(vmf);
     }
 
+    /**
+     * When the user stops the application the system will shut down, and he will disconnect from the app
+     * @throws Exception
+     */
     @Override
     public void stop() throws Exception {
         super.stop();
-        modelFactory.getLoginManager().disconnect(); //TODO: BREAK LAW OF DEMETER
+        modelFactory.getLoginManager().disconnect();
         connectionFactory.close();
         Platform.exit();
         System.exit(0);
