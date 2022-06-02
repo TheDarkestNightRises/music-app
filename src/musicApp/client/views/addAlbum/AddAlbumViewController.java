@@ -12,6 +12,9 @@ import musicApp.client.views.updateSettings.UpdateSettingsViewModel;
 
 import java.io.File;
 
+/**
+ * This is the add album view controller
+ */
 public class AddAlbumViewController implements ViewController {
     @FXML
     public TextField albumName;
@@ -21,6 +24,10 @@ public class AddAlbumViewController implements ViewController {
     private ViewHandler viewHandler;
     private AddAlbumViewModel viewModel;
 
+    /** The init function is the constructor of this. It calls the bindings from the viewModel
+     * and initialize the viewModel and viewHandler
+     * @param vh for opening windows
+     */
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf, Object... args) {
         this.viewHandler = vh;
@@ -51,6 +58,9 @@ public class AddAlbumViewController implements ViewController {
             viewModel.choosePicture(file);
     }
 
+    /**
+     * This method is linked to a button that on action will open the main menu
+     */
     @FXML
     public void backButtonPressed() {
         viewHandler.openMainMenu();

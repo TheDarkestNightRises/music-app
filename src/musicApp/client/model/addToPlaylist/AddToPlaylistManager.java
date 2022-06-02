@@ -4,6 +4,9 @@ import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 
+/**
+ * The interface for the AddToPlaylistManager,model in the client.It's used to add songs to a playlist
+ */
 public interface AddToPlaylistManager
 {
 

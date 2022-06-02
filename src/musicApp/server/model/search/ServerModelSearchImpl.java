@@ -11,6 +11,10 @@ import java.beans.PropertyChangeSupport;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for searching songs, albums ,users. It uses async call for better performance.
+ * (the window will freeze otherwise because of the heavy calculation)
+ */
 public class ServerModelSearchImpl implements ServerModelSearch {
     private ArrayList<Song> songs;
     private ArrayList<Album> albums;
@@ -26,7 +30,12 @@ public class ServerModelSearchImpl implements ServerModelSearch {
     }
 
 
-
+    /**
+     * Method that will get all the songs in the database and then filter them based on the search
+     * input. It then returns the search result back to the UI by using the observer pattern and
+     * the client call back interface.
+     * @param newValue search input
+     */
     @Override
     public void searchSong(String newValue) {
         if (songs.isEmpty()) {
@@ -44,6 +53,12 @@ public class ServerModelSearchImpl implements ServerModelSearch {
         support.firePropertyChange("newSearchSong", null, searchResultsSorted);
     }
 
+    /**
+     * Method that will get all the albums in the database and then filter them based on the search
+     * input. It then returns the search result back to the UI by using the observer pattern and
+     * the client call back interface.
+     * @param search search input
+     */
     @Override
     public void searchAlbum(String search) {
         if (albums.isEmpty()) {
@@ -61,6 +76,12 @@ public class ServerModelSearchImpl implements ServerModelSearch {
         support.firePropertyChange("newSearchAlbum", null, searchResultsSorted);
     }
 
+    /**
+     * Method that will get all the profiles in the database and then filter them based on the search
+     * input. It then returns the search result back to the UI by using the observer pattern and
+     * the client call back interface.
+     * @param search search input
+     */
     @Override
     public void searchProfile(String search) {
         if (users.isEmpty()) {

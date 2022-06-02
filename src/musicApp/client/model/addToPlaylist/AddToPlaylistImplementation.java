@@ -5,6 +5,7 @@ import musicApp.server.model.domainModel.Playlist;
 import musicApp.server.model.domainModel.Song;
 import musicApp.server.model.domainModel.User;
 
+
 public class AddToPlaylistImplementation implements AddToPlaylistManager
 {
   private Client client;

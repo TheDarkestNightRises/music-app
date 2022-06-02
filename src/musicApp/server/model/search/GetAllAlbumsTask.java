@@ -8,6 +8,9 @@ import musicApp.server.model.domainModel.Album;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Task that will get all the albums from the database. Runs on separate thread
+ */
 public class GetAllAlbumsTask extends Task<ArrayList<Album>> {
     private AlbumDao albumDao;
 

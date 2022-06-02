@@ -13,6 +13,9 @@ import musicApp.server.model.domainModel.Song;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Task that will get all the songs from the database. Runs on separate thread
+ */
 public class GetAllSongsTask extends Task<ArrayList<Song>> {
     private SongDAO songDAO;
 

@@ -10,6 +10,9 @@ import musicApp.server.model.domainModel.User;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Task that will get all the users from the database. Runs on separate thread
+ */
 public class GetAllUsersTask extends Task {
     private UsersDAO userDAO;
 
