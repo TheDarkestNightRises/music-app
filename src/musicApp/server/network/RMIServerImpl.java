@@ -31,6 +31,9 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+/**
+ * Rmi server that acts as a facade
+ */
 public class RMIServerImpl implements RMIServer {
     private AddToPlaylistServer addToPlaylistServer;
     private ServerModelFactory serverModelFactory;
@@ -71,13 +74,21 @@ public class RMIServerImpl implements RMIServer {
         this.removePlaylistServer = new RemovePlaylistServerImpl(serverModelFactory);
     }
 
+    /**
+     * This method will start the server and bind it to the registry
+     * @throws RemoteException if communication fails
+     * @throws AlreadyBoundException if there is already a server
+     */
     @Override
     public void startServer() throws RemoteException, AlreadyBoundException {
         Registry registry = LocateRegistry.createRegistry(1099);
         registry.bind("Server", this);
     }
 
-
+    /**
+     * This will register the client to the observers from the model.
+     * @param client that implements clientCallBack
+     */
     public void registerClient(ClientCallBack client) {
         serverModelFactory.getModelLogin().addListener("OnNewUserEntry", evt -> {
             try {
@@ -123,76 +134,124 @@ public class RMIServerImpl implements RMIServer {
         });
     }
 
+    /**
+     * This will get the chat server to call methods for it ( facade)
+     */
     public ChatServer getChatServer() throws RemoteException {
         return chatServer;
     }
 
+    /**
+     * This will get the login server to call methods for it ( facade)
+     */
     public LoginServer getLoginServer() throws RemoteException {
         return loginServer;
     }
 
+    /**
+     * This will get the music server to call methods for it ( facade)
+     */
     public MusicPlayerServer getMusicPlayerServer() throws RemoteException {
         return musicPlayerServer;
     }
 
+    /**
+     * This will get the sign up server to call methods for it ( facade)
+     */
     public SignUpServer getSignUpServer() throws RemoteException {
         return signUpServer;
     }
 
+    /**
+     * This will get the profile server to call methods on it ( facade)
+     */
     @Override
     public ProfileServer getProfileServer() throws RemoteException {
         return profileServer;
     }
 
+    /**
+     * This will get the search server to call methods on it ( facade)
+     */
     @Override
     public SearchServer getSearchServer() {
         return searchServer;
     }
 
+    /**
+     * This will get the follow list server to call methods on it ( facade)
+     */
     public FollowListServer getFollowListServer() throws RemoteException {
         return followListServer;
     }
 
+    /**
+     * This will get the updateSettingsServer server to call methods on it ( facade)
+     */
     public UpdateSettingsServer getUpdateSettingsServer() throws RemoteException {
         return updateSettingsServer;
     }
 
+    /**
+     * This will get the createPLayListServer to call methods on it ( facade)
+     */
     public CreatePLayListServer getCreatePlaylistServer() {
         return createPLayListServer;
     }
 
+    /**
+     * This will get the mainMenuServer to call methods on it ( facade)
+     */
     @Override
     public MainMenuServer getMainMenuServer() throws RemoteException {
         return mainMenuServer;
     }
 
+    /**
+     * This will get the addToPlaylistServer to call methods on it ( facade)
+     */
     @Override
     public AddToPlaylistServer getAddToPlaylistServer() throws RemoteException {
         return addToPlaylistServer;
     }
 
+    /**
+     * This will get the addAlbumServer to call methods on it ( facade)
+     */
     @Override
     public AddAlbumServer getAddAlbumServer() throws RemoteException {
         return addAlbumServer;
     }
 
+    /**
+     * This will get the addSongServer to call methods on it ( facade)
+     */
     @Override
     public AddSongServer getAddSongServer() throws RemoteException {
         return addSongServer;
     }
 
+    /**
+     * This will get the deleteSongServer to call methods on it ( facade)
+     */
     @Override
     public DeleteSongServer getDeleteSongServer()
             throws RemoteException {
         return deleteSongServer;
     }
 
+    /**
+     * This will get the removeAlbumServer to call methods on it ( facade)
+     */
     @Override
     public RemoveAlbumServer getRemoveAlbumServer()
             throws RemoteException {
         return removeAlbumServer;
     }
 
+    /**
+     * This will get the removePlaylistServer to call methods on it ( facade)
+     */
     @Override
     public RemovePlaylistServer getRemovePlaylistServer() throws RemoteException {
         return removePlaylistServer;

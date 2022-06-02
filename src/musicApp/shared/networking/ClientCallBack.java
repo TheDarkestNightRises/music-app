@@ -11,6 +11,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+/**
+ * The client call back is used by the server to call methods on it to call the support to fire
+ */
 public interface ClientCallBack extends Remote {
     // -----------UPDATE CLIENT ASYNC----------------
     void updateLog(LogEntry log) throws RemoteException;

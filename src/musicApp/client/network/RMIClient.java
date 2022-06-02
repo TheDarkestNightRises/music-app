@@ -50,6 +50,9 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
+/**
+ * This is the RMIClient used for communication with the server
+ */
 public class RMIClient implements Client, ClientCallBack {
     private PropertyChangeSupport support;
     private RMIServer server;
@@ -70,7 +73,10 @@ public class RMIClient implements Client, ClientCallBack {
     private RemoveAlbumClient removeAlbumClient;
     private RemovePlaylistClient removePlaylistClient;
 
-
+    /**
+     * This constructor will export the rmi client as a remote object and will lookup for the server
+     * as well instantiating the clients.
+     */
     public RMIClient() {
         try {
             UnicastRemoteObject.exportObject(this, 0);
@@ -99,6 +105,9 @@ public class RMIClient implements Client, ClientCallBack {
         }
     }
 
+    /**
+     * This method will start the client by registering the client to all observer/ broadcast
+     */
     @Override
     public void startClient() {
         try {
