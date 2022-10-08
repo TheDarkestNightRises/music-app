@@ -16,11 +16,6 @@ look at profiles of other users etc.
 - Search for songs.
 
 
-## Documentation
-
-You can check the documentation inside of the project.
-
-
 ## Tech Stack
 
 **Client:** Java FX, CSS
