@@ -27,7 +27,7 @@ A music app where users can connect and share their music.
 ## Lessons Learned
 
 While developing this project, we gained valuable experience. We learned how to develop a 
-multi-user sytem and how to design a client-server arhitecture.
+multi-user sytem and how to design a solid client-server arhitecture.
 
 ## Demo
 
