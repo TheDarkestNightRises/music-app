@@ -1,7 +1,7 @@
 
 # Music app 🎶
 
-A music app where users can share their music. 
+A music app where users can connect and share their music taste
 A user can share their music, listen to it, upload music
 look at profiles of other users etc.
 
