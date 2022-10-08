@@ -33,9 +33,12 @@ You can check the documentation inside of the project.
 While developing this project we learned how to develop a 
 multi-user sytem and how to design a client-server arhitecture.
 
-## Screenshots
+## Demo
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![ezgif-5-922376e3d4](https://user-images.githubusercontent.com/91905169/194728262-eb281248-bf61-47a7-93d7-e347ab90f90b.gif)
+
+
 
 
 ## Authors
