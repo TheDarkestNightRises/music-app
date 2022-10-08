@@ -1,9 +1,8 @@
 
 # Music app 🎶
 
-A music app where users can connect and share their music taste
-A user can share their music, listen to it, upload music
-look at profiles of other users etc.
+A music app where users can connect and share their music.
+
 
 ## Features
 
@@ -27,7 +26,7 @@ look at profiles of other users etc.
 
 ## Lessons Learned
 
-While developing this project we learned how to develop a 
+While developing this project, we gained valuable experience. We learned how to develop a 
 multi-user sytem and how to design a client-server arhitecture.
 
 ## Demo
