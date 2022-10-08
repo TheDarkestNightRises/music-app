@@ -44,6 +44,8 @@ multi-user sytem and how to design a client-server arhitecture.
 ## Authors
 
 - [@TheDarkestNightRises](https://github.com/TheDarkestNightRises/)
+- [@Lichiag21](https://github.com/Lichiag21/)
+- [@Cosmin-Teodoru](https://github.com/Cosmin-Teodoru/)
 
 
 ## Feedback
