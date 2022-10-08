@@ -12,7 +12,8 @@ look at profiles of other users etc.
 - Upload music 
 - Create a playlist that will be shown to your profile
 - Chat to communicate with other music lovers
-- See what others post 
+- Create a artist account.
+- Search for songs.
 
 
 ## Documentation
