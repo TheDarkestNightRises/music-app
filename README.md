@@ -25,7 +25,9 @@ You can check the documentation inside of the project.
 
 **Client:** Java FX, CSS
 
-**Server:** RMI , Java , PostgresSQL
+**Server:** RMI , Java 
+
+**Database:** PostgresSQL
 
 
 ## Lessons Learned
