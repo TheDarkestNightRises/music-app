@@ -40,7 +40,7 @@ multi-user sytem and how to design a solid client-server arhitecture.
 ## Authors
 
 - [@TheDarkestNightRises](https://github.com/TheDarkestNightRises/)
-- [@Lichiag21](https://github.com/Lichiag21/)
+- [@Andrei-Lichi](https://github.com/Andrei-Lichi/)
 - [@Cosmin-Teodoru](https://github.com/Cosmin-Teodoru/)
 
 
