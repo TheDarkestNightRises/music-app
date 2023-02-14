@@ -2,7 +2,10 @@
 # Music app 🎶
 
 A music app where users can connect and share their music.
-
+<br>
+[Documentation](https://github.com/Andrei-Lichi/MusicApp/files/10439805/ProjectAndProcessReport.pdf)
+<br>
+[Appendices.zip](https://github.com/Andrei-Lichi/MusicApp/files/10439909/Appendices.zip)
 
 ## Features
 
